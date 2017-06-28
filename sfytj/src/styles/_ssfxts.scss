@@ -1,0 +1,33 @@
+/*诉讼风险提示*/
+.ssfxts{
+
+  /*风险提示主要内容*/
+  .content_all{
+    width: 100%;
+    margin-top: 40px;
+
+    .title{
+      text-align: center; /*标题大小颜色*/
+      font-weight: 700;
+      color: #b6b6b6;
+    }
+    .sfgd{              /*司法规定*/
+     /* font-size: 17px;*/
+      font-weight: 600;
+      color: #b6b6b6;
+      margin-top: 35px;
+     /* margin: 25px 60px 60px 40px;*/
+      overflow-y: scroll;
+      overflow-x: hidden;
+      max-height: 420px;
+      li{
+        color: #999999;
+        margin-bottom: 13px;
+        ul{
+          color:#b6b6b6;
+        }
+      }
+    }
+  }
+
+}

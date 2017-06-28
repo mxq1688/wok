@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>开庭公告</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css" />
+    
+</head>
+
+
+<body>
+
+<!--页面-->
+<div class="ktgg">
+    <div class="wrap">
+        <div class="common_body">
+            <div class="ktgg_title font_header">
+            </div>
+          <!--主要内容-->
+            <div  class="common_wrap_body">
+
+                <iframe id="iframe" src="/sfytj/dist/html/ggxx/tsgk/ktgg_table.html" width="100%" height="550px" frameborder="0" border="none"></iframe>
+
+                <div class="btn_row">
+                    <input type="button" value="返回" class="common_btn "  onclick="history.back()"/>
+                    <!--
+                    <div class="common_btn fr" onclick="start_print()">打印</div>
+                    -->
+                </div>
+
+            </div>
+        </div>
+    
+     </div>
+</div>
+       
+
+</body>
+</html>
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script>
+    function start_print(){
+        LightControl.PowerOn(3);
+        open_modal("正在为您打印开庭公告详情信息，请稍等...","正在打印",function(){
+            $('.tip_modal', window.parent.document).modal('hide');
+            $('.tip_modal', window.parent.document).on('hidden.bs.modal', function () {
+                LightControl.PowerOff(3);
+            });
+
+        },"确定","static");
+        A4_print('/sfytj/dist/html/ggxx/tsgk/ktgg_table.html');
+    }
+</script>

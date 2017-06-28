@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>审委会组成人员</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body class="fyck swhry">
+<!--主体展示部分-->
+<div class="swhzcry clearfix" id="swhzcry">
+</div>
+
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<!--<script type="text/javascript">
+    /*模拟数据*/
+    var defaultData =
+            [
+                {
+                    number:'01',
+                    name:'赵姜',
+                    sex:' 男',
+                    employer:'徐州中院',
+                    phone:'85652665',
+                    address:'k楼10层北',
+                    tp:'/sfytj/dist/images/icon/swhry.png',
+                },
+                {
+                    number:'02',
+                    name:'钱姜',
+                    sex:' 男',
+                    employer:'徐州中院',
+                    phone:'85652665',
+                    address:'k楼10层北',
+                    tp:'/sfytj/dist/images/icon/swhry.png',
+                },
+                {
+                    number:'03',
+                    name:'孙姜',
+                    sex:' 男',
+                    employer:'徐州中院',
+                    phone:'85652665',
+                    address:'k楼10层北',
+                    tp:'/sfytj/dist/images/icon/swhry.png',
+            },
+                {
+                    number:'04',
+                    name:'李姜',
+                    sex:' 男',
+                    employer:'徐州中院',
+                    phone:'85652665',
+                    address:'k楼10层北',
+                    tp:'/sfytj/dist/images/icon/swhry.png',
+            },{
+                number:'05',
+                name:'周姜',
+                sex:' 男',
+                employer:'徐州中院',
+                phone:'85652665',
+                address:'k楼10层北',
+                tp:'/sfytj/dist/images/icon/swhry.png',
+            },{
+                number:'06',
+                name:'吴姜',
+                sex:' 男',
+                employer:'徐州中院',
+                phone:'85652665',
+                address:'k楼10层北',
+                tp:'/sfytj/dist/images/icon/swhry.png',
+            },{
+                number:'07',
+                name:'郑姜',
+                sex:' 男',
+                employer:'徐州中院',
+                phone:'85652665',
+                address:'k楼10层北',
+                tp:'/sfytj/dist/images/icon/swhry.png',
+            },{
+                number:'08',
+                name:'王姜',
+                sex:' 男',
+                employer:'徐州中院',
+                phone:'85652665',
+                address:'k楼10层北',
+                tp:'/sfytj/dist/images/icon/swhry.png',
+            },{
+                number:'09',
+                name:'冯姜',
+                sex:' 男',
+                employer:'徐州中院',
+                phone:'85652665',
+                address:'k楼10层北',
+                tp:'/sfytj/dist/images/icon/swhry.png',
+            }
+            ];
+
+</script>-->
+<script type="text/javascript">
+    $(function () {
+        //页面初始化，从查询页面获取法院ID：
+        var httpurl=global_data.httpurl;
+        var court_id = getCookie("court_id");
+        console.log(court_id);
+        if(court_id){
+            court_id = court_id;
+        }else{
+            court_id = global_data.court_id;
+        }
+
+        //保存下来 从服务器请求的审委会组成人员数据 http://localhost/sfytjjk/ggxx/fyck/fyxx/fgxx.php
+
+        ajax(
+                ""+httpurl+"/ggxx/fyck/fyxx/fgxx.php",
+                "type="+2+"&court_id="+court_id,
+                function(defaultData) {
+                    console.log(defaultData);
+                    /*填充页面*/
+                    var html = "";
+                    var n=defaultData.data.length;
+                    $.each(defaultData.data, function (n, value) {
+                        if(n>2){
+                            html += "<div class=\"swh ad shadow\">";
+                        }else {
+
+                            html += "<div class=\"swh shadow\">";
+                        }
+                        html += "    <div class=\"tp\"><img src=\""+value.pic+"\"></div>";
+                        html += "<div class='number font_header'>"+value.emp_no+"</div>";
+                        html += "<div class='name '>"+value.name+"</div>";
+                        html += "<div class=\"info font_small\">";
+                        if(value.sex=="female"){
+                            html +="<div class=\"sex\">性别：女</div>";
+                        }else{
+                            html +="<div class=\"sex\">性别：男</div>";
+                        }
+                        html +="<div class=\"employer\">单位："+value.dept_id+"</div>";
+                        html +="<div class=\"address\">地址："+value.address+"</div>";
+                        html +="<div class=\"phone\">电话：<span class='takespace'>"+value.office_tel+"</span></div>";
+                        html += "</div>";
+                        html +="</div>";
+                    });
+                    $("#swhzcry").append(html);
+                }
+        );
+
+
+            }
+    );
+</script>
+</body>
+</html>

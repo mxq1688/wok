@@ -1,0 +1,185 @@
+/*个人中心-预约立案进展查询*/
+.ckyjjz2 {
+
+  #yjjzcx_count {
+    color: $blueColor;
+  }
+  .tip{
+    margin: 20px 0;
+    font-weight: 700;
+  }
+
+  .aj-list {
+    max-height: 427px;
+    overflow-y: scroll;
+    padding-right: 30px;
+    margin-top: 10px;
+  }
+
+  .panel-group {
+    margin-bottom: 0px;
+  }
+
+  .mestip{
+    line-height: 300px;
+    text-align: center;
+  }
+  .aj-item {
+
+    position: relative;
+    .title-line {
+      width: 7px;
+      height: 100%;
+      position: absolute;
+      left: 24%;
+      top: 0px;
+      z-index: 1;
+    }
+    /* 自定义panelheading */
+    .panel-heading {
+      position: relative;
+      background-color: #fff;
+      box-shadow: 0 10px 20px 0 #b9b5b5;
+      color: #9a9a9a;
+      cursor: pointer;
+      .badge {
+        float: right;
+        background-color: #53aee7;
+        width: 81px;
+        height: 37px;
+        line-height: 30px;
+        font-size: 20px;
+        margin: 0 5px;
+        font-weight: 500;
+      }
+      .shzt {
+        float: right;
+        width: 88px;
+        height: 37px;
+        line-height: 30px;
+        font-size: 20px;
+        margin: 3px 20px;
+        border-radius: 10px;
+        color: white;
+        padding: 3px 7px;
+        font-weight: 500;
+        text-align: center;
+      }
+      .ckxq{
+        float: right;
+        height: 37px;
+        line-height: 30px;
+        margin: 3px 5px;
+        color: #fff;
+        padding: 3px 7px;
+        font-weight: 500;
+        border-radius: 10px;
+        text-align: center;
+        background-color: #53aee7;
+      }
+      .ckxq_gray{
+        background-color:gray;
+      }
+    }
+    .panel-title {
+      font-weight: 500;
+      color: #9a9a9a;
+    }
+
+    /* panel内容部分 */
+    .panel-body {
+      position: relative;
+      max-height: 400px;
+
+    }
+
+    .aj-title {
+      padding-right: 15px;
+      position: relative;
+      background: white;
+
+      /*法院名称*/
+      .fymc {
+        float: left;
+      }
+      /*案号*/
+      .ah {
+        float: left;
+      }
+
+    }
+
+    .aj-info {
+      position: relative;
+      padding: 25px;
+      line-height: 35px;
+    }
+
+  }
+  /*审核已通过*/
+  .state-success {
+    .title-line, .shzt {
+      background-color: $blueColor;
+    }
+
+  }
+  /*审核中*/
+  .state-waiting {
+    .title-line, .shzt {
+      background-color: gray;
+    }
+  }
+  /*审核未通过*/
+  .state-failed {
+    .title-line, .shzt {
+      background-color: red;
+    }
+  }
+
+
+  /*高级查询*/
+  .gjsearch{
+    font-size: 28px;
+    text-decoration: none;
+    color:gray;
+    float: left;
+  }
+
+  .gjsearch_link{
+    font-size: 28px;
+    color: #0089FF;
+    /*font-family: "Microsoft YaHei";*/
+    font-family: "Microsoft YaHei";
+    font-weight: 600;
+    margin-left: 10px;
+  }
+
+  .gjsearch:hover{
+    color:gray;
+  }
+  /*查看卷宗按钮*/
+  .btn-ckjz{
+    margin-right: 50px;
+    cursor: pointer;
+  }
+  .pj_service{
+    margin-right: 25px;
+    margin-left:20px;
+  }
+
+     /* 查看更多按钮 */
+  .getmore_btn{
+      position: relative;
+      width: 200px;
+      left:50%;
+      margin-left: -70px;
+      margin-top: 20px;
+      display: none;
+      color: #999;
+  }
+
+   .del_btn{
+    background:#e75353;
+  }
+
+}

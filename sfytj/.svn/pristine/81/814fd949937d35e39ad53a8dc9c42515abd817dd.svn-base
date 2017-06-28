@@ -1,0 +1,30 @@
+/*行政诉讼工作流程图*/
+.xzss_lc{
+  background: none;
+  height: 610px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  .xzsslc{
+    /*边距*/
+    .bj{
+      margin-bottom: 50px;
+    }
+    /*图片名字*/
+    .title{
+      /* margin-top: 50px;*/
+
+    }
+    /*流程图*/
+    .lct{
+      img{
+        width: 100%;
+      }
+
+    }
+    /*备注*/
+    .bz{
+
+    }
+
+  }
+}

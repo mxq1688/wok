@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>部门及职能</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body class="fyck bmjzn">
+<!--主体展示部分-->
+<div class="bmjzn_nr" id="bmjznnr">
+
+
+</div>
+
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<!--<script type="text/javascript">
+    /*模拟数据*/
+    var defaultData =
+            [
+                {
+                    tp:'/sfytj/dist/images/icon/bmjzn.png',
+                    nr:'<p>&nbsp;&nbsp;&nbsp;&nbsp; 徐州市人民检察院经过多年来的机构改革，目前内设办公室、干部处、宣传教育处、警务处（对外称“法警支队”）、侦查监督处、公诉处、反贪污贿赂局、反渎职侵权局、监所检察处、民事行政检察处、控告申诉检察处、职务犯罪预防处、检察技术处、法律政策研究室、行政装备处、机关党委、老干部处、案件监督管理处、未成年人刑事检察处以及侦查指挥中心办公室、检察委员会办公室等机构，另按规定设立政治部，纪检组、监察处（合署办公）。</p>',
+                },
+
+            ];
+
+</script>-->
+<script type="text/javascript">
+    $(function () {
+        //页面初始化，从查询页面获取法院ID：
+        var httpurl=global_data.httpurl;
+        var type_id = getCookie("type_id");
+        var court_id = getCookie("court_id");
+        console.log(court_id);
+        if(court_id){
+            court_id = court_id;
+        }else{
+            court_id = global_data.court_id;
+        }
+
+
+        /*判断缓存中是否有该法院的概况信息*/
+//        var selected_fygk_info=JSON.parse(localStorage.getItem("selected_fygk_info"));
+
+        /*如果没有缓存信息，则请求服务器显示并添加到fygk_info数组中*/
+//        if(selected_fygk_info.bmjzn===null){
+            ajax(
+                    ""+httpurl+"/ggxx/fyck/fyxx/gxfw.php",
+                    "type="+2+"&court_id="+court_id,
+                    function(defaultData) {
+                        console.log(defaultData);
+
+                        /*添加到数组fygk_info中*/
+                        /*var fygk_info=JSON.parse(localStorage.getItem("fygk_info"));
+                        $.each(fygk_info,function(key,val){
+                            if(val.fy_court_id===court_id){
+                                val.bmjzn=defaultData.data;
+                                selected_fygk_info.bmjzn=defaultData.data;
+                                localStorage.setItem("fygk_info",JSON.stringify(fygk_info));
+                                localStorage.setItem("selected_fygk_info",JSON.stringify(selected_fygk_info));
+                                return false;
+                            }
+                        });*/
+
+                        /*填充页面*/
+                        var value=defaultData.data;
+                        var html = "";
+                        html += "        <div class=\"nr font_bigger\">"+value+"</div>";
+                        /*html += "        <div class=\"tp \"><img src='/sfytj/dist/images/icon/bmjzn.png'></div>";*/
+
+                        $("#bmjznnr").append(html);
+                    }
+            );
+//        }
+       /*如果已有缓存，直接取出来显示*/
+        /*else{
+            var value=selected_fygk_info.bmjzn;
+            var html = "";
+            html += "        <div class=\"nr font_bigger\">"+value+"</div>";
+            /!*html += "        <div class=\"tp \"><img src='/sfytj/dist/images/icon/bmjzn.png'></div>";*!/
+
+            $("#bmjznnr").append(html);
+        }*/
+            }
+
+    );
+
+
+</script>
+</body>
+</html>

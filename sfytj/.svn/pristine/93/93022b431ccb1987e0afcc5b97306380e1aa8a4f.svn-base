@@ -1,0 +1,23 @@
+.xxqr {
+  position: relative;
+  input[type=text]{
+
+  }
+  .form-container {
+    margin: 20px;
+    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 325px;
+  }
+  #form_yyla_submit {
+    position: absolute;
+    right: 50px;
+    margin: 10px;
+  }
+  .required:after{
+    content: '*';
+    color: $blueColor;
+    position: absolute;
+  }
+}

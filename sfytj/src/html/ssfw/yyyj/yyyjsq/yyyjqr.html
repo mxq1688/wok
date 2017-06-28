@@ -1,0 +1,251 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+        <title>
+            预约阅卷申请信息确认
+        </title>
+        <link href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/sfytj/dist/styles/main.min.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <!--页面-->
+        <div class="yyyjqr">
+            <div class="wrap">
+                <div class="common_body">
+                    <!--导航条部分-->
+                    <div class="ssfw_nav yyyjsq_nav clearfix">
+                        <!--预约立案标题 -->
+                        <div class="nav_title">
+                            <h2>
+                                预约阅卷申请
+                            </h2>
+                        </div>
+                        <!--进度条 -->
+                        <div class="nav_process">
+                            <!-- 圆点和横线 -->
+                            <div class="process clearfix">
+                                <div class="process1">
+                                    <div class="nav_line1">
+                                    </div>
+                                    <a href="javascript:void(0);" onclick="url_load('yyyjdl.html')">
+                                        <div class="nav_circle">
+                                            1
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="process2">
+                                    <div class="nav_line">
+                                    </div>
+                                    <a href="javascript:void(0);" onclick="url_load('yyyjxzaj.html')">
+                                        <div class="nav_circle">
+                                            2
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="process3">
+                                    <div class="nav_line">
+                                    </div>
+                                    <a href="javascript:void(0);" onclick="url_load('yyyjyt.html')">
+                                        <div class="nav_circle">
+                                            3
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="process4">
+                                    <div class="nav_line">
+                                    </div>
+                                    <a href="javascript:void(0);" onclick="url_load('yyyjqr.html')">
+                                        <div class="nav_circle">
+                                            4
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- 下方的文字 -->
+                            <div class="process_title clearfix">
+                                <div class="process_titleinfo">
+                                    当事人登录
+                                </div>
+                                <div class="process_titleinfo">
+                                    选择案件
+                                </div>
+                                <div class="process_titleinfo">
+                                    确认身份和用途
+                                </div>
+                                <div class="process_titleinfo">
+                                    信息确认
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--主要内容-->
+                    <div class="common_wrap_body">
+                        <div class="font_header font_weight tip">
+                            信息确认
+                        </div>
+                        <!--输入内容列表-->
+                        <div class="input_list">
+                            <!--选择登录方式-->
+                            <div class="dlfs clearfix font_title_style">
+                                <div class=" title dlfsleft">
+                                    申请人姓名
+                                </div>
+                                <div class=" title dlfsright sqrxm">
+                                </div>
+                            </div>
+                            <div class="dlfs clearfix font_title_style">
+                                <div class=" title dlfsleft">
+                                    申请案件
+                                </div>
+                                <div class=" title dlfsright sqaj">
+                                </div>
+                            </div>
+                            <div class="dlfs clearfix font_title_style">
+                                <div class=" title dlfsleft">
+                                    申请原因
+                                </div>
+                                <div class=" title dlfsright sqyt">
+                                </div>
+                            </div>
+                            <div class="dlfs clearfix font_title_style">
+                                <div class=" title dlfsleft">
+                                    申请时间
+                                </div>
+                                <div class=" title dlfsright sqsj">
+                                </div>
+                            </div>
+                            <!--对应填的内容-->
+                        </div>
+                    </div>
+                    <!--按钮-->
+                    <div class="btn_row">
+                    </div>
+                    <!-- 上一步 下一步按钮 -->
+                    <div class="btn_row ">
+                        <input class="common_btn " onclick="window.location.href='yyyjyt.html'" type="button" value="上一步"/>
+                        <input class="common_btn mid_btn" id="btn_qrtj" type="button" value="确认提交"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/sfytj/bower_components/jquery/dist/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/dist/scripts/main.min.js" type="text/javascript">
+        </script>
+        <script>
+            // 初始化导航条
+            $(function() {
+                /*信息确认页面的信息获取*/
+                $('.sqrxm').html(getCookie("input_name"));
+                $('.sqaj').html(getCookie("case_title"));
+                $('.sqyt').html(getCookie("sqyt"));
+                $('.sqsj').html(getDateTime());
+                /* 记录导航条步数的方法 */
+                nav_step("yyyjsq_last_step", 4);
+            });
+            $("#btn_qrtj").click(function() {
+                //页面初始化，从查询页面获取法院ID：
+                var httpurl = global_data.httpurl;
+                var type = getCookie("sqyt_type");
+                var uses = getCookie("sqyt");
+                var name = getCookie("input_name");
+                var case_num = getCookie("case_ah");
+                var user_id = getCookie("user_id");
+                open_modal("<span class='font_bigger'>正在提交数据，请稍等...</span>", "正在提交", function() {}, "请稍等", "static");
+                // 提交立案
+                var modal_content = $('.tip_modal .modal_info', window.top.document);
+                var modal_title = $('.tip_modal .modal_title', window.top.document);
+                var modal_btn = $('.tip_modal .modal_confirm', window.top.document);
+                var yue_type = getCookie("yue_type");
+                var yue_account = getCookie("yue_account");
+                var yue_pwd = getCookie("yue_pwd");
+                var court_id = getCookie("court_id");
+                var case_title = getCookie("case_title");
+                var wyyj_begintime = localStorage.getItem("wyyj_begintime");
+                setTimeout(function() {
+                    $.ajax({
+                        timeout: 30000,
+                        type: "post",
+                        async: true,
+                        data: "type=" + type + "&case_num=" + case_num + "&uses=" + uses + "&name=" + name + "&user_id=" + user_id + "&yue_account=" + yue_account + "&yue_pwd=" + yue_pwd + '&yue_type=' + yue_type + '&court_id=' + court_id + '&wyyj_begintime=' + wyyj_begintime + '&case_title=' + case_title,
+                        url: "" + httpurl + "ssfw/yyyj/yyyjsq/yyyjqr.php",
+                        dataType: "json",
+                        success: function(data) {
+                            modal_btn.html("确定");
+                            modal_btn.click(function() {
+                                $('.tip_modal', window.top.document).modal('hide');
+                            });
+                            setCookie("wdaj_index", 2);
+                            if (data.state == 0) {
+                                modal_content.html("<p>申请不通过！</p>");
+                            } else {
+                                modal_content.html("<p><span id='mes' class='font_bigger'>3</span>秒后将跳转到个人中心！</span></p>");
+                                modal_btn.html("立即前往");
+                                modal_title.html("<p>提交成功</p>");
+                                modal_btn.click(function() {
+                                    $('.tip_modal', window.top.document).modal('hide');
+                                    setTimeout(function() {
+                                        window.location.href = '/sfytj/dist/html/common/wdaj.html';
+                                    }, 500);
+                                });
+                            }
+                            clear_yyyj_info();
+                            setTimeout("run()", 1000);
+                        },
+                        complete: function(XMLHttpRequest, status) {
+                            if (status == "timeout") {
+                                var xmlhttp = window.XMLHttpRequest ? new window.XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHttp");
+                                xmlhttp.abort();
+                                submit_error();
+                            }
+                            return;
+                        },
+                        error: function(XMLHttpRequest, textStatus) {
+                            submit_error();
+                            return;
+                        }
+                    });
+                }, 500);
+            });
+            //三秒后回到首页
+            function run() {
+                var fatherBody = $(window.top.document.body)
+                var sum = fatherBody.find("#mes").html();
+                var t = setTimeout("run()", 1000);
+                if (sum > 1) {
+                    sum--;
+                    fatherBody.find("#mes").html(sum);
+                } else {
+                    clearTimeout(t);
+                    /* 跳转到首页 */
+                    $('.tip_modal', window.parent.document).modal('hide');
+                    $('.tip_modal', window.parent.document).on('hidden.bs.modal', function() {
+                        window.location.href = '/sfytj/dist/html/common/wdaj.html';
+                    });
+                }
+            }
+
+            function clear_yyyj_info() {
+                /*清除cookie值*/
+                clearCookie("wyyj_begintime");
+                clearCookie("sq_sqlsh");
+                clearCookie("sq_sjhm");
+                clearCookie("dl_type");
+                clearCookie("yue_type");
+                clearCookie("yue_account");
+                clearCookie("yue_pwd");
+                clearCookie("sqyt");
+                clearCookie("sqyt_type");
+                clearCookie("input_name");
+                clearCookie("yyyjsq_last_step");
+                clearCookie("case_ah");
+                clearCookie("case_title");
+                clearCookie("yyyjsq_data");
+                clearCookie("sqlsh");
+            }
+        </script>
+    </body>
+</html>

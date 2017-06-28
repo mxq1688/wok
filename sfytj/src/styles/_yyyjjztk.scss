@@ -1,0 +1,36 @@
+/*预约阅卷进展查询*/
+.yyyjjztk{
+  
+
+  /*预约阅卷申请条款*/
+  .content_all{
+    width: 100%;
+    margin-top: 40px;
+
+    .title{
+      text-align: center; /*标题大小颜色*/
+      font-size: 28px;
+      font-weight: 700;
+      color: #b6b6b6;
+    }
+
+    .sfgd{              /*显示条款*/
+      font-size: 17px;
+      font-weight: 600;
+      color: #b6b6b6;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      max-height: 420px;
+      margin-top: 35px;
+      li{
+        color: #999999;
+        margin-bottom: 13px;
+        ul{
+          color:#b6b6b6;
+        }
+      }
+    }
+  }
+
+
+}

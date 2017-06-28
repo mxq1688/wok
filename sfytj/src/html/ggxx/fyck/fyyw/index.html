@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>法院要闻</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body class="fyck_home">
+<!--法院要闻-->
+<div class="common_body">
+    <!--头部-->
+    <div class="ggxx-head">
+        <div class="ggxx-title font_header">徐州市人民法院 > <span id="sub_title">法院要闻</span></div>
+    </div>
+    <!--主体内容-->
+    <div class="ggxx-body clearfix">
+        <!-- 左侧导航栏 -->
+        <div class="left_nav">
+            <ul class="nav nav-stacked " role="tablist">
+                <li role="presentation" class="active new font_h1" data-href="fyyw.html">法院要闻</li>
+                <li role="presentation" data-href="xwfc.html">新闻风采</li>
+                <li role="presentation" data-href="spxw.html">视频新闻</li>
+                <li role="presentation" class="new" data-href="tpxw.html">图片新闻</li>
+            </ul>
+        </div>
+        <!--右侧嵌入窗口-->
+        <div class="right_content">
+            <iframe id="content_iframe" width="100%" height="100%" frameborder="0" src="fyyw.html"></iframe>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        //页面初始化
+        var httpurl=global_data.httpurl;
+
+        ajax(
+                ""+httpurl+"ggxx/fyck/fyyw/tpxw.php",
+                "court_id="+16+"&type="+1,
+                function(defaultData){
+                    console.log(defaultData);
+                    sxrItemData = defaultData.data;
+                },
+                null,
+                null,
+                null,
+                false
+        );
+        $(".nav li").click(function () {
+            $(".nav .active").removeClass("active");
+            var ele = $(event.target);
+            if(ele.html()=="法院要闻"){
+                type_id=1;
+            }
+            else if(ele.html()=="新闻风采"){
+                type_id=2;
+            }
+            else if(ele.html()=="视频新闻"){
+                type_id=3;
+            }
+            else if(ele.html()=="图片新闻"){
+                type_id=4;
+            }
+            setCookie("type_id",JSON.stringify(type_id));
+            ele.addClass("active");
+            /*更新标题*/
+            $("#sub_title").text(ele.text());
+            /*更新iframe内容*/
+            $("#content_iframe").attr("src",ele.data("href"));
+
+        });
+
+    });
+</script>
+
+
+<!--<script type="text/javascript">
+    $(function () {
+        $(".nav li").click(function () {
+            $(".nav .active").removeClass("active");
+            var ele = $(event.target);
+            ele.addClass("active");
+            /*更新标题*/
+            $("#sub_title").text(ele.text());
+            /*更新iframe内容*/
+            $("#content_iframe").attr("src",ele.data("href"));
+
+        });
+    });
+</script>-->
+</body>
+</html>

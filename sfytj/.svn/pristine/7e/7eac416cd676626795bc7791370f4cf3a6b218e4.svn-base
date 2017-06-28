@@ -1,0 +1,47 @@
+/*视频新闻正文页*/
+.spxw_detail {
+  padding-right: 30px;
+  /*标题*/
+  .title {
+    color: black;
+    margin: 10px 0;
+  }
+  /*中间部分，基本信息*/
+  .info {
+    margin: 20px 0;
+    .date {
+      float: left;
+      margin-left: 50px;
+
+    }
+    .author {
+      float: left;
+    }
+  }
+  /*内容区*/
+  .content {
+    padding: 10px 0;
+    /*新闻文字*/
+    .text {
+
+    }
+    p {
+      text-indent: 35px;
+    }
+    /*视频*/
+    .video_container {
+      margin: 15px auto;
+      text-align: center;
+      video {
+        border-radius: 15px;
+        box-shadow: 5px 5px 10px 0px #b9b5b5;
+        margin: auto;
+        width: 595px;
+        // max-height: 50%;
+      }
+
+
+    }
+  }
+
+}

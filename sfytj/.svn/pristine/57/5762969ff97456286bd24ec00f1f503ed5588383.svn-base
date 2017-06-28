@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文书样式</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body>
+<!--查看文书样式-->
+<div class="wsys_list2">
+    <!--头部-->
+    <div class="wsys_head">
+        <div class="wsys_title"></div>
+    </div>
+    <!--主体内容-->
+    <div class="wsys_body">
+        <div class="ms font_bigger ">
+        </div>
+    </div>
+    <!--返回按钮-->
+    <div class="btn_row" style="bottom:0;">
+        <input type="button" value="返回" class="common_btn "  onclick="history.back()"/>
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+
+        var httpurl=global_data.httpurl;
+        var wsysid = JSON.parse(getCookie("wsysid"));
+        var wsys_title=getCookie("wsys_title");
+        var wsys_list = [];
+        if(wsysid==null){wsysid=""};
+        if(wsys_title==null){wsys_title=""};
+        console.log(wsysid);
+        /*var wsys_save_id = JSON.stringify(wsysid);*/
+
+        var sxrItemData = null;
+        if(localStorage.getItem("wsys_list")){
+            var wsys_list = JSON.parse(localStorage.getItem("wsys_list"));
+            if(wsys_list[wsysid]){
+                sxrItemData=wsys_list[wsysid];
+            }else{
+                ajax(
+                        ""+httpurl+"ggxx/ygsf/wsys.php",
+                        "id="+wsysid,
+                        function(defaultData){
+                            console.log(defaultData);
+                            sxrItemData = defaultData.data;
+                        },
+                        null,
+                        null,
+                        null,
+                        false
+                );
+                wsys_list[wsysid]=sxrItemData;
+                localStorage.setItem("wsys_list",JSON.stringify(wsys_list));
+            }
+        }else{
+            console.log('1');
+            ajax(
+                    ""+httpurl+"ggxx/ygsf/wsys.php",
+                    "id="+wsysid,
+                    function(defaultData){
+                        console.log(defaultData);
+                        sxrItemData = defaultData.data;
+                    },
+                    null,
+                    null,
+                    null,
+                    false
+            );
+
+            wsys_list = [];
+            wsys_list[wsysid]=sxrItemData;
+            localStorage.setItem("wsys_list",JSON.stringify(wsys_list));
+        }
+
+
+
+
+        $(".wsys_title").html(JSON.parse(wsys_title));
+
+        $(".ms").html(sxrItemData.content);
+
+
+    });
+</script>
+</body>
+</html>

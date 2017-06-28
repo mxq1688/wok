@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新闻风采展示</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body class="xwfc_zs">
+<!--主体展示部分-->
+<div class="xwfczs" id="xwxx">
+
+
+
+</div>
+
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+
+        var httpurl=global_data.httpurl;
+        var fyywid = JSON.parse(getCookie("fyywid"));
+        var tp_link=JSON.parse(getCookie("tp_link"));
+        if(fyywid==null){fyywid=""};
+        if(tp_link==null){tp_link=""};
+
+        ajax(
+                ""+httpurl+"ggxx/fyck/fyyw/tpxwck.php",
+                "id="+fyywid,
+                function(defaultData){
+                    console.log(defaultData);
+                    sxrItemData = defaultData.data;
+                },
+                null,
+                null,
+                null,
+                false
+        );
+
+        var html = "";
+        var value=sxrItemData;
+            html += "<div class=\"tilte font_header\">"+value.title+"</div>";
+            html += "<div class=\"bj_row\">";
+            html += "        <div class=\"zrbjr fl font_bigger\">"+'责任编辑人：'+value.author+"</div>";
+            html += "        <div class=\"fbsj fl font_bigger\">"+'发布时间：'+value.create_time+"</div>";
+            html += "        </div>";
+            html += "        <div class=\"nr font_bigger\">"+value.content+"</div>";
+            html += "        <div class=\"tp\"><img src=\""+tp_link+"\"> </div>";
+
+        $("#xwxx").append(html);
+    });
+</script>
+
+
+<!--<script type="text/javascript">
+    /*模拟数据*/
+    var defaultData =
+            [
+                {
+                    title:'江苏省法院代字',
+                    date:'01-12',
+                    zrbjr:'王敏',
+                    xwnr:' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;近日，江苏省法院环境资源审判工作调研会在昆山法院召开，这是江苏省高院环境资源审判庭正式成' +
+                    '立后进行的首次基层调研会。',
+                    tp:'/sfytj/dist/images/icon/xwfc_zs.png',
+                    href:'#',
+                },
+
+            ];
+
+</script>
+<script type="text/javascript">
+    $(function () {
+
+                /*填充页面*/
+
+
+                var html = "";
+                $.each(defaultData, function (n, value) {
+                    html += "<div class=\"tilte font_header\">"+value.title+"</div>";
+                    html += "<div class=\"bj_row\">";
+                    html += "        <div class=\"zrbjr fl font_bigger\">"+'责任编辑人：'+value.zrbjr+"</div>";
+                    html += "        <div class=\"fbsj fl font_bigger\">"+'发布时间：'+value.date+"</div>";
+                    html += "        </div>";
+                    html += "        <div class=\"nr font_bigger\">"+value.xwnr+"</div>";
+                    html += "        <div class=\"tp\"><img src=\""+value.tp+"\"> </div>";
+
+                });
+                $("#xwxx").append(html);
+            }
+    );
+</script>-->
+</body>
+</html>

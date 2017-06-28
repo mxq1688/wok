@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的案件</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body class="wdaj_index">
+<!-- 菜单页签 -->
+<div class="wdaj_head">
+    <div class="menu_nav">
+        <ul class="nav nav-tabs my_tab_menu">
+            <li id="wdaj_yylajz" class="active" data-id='yylajz'>
+                <a  data-toggle="tab">我的立案</a>
+                <div class="white_block1 white_block"></div>
+            </li>
+            <li id="wdaj_yyyjjz" data-id='yyyjjz'>
+                <a  data-toggle="tab">我的阅卷</a>
+                <div class="white_block2 white_block"></div>
+            </li>
+            <li id="wdaj_yslaj" data-id='yslaj'>
+                <a  data-toggle="tab">我的受理案件</a>
+                <div class="white_block3 white_block"></div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="wdaj_mainbody">
+    <div id="myTabContent" class="tab-content wdaj_content my_tab_content">
+        <!-- 预约立案进展查询 -->
+        <div class="tab-pane fade active in" id="yylajz">
+            <iframe id="content_iframe1" width="100%" height="100%" frameborder="0" src=""></iframe>
+        </div>
+        <!-- 预约阅卷进展查询 -->
+        <div class="tab-pane fade" id="yyyjjz">'
+            <iframe id="content_iframe2" width="100%" height="100%" frameborder="0" src="" style="margin-top: -20px"></iframe>
+        </div>
+       <!-- 已受理案件 -->
+        <div class="tab-pane fade" id="yslaj">
+            <iframe id="content_iframe3" width="100%" height="100%" frameborder="0" src=""></iframe>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script>
+$(function(){
+    
+    $(".loading_index1", window.top.document).show();
+
+     //如果是2的话就显示阅卷的记录
+     var wdaj_index = getCookie('wdaj_index')||1;
+    if(wdaj_index==2){
+        $('.nav-tabs .active').removeClass('active');
+        $('#wdaj_yyyjjz').addClass('active');
+        $('.tab-pane.active').removeClass('active in');
+        $('#yyyjjz').addClass('active in');
+
+        //加载阅卷页面
+        if($("#content_iframe2").attr("src") == ""){
+           $(".loading_index1", window.top.document).show();
+           $("#content_iframe2").attr("src", '/sfytj/dist/html/wdaj/yyyjjzcx/yyyjjzck.html'); 
+        }
+        
+        localStorage.removeItem("wdaj_index");
+    }
+    else{
+    $(".loading_index1", window.top.document).show();
+    $("#content_iframe1").attr("src", '/sfytj/dist/html/wdaj/yylajzcx/cklajz.html');
+   }
+    
+    //点击我的阅卷 展示阅卷页面
+    $("#wdaj_yyyjjz").click(function(){
+        if($("#content_iframe2").attr("src") == ""){
+            $(".loading_index1", window.top.document).show();
+           $("#content_iframe2").attr("src", '/sfytj/dist/html/wdaj/yyyjjzcx/yyyjjzck.html'); 
+        }else{
+            $(".loading_index1", window.top.document).hide();
+        }
+    });
+
+    //点击我的受理案件，展示已受理案件页面
+    $("#wdaj_yslaj").click(function(){
+        if($("#content_iframe3").attr("src") == ""){
+            $(".loading_index1", window.top.document).show();
+            $("#content_iframe3").attr("src", '/sfytj/dist/html/wdaj/yslaj/wdaj_yslaj.html'); 
+        }else{
+            $(".loading_index1", window.top.document).hide();
+        }
+    });
+    
+    //点击我的立案，展示案件页面
+    $("#wdaj_yylajz").click(function(){
+        if($("#content_iframe1").attr("src") == ""){
+            $(".loading_index1", window.top.document).show();
+            $("#content_iframe1").attr("src", '/sfytj/dist/html/wdaj/yylajzcx/cklajz.html'); 
+        }else{
+            $(".loading_index1", window.top.document).hide();
+        }
+    });
+});
+</script>
+</body>
+</html>

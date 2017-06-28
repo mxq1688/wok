@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我要查询</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body class="ckzn ckzn_wycx">
+
+<!--导航区-->
+<div class="right_nav">
+
+    <ul class="nav nav-pills nav-stacked font_bigger">
+        <li role="presentation" class="active"><a href="#step1">第一步：登录界面</a></li>
+        <li role="presentation"><a href="#step2">第二步：查询进度显示</a></li>
+    </ul>
+
+    <div class="btn_row">
+        <input type="button" value="返回" class="common_btn btn_fh" onclick="history.back()">
+    </div>
+</div>
+<div class="left_content font_big" data-spy="scroll" data-target=".right_nav">
+
+    <div id="step1">
+        <div class="font_header step_header">第一步：登录界面</div>
+        <div class="info font_bigger">
+            <div class="step_content">在这里您可以查询自助立案进展、预约阅卷进展以及已受理案件列表及详情</div>
+            <div class="step_content step_font">1.选择自助立案登录</div>
+            <div class="step_content">
+                您有两种登录方式，分别为流水号登录和手机号码登录，通过流水号登录可以查询到唯一一个案件，通过手机号码登录可以查询到与该手机号码相关的所有案件
+            </div>
+            <img src="/sfytj/dist/images/icon/ckzn_wycx_step1-1.png">
+            <div class="step_content step_top step_font">2.选择预约阅卷登录</div>
+                <div class="step_content">
+                您可以通过查询账号和申请人姓名登录
+            </div>
+            <img src="/sfytj/dist/images/icon/ckzn_wycx_step1-2.png">
+            <div class="step_content step_top step_font">3.选择已受理案件登录</div>
+            <div class="step_content">
+                您有两种登录方式，分别为查询账号和手机号码登录，通过查询账号登录可以查询到唯一一个案件，通过手机号码登录可以查询到与该手机号码相关的所有已受理案件
+            </div>
+            <img src="/sfytj/dist/images/icon/ckzn_wycx_step1-3.png">
+
+    </div>
+</div>
+    <div id="step2">
+
+        <div class="font_header step_header"> 第二步：查询进度显示</div>
+
+        <div class="info font_bigger">
+            <div class="step_content">该步骤通过相应登录方式跳转到相应进度显示界面</div>
+            <div class="step_content step_font">1、自助立案案件进度显示</div>
+            <div class="step_content">
+            您可以通过页面右下角的申请自助立案按钮跳转到申请自助立案界面，同时可以点击案件右边查看详情按钮通过登录进行案件详情查看
+            </div>
+            <img src="/sfytj/dist/images/icon/ckzn_wycx_step2-1.png">
+            <div class="step_content step_top step_font">2、预约阅卷进度显示</div>
+            <div class="step_content">
+                您可以通过右下角的申请预约阅卷按钮跳转到申请预约阅卷界面，同时可以点击案件右边的查看卷宗按钮进行卷宗详情查看
+            </div>
+            <img src="/sfytj/dist/images/icon/ckzn_wycx_step2-2.png">
+            <div class="step_content step_top step_font">3.已受理案件列表显示</div>
+            <div class="step_content">
+                您可以通过案件右边的查看详情按钮进行详情查看
+            </div>
+            <img src="/sfytj/dist/images/icon/ckzn_wycx_step2-3.png">
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    /*更新父窗口标题*/
+    $(function () {
+        var ele = $('#third_title', window.parent.document);
+        ele.text("立案查询");
+        ele.css("display", "inline-block");
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,359 @@
+/* 菜单样式 */
+.base_holder{
+  webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  -o-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+	position: fixed;
+    width: 100%;
+    bottom: 0px;
+	
+
+.menu_holder{
+	width: 200px;
+	height: 200px;
+	border-radius: 100px;
+	position: absolute;
+	bottom:-100px;
+	margin-left:50%;
+	left: -100px;
+	 color: #fff!important;
+	 font-size: 30px;
+	.menu_block{
+	position: absolute;
+	top: 100px;
+	left: 100px;
+	width: 350px;
+	height: 350px;
+	border-radius: 0 0 350px 0;
+	transform-origin:0 0;
+	transition:0.8s ease; 
+/*	box-shadow: 10px 10px 10px #ddd;*/
+	
+	a {
+		color:#fff;
+		text-decoration:none;
+	}
+  }
+
+
+}
+
+
+/*------------------------------- 菜单基础样式设置 ---------------------------*/
+/* 中间的条纹 */
+.mid_strip{
+   position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 230px;
+	height: 230px;
+	border-radius: 0 0 230px 0;
+	border-right: 1px solid rgba(95,110,113,0.3);
+}
+/* 一级菜单 */
+.first_menu{
+   position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 200px;
+	height: 200px;
+	border-radius: 0 0 200px 0;
+	border-right: 1px solid rgba(95,110,113,0.3);
+}
+
+
+/* 二级菜单 */
+.second_menu{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 350px;
+	height: 350px;
+	border-radius: 0 0 350px 0;
+	transform-origin:0 0;
+	-ms-transform-origin:0 0;
+	border-top: 1px solid rgba(95,110,113,0.3);
+	border-right: 1px solid rgba(95,110,113,0.3);
+	font-size: 30px!important; 
+	.second_menu_text{
+		pointer-events: none;
+	}
+}
+/* 三级菜单 */
+ //  .third_menu{
+	// position: absolute;
+	// top: 100px;
+	// left: 100px;
+	// width: 390px;
+	// height: 390px;
+	// border-radius: 0 0 390px 0;
+	// border-top: 1px solid rgba(95,110,113,0.3);
+	// border-right: 1px solid rgba(95,110,113,0.3);
+	// z-index: -2;
+	// transform-origin:0 0;
+	// transition:0.8s ease; 
+	
+ //   p{
+ //   	transform: rotate(-226deg);
+ //    margin-top: 363px;
+ //    margin-right: -16px;
+ //   }
+ //  }
+
+  //   .third_menu_holder{
+  //   	.menu_yyla {
+		// -ms-transform:rotate(-180deg); 
+		// transform:rotate(-180deg); 
+
+		// }
+		//    	.menu_jzcx {
+		// 	-ms-transform:rotate(-145deg); 
+		// 	transform:rotate(-145deg); 
+		//    }
+  //   	}
+
+
+
+/*------------------------------- 背景色设置 ---------------------------*/
+/* 第一块菜单背景色 */
+.block1{
+	background-image: linear-gradient(to bottom right, #3ae7f8 100px, #34aab6 250px);
+   .mid_strip{
+	/* background-image:linear-gradient(left top, #018b96 100px, #008c96 200px); */
+	background-image: linear-gradient(to bottom right, #32A4AD 100px, #018b96 280px);
+}
+   .first_menu{
+	background-color: #007883;
+	background-image: linear-gradient(to bottom right, #23AEC7 , #017783 150px);
+}
+
+}
+
+
+/* 第二块菜单背景色 */
+.block2{
+	background-image: linear-gradient(to bottom right, #A7D0C0 120px, #50bb91 250px);
+	.mid_strip{
+	/* background-image:linear-gradient(left top, #018b96 100px, #008c96 200px); */
+	background-image: linear-gradient(to bottom right, #19ca91 100px, #119f71 280px);
+    }
+.first_menu{
+	background-color: #007883;
+	background-image: linear-gradient(to bottom right, #04ae68, #009055 150px);
+   }
+}
+
+/* 第三块菜单背景色 */
+.block3{
+	background-image: linear-gradient(to bottom right, #d49bdb 120px, #b683bc 250px);
+	.mid_strip{
+	/* background-image:linear-gradient(left top, #018b96 100px, #008c96 200px); */
+	background-image: linear-gradient(to bottom right, #cd8cd2 100px, #955f99 280px);
+   }
+.first_menu{
+	background-color: #007883;
+	background-image: linear-gradient(to bottom right, #be62c1, #88428a 150px);
+	}
+}
+
+/* 第四块菜单背景色 */
+.block4{
+	background-image: linear-gradient(to bottom right, #9fd0f0 120px, #68b4e5 250px);
+	.mid_strip{
+	/* background-image:linear-gradient(left top, #018b96 100px, #008c96 200px); */
+	background-image: linear-gradient(to bottom right, #6dc8f7 100px, #3696c8 280px);
+	}
+.first_menu{
+	background-color: #007883;
+	background-image: linear-gradient(to bottom right, #3cb5eb, #0384bd 150px);
+	}
+}
+
+.menu_yyla, .menu_jzcx{
+	background-image: linear-gradient(to bottom right, #3ae7f8 100px, #34aab6 250px);
+}
+.menu_yyyj, .menu_yyyj_jzcx{
+	background-image: linear-gradient(to bottom right, #A7D0C0 120px, #50bb91 250px);
+}
+
+
+
+/*------------------------------- 旋转控制 ---------------------------*/
+/* 展开的菜单区域旋转 */
+.active_menu{
+
+
+.block1{
+	-ms-transform:rotate(-180deg); 
+	transform:rotate(-180deg); 
+}
+.block2{
+	
+	-ms-transform:rotate(-120deg); 
+	transform:rotate(-120deg);  
+}
+.block3{
+	-ms-transform:rotate(-60deg); 
+	transform:rotate(-60deg); 
+}
+
+}
+
+
+/* 展开的二级菜单区域旋转 */
+
+.menu1_2,.menu2_2, .menu3_2{
+	-ms-transform:rotate(20deg); 
+	transform:rotate(20deg); 
+}
+.menu1_3, .menu2_3,.menu3_3{
+	-ms-transform:rotate(40deg);	
+	transform: rotate(40deg);	 
+}
+
+
+
+
+// /* 三级菜单旋转 */
+// .active_third_menu{
+// 	.menu_yyla{
+// 		-ms-transform:rotate(-180deg) scale(1.4,1.4); 
+// 		transform:rotate(-180deg) scale(1.4,1.4); 
+
+// 	}
+// 	 .menu_jzcx {
+// 		-ms-transform:rotate(-145deg) scale(1.4,1.4); 
+// 		transform:rotate(-145deg) scale(1.4,1.4); 
+
+// 	}
+//    .menu_yyyj {
+// 		@extend .menu_yyla
+
+//    }
+//    .menu_yyyj_jzcx {
+// 		@extend .menu_jzcx
+//    }
+
+// } 
+
+
+
+/*------------------------------- 菜单字体 ---------------------------*/
+
+.menu_btn{
+	position: absolute;
+	margin-left:50%;
+	bottom: -93px;
+    left: -102px;
+	border-radius: 75px 75px 0 0;
+    overflow: hidden;
+    z-index: 12;
+    transition: transform 0.5s ease;
+}
+
+.menu_btn.up_menu{
+	transform:translate(0px,-93px);;
+}
+
+
+.sub_title{
+	font-size: 20px;
+	line-height: 15px;
+}
+
+.second_menu_text{
+	transform: rotate(100deg);
+	margin-top: 46px;
+	margin-left: 227px;
+}
+.second_menu_text p{
+	line-height: 32px;
+}
+
+
+
+.block1 .second_menu_text, .block3 .second_menu_text{
+    transform: rotate(98deg);
+    margin-top: 49px;
+    margin-left: 221px;
+}
+
+/* 失信人查询文字微调 */
+.block1 .menu1_3 .second_menu_text, .block3 .menu3_3 .second_menu_text{
+    margin-top: 34px;
+    transform: rotate(102deg);
+}
+
+/* fyxx菜单样式 */
+.menu_fyxx{ 
+	.first_menu_text{
+	transform: rotate(121deg);
+    margin-top: 50px;
+    margin-left: 1px;
+    width: 200px;
+	}
+	.title{
+		margin-bottom:8px; 
+		transform: rotate(-2deg);
+	}
+	.sub_title1{
+	margin-left: 25px;
+    transform: rotate(-2deg);
+	}
+	.sub_title2{
+		margin-left:38px;
+	}
+}
+
+/* 诉讼服务菜单样式 */
+.menu_ssfw{
+	.first_menu_text{
+	    margin-top: 37px;
+        margin-left: 7px;
+	    transform: rotate(114deg);
+	    width:200px;
+	}
+	.title{
+		margin-bottom:9px;
+		transform: rotate(7deg);
+		margin-left: 24px;
+	}
+	.sub_title1{
+	margin-left:26px;
+	transform: rotate(8deg);
+	}
+	.text_info{
+	margin-left: 39px;
+    transform: rotate(10deg);
+	}
+} 
+
+
+/* 公共信息菜单样式 */
+.menu_ggxx{
+	.first_menu_text{
+	 margin-top: 38px;
+    margin-left: 2px;
+    -webkit-transform: rotate(107deg);
+    transform: rotate(107deg);
+    width: 200px;
+	}
+	.title{
+		margin-bottom:8px;
+		transform: rotate(10deg);
+		margin-left: 31px;
+	}
+	.sub_title1{
+	margin-left:31px;
+	transform: rotate(9deg);
+	margin-bottom: 14px;
+	}
+	.text_info{
+	margin-left: 51px;
+    transform: rotate(12deg);
+	}
+}
+
+}

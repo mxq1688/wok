@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>视频新闻</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body class="fyck spxw">
+<div class="news_container clearfix">
+
+</div>
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        //页面初始化
+        var httpurl=global_data.httpurl;
+        var typeid=JSON.parse(getCookie("type_id"));
+
+        ajax(
+                ""+httpurl+"ggxx/fyck/fyyw/tpxw.php",
+                "court_id="+16+"&type="+typeid,
+                function(defaultData){
+                    console.log(defaultData);
+                    sxrItemData = defaultData.data;
+                },
+                null,
+                null,
+                null,
+                false
+        );
+
+        var html = '';
+        $.each(sxrItemData, function (n, value) {
+            html += "<a class=\"spxw_wrap\" data-id=\""+n+"\">"
+            if(n>2){
+                html += "<div class=\"news_item ad\">";
+            }else {
+
+                html += "<div class=\"news_item\">";
+            }
+            html += " <div class=\"fm\">";
+
+            html += " <img  src=\"" + value.path + "\">";
+            html += " </div>";
+
+            html += " <div class=\"info\">";
+            html += " <div class=\"clearfix\">";
+            html += " <div class=\"title font_h1\">";
+            html += value.title;
+            html += " </div>";
+            html += " <div class=\"date font_small\">";
+            html += value.create_time;
+            html += "</div>";
+            html += " </div>";
+            html += " <div class=\"content font_small\">";
+            html += value.content;
+            html += " </div>";
+            html += " </div>";
+
+            html += "  </div>";
+            html += "</a>";
+        });
+        $(".news_container").append(html);
+
+
+        //点击查看，将对应的id存入cookie,准备详情页面数据；
+        $(".spxw_wrap").on('click', function(){
+            var n = $(this).data("id");
+            var data = sxrItemData[n].id;
+
+            //将json转为字符串；
+            var str = JSON.stringify(data);
+
+
+            //将id信息存入cookie
+            setCookie("spxwid", str);
+            window.location.href="/sfytj/dist/html/ggxx/fyck/fyyw/spxw_detail.html";
+
+        });
+    });
+</script>
+
+<!--<script type="text/javascript">
+    var data = [
+        {
+            title: '江苏省法院代字',
+            date: '01-12',
+            xwnr: ' 为了统一规范人民法院案件案号的编制、使用与管理，根据有关法律、行政法规、司法准则',
+            tp: '/sfytj/dist/images/icon/test_spxw_img.png',
+            href: 'spxw_detail.html'
+        },
+        {
+            title: '江苏省法院代字',
+            date: '01-12',
+            xwnr: ' 为了统一规范人民法院案件案号的编制、使用与管理，根据有关法律、行政法规、司法准则',
+            tp: '/sfytj/dist/images/icon/test_spxw_img.png',
+            href: 'spxw_detail.html'
+        }
+        ,
+        {
+            title: '江苏省法院代字',
+            date: '01-12',
+            xwnr: ' 为了统一规范人民法院案件案号的编制、使用与管理，根据有关法律、行政法规、司法准则',
+            tp: '/sfytj/dist/images/icon/test_spxw_img.png',
+            href: 'spxw_detail.html'
+        }
+        ,
+        {
+            title: '江苏省法院代字',
+            date: '01-12',
+            xwnr: ' 为了统一规范人民法院案件案号的编制、使用与管理，根据有关法律、行政法规、司法准则',
+            tp: '/sfytj/dist/images/icon/test_spxw_img.png',
+            href: 'spxw_detail.html'
+        }
+        ,
+        {
+            title: '江苏省法院代字',
+            date: '01-12',
+            xwnr: ' 为了统一规范人民法院案件案号的编制、使用与管理，根据有关法律、行政法规、司法准则',
+            tp: '/sfytj/dist/images/icon/test_spxw_img.png',
+            href: 'spxw_detail.html'
+        }
+        ,
+        {
+            title: '江苏省法院代字',
+            date: '01-12',
+            xwnr: ' 为了统一规范人民法院案件案号的编制、使用与管理，根据有关法律、行政法规、司法准则',
+            tp: '/sfytj/dist/images/icon/test_spxw_img.png',
+            href: 'spxw_detail.html'
+        }
+        ,
+        {
+            title: '江苏省法院代字',
+            date: '01-12',
+            xwnr: ' 为了统一规范人民法院案件案号的编制、使用与管理，根据有关法律、行政法规、司法准则',
+            tp: '/sfytj/dist/images/icon/test_spxw_img.png',
+            href: 'spxw_detail.html'
+        }
+        ,
+        {
+            title: '江苏省法院代字',
+            date: '01-12',
+            xwnr: ' 为了统一规范人民法院案件案号的编制、使用与管理，根据有关法律、行政法规、司法准则',
+            tp: '/sfytj/dist/images/icon/test_spxw_img.png',
+            href: 'spxw_detail.html'
+        }
+        ,
+        {
+            title: '江苏省法院代字',
+            date: '01-12',
+            xwnr: ' 为了统一规范人民法院案件案号的编制、使用与管理，根据有关法律、行政法规、司法准则',
+            tp: '/sfytj/dist/images/icon/test_spxw_img.png',
+            href: 'spxw_detail.html'
+        }
+        ,
+        {
+            title: '江苏省法院代字',
+            date: '01-12',
+            xwnr: ' 为了统一规范人民法院案件案号的编制、使用与管理，根据有关法律、行政法规、司法准则',
+            tp: '/sfytj/dist/images/icon/test_spxw_img.png',
+            href: 'spxw_detail.html'
+        },
+        {
+            title: '江苏省法院代字',
+            date: '01-12',
+            xwnr: ' 为了统一规范人民法院案件案号的编制、使用与管理，根据有关法律、行政法规、司法准则',
+            tp: '/sfytj/dist/images/icon/test_spxw_img.png',
+            href: 'spxw_detail.html'
+        }
+
+
+    ];
+</script>
+<script type="text/javascript">
+
+    $(function () {
+        var html = '';
+        $.each(data, function (n, value) {
+            html += "<a href='" + value.href + "'>"
+            if(n>2){
+                html += "<div class=\"news_item ad\">";
+            }else {
+
+                html += "<div class=\"news_item\">";
+            }
+            html += " <div class=\"fm\">";
+
+            html += " <img  src=\"" + value.tp + "\">";
+            html += " </div>";
+
+            html += " <div class=\"info\">";
+            html += " <div class=\"clearfix\">";
+            html += " <div class=\"title font_h1\">";
+            html += value.title;
+            html += " </div>";
+            html += " <div class=\"date font_small\">";
+            html += value.date;
+            html += "</div>";
+            html += " </div>";
+            html += " <div class=\"content font_small\">";
+            html += value.xwnr;
+            html += " </div>";
+            html += " </div>";
+
+            html += "  </div>";
+            html += "</a>";
+        });
+        $(".news_container").append(html);
+    });
+</script>-->
+</body>
+</html>

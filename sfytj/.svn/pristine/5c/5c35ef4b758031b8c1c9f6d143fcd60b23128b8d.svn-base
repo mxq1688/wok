@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>法院地址</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body class="fyck fydz">
+<!--主体展示部分-->
+<div class="fydz_nr" id="fydznr">
+
+</div>
+
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=FsZTps2xmuGacVVGlxR3HhPb"></script>
+<!--<script type="text/javascript">
+    /*模拟数据*/
+    var defaultData =
+            [
+                {
+                    title:'徐州市人民法院',
+                    dz:'江苏省徐州市泉山区淮海西路416号',
+                    yzbm:'221006',
+                    dh:'025-85652665',
+                },
+
+            ];
+
+</script>-->
+
+<script type="text/javascript">
+    $(function () {
+        //页面初始化，从查询页面获取法院ID：
+        var httpurl=global_data.httpurl;
+        var court_id = getCookie("court_id");
+        console.log(court_id);
+        if(court_id){
+            court_id = court_id;
+        }else{
+            court_id = global_data.court_id;
+        }
+
+            /*判断fygk_info是否有该法院的概况信息*/
+//        var selected_fygk_info=JSON.parse(localStorage.getItem("selected_fygk_info"));
+
+        /*如果缓存中没有信息则向服务器请求显示并添加到fygk_info数组中*/
+//        if(selected_fygk_info.fydz===null){
+            ajax(
+                    ""+httpurl+"/ggxx/fyck/fyxx/fydz.php",
+                    "court_id="+court_id,
+                    function(defaultData) {
+                        console.log(defaultData);
+
+                         /*添加到数组fygk_info中*/
+                        /*var fygk_info=JSON.parse(localStorage.getItem("fygk_info"));
+                        $.each(fygk_info,function(key,val){
+                            if(val.fy_court_id===court_id){
+                                val.fydz=defaultData.data;
+                                selected_fygk_info.fydz=defaultData.data;
+                                localStorage.setItem("fygk_info",JSON.stringify(fygk_info));
+                                localStorage.setItem("selected_fygk_info",JSON.stringify(selected_fygk_info));
+                                return false;
+                            }
+                        });
+*/
+                        /*填充页面*/
+                        var html = "";
+                        var value=defaultData.data;
+                        html += "<div class=\"title font_bigger bj\">"+"法院名称:"+value.name+"</div>";
+                        html += " <div class=\"bj font_bigger\">办公地址:"+value.address+"</div>";
+                        html += " <div class=\"bj font_bigger\">邮政编码:"+value.code+"</div>";
+                        html += " <div class=\"bj font_bigger\">联系电话:"+value.zzbgs_tel+"</div>";
+                        html += " <div class=\"bj font_bigger\">交通示意:</div>";
+                        html += "        <div class=\"jtt\" id='allmap'></div>";
+
+
+                        $("#fydznr").append(html);
+                        // 百度地图API功能
+                        var map = new BMap.Map("allmap",{minZoom:12,maxZoom:17});    // 创建Map实例
+                        /*map.centerAndZoom(new BMap.Point(117.149487,34.262495), 14);*/  // 初始化地图,设置中心点坐标和地图级别
+                        map.centerAndZoom(new BMap.Point(value.xzuobiao,value.yzuobiao), 14);
+                        map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+                        /*map.setCurrentCity("徐州市");  */        // 设置地图显示的城市 此项是必须设置的
+                        map.setCurrentCity(value.city);
+                        var new_point = new BMap.Point(value.xzuobiao,value.yzuobiao);
+                        /* var new_point = new BMap.Point(117.149487,34.262495);*/
+                        var marker = new BMap.Marker(new_point);  // 创建标注
+                        map.addOverlay(marker);              // 将标注添加到地图中
+                        map.panTo(new_point);
+                        map.addControl(new BMap.NavigationControl());        // 添加平移缩放控件
+                        map.addControl(new BMap.ScaleControl());             // 添加比例尺控件
+                        map.addControl(new BMap.OverviewMapControl());       //添加缩略地图控件
+                        map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+                    }
+            );
+//        }
+          /*如果有缓存则直接取出来显示*/
+            /*else{
+            var value=selected_fygk_info.fydz;
+            var html = "";
+            html += "<div class=\"title font_bigger bj\">"+"法院名称 ："+value.name+"</div>";
+            html += " <div class=\"bj font_bigger\">办公地址 ："+value.address+"</div>";
+            html += " <div class=\"bj font_bigger\">邮政编码 ："+value.code+"</div>";
+            html += " <div class=\"bj font_bigger\">联系电话："+value.zzbgs_tel+"</div>";
+            html += " <div class=\"bj font_bigger\">交通示意：</div>";
+            html += "        <div class=\"jtt\" id='allmap'></div>";
+
+            $("#fydznr").append(html);
+            // 百度地图API功能
+            var map = new BMap.Map("allmap",{minZoom:12,maxZoom:17});    // 创建Map实例
+            /!*map.centerAndZoom(new BMap.Point(117.149487,34.262495), 14);*!/  // 初始化地图,设置中心点坐标和地图级别
+            map.centerAndZoom(new BMap.Point(value.xzuobiao,value.yzuobiao), 14);
+            map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+            /!*map.setCurrentCity("徐州市");  *!/        // 设置地图显示的城市 此项是必须设置的
+            map.setCurrentCity(value.city);
+            var new_point = new BMap.Point(value.xzuobiao,value.yzuobiao);
+            /!* var new_point = new BMap.Point(117.149487,34.262495);*!/
+            var marker = new BMap.Marker(new_point);  // 创建标注
+            map.addOverlay(marker);              // 将标注添加到地图中
+            map.panTo(new_point);
+            map.addControl(new BMap.NavigationControl());        // 添加平移缩放控件
+            map.addControl(new BMap.ScaleControl());             // 添加比例尺控件
+            map.addControl(new BMap.OverviewMapControl());       //添加缩略地图控件
+            map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+        }*/
+
+
+            }
+    );
+</script>
+</body>
+</html>

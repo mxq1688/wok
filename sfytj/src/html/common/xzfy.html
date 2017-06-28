@@ -1,0 +1,243 @@
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>选择法院</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="/sfytj/src/styles/main.css" /> -->
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+</head>
+
+
+<body>
+
+<!--页面-->
+<div class="xzfy">
+	<div class="wrap">
+		<div class="common_body">
+			<!--导航条部分-->
+				<!--头部-->
+				<div class="ggxx-head">
+					<div class="ggxx-title font_header">切换法院</div>
+				</div>
+
+
+
+			<div class="ggxx-body clearfix">
+			<!--选择法院部分-->
+			<div class="chosefayuan">
+				<div class="pick_fayuan clearfix">
+					<!-- 高级人民法院 -->
+					<div class="high_grade">
+						<h2 class="font_header">高级人民法院</h2>
+						<div class="high_grade_list font_bigger">
+							<ul class="gy fayuan">
+		
+							</ul>
+						</div>
+					</div>
+
+					<!-- 中级人民法院 -->
+					<div class="middle_grade">
+						<h2 class="font_header">中级人民法院</h2>
+						<div class="middle_grade_list font_bigger">
+							<ul class="zy fayuan">
+		
+							</ul>
+						</div>
+					</div>
+
+					<!-- 基层人民法院 -->
+					<div class="low_grade">
+						<h2 class="font_header">基层人民法院</h2>
+						<div class="low_grade_list font_bigger">
+							<ul class="jy fayuan">
+		
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+		</div>
+            <!-- 上一步 下一步按钮 -->
+            <div class="btn_row ">
+                <input  type="button" value="返回" class="common_btn " onclick="history.back();"/>
+                <input type="button" id="btn_confirm" value="确定" class="common_btn fr"  />
+            </div>
+	</div>
+</div>
+    </div>
+
+<!--- 保存选择的法院id  -->
+<input type="hidden" id="xzfy_court_id" value=""/>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    // 初始化
+    $(function () {
+  		var httpurl=global_data.httpurl;
+
+  		/*初始化数据*/
+        var cookie_val = get_ggxx_xzfy();
+        cur_gy = cookie_val.cur_gy || 0;
+        cur_zy = cookie_val.cur_zy || 0;
+        selected_fy = cookie_val.selected_fy || global_data.fymc;
+        
+        var court_id = getCookie('court_id');
+        if(!court_id||court_id=='null'){
+          court_id = global_data.court_id;
+        }
+        
+        var keys = 0;
+        //从数据库获取所有的法院列表：
+		ajax(
+		    ""+httpurl+"/ssfw/wsla/yylasq/xzfy.php",
+		    'court_id='+court_id,
+		    function(defaultData){
+		        threeSelectData = defaultData.data;
+                var allSelectData = defaultData.alldata;
+				var allSelectData_num = defaultData.num;
+                if(court_id){
+                  $.each(threeSelectData, function (key, value) {
+                    if(court_id!=58){
+                        $.each(allSelectData, function (n, val) {
+                            if(val.id==court_id){
+                                    if(val.pid!=0){
+                                // if(val.pid!=0&&val.pid!=58){
+                                  /*var court_num = val.court_num;
+                                  var num1 =  court_num.substr(3,1);
+                                  var num2 =  court_num.substr(2,1);
+                                    if(num2==0){
+                                         keys = parseInt(num1) - parseInt(1);
+                                    }else{
+                                         keys = parseInt(num1) + parseInt(10)-parseInt(1);
+                                    }*/
+										keys =allSelectData_num;
+                                }
+                                
+                                
+                                
+                            }
+                        })
+                    }
+                    if (value.id == court_id) {
+                        $('#xzfy_court_id').val(value.id);
+                        cur_gy = key;
+                        $('.gy').append("<li class='gy_li selected' data-id='"+value.id+"' onclick='choose_gy()'>" + value.name + "</li>");
+                    }
+                    else {
+                        $('.gy').append("<li class='gy_li' data-id='"+value.id+"' onclick='choose_gy()'>" + value.name + "</li>");
+                    }
+                 });
+               }else{
+                 $.each(threeSelectData, function (key, value) {
+                    
+                    if (value.name == selected_fy) {
+                        $('#xzfy_court_id').val(value.id);
+                        cur_gy = key;
+                        $('.gy').append("<li class='gy_li selected' data-id='"+value.id+"' onclick='choose_gy()'>" + value.name + "</li>");
+                    }
+                    else {
+                        $('.gy').append("<li class='gy_li' data-id='"+value.id+"' onclick='choose_gy()'>" + value.name + "</li>");
+                    }
+                });
+               }
+		    },
+		    null,
+		    null,
+		    null,
+		    false
+	  	);
+       
+        
+
+        //中院和基院默认展示数据：
+        var zy_ini  = threeSelectData[0].items;
+    	var jy_ini = zy_ini[keys].items;
+        show_zy(zy_ini,court_id);
+        show_jy(jy_ini,court_id);
+
+
+	    //如果选择的法院不在可视区，设置滚动条使选择的法院可见
+	    show_scrollTop();
+	    
+
+        $("#btn_confirm").click(function () {
+            var form = get_ggxx_xzfy();
+            var xzfy_court_id = $('#xzfy_court_id').val();
+            form.cur_gy = cur_gy;
+            form.cur_zy = cur_zy;
+            form.selected_fy = selected_fy;
+            save_ggxx_xzfy(form);
+			/*setTimeout(function(){
+				window.location.reload();//页面刷新
+			},2000);*/
+        	//选择完法院，将法院的id存储在cookie中。
+            setCookie("court_id", xzfy_court_id);
+
+			var selected_fyid=0;
+			/*设置法院概况缓存*/
+			var fygk_info=JSON.parse(localStorage.getItem("fygk_info"));
+			console.log(fygk_info)
+			/*第一次使用，未设置任何缓存*/
+			if(fygk_info==null){
+				fygk_info = [{
+					fy_court_id:xzfy_court_id,
+					fygk:null,
+					ftfb:null,
+					gxfw:null,
+					bmjzn:null,
+					fydz:null,
+					tsqd:null
+				}];
+				console.log(fygk_info)
+				localStorage.setItem("fygk_info",JSON.stringify(fygk_info));
+				localStorage.setItem("selected_fygk_info",JSON.stringify(fygk_info[0]));
+
+			}
+			/*已有缓存信息*/
+			else{
+				$.each(fygk_info,function(key,value){
+					/*该法院已有缓存信息*/
+					if(value.fy_court_id===xzfy_court_id){
+						localStorage.setItem("selected_fygk_info",JSON.stringify(value));
+						return false;
+					}
+				});
+				/*该法院没有缓存信息*/
+               if(selected_fyid===0){
+				   fygk_info[fygk_info.length]={
+					   fy_court_id:xzfy_court_id,
+					   fygk:null,
+					   ftfb:null,
+					   gxfw:null,
+					   bmjzn:null,
+					   fydz:null,
+					   tsqd:null,
+				   }
+				   console.log("法院概况：")
+				   console.log(fygk_info[fygk_info.length-1]);
+				   localStorage.setItem("fygk_info",JSON.stringify(fygk_info));
+				   localStorage.setItem("selected_fygk_info",JSON.stringify(fygk_info[fygk_info.length-1]));
+			   }
+
+
+			}
+
+        	//setCookie("court_id", get_courtid(selected_fy));
+			$(".current_fy_title", window.parent.document).html(selected_fy);
+            /*window.location.href = 'sfytj_login.html'*/
+			window.history.back();
+        });
+    });
+
+
+</script>
+</body>
+
+</html>

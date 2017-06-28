@@ -1,0 +1,71 @@
+/*法院要闻*/
+.fyck_home {
+  /*左侧导航栏*/
+  .left_nav {
+    float: left;
+    width: 20%;
+    height: 100%;
+    overflow: auto;
+    padding-right: 20px;
+    /**/
+    .nav {
+
+      li {
+        font-size: 30px;
+        border: 1px solid #e5e5e5;
+        border-left: 1px solid #999;
+        border-right: 1px solid #999;
+        margin: 0;
+        height: 70px;
+        padding-left: 20px;
+        line-height: 70px;
+        font-weight: 500;
+        color: #999999;
+        cursor: pointer;
+        border-top: 1px solid #999999;
+        border-bottom: 1px solid #999999;
+      }
+
+      li:first-child {
+        border-top: 1px solid #e5e5e5;
+      }
+      li:last-child{
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .active {
+        border: 1px solid $blueColor;
+        color: white;
+        background-color: $blueColor;
+
+      }
+      .new:after{
+        content: 'new';
+        margin-left: 20px;
+        color: $blueColor;
+      }
+      .active.new:after{
+        color: white;
+      }
+
+    }
+  }
+
+  /*右侧内容区*/
+  .right_content {
+    float: left;
+    width: 80%;
+    height: 100%;
+    overflow: hidden;
+    padding-left: 25px;
+    .tab-content {
+      height: 100%;
+      .tab-pane {
+        padding: 0 30px;
+        height: 100%;
+      }
+
+    }
+  }
+
+}

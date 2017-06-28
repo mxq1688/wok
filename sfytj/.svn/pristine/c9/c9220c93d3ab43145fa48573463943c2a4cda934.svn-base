@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管辖范围</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body class="fyck">
+<div class="gxfwym"></div>
+
+
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<!--<script type="text/javascript">
+    /*模拟数据*/
+    var defaultData ={
+        gxfw:'Lorem ipsum dolor sit amet,consectetur adipisicing elit,sed do eiusmod tempor incididunt ut labore ' +
+        'et dolore magna aliqua.Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        ajlx:'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatyr.' +
+        'Excepteur sint occaecat non prodient,sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        src:'/sfytj/dist/images/icon/fygk.png',
+
+    }
+</script>-->
+<script type="text/javascript">
+        $(function () {
+            //页面初始化，从查询页面获取法院ID：
+            var httpurl=global_data.httpurl;
+            var type_id = getCookie("type_id");
+            var court_id = getCookie("court_id");
+            console.log(court_id);
+            console.log(type_id);
+            if(court_id){
+                court_id = court_id;
+            }else{
+                court_id = global_data.court_id;
+            }
+
+             /*判断fygk_info是否有该法院的概况信息*/
+//            var selected_fygk_info=JSON.parse(localStorage.getItem("selected_fygk_info"));
+
+            /*如果没有信息则请求服务器显示并存储到fygk_info数组中*/
+//            if(selected_fygk_info.gxfw===null){
+                ajax(
+                        "" + httpurl + "/ggxx/fyck/fyxx/gxfw.php",
+                        "type=" + 1+"&court_id="+court_id,
+                        function (defaultData) {
+                            console.log(defaultData);
+                            /*填充页面*/
+                            var value = defaultData.data;
+
+                            /*将数据存储到fygk_info数组中*/
+                           /* var fygk_info=JSON.parse(localStorage.getItem("fygk_info"));
+                            $.each(fygk_info,function(key,val){
+                                if(val.fy_court_id===court_id){
+                                    val.gxfw=value;
+                                    selected_fygk_info.gxfw=value;
+                                    localStorage.setItem("fygk_info",JSON.stringify(fygk_info));
+                                    localStorage.setItem("selected_fygk_info",JSON.stringify(selected_fygk_info));
+                                    return false;
+                                }
+                            });*/
+
+                            var html = "";
+                            html += "<div class=\"gxfw font_bigger\">管辖范围：" + value + "</div>";
+                            /*html += "<div class=\"ajlx font_bigger\">负责审理案件类型：" + value+ "</div>";*/
+                            html += "<div class=\"gxfw_image\"> </div>";
+                            $(".gxfwym").append(html);
+                        }
+                );
+//            }
+            /*如果有缓存信息则直接显示*/
+            /*else{
+                var value=selected_fygk_info.gxfw;
+                var html = "";
+                html += "<div class=\"gxfw font_bigger\">管辖范围：" + value + "</div>";
+                /!*html += "<div class=\"ajlx font_bigger\">负责审理案件类型：" + value+ "</div>";*!/
+                html += "<div class=\"gxfw_image\"> </div>";
+                $(".gxfwym").append(html);
+            }*/
+
+        }
+        );
+</script>
+</body>
+</html>

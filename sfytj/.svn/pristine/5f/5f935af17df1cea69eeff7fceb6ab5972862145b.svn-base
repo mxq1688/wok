@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>法官信息</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body class="fyck fgxx">
+<!--主体展示部分-->
+<div class="fgxxnr clearfix" id="fgxxzs">
+</div>
+
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<!--<script type="text/javascript">
+    /*模拟数据*/
+    var defaultData =
+            [
+                {
+                    number:'01',
+                    name:'潘虓',
+                    department:'研究员',
+                    post:'审判员',
+                    phone:'85652665',
+                    address:'k楼10层北',
+                    tp:'/sfytj/dist/images/icon/swhry.png',
+                },
+                {
+                    number:'02',
+                    name:'潘虓',
+                    department:'研究员',
+                    post:'审判员',
+                    phone:'85652665',
+                    address:'k楼10层北',
+                    tp:'/sfytj/dist/images/icon/swhry.png',
+                },
+                {
+                    number:'03',
+                    name:'潘虓',
+                    department:'研究员',
+                    post:'审判员',
+                    phone:'85652665',
+                    address:'k楼10层北',
+                    tp:'/sfytj/dist/images/icon/swhry.png',
+                },
+                {
+                    number:'04',
+                    name:'潘虓',
+                    department:'研究员',
+                    post:'审判员',
+                    phone:'85652665',
+                    address:'k楼10层北',
+                    tp:'/sfytj/dist/images/icon/swhry.png',
+                },{
+                number:'05',
+                name:'潘虓',
+                department:'研究员',
+                post:'审判员',
+                phone:'85652665',
+                address:'k楼10层北',
+                tp:'/sfytj/dist/images/icon/swhry.png',
+            },{
+                number:'06',
+                name:'潘虓',
+                department:'研究员',
+                post:'审判员',
+                phone:'85652665',
+                address:'k楼10层北',
+                tp:'/sfytj/dist/images/icon/swhry.png',
+            },{
+                number:'07',
+                name:'潘虓',
+                department:'研究员',
+                post:'审判员',
+                phone:'85652665',
+                address:'k楼10层北',
+                tp:'/sfytj/dist/images/icon/swhry.png',
+            },{
+                number:'08',
+                name:'潘虓',
+                department:'研究员',
+                post:'审判员',
+                phone:'85652665',
+                address:'k楼10层北',
+                tp:'/sfytj/dist/images/icon/swhry.png',
+            },{
+                number:'09',
+                name:'潘虓',
+                department:'研究员',
+                post:'审判员',
+                phone:'85652665',
+                address:'k楼10层北',
+                tp:'/sfytj/dist/images/icon/swhry.png',
+            }
+            ];
+
+</script>-->
+<script type="text/javascript">
+    $(function () {
+        //页面初始化，从查询页面获取法院ID：
+        var httpurl=global_data.httpurl;
+        var type_id = getCookie("type_id");
+        var court_id = getCookie("court_id");
+        console.log(court_id);
+        if(court_id){
+            court_id = court_id;
+        }else{
+            court_id = global_data.court_id;
+        }
+
+        //保存下来 从服务器请求的法官信息数据 http://localhost/sfytjjk/ggxx/fyck/fyxx/fgxx.php
+
+        ajax(
+                ""+httpurl+"/ggxx/fyck/fyxx/fgxx.php",
+                "type="+1+"&court_id="+court_id,
+                function(defaultData) {
+                    console.log(defaultData);
+                    /*填充页面*/
+                    var html = "";
+                    var n=defaultData.data.length;
+                    $.each(defaultData.data, function (n, value) {
+                        if(n>2){
+                            html += "<div class=\"fg ad shadow\">";
+                        }else {
+
+                            html += "<div class=\"fg shadow\">";
+                        }
+                        html += "    <div class=\"tp\"><img src=\""+value.pic+"\"></div>";
+                        html += "<div class='number font_h1'>"+value.emp_no+"</div>";
+                        html += "<div class='name '>"+value.name+"</div>";
+                        html += "<div class=\"info font_small\">";
+                        html +="<div class=\"department\">部门："+value.dept_id+"</div>";
+                        html +="<div class=\"post\">职务："+value.post+"</div>";
+                        html +="<div class=\"address\">地址："+value.address+"</div>";
+                        html +="<div class=\"phone\">电话：<span>"+value.office_tel+"</span></div>";
+                     
+                        html += "</div>";
+                        html +="</div>";
+
+                    });
+                    $("#fgxxzs").append(html);
+                }
+        );
+
+
+            }
+    );
+</script>
+</body>
+</html>

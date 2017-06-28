@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html class="index_html" style="width: 100%; overflow-y:hidden;">
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+        <title>
+            人民法院诉讼服务终端
+        </title>
+        <link href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/sfytj/dist/styles/main.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/sfytj/bower_components/jquery/dist/jquery-ui.css" rel="stylesheet"/>.0
+        <script for=phone event=OnPhoneOn language="JavaScript">
+     console.log('phoneon');
+
+        hangOn();
+    </script>
+    <script for=phone event=OnPhoneOff language="JavaScript">
+       console.log('phoneoff');
+
+        putDown();
+    </script>
+    </head>
+    <body>
+       
+    <div id="model_img" style="display: none">
+        <div class="buttons">
+            <button type="button" class="narrow">关闭预览</button><br>
+            <button type="button" class="forward">上一页</button><br>
+            <button type="button" class="backward">下一页</button><br>
+            <button type="button" class="skew">旋转</button>
+        </div>
+        <img src="" alt="加载失败">
+    </div>
+    <!-- 话筒-->
+        <object id="phone" style="display:none" classid="CLSID:50F3B266-4EA9-49B4-A3B9-8D88EF30E5CE"></object>
+    <!-- 灯光控制 -->
+        <object classid="CLSID:C9953A48-5673-42CD-8758-62B87801D22F" id="LightControl" name="LightControl" style="display:none;">
+        </object>
+        <!-- 输入法 -->
+        <object classid="clsid:0CC32E25-83A8-4C1C-B8EF-2A45FB2C1FB8" height="0" id="AVFOCX" style="display:none;" width="0">
+        </object>
+        <!-- 读写配置文件ocx -->
+        <object classid="CLSID:5AFE3891-515B-4A50-8C0D-AE9200FFA1CD" id="ReadIniFile" name="ReadIniFile" style="display:none;">
+        </object>
+        <!--页面顶部-->
+        <div class="header">
+            <div class="header_logo">
+            </div>
+            <div class="header_title">
+                <div class="header_titleup">
+                    <span class="current_fy_title"></span>
+                    <span id="pid_name">诉讼服务终端</span>
+                </div>
+                <div class="header_titledown">
+                    PEOPLE'S COURT VIRTUAL LITIGATION MACHINE
+                </div>
+            </div>
+            <div class="menu_area">
+                <div id="gnsy" style="display:none;">
+                    <div onclick="menu_common('/sfytj/dist/html/common/sfytj_index.html')">
+                        <div class="sy fr ">
+                            <img src="/sfytj/dist/images/icon/home.png"/>
+                            <div class="words">
+                                功能首页
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="xzsy">
+                    <div onclick="refresh()">
+                        <div class="sy fr">
+                            <img src="/sfytj/dist/images/icon/home.png"/>
+                            <div class="words">
+                                首页
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div onclick="changefy()">
+                    <div class="sy fr menu_qhfy">
+                        <img src="/sfytj/dist/images/icon/change.png"/>
+                        <div class="words">
+                            切换法院
+                        </div>
+                    </div>
+                </div>
+                <div class="sy fr" data-toggle="modal" id="znss" onclick="open_search_modal()" style="display:none;">
+                    <img src="/sfytj/dist/images/icon/search.png"/>
+                    <div class="words">
+                        智能搜索
+                    </div>
+                </div>
+                <!--退出系统-->
+                <div id="exit" style="display:none;">
+                    <div onclick="menu_exit('即将退出')">
+                        <div class="sy fr">
+                            <img src="/sfytj/dist/images/icon/exit-door.png"/>
+                            <div class="words">
+                                用户退出
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--个人中心-->
+                <div id="grzx" style="display:none;">
+                    <div onclick="menu_common('/sfytj/dist/html/common/wdaj.html')">
+                        <div class="sy fr">
+                            <img src="/sfytj/dist/images/icon/wdaj.png"/>
+                            <div class="words grzx_name">
+                                <!-- 个人中心 -->
+                            </div>
+                            <div class="grzx_tip">
+                                <img src="/sfytj/dist/images/icon/grzx_tip.png"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 搜索框 -->
+        <div aria-labelledby="myLargeModalLabel" class="modal fade bs-example-modal-lg search_modal" id="search_modal" role="dialog" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="url" data-url="" style="display:none">
+                </div>
+                <div class="search_block">
+                    <div class="icon_search" style="width: 10%;float: left;">
+                        <img src="/sfytj/dist/images/icon/ss_search.png" style="width: 40px;padding-left: 8px;"/>
+                    </div>
+                    <div class="search_input">
+                        <input class="search_input_area" id="project" placeholder="搜索"/>
+                    </div>
+                    <div style="clear: both;">
+                    </div>
+                    <div class="search_line">
+                    </div>
+                </div>
+                <div class="search_result_block" style="position:relative">
+                    <div class="search_result_content">
+                        <div id="description">
+                        </div>
+                        <div class="enter_btn" onclick="goto_page()">
+                            进入功能
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <iframe border="none" class="index_iframe" frameborder="0" height="965px" id="iframe" src="" width="100%">
+        </iframe>
+        <!-- index首页遮罩 -->
+        <div class=" loading_index1 loading_index">
+            加载中...
+        </div>
+        <!--页面底部菜单-->
+        <div class="footer">
+            <div class="base_holder">
+                <div id="menu" class="menu_holder">
+                    <div class="block1 menu_block">
+                        <!-- 二级菜单 -->
+                        <a onclick="menu_common('/sfytj/dist/html/ggxx/fyck/fyxx/index.html')">
+                            <div class="menu1_1 second_menu">
+                                <div class="second_menu_text">
+                                    <p class="title">法院</p><p class="title">概况</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a onclick="menu_common('/sfytj/dist/html/ggxx/tsgk/ktgg_index.html')">
+                            <div class="menu1_2 second_menu">
+                                <div class="second_menu_text">
+                                    <p class="title">开庭</p><p class="title">公告</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a onclick="menu_common('/sfytj/dist/html/sxrcx/sxrcx.html')">
+                            <div class="menu1_3 second_menu">
+                                <div class="second_menu_text">
+                                    <p class="title">失信人</p>
+                                    <p class="title" style="margin-left:15px;">查询</p>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- 中间的过度条状区域-->
+                        <div class="mid_strip">
+                        </div>
+                        <!-- 一级菜单 -->
+                        <div class="first_menu menu_fyxx">
+                            <div class="first_menu_text">
+                                <p class="title">法院信息</p>
+                                <p class="sub_title sub_title1">COURT</p>
+                                <p class="sub_title sub_title2">INFO</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block2 menu_block">
+                        <a onclick="menu_common('/sfytj/dist/html/ssfw/wyla_index.html')">
+                            <div class="menu2_1 second_menu">
+                                <div class="second_menu_text">
+                                    <p class="title">我要</p>
+                                    <p class="title">立案</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a onclick="menu_common('/sfytj/dist/html/ssfw/yyyj/yyyjsq/yyyjtk.html')">
+                            <div class="menu2_2 second_menu">
+                                <div class="second_menu_text">
+                                    <p class="title">我要</p>
+                                    <p class="title">阅卷</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a onclick="menu_common('/sfytj/dist/html/wycx/index.html')">
+                            <div class="menu2_3 second_menu">
+                                <div class="second_menu_text">
+                                    <p class="title">我要</p>
+                                    <p class="title">查询</p>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="mid_strip">
+                        </div>
+                        <div class="first_menu menu_ssfw">
+                            <div class="first_menu_text">
+                                <p class="title" style="">诉讼服务</p>
+                                <p class="sub_title sub_title1">LITIGATION</p>
+                                <p class="sub_title text_info">SERVICE</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block3 menu_block">
+                        <a onclick="menu_common('/sfytj/dist/html/ggxx/ygsf/ssyd/index.html')">
+                            <div class="menu3_1 second_menu">
+                                <div class="second_menu_text">
+                                    <p class="title">诉讼</p>
+                                    <p class="title">引导</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a onclick="menu_common('/sfytj/dist/html/ggxx/ygsf/flfg/flfg_index.html')">
+                            <div class="menu3_2 second_menu">
+                                <div class="second_menu_text">
+                                    <p class="title">法律</p>
+                                    <p class="title">法规</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a onclick="menu_common('/sfytj/dist/html//ggxx/ygsf/ssfjs/sfjsq.html')">
+                            <div class="menu3_3 second_menu">
+                                <div class="second_menu_text">
+                                    <p class="title">诉讼费</p>
+                                    <p class="title" style="margin-left:15px">计算</p>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="mid_strip">
+                        </div>
+                        <div class="first_menu menu_ggxx">
+                            <div class="first_menu_text">
+                                <p class="title" style="">公共信息</p>
+                                <p class="sub_title sub_title1">COMMON</p>
+                                <p class="sub_title text_info">INFO</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu_btn">
+                    <img src="/sfytj/dist/images/icon/menu_button.png"/>
+                </div>
+            </div>
+        </div>
+        <!-- 通用modal框 -->
+        <div aria-labelledby="myModalLabel" class="modal fade tip_modal" id="tipinfo_modal" role="dialog" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="modal_title">
+                            提示消息
+                        </div>
+                        <div class="modal_info">
+                        </div>
+                    </div>
+                    <div class="modal-footer center clearfix">
+                        <button class="common_btn modal_confirm" data-dismiss="modal" type="button">
+                            确认
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="id_modal_close">
+            <!-- 通用modal框 带取消按钮-->
+            <div aria-labelledby="myModalLabel" class="modal fade tip_modal" role="dialog" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="modal_title">
+                                提示消息
+                            </div>
+                            <div class="modal_info">
+                            </div>
+                        </div>
+                        <div class="modal-footer center clearfix">
+                            <button class="common_btn modal_close" data-dismiss="modal" type="button">
+                            </button>
+                            <button class="common_btn modal_confirm" data-dismiss="modal" type="button">
+                                确认
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 二代证登录框modal -->
+        <div class="id_card">
+            <div aria-labelledby="myModalLabel" class="modal fade login_modal" id="IDcard_modal" role="dialog" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal_body">
+                            <div class="modal_top">
+                            </div>
+                            <div class="modal_info">
+                                <div class="info_content">
+                                    欢迎使用第二代身份证登录，请您将身份证放置在二代证扫描区
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer center clearfix">
+                            <button class="common_btn card_btn" type="button">
+                                取消
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 高速扫描modal框 -->
+        <div class="highspeed">
+            <div aria-labelledby="myModalLabel" class="modal fade scan_modal" id="highspeed_modal" role="dialog" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal_body">
+                            <div class="modal_top">
+                            </div>
+                            <div class="modal_info">
+                                <div class="info_content">
+                                    请将扫描文件放入机器内后，<br>点击开始扫描。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer center clearfix">
+                            <button class="common_btn modal-close" data-dismiss="modal" type="button">
+                                返回
+                            </button>
+                            <button class="common_btn modal_confirm" type="button">
+                                开始扫描
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/sfytj/bower_components/jquery/dist/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/dist/scripts/main.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/bower_components/jquery.arctext.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/bower_components/jquery/dist/jquery-ui.js"></script>
+        <!--视频通话-->
+<script type="text/javascript" src="/sfytj/bower_components/videochat/adapter.debug.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/videochat/realtimecat-0.2-with-webrtc-plugin.min.js"></script>
+<!-- <script type="text/javascript" src="/sfytj/bower_components/videochat/realtimecat-0.4.min.js"></script> -->
+<script type="text/javascript" src="/sfytj/bower_components/videochat/videochat.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/videochat/clientX.js"></script>
+        <script>
+        setCookie("la_yj_cx","all");
+        console.log("版本号：09-20-1");
+         // 读取配置文件
+         var pid; //设备id
+         var fid; //法院代码
+         var mid; //机器型号
+         var courtid; //法院标准id
+         var fy_info; //用于显示选择法院中定位到当前法院
+         var ip; //当前机器的ip
+         // var isDemo;//是不是演示版本
+         var light; //身份证灯控
+         var httpurl = global_data.httpurl;
+         try {
+             var fso = new ActiveXObject("Scripting.FileSystemObject");
+             var sfytj_config = fso.OpenTextFile("c:\\sfytj_config.ini", 1);
+             pid = sfytj_config.ReadLine().substr(4, 18); //设备id
+             fid = sfytj_config.ReadLine().substr(4, 6); //法院代码
+             mid = sfytj_config.ReadLine().slice(8); //机器型号
+             courtid = sfytj_config.ReadLine().slice(9); //法院id
+             fy_info = sfytj_config.ReadLine().split('/'); //用于显示选择法院中定位到当前法院
+             ip = sfytj_config.ReadLine().slice(3); //机器ip
+             
+             // 考虑到有的配置文件可能没有ftp这一行
+             // try{
+             //     isDemo=sfytj_config.ReadLine().split('=')[1];//演示版本 
+             // }catch(err){
+             //    console.log('读取配置文件中的isDemo出错！')
+             // }
+
+             var sftyj_config = {};
+             sftyj_config.pid = pid;
+             sftyj_config.fid = fid;
+             sftyj_config.mid = mid;
+             sftyj_config.courtid = courtid;
+             sftyj_config.fy_info = fy_info;
+             sftyj_config.ip = ip;
+
+             // xxx
+             // if(isDemo){
+             //     sftyj_config.isDemo = isDemo;
+             //     $.get(httpurl + "wdaj/change_court_status.php?court_id="+ courtid, function(data) {
+             //         console.log("data:"+JSON.stringify(data));
+             //     })
+             // }
+
+             setCookie('sftyj_config', JSON.stringify(sftyj_config));
+             //铜山区法院执行局设备抬头
+             if(pid=="pliDgVBkGifBXDrNsj"){
+                 $("#pid_name").text("执行服务终端");
+             }
+             console.log('配置文件读取成功');
+         } catch (e) {
+             //配置文件读取出错，先判断是否已经存在缓存中
+             console.error("配置文件读取出错");
+             //设置默认值:江苏高院
+             var sftyj_config = {};
+             sftyj_config.pid = "rNz0AgBNmvSMldKpFD";
+             sftyj_config.fid = "320000";
+             sftyj_config.mid = "S200E";
+             sftyj_config.courtid = "58";
+             sftyj_config.fy_info = "0/0/江苏省高级人民法院";
+             sftyj_config.ip = "192.168.25.109";
+             setCookie('sftyj_config', JSON.stringify(sftyj_config));
+             courtid = getCookie("court_id");
+         }
+         //读取身份证灯控
+         try {
+             var fso = new ActiveXObject("Scripting.FileSystemObject");
+             var sfytj_config1 = fso.OpenTextFile("c:\\sftyj_config.ini", 1);
+             light = sfytj_config1.ReadLine().slice(6); //身份证灯控
+             setCookie('sfz_light', light);
+             console.log('配置文件身份证灯控读取成功');
+         } catch (e) {
+            console.error("配置文件身份证灯控读取出错");
+            light = "open";
+            setCookie('sfz_light', light);
+         }
+         //读取状态文件  
+         try {
+             // 读取初始值
+             var local_state = [];
+             var local_state = get_status(mid);
+             //上传设备状态到服务器
+             post_status(local_state, true);
+             setCookie('status', JSON.stringify(local_state));
+             // 循环读文件并比较
+             setInterval('check_status()', 3000);
+         } catch (e) {
+             console.error("该机器无状态监控文件");
+         }
+         // 检测状态文件是否改变值
+         function check_status() {
+             // 初始化标志位changed和需要上传的改变的数据，json对象数组
+             var upload_data = [];
+             var changed = false;
+             var old_status = JSON.parse(getCookie("status"));
+             var current_status = get_status(mid);
+             for (var i = 0; i < current_status.length; i++) {
+                 if (current_status[i] != old_status[i]) {
+                     var changed = true;
+                     old_status[i] = current_status[i]
+                     upload_data.push({
+                         'component_index': i,
+                         'status': current_status[i]
+                     });
+                 }
+             }
+             if (changed) {
+                 console.log("状态改变");
+                 //更新status
+                 setCookie('status', JSON.stringify(old_status));
+                 post_status(upload_data, false);
+             } 
+         }
+         //上传状态文件改变值 /*更新操作的接口*/
+         //第一次上传所有设备状态 type=true; 
+         //后续状态改变时才上传upload_data; type=false;
+         function post_status(data, type) {
+             var status = {};
+             for (var i = 0; i < data.length; i++) {
+                 status[i] = data[i];
+             }
+             status = JSON.stringify(status);
+             ajax("" + httpurl + "log/product_log.php", "status=" + status + "&pid=" + pid + "&courtid=" + courtid + "&mid=" + mid + "&fid=" + fid + "&ip=" + ip + "&type=" + type, function(data) {
+             });
+         }
+
+         
+         if(sftyj_config.mid!='S110'){
+            //默认启动电话功能
+            if(phone){
+            phone.StartPhone();
+            }
+         }
+
+         // 获取状态文件详情
+         function get_status(mid) {
+             var get_status_info = [];
+             get_status_info[0] = ReadIniFile.ReadKey("c:\\devInfo.ini", "LightCtrl", "Status", 0); //灯控板
+             get_status_info[1] = ReadIniFile.ReadKey("c:\\devInfo.ini", "CardReader", "Status", 0); //磁卡机
+             get_status_info[2] = ReadIniFile.ReadKey("c:\\devInfo.ini", "ReceiptPrinter", "Status", 0); //凭条打印机
+             get_status_info[3] = ReadIniFile.ReadKey("c:\\devInfo.ini", "BrotherPrinter", "Status", 0); //兄弟打印机
+             get_status_info[4] = ReadIniFile.ReadKey("c:\\devInfo.ini", "IDScaner", "Status", 0); //二代证扫描
+             get_status_info[5] = ReadIniFile.ReadKey("c:\\devInfo.ini", "IDCard", "Status", 0); //二代证模块
+             get_status_info[6] = ReadIniFile.ReadKey("c:\\devInfo.ini", "Fingerprint", "Status", 0); //指纹仪
+             // 根据型号读取不同的配置
+             if (mid == "S200E") {
+                 get_status_info[7] = ReadIniFile.ReadKey("c:\\devInfo.ini", "HighSpeedScanner", "Status", 0); //高扫  
+             } else if (mid == "S200") {
+                 get_status_info[7] = ReadIniFile.ReadKey("c:\\devInfo.ini", "ScanCamera", "Status", 0); //高拍仪
+             }
+             return get_status_info;
+         }
+         /* 当前展示的法院名称 */
+         // var xzfy = get_ggxx_xzfy();
+         // var fymc = xzfy.selected_fy;
+         var court_id = courtid;
+         // var court_name = '';
+         // console.log('法院名称id：' + court_id + fymc);
+         // if (!fymc) {
+             // 初始化没有fymc的时候去读取配置文件信息或者在用户退出的时候默认展示配置文件中的法院名称
+             setCookie("court_id", court_id);
+             var ggxx_xzfy = {};
+             try {
+                 ggxx_xzfy.cur_gy = parseInt(fy_info[0]);
+                 ggxx_xzfy.cur_zy = parseInt(fy_info[1]);
+                 ggxx_xzfy.selected_fy = fy_info[2];
+             } catch (e) {
+                 ggxx_xzfy.cur_gy = 0;
+                 ggxx_xzfy.cur_zy = 0;
+                 ggxx_xzfy.selected_fy = '江苏省高级人民法院';
+             }
+             setCookie("ggxx_xzfy", JSON.stringify(ggxx_xzfy));
+             fymc = ggxx_xzfy.selected_fy;
+         // }
+         $(".current_fy_title").html(fymc);
+
+         var selected_fyid = 0;
+          /*设置登入页面*/
+            if(court_id == "86"){
+                $("#iframe").attr("src", "/sfytj/dist/html/common/sfytj_login.html");
+                //徐州的首页
+                if (getCookie("user_info")) {
+                    $("#xzsy").css("display","none");
+                } else {
+                    $("#xzsy").css("display","block");
+                }
+            }else if(court_id == "96"){
+                $("#iframe").attr("src", "/sfytj/dist/html/common/sfytj_login.html");
+                //徐州的首页
+                if (getCookie("user_info")) {
+                    $("#xzsy").css("display","none");
+                } else {
+                    $("#xzsy").css("display","block");
+                }
+            }else{
+                // $("#iframe").attr("src", "/sfytj/dist/html/dingzhi/xuzhouzhongyuan/xzzy_login.html"); 
+                $("#iframe").attr("src", "/sfytj/dist/html/common/sfytj_login.html"); 
+            }
+
+         /*设置法院概况缓存*/
+         var fygk_info = JSON.parse(getCookie("fygk_info"));
+             /*第一次使用，未设置任何缓存*/
+         if (fygk_info == null) {
+             fygk_info = [{
+                 fy_court_id: court_id,
+                 fygk: null,
+                 ftfb: null,
+                 gxfw: null,
+                 bmjzn: null,
+                 fydz: null,
+                 tsqd: null
+             }];
+             setCookie("fygk_info", JSON.stringify(fygk_info));
+             setCookie("selected_fygk_info", JSON.stringify(fygk_info[0]));
+         }
+         /*已有缓存信息*/
+         else {
+             $.each(fygk_info, function(key, value) {
+                 /*该法院已有缓存信息*/
+                 if (value.fy_court_id === court_id) {
+                     setCookie("selected_fygk_info", JSON.stringify(value));
+                     selected_fyid = 1;
+                     return false;
+                 }
+             });
+             /*该法院没有缓存信息*/
+             if (selected_fyid === 0) {
+                 fygk_info[fygk_info.length] = {
+                     fy_court_id: court_id,
+                     fygk: null,
+                     ftfb: null,
+                     gxfw: null,
+                     bmjzn: null,
+                     fydz: null,
+                     tsqd: null,
+                 }
+                 setCookie("fygk_info", JSON.stringify(fygk_info));
+                 setCookie("selected_fygk_info", JSON.stringify(fygk_info[fygk_info.length - 1]));
+             }
+         }
+         $(function() {
+             var projects = search_data.projects;
+             var cat_array = [];
+             var nbsp = '&nbsp;&nbsp;&nbsp;&nbsp;'
+             $("#project").autocomplete({
+                 minLength: 0,
+                 source: projects,
+                 focus: function(event, ui) {
+                     $("#project").val(ui.item.value);
+                     return false;
+                 },
+                 select: function(event, ui) {
+                     $("#description").html(ui.item.desc);
+                     $("#project-icon").html(ui.item.cat);
+                     $('#ui-id-1').show();
+                     $(".enter_btn").show();
+                     $(".empty_content").hide();
+                     $(".url").data('url', ui.item.url);
+                     cat_array = [];
+                     return false;
+                 },
+                 open: function(event, ui) {
+                     $(".empty_content").show();
+                     $(".search_result_block").slideDown("fast");
+                     $(".ui-menu-item:first-child").click();
+                     return false;
+                 },
+                 search: function(event, ui) {
+                    
+                     $("#description").empty();
+                     $(".empty_content").hide();
+                     $(".enter_btn").hide();
+                     //记录智能搜索次数
+                     record_clicknum('znss_record');
+                 },
+                 response: function(event, ui) {
+                 },
+                 close: function(event, ui) {
+                    
+                     $(".empty_content").hide();
+                     $(".search_result_block").slideUp("fast");
+                 }
+             }).data("ui-autocomplete")._renderItem = function(ul, item) {
+                 if (cat_array.indexOf(item.cat) >= 0) {
+                     return $("<li>").append("<a><div class='search_div'><div class='cat'><b>" + nbsp + "</b></div><div class='value'>" + item.value + "</div></div></a>").appendTo(ul);
+                 } else {
+                     cat_array.push(item.cat);
+                     return $("<li>").append("<a><div class='search_div'><div class='cat'><b>" + item.cat + "</b></div><div class='value'>" + item.value + "</div></div></a>").appendTo(ul);
+                 }
+             };
+             $('.search_result_block').on('click', 'li', function(e) {
+                     $(".active_li").removeClass("active_li");
+                     $(this).addClass("active_li");
+                 })
+                 /* /!*根据登录信息，显示用户退出和个人中心*!/
+                  判断是否登录，登录后开始监听，判断是否满足自动退出
+                  */
+             $('#exit').hide();
+             $('#grzx').hide();
+             $('#gnsy').hide();
+             $('#znss').hide();
+             /*二级菜单title旋转*/
+             $('.menu_block .title').hide();
+             $('.menu_block .title').show().arctext({
+                 radius: 100,
+                 rotate: true
+             });
+             /*一级菜单第一行字旋转*/
+             $('.first_menu .title').hide();
+             $('.first_menu .title').show().arctext({
+                 radius: 100,
+                 rotate: true
+             });
+             /*fyxx微调*/
+             $('.menu_fyxx .sub_title1').hide();
+             $('.menu_fyxx .sub_title1').show().arctext({
+                 radius: 100,
+                 rotate: true
+             });
+             $('.menu_fyxx .sub_title2').hide();
+             $('.menu_fyxx .sub_title2').show().arctext({
+                 radius: 70,
+                 rotate: true
+             });
+             /*ssfw*/
+             $('.menu_ssfw .sub_title1').hide();
+             $('.menu_ssfw .sub_title1').show().arctext({
+                 radius: 100,
+                 rotate: true
+             });
+             $('.menu_ssfw .text_info').hide();
+             $('.menu_ssfw .text_info').show().arctext({
+                 radius: 70,
+                 rotate: true
+             });
+             /*ggxx*/
+             $('.menu_ggxx .sub_title1').hide();
+             $('.menu_ggxx .sub_title1').show().arctext({
+                 radius: 100,
+                 rotate: true
+             });
+             $('.menu_ggxx .text_info').hide();
+             $('.menu_ggxx .text_info').show().arctext({
+                 radius: 70,
+                 rotate: true
+             });
+             var isOnLoad = true;
+             //当ifrmae加载完成时 遮罩去除，iframe显示；
+             //底部按钮显示出来
+             $("#iframe").load(function() {
+                 isOnLoad = false;
+                 $("#iframe").show();
+             });
+             /*全屏操作*/
+             var isFullScreen = false;
+             //启动键盘
+             console.log("启动键盘");
+             OCX_AVF("AVF_Path_Start," + "D:\\AVF5.2.9Z\\AVF");
+             OCX_AVF("AVF_Windows," + "12");
+         });
+         $(".menu_btn").click(function() {
+             $(".menu_holder").toggleClass("active_menu");
+             $(".active_third_menu").removeClass("active_third_menu");
+         });
+
+         function goto_page() {
+             var url = $('.url').data("url");
+             $('.search_modal').modal('hide');
+             menu_common(url);
+         }
+
+         function open_search_modal() {
+             $("#project").val("");
+             $(".search_modal").modal();
+         }
+
+         function refresh(){
+            window.location.href = '/sfytj/dist/html/common/index.html';
+         }
+
+
+         /* 页面底部菜单点击跳转方法 */
+         function menu_common(href) {
+             //记录该链接点击的次数
+             record_clicknum(href);
+             //增加我要查询，我要立案，我要阅卷的判断
+             if (href=="/sfytj/dist/html/ssfw/wyla_index.html" || href=="/sfytj/dist/html/ssfw/yyyj/yyyjsq/yyyjtk.html" || href=="/sfytj/dist/html/wycx/index.html") {
+                if (getCookie("user_info")) {
+                    $("#iframe").hide().attr('src', href);
+                 } else {
+                    //我要查询，我要立案，我要阅卷设置cookie 身份证登陆后直接进入
+                    //在当前页面显示弹窗提醒
+                    if ($("#iframe").attr('src') == "/sfytj/dist/html/common/sfytj_login.html") {
+                        if (href == "/sfytj/dist/html/ssfw/wyla_index.html") {
+                            open_modal("请先登录后再进行立案操作！");
+                            setCookie("la_yj_cx","la");
+                        } else if (href == "/sfytj/dist/html/ssfw/yyyj/yyyjsq/yyyjtk.html") {
+                            open_modal("请先登录后再进行阅卷操作！");
+                             setCookie("la_yj_cx","yj");
+                        } else if (href == "/sfytj/dist/html/wycx/index.html") {
+                            open_modal("请先登录后再进行查询操作！");
+                            setCookie("la_yj_cx","cx");
+                        }          
+                    }else{
+                        if (href == "/sfytj/dist/html/ssfw/wyla_index.html") {
+                            $("#iframe").attr('src',"/sfytj/dist/html/common/sfytj_login.html")
+                            open_modal("请先登录后再进行立案操作！");
+                            setCookie("la_yj_cx","la");
+                        } else if (href == "/sfytj/dist/html/ssfw/yyyj/yyyjsq/yyyjtk.html") {
+                            $("#iframe").attr('src',"/sfytj/dist/html/common/sfytj_login.html")
+                            open_modal("请先登录后再进行阅卷操作！");
+                            setCookie("la_yj_cx","yj");
+                        } else if (href == "/sfytj/dist/html/wycx/index.html") {
+                            $("#iframe").attr('src',"/sfytj/dist/html/common/sfytj_login.html")
+                            open_modal("请先登录后再进行查询操作！");
+                            setCookie("la_yj_cx","cx");
+                        }
+                    }
+                 } 
+             } else {
+                $("#iframe").hide().attr('src', href);
+             }
+         }
+         //切换法院
+         function changefy() {
+             record_clicknum('/sfytj/dist/html/common/xzfy.html');
+             document.getElementsByTagName('iframe')[0].contentWindow.location.href = '/sfytj/dist/html/common/xzfy.html';
+         }
+
+         function search(href) {
+             var search_keys = $(event.target).parent().next().children(".form-control-ss").val();
+             var httpurl = global_data.httpurl;
+             $('.search_result').show();
+             $('#model_content').html('');
+             ajax("" + httpurl + "ggxx/search.php", "keys=" + search_keys, function(defaultData) {
+                 if (defaultData.data != '') {
+                     $.each(defaultData.data, function(n, value) {
+                         var html = '';
+                         html += "<div class=\"search_title\">";
+                         html += "<div class=\"fl title_left\" >"
+                         html += "<a class=\"font_h2\"  onclick=\"link_url('" + value.link + "');\"  > " + value.name + "</a>";
+                         html += "</div><div style=\"float: left;\">" + value.dec + "</div><div class='clear'></div>";
+                         $('#model_content').append(html);
+                     })
+                 } else {
+                     var html = '';
+                     html += "<div class=\"search_title\">没有查到符合条件的记录</div>";
+                     $('#model_content').append(html);
+                 }
+             });
+         }
+
+         function link_url(href) {
+             $('.bs-example-modal-lg').modal('hide');
+             menu_common(href);
+         }
+
+         //无操作60s后系统自动退出
+         function check_useroper() {
+             clearTimeout(timout_timer);
+             clearTimeout(countdown_timer);
+             window.top.menu_exit('系统过久未操作', 5); //调用父页面方法退出系统
+         }
+         $("html").click(function() {
+             if ($('#grzx').css('display') != 'none') //判断是否为登入状态点击
+                 window.top.restart_timer();
+         });
+         //2s后隐藏进入个人中心的提醒
+         function hide_grzx_tip() {
+            setTimeout(function() {
+                $(".grzx_tip").fadeOut("slow");
+            }, 2000);
+         }
+         </script>
+    </body>
+</html>

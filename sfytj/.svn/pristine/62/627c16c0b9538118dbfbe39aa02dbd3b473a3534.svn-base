@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>阅卷申请</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+    <style>
+        .ckzn{height: 550px;}
+    </style>
+</head>
+<body class="ckzn ckzn_yjsq">
+
+<!--导航区-->
+<div class="right_nav">
+    <!--步骤列表-->
+    <ul class="nav nav-pills nav-stacked font_bigger">
+        <li role="presentation" class="active"><a href="#step1">第一步：接受条款</a></li>
+        <li role="presentation"><a href="#step2">第二步：当事人登录</a></li>
+        <li role="presentation"><a href="#step3">第三步：选择案件</a></li>
+        <li role="presentation"><a href="#step4">第四步：确认身份和用途</a></li>
+        <li role="presentation"><a href="#step5">第五步：身份审核</a></li>
+        <li role="presentation"><a href="#step6">第六步：信息确认</a></li>
+    </ul>
+
+    <div class="btn_row">
+        <input type="button" value="返回" class="common_btn btn_fh" onclick="history.back()">
+    </div>
+</div>
+<div class="left_content font_big" data-spy="scroll" data-target=".right_nav">
+
+    <div id="step1">
+        <div class="font_header step_header">第一步：接受条款</div>
+        <div class="info font_bigger">
+            <div class="step_content">只有接受条款才可以进行后续操作，点击“我接受”表示您同意条款</div>
+            <img src="/sfytj/dist/images/icon/ckzn_yjsq_step1.png">
+        </div>
+    </div>
+    <div id="step2">
+
+        <div class="font_header step_header"> 第二步：当事人登录</div>
+
+        <div class="info font_bigger">
+            <div class="step_content">您有两种登录方式，按查询账号登录可以查询到该账号对应的唯一一个案件，按手机号码登录可以查询到该手机号码相关的所有案件</div>
+            <img src="/sfytj/dist/images/icon/ckzn_yjsq_step2.png">
+        </div>
+
+    </div>
+    <div id="step3">
+
+        <div class="font_header step_header"> 第三步：选择案件</div>
+
+        <div class="info font_bigger">
+            <div class="step_content">该步骤需要您选择要申请阅卷对应的案件</div>
+            <img src="/sfytj/dist/images/icon/ckzn_yjsq_step3.png">
+        </div>
+
+    </div>
+    <div id="step4">
+        <div class="font_header step_header"> 第四步：确认身份和用途</div>
+        <div class="info font_bigger">
+            <div class="step_content">该步骤需要您填写预约该卷宗的身份和用途</div>
+            <img src="/sfytj/dist/images/icon/ckzn_yjsq_step4.png">
+        </div>
+    </div>
+    <div id="step5">
+        <div class="font_header step_header"> 第五步：身份审核</div>
+        <div class="font_bigger">
+            <div class="step_content">该步骤需要您填写能表明您身份的信息，可以选择身份证、护照或者军官证</div>
+            <img src="/sfytj/dist/images/icon/ckzn_yjsq_step5.png">
+            <div class="step_remark">该验证码用于验证您的身份，会以短信的形式发送到您输入的手机号码上</div>
+        </div>
+    </div>
+    <div id="step6">
+        <div class="font_header step_header"> 第六步：信息确认</div>
+        <div class="font_bigger">
+            <div class="step_content">该步骤可以显示您之前申请立案所填信息，包括申请案件和申请用途，审核无误后可确认提交</div>
+            <img src="/sfytj/dist/images/icon/ckzn_yjsq_step6.png">
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    /*更新父窗口标题*/
+    $(function () {
+        var ele = $('#third_title', window.parent.document);
+        ele.text("阅卷申请");
+        ele.css("display", "inline-block");
+    });
+</script>
+</body>
+</html>

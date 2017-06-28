@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>诉讼费计算器</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body>
+<div class="common_body sfjsq sxrcx">
+    <!--头部-->
+    <div class="ggxx-head">
+        <div class="ggxx-title font_header">
+            诉讼费计算器
+        </div>
+    </div>
+    <!--主体内容-->
+    <div class="ggxx-body">
+        <!-- 诉费计算器 -->
+        <div class="sfjsq_body font_h1">
+            <form name="Form1" id="form1">
+            <!-- 案件类型 -->
+            <div class="ajlx clearfix">
+                <div class="ajlx_title fl">案件类型：</div>
+                <div class="selectbox fr">
+                    <select id="select_ajlx" class="selectbox_ajlx" name="textfield_ajlx" value="" size="1">
+                         <option selected="">==请选择案件类型==</option>
+                            <option value="1">财产案件</option>
+                            <option value="3">离婚案件</option>
+                            <option value="4">其他非财产案件</option>
+                            <option value="6">知识产权案件</option>
+                            <option value="7">知识产权(财产)</option>
+                            <option value="8">侵害姓名权等人格权</option>
+                            <option value="9">劳动争议案件</option>
+                            <option value="10">破产案件</option>
+                            <option value="15">管辖权异议</option>
+                            <option value="17">申请公示催告</option>
+                            <option value="18">申请支付令</option>
+                            <option value="20">商标、专利、海事行政案件</option>
+                            <option value="22">其他行政案件</option>
+                            <option value="24">申请认定或撤消仲裁案件</option>
+                            <option value="25">执行案件</option>
+                            <option value="26">保全案件</option>
+                    </select>
+                    <div class="select_arrow"><img src="/sfytj/dist/images/icon/select_arrow.png" alt=""></div>
+                </div> 
+            </div>
+
+            <!-- 案件标的 -->
+            <div class="ajbd clearfix">
+                <div class="ajbd_title fl">案件标的：</div>
+                <div class="ajbd_input fr">
+                    <input type="text" class="ajbd_text" name="textfield_ajbd" id="textfield_ajbdId" />(元)
+                </div>
+            </div>
+            <!--是否属于适用简易程序或调解结案或撤诉案件：-->
+            <div class="isSimple clearfix">
+                <label class="isSimple_title fl" for="isSimple">属于适用简易程序或调解结案或撤诉案件</label>
+                <div class="isSimple_input ">
+                    <input type="checkbox" class="isSimple_text" name="isSimple_ajbd" id="isSimple"/>
+                </div>
+            </div>
+            <!-- 诉讼费用 -->
+            <div class="ssfy clearfix">
+                <div class="ssfy_title fl">诉讼费用：</div>
+                <div class="ssfy_input fl">
+                  <!-- <input type="text" class="ssfy_text" name="textfield_ssfy" id="textfield_ssfyId" readonly value="0"/>(元) -->
+                  <p class="ssfy_text" id="textfield_ssfyId">0</p>(元)
+                    <p style="display:inline; font-size: 16px; width: 400px;text-align: center;margin: 0 auto;">
+                        <span style="color: red">&nbsp;&nbsp;&nbsp;*</span>
+                        提示：诉讼金额仅供参考,具体以法院受理为准！
+                    </p>
+                </div>
+                
+            </div>
+
+        </form>
+        </div>
+    </div>
+    <!-- 按钮区 -->
+    <div class="btn_row">
+        <!-- <a href="javascript:history.back()"><input type="button" value="返回" class="common_btn fl" /></a>  -->
+        <input type="button" value="计算" class="common_btn mid_btn" id="btn_jsq" onclick="con_before()" />
+    </div>
+</div>
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+
+ function con_before(){
+
+    //记录诉讼费计算查询按钮点击次数
+    record_clicknum('ssfjs_record');
+
+    //校验数据：
+    var ajlx = $('#select_ajlx').val();                    //选择的案件类型；
+    var bdrmb = $('#textfield_ajbdId').val();              //填写的案件标的值；
+ if(!!!bdrmb){
+  open_modal("案件标的不能为空");
+      return;
+ }
+    if(ajlx=="==请选择案件类型=="){
+      open_modal("请选择案件类型！");
+      return;
+    }else if(bdrmb.split(".").length>2){
+      open_modal("案件标的输入有误！");
+      return;
+    }else if(isNaN(bdrmb)||(bdrmb=='0')){
+      open_modal("案件标的请输入大于0的数字！");
+      return;
+    }else if( bdrmb!=="" && !validate(parseFloat(bdrmb))){
+      open_modal("案件标的请输入正数！");
+      return;
+    }
+/*
+ &&&&(bdrmb=='0')
+*/
+
+    $('#textfield_ssfyId').html("正在计算中...");
+    setTimeout(function(){
+      con();
+    }, 500);
+
+
+    //诉讼费用计算方法
+    function con(){
+
+        var ysssf = 0;  //诉讼费用；
+
+        switch(ajlx) 
+        { 
+            case "1":  //财产案件
+                    if (bdrmb<10000){
+ 
+                      ysssf=50;}    
+ 
+                      else if (bdrmb<100000){
+     
+                          ysssf=bdrmb*0.025-200;}   
+     
+                      else if (bdrmb<200000){
+     
+                          ysssf=bdrmb*0.02+300;}                    
+     
+                      else if (bdrmb<500000){
+     
+                          ysssf=bdrmb*0.015+1300;}                      
+     
+                      else if (bdrmb<1000000){
+     
+                          ysssf=bdrmb*0.01+3800;}                      
+     
+                      else if (bdrmb<2000000){
+     
+                          ysssf=bdrmb*0.009+4800;} 
+     
+                      else if (bdrmb<5000000){
+     
+                          ysssf=bdrmb*0.008+6800;} 
+     
+                      else if (bdrmb<10000000){
+     
+                          ysssf=bdrmb*0.007+11800;} 
+     
+                      else if (bdrmb<20000000){
+     
+                          ysssf=bdrmb*0.006+21800;}  
+     
+                      else {ysssf=bdrmb*0.005+41800;}   
+     
+                    break;   
+
+            case "3": //离婚案件  范围50-300，各个地方不一致，参考江苏网
+                ysssf=0;
+                if(bdrmb>200000){
+                    ysssf=(bdrmb-200000)*0.005;
+                }
+                ysssf += 240;
+
+                break;
+
+            case "4": //其他非财产案件
+                ysssf=80;
+                break;
+
+            case "6": //知识产权案件  取江苏网1000
+                ysssf = 1000;
+                break;
+
+            case "7": //知识产权（财产）
+                if (bdrmb<10000){
+ 
+                      ysssf=50;}
+ 
+                  else if (bdrmb<100000){
+ 
+                      ysssf=bdrmb*0.025-200;}  
+ 
+                  else if (bdrmb<200000){
+ 
+                      ysssf=bdrmb*0.02+300;}                       
+ 
+                  else if (bdrmb<500000){
+ 
+                      ysssf=bdrmb*0.015+1300;}                      
+ 
+                  else if (bdrmb<1000000){
+ 
+                      ysssf=bdrmb*0.01+3800;}                      
+ 
+                  else if (bdrmb<2000000){
+ 
+                      ysssf=bdrmb*0.009+4800;} 
+ 
+                  else if (bdrmb<5000000){
+ 
+                      ysssf=bdrmb*0.008+6800;} 
+ 
+                  else if (bdrmb<10000000){
+ 
+                      ysssf=bdrmb*0.007+11800;}  
+ 
+                  else if (bdrmb<20000000){
+ 
+                      ysssf=bdrmb*0.006+21800;}  
+ 
+                  else {ysssf=bdrmb*0.005+41800;}      
+ 
+                  break;    
+            case "8": //侵害姓名权等人格权
+
+                if (bdrmb<50000){
+ 
+                      ysssf=400;}
+ 
+                  else if (bdrmb<100000){
+ 
+                      ysssf=400 + (bdrmb -50000)*0.01;}
+ 
+                  else{
+ 
+                      ysssf=900+(bdrmb-100000)*0.005;}  
+ 
+                  break;
+
+            case "9": //劳动争议案件
+                ysssf=10;
+                break;
+
+            case "10": //破产案件，默认<= 30万
+                if (bdrmb<10000){
+ 
+                      ysssf=50;}   
+ 
+                  else if (bdrmb<100000){
+ 
+                      ysssf=bdrmb*0.025-200;}
+ 
+                  else if (bdrmb<200000){
+ 
+                      ysssf=bdrmb*0.02+300;}                      
+ 
+                  else if (bdrmb<500000){
+ 
+                      ysssf=bdrmb*0.015+1300;}                      
+ 
+                  else if (bdrmb<1000000){
+ 
+                      ysssf=bdrmb*0.01+3800;}                      
+ 
+                  else if (bdrmb<2000000){
+ 
+                      ysssf=bdrmb*0.009+4800;} 
+ 
+                  else if (bdrmb<5000000){
+ 
+                      ysssf=bdrmb*0.008+6800;}
+ 
+                  else if (bdrmb<10000000){
+ 
+                      ysssf=bdrmb*0.007+11800;}
+ 
+                  else if (bdrmb<20000000){
+ 
+                  ysssf=bdrmb*0.006+21800;}  
+ 
+                  else {ysssf=bdrmb*0.005+41800;} 
+
+                  ysssf=ysssf/2;                       //按财产案件的计算结果减半
+ 
+                if (ysssf>300000){ysssf=300000;}      //诉讼费大于300000 取300000                
+ 
+                 break;
+
+            case "15": //管辖权异议 各个地方不一样，江苏取80
+                ysssf=80;
+                break;
+
+            case "17": //申请公示催告
+                ysssf=100;
+                break;
+
+            case "18": //申请支付令
+                if (bdrmb<10000){
+     
+                          ysssf=50;}
+     
+                      else if (bdrmb<100000){
+     
+                          ysssf=bdrmb*0.025-200;}
+     
+                      else if (bdrmb<200000){
+     
+                          ysssf=bdrmb*0.02+300;}                      
+     
+                      else if (bdrmb<500000){
+     
+                          ysssf=bdrmb*0.015+1300;}                      
+     
+                      else if (bdrmb<1000000){
+     
+                          ysssf=bdrmb*0.01+3800;}                      
+     
+                      else if (bdrmb<2000000){
+     
+                          ysssf=bdrmb*0.009+4800;} 
+     
+                      else if (bdrmb<5000000){
+     
+                          ysssf=bdrmb*0.008+6800;}
+     
+                      else if (bdrmb<10000000){
+     
+                          ysssf=bdrmb*0.007+11800;}
+     
+                      else if (bdrmb<20000000){
+     
+                      ysssf=bdrmb*0.006+21800;}  
+     
+                      else {ysssf=bdrmb*0.005+41800;} 
+     
+                      ysssf=ysssf/3;
+     
+                      break;
+
+            case "20": //商标、专利、海事行政案件
+                ysssf=100;
+                break;
+
+            case "22": //其他行政案件
+                ysssf=50;
+                break;
+            case "24": //申请认定或撤消仲裁案件
+                ysssf=400;
+                break;
+            case "25": //执行案件
+                 if(bdrmb==""){
+ 
+                      ysssf=500;}     //执行案件无金额时，诉讼费为500；
+                
+                  else if (bdrmb<10000){
+ 
+                      ysssf=50;}  
+ 
+                  else if (bdrmb<500000){
+ 
+                      ysssf=bdrmb*0.015-100;}  
+ 
+                  else if (bdrmb<5000000){
+ 
+                      ysssf=bdrmb*0.01+2400;}  
+ 
+                  else if (bdrmb<10000000){
+ 
+                      ysssf=bdrmb*0.005+27400;}  
+ 
+                  else {
+                    ysssf=bdrmb*0.001+67400;} 
+ 
+                  break;  
+            case "26" : //保全案件   诉讼费<=5000元
+                 if (bdrmb<1000){
+ 
+                      ysssf=30;}   
+ 
+                  else if (bdrmb<100000){
+ 
+                      ysssf=bdrmb*0.01+20;}  
+ 
+                  else {
+                      ysssf=bdrmb*0.005+520;} 
+                  
+                  if (ysssf>5000){
+ 
+                      ysssf=5000;}  //当诉讼费用超过5000时，按5000计算；
+                 
+                  break;
+
+
+        }
+
+        if($("#isSimple").prop("checked")==true){
+                       ysssf=ysssf/2;
+        }
+
+        //将计算出的ysssf 诉讼费用值 赋给textfield_ssfyId
+        $('#textfield_ssfyId').html(ysssf);
+
+        //保留小数点后面2位；
+        var point = $('#textfield_ssfyId').html().indexOf("."); //判断几位数
+        if(point != -1) {                                      //只要有小数点
+            if($('#textfield_ssfyId').html().substring(point+3,point+4)>4){
+                ysssf += 0.01;                                 //小数点后面第三位大于等于5，就+0.01
+            }
+            $('#textfield_ssfyId').html(ysssf);
+            var ysssf_2 = $('#textfield_ssfyId').html().substring(0,point+3); //截取小数点后面2位；
+            $('#textfield_ssfyId').html(ysssf_2);
+        }
+
+    }
+ }
+
+//判断案件标的是否为正数
+function validate(num)
+{
+  var reg = /^\d+(?=\.{0,1}\d+$|$)/
+  if(reg.test(num)){
+    return true;          //正数
+  }else{
+    return false ;        //负数
+  }
+  
+  
+} 
+    
+</script>
+
+</body>
+</html>

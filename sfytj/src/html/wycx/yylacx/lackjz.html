@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>卷宗表</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body>
+
+<div class="lackjz">
+      <div class="wrap">
+        <div class="common_body">
+            <!--导航条部分-->
+            <div class="ssfw_nav yylajzcx_nav clearfix">
+                <!--自助立案进展查询标题 -->
+                <div class="nav_title">
+                    <h2>自助立案进展查询</h2>
+                </div>
+            </div>
+
+            <!--主要内容-->
+            <div class="title font_header">卷宗表</div>
+            <!--表格内容-->
+            <div class="qr_table font_bigger">
+                <!-- <table border="1">-->
+                <table class="table table-bordered">
+                    <tr>
+                        <td class="fs">申诉人姓名</td>
+                        <td class="fs" id="ssname"></td>
+                        <td class="fs">案由</td>
+                        <td class="fss" id="anyou"></td>
+                    </tr>
+                    <tr id="bgxinxi">
+                        <td class="fs">被告人</td>
+                        <td class="fs">姓名</td>
+                        <td class="fs">性别</td>
+                        <td class="fss">地址或工作单位</td>
+                    </tr>
+                    <tr id="ygxinxi">
+                        <td class="fs">原告人</td>
+                        <td class="fs">姓名</td>
+                        <td class="fs">性别</td>
+                        <td class="fss">地址或工作单位</td>
+
+                    </tr>
+                    
+                    <tr>
+                        <td class="fs">诉讼请求</td>
+                        <td colspan="3" class="fs" id="susongqq"></td>
+                    </tr>
+                    <tr> 
+                        <td class="fs">事实请求</td>
+                        <td colspan="3" class="fs" id="shishiqq"></td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <!--返回和打印按钮-->
+            <div class="btn_row ">
+                <input type="button" value="打印" class="common_btn fr "/>
+                
+                <input type="button" onclick="history.back()"  value="返回" class="common_btn fl  yyyjjzjz_button"/>
+                
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var ckwjjzjz = getCookie('cklajz');
+        var value = JSON.parse(ckwjjzjz);
+        var case_num = value.case_num;
+        $('#ssname').html(value.user_name);
+        $('#anyou').html(value.case_action_name);
+        console.log(ckwjjzjz);
+
+        var httpurl=global_data.httpurl;
+        ajax(
+                ""+httpurl+"ssfw/wsla/yylajzcx/lackjz.php",
+                "case_num="+case_num,
+                function(defaultData) {
+                    console.log(defaultData);
+                    /*$('#anyou').html(defaultData.date.case_action_name);*/
+                    $('#susongqq').html(defaultData.date.litigation_request);
+                    $('#shishiqq').html(defaultData.date.fact_request);
+
+                    /*被告信息*/
+                    var html = "";
+                    var n = defaultData.bgcount;
+                    $.each(defaultData.bgdata, function (n, value) {
+
+                        html += "<tr>";
+                        html +="<td class='fs'>被告人"+(n+1)+"</td>";
+                        html +="<td class='fs'>"+value.name+"</td>";
+                        if(value.sex=="male"){
+                            html +="<td class='fs'>男</td>";
+                        }else{
+                            html +="<td class='fs'>女</td>";
+                        }
+                        html +="<td class='fs'>"+value.address+"</td></tr>";
+                    });
+                    $("#bgxinxi").after(html);
+
+                    /*原告信息*/
+                    var html_yg="";
+                    var n = defaultData.ygdata.length;
+                    $.each(defaultData.ygdata, function (n, value) {
+                               /* html_yg += "<tr id=\"ygxinxi\">";
+                                html_yg += "    <td class=\"fs\">原告人</td>";
+                                html_yg += "    <td class=\"fs\">姓名</td>";
+                                html_yg += "<td class=\"fs\">性别</td>";
+                                html_yg += "<td class=\"fss\">地址或工作单位</td>";
+                                html_yg += "</tr>";*/
+                                html_yg += "<tr>";
+                                html_yg +="<td class='fs'>原告人 "+(n+1)+"</td>";
+                                html_yg +="<td class='fs'>"+value.name+"</td>";
+                                if(value.sex=="male"){
+                                    html_yg +="<td class='fs'>男</td>";
+                                }else{
+                                    html_yg +="<td class='fs'>女</td>";
+                                }
+                                html_yg +="<td class='fs'>"+value.address+"</td></tr>";
+                            }
+                    );
+                    $("#ygxinxi").after(html_yg);
+
+
+                }
+        );
+
+    });
+</script>
+
+
+</body>
+</html>

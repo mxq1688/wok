@@ -1,0 +1,23 @@
+/*法院地址*/
+.fydz{
+  background: none;
+  height: 610px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  .fydz_nr{
+    color: #999999;
+    .bj{
+      margin-bottom: 10px;
+    }
+    /*交通图*/
+    .jtt{
+      width: 100%;
+      height: 395px;
+      overflow: hidden;
+      margin:0;
+      font-family:"微软雅黑";
+
+    }
+
+  }
+}

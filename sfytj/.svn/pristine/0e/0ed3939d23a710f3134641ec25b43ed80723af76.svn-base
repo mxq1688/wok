@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html class="yylaqrb mss_yylaqrb" lang="en">
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+        <title>
+            自助立案确认表
+        </title>
+        <link href="/sfytj/dist/styles/main.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <!--自助立案确认表-->
+    <body onunload="close_light(3)">
+        <!-- 打印机控件 -->
+        <object classid="CLSID:A81F682A-E047-4674-8ECB-8D16C0AF505E" height="10" id="ReceiptPrinter" name="ReceiptPrinter" style="display:none" width="10">
+        </object>
+        <div class="common_body">
+            <!--导航条部分-->
+            <div class="ssfw_nav yylasq_nav clearfix">
+                <!--自助立案标题 -->
+                <div class="nav_title">
+                    <h2>
+                        自助立案
+                    </h2>
+                </div>
+                <!--进度条 -->
+                <div class="nav_process">
+                    <!-- 圆点和横线 -->
+                    <div class="process clearfix">
+                        <div class="process1">
+                            <div class="nav_line1">
+                            </div>
+                            <a href="javascript:void(0);" onclick="url_load('xzfy.html')">
+                                <div class="nav_circle">
+                                    1
+                                </div>
+                            </a>
+                        </div>
+                        <div class="process2">
+                            <div class="nav_line">
+                            </div>
+                            <a href="javascript:void(0);" onclick="url_load('txaj.html')">
+                                <div class="nav_circle">
+                                    2
+                                </div>
+                            </a>
+                        </div>
+                        <div class="process3">
+                            <div class="nav_line">
+                            </div>
+                            <a href="javascript:void(0);" onclick="url_load('txryxx.html')">
+                                <div class="nav_circle">
+                                    3
+                                </div>
+                            </a>
+                        </div>
+                        <div class="process4">
+                            <div class="nav_line">
+                            </div>
+                            <a href="javascript:void(0);" onclick="url_load('txdlr.html')">
+                                <div class="nav_circle">
+                                    4
+                                </div>
+                            </a>
+                        </div>
+                        <div class="process5">
+                            <div class="nav_line">
+                            </div>
+                            <a href="javascript:void(0);" onclick="url_load('tjcl.html')">
+                                <div class="nav_circle">
+                                    5
+                                </div>
+                            </a>
+                        </div>
+                        <div class="process6">
+                            <div class="nav_line">
+                            </div>
+                            <a href="javascript:void(0);" onclick="url_load('yylaqrb.html')">
+                                <div class="nav_circle">
+                                    6
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 下方的文字 -->
+                    <div class="process_title clearfix">
+                        <div class="process_titleinfo">
+                            选择法院
+                        </div>
+                        <div class="process_titleinfo">
+                            案件信息
+                        </div>
+                        <div class="process_titleinfo">
+                            当事人信息
+                        </div>
+                        <div class="process_titleinfo">
+                            代理人信息
+                        </div>
+                        <div class="process_titleinfo">
+                            提交材料
+                        </div>
+                        <div class="process_titleinfo">
+                            信息确认
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--主要内容-->
+            <iframe border="none" frameborder="0" height="550px" id="iframe" src="/sfytj/dist/html/ssfw/wsla/yylasq/mssys/table.html" width="100%">
+            </iframe>
+            <!-- 打印预览、确认提交按钮 -->
+            <div class="btn_row ">
+                <input class="common_btn fr " id="btn_qrtj" type="button" value="确认提交"/>
+                <input class="common_btn " onclick="window.location.href='tjcl.html'" type="button" value="上一步"/>
+            </div>
+        </div>
+        <script src="/sfytj/bower_components/jquery/dist/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/dist/scripts/main.min.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+            // 初始化
+            localStorage.removeItem('qr_code_path');
+            $(function() {
+                /* 记录导航条步数的方法 */
+                nav_step("last_step", 6);
+            });
+        </script>
+    </body>
+</html>

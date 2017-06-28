@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查看阅卷进展</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body>
+
+<div class="ckyjjz">
+    <div class="wrap">
+        <div class="common_body">
+            <!--导航条部分-->
+            <div class="ssfw_nav yyyjjzcx_nav clearfix">
+                <!--预约立案进展查询标题 -->
+                <div class="nav_title">
+                    <h2>预约阅卷进度查询</h2>
+                </div>
+            </div>
+
+            <!--内容区-->
+            <div class="font_weight font_header tip clearfix">
+                <div class="fl">您当前阅卷申请件数：
+                    <span id="yjjzcx_count"><!--4--></span></div>
+                <!-- <div class="fr"><a href="/sfytj/dist/html/ssfw/yyyj/yyyjsq/yyyjtk.html" class="common_btn">申请预约阅卷</a></div> -->
+            </div>
+            <!--案件列表-->
+            <div class="aj-list panel-group" id="aj_list" role="tablist" aria-multiselectable="true">
+
+
+            </div>
+            <!--end案件列表-->
+            <!--end内容区-->
+            <!--按钮区-->
+            <div class="btn_row clearfix">
+                <!-- 上一步 按钮 -->
+               
+                <input type="button" value="返回" class="common_btn" onclick="history.back()"/>
+               
+                <div class="fr">
+                    <a href="/sfytj/dist/html/ssfw/yyyj/yyyjsq/yyyjtk.html" class="common_btn">申请预约阅卷</a>
+                    <input type="button" value="收藏到个人中心" id="btn_sc" class="del_btn  common_btn fr"  style="margin-left: 10px;"/>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+
+        //页面初始化
+        var yyyjcx_data=JSON.parse(localStorage["yyyjcx_data"]);
+        var defaultData = yyyjcx_data;
+        var court_id = localStorage.getItem("court_id");
+
+console.log(yyyjcx_data);
+console.log(1);
+        //根据返回的是defaultData.length是否为true来展示（true,手机号查多条数据， false,查询账号 1条数据)
+        if(!defaultData.length){
+            /*填充页面*/
+            if(court_id==861){
+               $("#yjjzcx_fymc").text('浙江高级人民法院');
+             }else{
+                $("#yjjzcx_fymc").text(defaultData[0].court_name);
+             }
+
+            
+            $("#yjjzcx_count").text(1);
+
+            var value=defaultData[0];
+            var n=0;
+            var html = "";
+            html += "<div class=\"panel panel-default aj-item ";
+            if (value.state == "2") {
+                html += "state-success";
+            } else if (value.state == "1") {
+                html += "state-waiting";
+            } else if (value.state == "0") {
+                html += "state-failed";
+            }
+            html += "\">";
+            // html +=" aria-expanded=\"true\" >";
+            html += "<div class='title-line'></div>"
+            html += "<div class=\"panel-heading clearfix aj-title font_title_style\" role=\"tab\"  id=\"aj" + n + "\"" +
+                    "data-toggle=\"collapse\" data-parent=\"#aj_list\" data-target=\"#collapse" + n + "\"" +
+                    " aria-controls=\"collapse" + n + "\" >";
+            if(court_id==861){
+
+                        html += "<div class=\"fymc col-md-4\">浙江高级人民法院</div>";
+                       //$("#lajzcx_fymc").html('');
+                     }else{
+                        html += "<div class=\"fymc col-md-4\">" + value.court_name + "</div>";
+                     }
+
+            html += "<div class=\"ah col-md-4\">" + value.case_num + "</div>";
+            html += "<div class=\"clearfix\">";
+
+            var shzt = "";
+            if (value.state == "2") {
+                shzt = "已通过";
+                html +="<div class=\"ckxq\" onclick=\"ckajxq('"+value.lsh+"')\">查看卷宗</div>";
+            } else if (value.state == "1") {
+                shzt = "审核中";
+                html +="<div class=\"ckxq\">查看卷宗</div>";
+            } else if (value.state == "0") {
+                shzt = "未通过";
+                html +="<div class=\"ckxq\">查看卷宗</div>";
+            }
+
+            html += "<div class=\"shzt font_bigger \">" + shzt + "</div>";
+            if (value.today == "1") {
+                html += "<div class=\"jinri badge font_bigger\">今日</div>";
+            }
+            html += "</div>";
+            html += "</div>";
+
+            html+="<div data-lsh='"+value.lsh+"' data-xh='"+value.xh+"' id=\"collapse"+n+"\" class=\"panel-collapse collapse "+(n==0 ? "in":"")+"\" data-index=\""+n+"\">";
+            html+="<div class=\"panel-body aj-info\">";
+            html+="<div class=\"col-md-offset-4 font_bigger\">";
+            html+="<div class=\"col-md-7\">案　　由："+value.case_action_name+"</div>";
+            html+="<div class=\"col-md-5\">标　　的："+value.biaode+"</div>";
+            html+="<div class=\"col-md-12\">申<span class=\"dsr_spacing\"> &nbsp;请 </span>人："+value.user_name+"</div>";
+            html+="<div class=\"col-md-7\">申请日期："+value.create_time+"</div>";
+            html+="<div class=\"col-md-5\">通过日期："+value.handle_time+"</div>";
+            html+="</div></div></div></div>";
+
+            // html += "<div id=\"collapse" + n + "\" class=\"panel-collapse collapse " + (n == 0 ? "in" : "")
+            //         + "\" data-index=\"" + n + "\" role=\"tabpanel\" aria-labelledby=\"aj" + n + "\">";
+            // html += "<div class=\"panel-body  aj-info\">";
+            // html += "<div class=\"col-md-offset-4 font_bigger\">";
+            // // html += "<div class=\"col-md-8\">案件名称：" + value.title + "</div>";
+            // // html += "<div class=\"col-md-8\">承办法官：" + value.judge_name + "</div>";
+            // html += "<div class=\"col-md-12\">申请人：" + value.user_name + "</div>";
+            // // html += "<div class=\"col-md-4\">联系方式：" + value.judge_mobile + "</div>";
+            // // html += "<div class=\"col-md-4\">审核状态：" + shzt + "</div>";
+            // html += "<div class=\"col-md-7\">申请日期：" + value.create_time + "</div>";
+            // html += "<div class=\"col-md-5\">通过日期：" + value.handle_time + "</div>";
+            // html += "</div>";
+            // html += "</div>";
+            // html += "</div>";
+            // html += "</div>";
+
+        }
+        else {
+
+            /*填充页面*/
+             if(court_id==861){
+               $("#yjjzcx_fymc").text('松阳县人民法院');
+             }else{
+                $("#yjjzcx_fymc").text(defaultData[0].court_name);
+             }
+           
+            $("#yjjzcx_count").text(defaultData.length);
+
+            var html = "";
+             $.each(defaultData, function (n, value) {
+            html += "<div class=\"panel panel-default aj-item ";
+            if (value.state == "2") {
+                html += "state-success";
+            } else if (value.state == "1") {
+                html += "state-waiting";
+            } else if (value.state == "0") {
+                html += "state-failed";
+            }else{
+                html += "state-success";
+            }
+            html += "\">";
+            // html +=" aria-expanded=\"true\" >";
+            html += "<div class='title-line'></div>"
+            html += "<div  class=\"panel-heading clearfix aj-title font_title_style\" role=\"tab\"  id=\"aj" + n + "\"" +
+                    "data-toggle=\"collapse\" data-parent=\"#aj_list\" data-target=\"#collapse" + n + "\"" +
+                    " aria-controls=\"collapse" + n + "\" >";
+            if(court_id==861){
+
+                        html += "<div class=\"fymc col-md-4\">松阳县人民法院</div>";
+                       //$("#lajzcx_fymc").html('');
+                     }else{
+                        html += "<div class=\"fymc col-md-4\">" + value.court_name + "</div>";
+                     }
+            
+             if(court_id==861){
+
+                        html += "<div class=\"ah col-md-4\">(2016)浙1124执1026号</div>";
+                       //$("#lajzcx_fymc").html('');
+                     }else{
+                        html += "<div class=\"ah col-md-4\">" + value.case_num + "</div>";
+                     }
+            
+
+            html += "<div class=\"clearfix\">";
+
+
+            var shzt = "";
+            if (value.state == "2") {
+                shzt = "已通过";
+                html +="<div class=\"ckxq\" onclick=\"ckajxq('"+value.lsh+"')\">查看卷宗</div>";
+            } else if (value.state == "1") {
+                shzt = "审核中";
+                html +="<div class=\"ckxq\">查看卷宗</div>";
+            } else if (value.state == "0") {
+                shzt = "未通过";
+                html +="<div class=\"ckxq\">查看卷宗</div>";
+            }else{
+                shzt = "已通过";
+                html +="<div class=\"ckxq\" onclick=\"ckajxq('"+value.lsh+"')\">查看卷宗</div>";
+            }
+
+            html += "<div class=\"shzt font_bigger \">" + shzt + "</div>";
+            if (value.today == "1") {
+                html += "<div class=\"jinri badge font_bigger\">今日</div>";
+            }
+            html += "</div>";
+            
+            html += "</div>";
+
+            html+="<div data-lsh='"+value.lsh+"' data-xh='"+value.xh+"' id=\"collapse"+n+"\" class=\"panel-collapse collapse "+(n==0 ? "in":"")+"\" data-index=\""+n+"\">";
+            html+="<div class=\"panel-body aj-info\">";
+            html+="<div class=\"col-md-offset-4 font_bigger\">";
+            if(court_id==861){
+
+                        html+="<div class=\"col-md-7\">案　　由：机动车交通事故责任纠纷</div>";
+                       //$("#lajzcx_fymc").html('');
+                     }else{
+                         html+="<div class=\"col-md-7\">案　　由："+value.case_action_name+"</div>";
+                     }
+           
+            html+="<div class=\"col-md-5\">标　　的："+value.biaode+"</div>";
+            html+="<div class=\"col-md-12\">申<span class=\"dsr_spacing\"> &nbsp;请 </span>人："+value.user_name+"</div>";
+            html+="<div class=\"col-md-7\">申请日期："+value.create_time+"</div>";
+            html+="<div class=\"col-md-5\">通过日期："+value.handle_time+"</div>";
+            html+="</div></div></div></div>";
+
+            // html += "<div id=\"collapse" + n + "\" class=\"panel-collapse collapse " + (n == 0 ? "in" : "")
+            //         + "\" data-index=\"" + n + "\" role=\"tabpanel\" aria-labelledby=\"aj" + n + "\">";
+            // html += "<div class=\"panel-body  aj-info\">";
+            // html += "<div class=\"col-md-offset-4 font_bigger\">";
+            // // html += "<div class=\"col-md-8\">案件名称：" + value.title + "</div>";
+            // // html += "<div class=\"col-md-8\">承办法官：" + value.judge_name + "</div>";
+            // html += "<div class=\"col-md-12\">申请人：" + value.user_name + "</div>";
+            // // html += "<div class=\"col-md-4\">联系方式：" + value.judge_mobile + "</div>";
+            // // html += "<div class=\"col-md-4\">审核状态：" + shzt + "</div>";
+            // html += "<div class=\"col-md-7\">申请日期：" + value.create_time + "</div>";
+            // html += "<div class=\"col-md-5\">通过日期：" + value.handle_time + "</div>";
+            // html += "</div>";
+            // html += "</div>";
+            // html += "</div>";
+            // html += "</div>";
+             });
+        }
+
+        $(".aj-list").append(html);
+    });
+    
+    /*案件收藏*/
+          $("#btn_sc").on('click', function(){
+              var val_selected = $(".panel-collapse.collapse.in").data("index");
+              var lsh = $(".panel-collapse.collapse.in").data('lsh');
+              var xh = $(".panel-collapse.collapse.in").data('xh');
+              localStorage.setItem("sc_cx_lsh", lsh);
+              localStorage.setItem("sc_cx_xh", xh);
+              if (val_selected == undefined) {
+                  open_modal('请选择案件再收藏');
+                  return false;
+              }
+              
+              //案件收藏
+              scaj();
+                  
+              //记录案件收藏次数
+              record_clicknum('ajsc_record');     
+          }); 
+
+    /*查看卷宗*/
+    function ckajxq(lsh){
+        /*
+            @author namimori
+            @date   16/4/28
+        */
+        
+        
+        ////保存日志搜索信息
+        
+        var httpurl = global_data.httpurl;
+        var user_id = localStorage.getItem('user_id');
+        var xh = $(".panel-collapse.collapse.in").data('xh');
+        var lsh = $(".panel-collapse.collapse.in").data('lsh');
+        
+        
+        var ajxx_jzdata = [],
+            yyyjcx_data = JSON.parse(localStorage.getItem('yyyjcx_data'));
+        for (var i = yyyjcx_data.length - 1; i >= 0; i--) {
+            if (lsh == yyyjcx_data[i].lsh) {
+                ajxx_jzdata = yyyjcx_data[i].allinfo.jz;
+                break;
+            }
+        }
+        
+        var yue_account = localStorage.getItem('sc_cx_account');
+        var yue_pwd = localStorage.getItem('sc_cx_password');
+        var yue_type = localStorage.getItem('sc_cx_login_type');
+        
+        
+        //保存日志搜索信息
+
+        
+        ajax(
+            ""+httpurl+"log/search_log.php",
+            "type=2&sc_cx_account="+yue_account+"&user_id="+user_id+'&sc_cx_password='+yue_pwd+'&yue_type='+yue_type+'&xh='+xh+'&yyyj_lsh='+lsh,
+            function(defaultData){
+                console.log(defaultData);
+            }
+           
+        );
+        
+        //查到该案件的详情信息
+     
+        if(yue_type==1){ //查询账号
+                // 查询账号+密码 请求已受理案件列表数据 yslajcx_data
+                ajax(
+                    ""+httpurl+"ssfw/wsla/yylajzcx/cklajz.php",
+                    "lei_type=3&type="+yue_type+"&case_num="+yue_account+"&password="+yue_pwd,
+                    function(defaultData){
+                        
+                        yslajcx_data = defaultData.data;
+                        
+                        localStorage.setItem("yslajcx_data", JSON.stringify(yslajcx_data));
+                        console.log(yslajcx_data);
+                    },
+                    null,
+                    null,
+                    null,
+                    false //同步
+                );
+            
+        }else if(yue_type==2){ //手机号
+
+                //手机号+密码 请求已受理案件列表数据 yslajcx_data
+                ajax(
+                    ""+httpurl+"ssfw/wsla/yylajzcx/cklajz.php",
+                    "lei_type=3&type="+yue_type+"&mobile="+yue_account+"&password="+yue_pwd,
+                    function(defaultData){
+                        
+                        yslajcx_data = defaultData.data;
+                        
+                        localStorage.setItem("yslajcx_data", JSON.stringify(yslajcx_data));
+                        console.log(yslajcx_data);
+                    },
+                    null,
+                    null,
+                    null,
+                    false //同步
+                 );
+            
+        }
+        
+        if(lsh=='115000000086926'){
+            var ajxx_jzdata = [
+                    //{'id' : 'a01', 'name' : '案件移送表', 'url' : ''},
+                    {'id' : 'b01', 'name' : '审判流程管理信息表', 'url' : ''},
+                    {'id' : 'c01', 'name' : '缴纳诉讼费收据或减免手续', 'url' : ''},
+                    {'id' : 'd01', 'name' : '起诉书或口诉笔录及附件', 'url' : ''},
+                    {'id' : 'e01', 'name' : '当事人、代理人身份证明', 'url' : ''},
+                    {'id' : 'f01', 'name' : '原告、被告、第三人举证材料', 'url' : ''},
+                    {'id' : 'g01', 'name' : '开庭通知、传票及送达回证', 'url' : ''},
+                ];
+        }
+ 
+        switch(lsh)
+        {
+            case '115000000086926':
+                ajxx_jzdata = [
+                    {'id' : 'a01', 'name' : '案件移送表', 'url' : ''},
+                    {'id' : 'b01', 'name' : '立案审查、审判流程管理信息表', 'url' : ''},
+                    {'id' : 'c01', 'name' : '缴纳诉讼费收据或减免手续', 'url' : ''},
+                    {'id' : 'd01', 'name' : '起诉书或口诉笔录及附件', 'url' : ''},
+                    {'id' : 'e01', 'name' : '当事人、法定代表人、代理人身份证明', 'url' : ''},
+                    {'id' : 'f01', 'name' : '原告、被告、第三人举证材料', 'url' : ''},
+                    {'id' : 'g01', 'name' : '开庭通知、传票及送达回证', 'url' : ''},
+                ]
+                break;
+            case '127500000089075':
+                ajxx_jzdata = [
+                    {'id' : 'f01', 'name' : '2016-苏0591民初-58-F01', 'url' : ''},
+                    {'id' : 'z01', 'name' : '2016-苏0591民初-58-Z01', 'url' : ''},
+                ]
+                break;
+            case '127500000093161':
+                ajxx_jzdata = [
+                    {'id' : 'f01', 'name' : '2016-苏0591民初-2-F01', 'url' : ''},
+                    {'id' : 'z01', 'name' : '2016-苏0591民初-2-Z01', 'url' : ''},
+                ]
+                break;
+        }
+        console.log('333');
+
+        console.log(ajxx_jzdata);
+
+        localStorage.setItem('yyyj_lsh', lsh);
+        localStorage.setItem('ajxx_jzdata', JSON.stringify(ajxx_jzdata));
+
+        window.location.href = 'yyyjjz.html';
+    }  
+</script>
+</body>
+</html>

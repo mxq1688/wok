@@ -1,0 +1,68 @@
+
+/* 标题 */
+.sxrcxjgxq{
+	/*.sxrcxjgxq_body {
+		!* height: 428px;*!
+		height: 568px;
+		@include center-block;
+		font-size: 30px;
+		width: 100%;
+		color: #333333;
+		overflow-x: hidden;
+    	overflow-y: scroll;
+	}
+	!* 每个结果项，字体为灰色 *!
+	.xqjg {
+		color:#999;
+	}
+	.sxrcxjgxq_body_left{
+		width:50%;
+		height:86%;
+	}
+
+	.sxrcxjgxq_item{
+		margin-top: 22px;
+	}
+	.sxrcxjgxq_body_right{
+		width:50%;
+		height:86%;
+	}
+*/
+	
+
+	/* 按钮 */
+
+
+}
+
+.sxrcx_body{
+	.sxrcxjgxq_body {
+		/* height: 428px;*/
+		height: 500px;
+		@include center-block;
+		font-size: 30px;
+		width: 100%;
+		color: #333333;
+		/*overflow-x: hidden;
+		overflow-y: scroll;*/
+	}
+	/* 每个结果项，字体为灰色 */
+	.xqjg {
+		color:#999;
+	}
+	.sxrcxjgxq_body_left{
+		width:50%;
+		height:86%;
+	}
+
+	.sxrcxjgxq_item{
+		margin-top: 22px;
+		/*margin-top: 30px;*/
+	}
+	.sxrcxjgxq_body_right{
+		width:50%;
+		height:86%;
+	}
+
+}
+

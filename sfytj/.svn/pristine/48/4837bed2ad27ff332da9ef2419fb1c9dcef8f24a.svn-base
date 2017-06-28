@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>诉讼指引</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body class="fyck sszy_xq">
+<div class="sszyxq" id="sszyxq">
+
+    <div class="btn_row" style="bottom:-50px;">
+        <input type="button" value="返回" class="common_btn btn_fh" onclick="history.back()">
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+
+<!--<script>
+    var httpurl=global_data.httpurl;
+    var sxrItemData = null;
+    ajax(
+            ""+httpurl+"ggxx/ygsf/ssyd.php",
+            "court_id="+16,
+            function(defaultData){
+                console.log(defaultData);
+                sxrItemData = defaultData.data;
+            },
+            null,
+            null,
+            null,
+            false
+    );
+</script>-->
+
+<script type="text/javascript">
+
+
+    $(function () {
+
+
+        /*填充页面*/
+        var ssyd_str=JSON.parse(localStorage.getItem("ssyd_str"));
+        var html = "";
+        html += "<div class=\"tilte font_header\">"+ssyd_str.title+"</div>";
+        html += "<div class=\"nr font_bigger\">"+ssyd_str.content+"</div>";
+        $("#sszyxq").append(html);
+       /* var ssyd_str=JSON.parse(getCookie("ssyd_str"));
+        var data = sxrItemData[ssyd_str];
+        var html = "";
+        html += "<div class=\"tilte font_header\">"+data.title+"</div>";
+        html += "<div class=\"nr font_bigger\">"+data.content+"</div>";
+        $("#sszyxq").append(html);*/
+
+        }
+    );
+</script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <title>
+                查看立案进展
+            </title>
+            <link href="/sfytj/dist/styles/main.min.css" rel="stylesheet" type="text/css"/>
+            <link href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        </meta>
+    </head>
+    <body>
+        <div class="cklajz">
+            <div class="wrap">
+                <div class="common_body">
+                    <!--导航条部分-->
+                    <div class="ssfw_nav yyyjsq_nav clearfix">
+                        <!--预约立案标题 -->
+                        <div class="nav_title yyyjsq_title">
+                            <h2>
+                                预约阅卷申请
+                            </h2>
+                        </div>
+                        <!--进度条 -->
+                        <div class="nav_process">
+                            <!-- 圆点和横线 -->
+                            <div class="process clearfix">
+                                <div class="process1">
+                                    <div class="nav_line1">
+                                    </div>
+                                    <a href="javascript:void(0);" onclick="url_load('yyyjdl.html')">
+                                        <div class="nav_circle">
+                                            1
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="process2">
+                                    <div class="nav_line">
+                                    </div>
+                                    <a href="javascript:void(0);" onclick="url_load('yyyjxzaj.html')">
+                                        <div class="nav_circle">
+                                            2
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="process3">
+                                    <div class="nav_line">
+                                    </div>
+                                    <a href="javascript:void(0);" onclick="url_load('yyyjyt.html')">
+                                        <div class="nav_circle">
+                                            3
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="process4">
+                                    <div class="nav_line">
+                                    </div>
+                                    <a href="javascript:void(0);" onclick="url_load('yyyjqr.html')">
+                                        <div class="nav_circle">
+                                            4
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- 下方的文字 -->
+                            <div class="process_title clearfix">
+                                <div class="process_titleinfo">
+                                    当事人登录
+                                </div>
+                                <div class="process_titleinfo">
+                                    选择案件
+                                </div>
+                                <div class="process_titleinfo">
+                                    确认身份和用途
+                                </div>
+                                <div class="process_titleinfo">
+                                    信息确认
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--内容区-->
+                    <div class="font_header tip">
+                        您当前阅卷申请件数：
+                        <span id="lajzcx_count">
+                            <!--4-->
+                        </span>
+                    </div>
+                    <!--案件列表-->
+                    <div aria-multiselectable="true" class="aj-list panel-group" id="aj_list" role="tablist">
+                    </div>
+                    <!--end案件列表-->
+                    <!--end内容区-->
+                    <!--按钮区-->
+                    <div class="btn_row clearfix">
+                        <input class="common_btn " onclick="window.location.href='yyyjdl.html'" type="button" value="上一步"/>
+                        <div class="fr">
+                            <button class="common_btn btn_next" id="btn_next">
+                                下一步
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/sfytj/bower_components/jquery/dist/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/dist/scripts/main.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+
+            var case_title = "" //案件名称
+            var court_id = localStorage.getItem("court_id");
+
+            var defaultData = null;
+            $(function() {
+                //从cookie中获取预约立案进展查询 数据
+                var yyyjsq_data = JSON.parse(getCookie("yyyjsq_data"));
+                defaultData = yyyjsq_data;
+                /*填充页面*/
+                var html = "";
+                //根据返回的是defaultData.length是否为true来展示（true,手机号查多条数据， false,案件号查 1条数据)
+                if (defaultData.length) {
+                    $("#lajzcx_count").text(defaultData.length);
+
+                   
+                    if(court_id==861){
+                       $("#lajzcx_fymc").text('浙江高级人民法院');
+                     }else{
+                        $("#lajzcx_fymc").text(defaultData[0].court_name);
+                     }
+
+                    $.each(defaultData, function(n, value) {
+                        html += "<div class=\"panel panel-default aj-item ";
+                        //state 0失败 
+                        if (value.state == "2") {
+                            html += "state-success";
+                        } else if (value.state == "1") {
+                            html += "state-waiting";
+                        } else if (value.state == "0") {
+                            html += "state-failed";
+                        }
+                        html += "\">";
+                        html += "<div class='title-line'></div>"
+                        html += "<div class=\"panel-heading clearfix aj-title font_title_style\" role=\"tab\"  id=\"aj" + n + "\"" + "data-toggle=\"collapse\" data-parent=\"#aj_list\" data-target=\"#collapse" + n + "\"" + " aria-controls=\"collapse" + n + "\" >";
+                        html += "<div class=\"fymc col-md-3\">" + value.court_name + "</div>";
+                        html += "<div class=\"ah\" da_an='" + value.lsh + "'>" + value.case_num + "</div>";
+                        html += "<div class=\"clearfix font_bigger\">";
+                        var shzt = ""
+                        if (value.state == "2") {
+                            shzt = "阅卷已通过"
+                        } else if (value.state == "1") {
+                            shzt = "阅卷审核中"
+                        } else if (value.state == "0") {
+                            shzt = "阅卷未通过"
+                        } else if (value.state == "-1") {
+                            shzt = "未申请阅卷"
+                        }
+                        if (value.today == "1") {
+                            html += "<div class=\"badge\">今日</div>";
+                        }
+                        html += "</div>";
+                        html += "</div>";
+                        html += "<div data-title=" + value.case_name + " id=\"collapse" + n + "\" class=\"panel-collapse collapse " + (n == 0 ? "in" : "") + "\" data-index=\"" + n + "\" role=\"tabpanel\" aria-labelledby=\"aj" + n + "\">";
+                        html += "<div class=\"panel-body  aj-info\">";
+                        html += "<div class=\"col-md-offset-3 font_bigger\">";
+                        html += "<div class=\"col-md-8\">案件名称：" + value.title + "</div>";
+                        html += "<div class=\"col-md-4\">申请日期：" + value.create_time + "</div>";
+                        html += "<div class=\"col-md-8\">承办法官：" + value.judge_name + "</div>";
+                        html += "<div class=\"col-md-4\">联系方式：" + value.judge_mobile + "</div>";
+                        html += "<div class=\"col-md-8\">审核状态：" + shzt + "</div>";
+                        html += "<div class=\"col-md-4\">通过日期：" + value.handle_time + "</div>";
+                        html += "</div>";
+                        html += "</div>";
+                        html += "</div>";
+                        html += "</div>";
+                    });
+                } else {
+                    $("#lajzcx_count").text(1);
+                    var value = defaultData;
+                     
+                   
+                    case_title = value.title; //将案件名称保存起来
+                    var n = 0;
+                    html += "<div class=\"panel panel-default aj-item ";
+                    //state 0失败 
+                    if (value.state == "2") {
+                        html += "state-success";
+                    } else if (value.state == "1") {
+                        html += "state-waiting";
+                    } else if (value.state == "0") {
+                        html += "state-failed";
+                    }
+                    html += "\">";
+                    html += "<div class='title-line'></div>"
+                    html += "<div class=\"panel-heading clearfix aj-title font_title_style\" role=\"tab\"  id=\"aj" + n + "\"" + "data-toggle=\"collapse\" data-parent=\"#aj_list\" data-target=\"#collapse" + n + "\"" + " aria-controls=\"collapse" + n + "\" >";
+                    if(court_id==861){
+                        html += "<div class=\"fymc col-md-3\">浙江高级人民法院</div>";
+                       //$("#lajzcx_fymc").html('');
+                     }else{
+                        html += "<div class=\"fymc col-md-3\">" + value.court_name + "</div>";
+                     }
+                    
+                    html += "<div class=\"ah\" da_an='" + value.lsh + "'>" + value.case_num + "</div>";
+                    html += "<div class=\"clearfix font_bigger\">";
+                    var shzt = ""
+                    if (value.state == "2") {
+                        shzt = "阅卷已通过"
+                    } else if (value.state == "1") {
+                        shzt = "阅卷审核中"
+                    } else if (value.state == "0") {
+                        shzt = "阅卷未通过"
+                    } else if (value.state == "-1") {
+                        shzt = "未申请阅卷"
+                    }
+                    if (value.today == "1") {
+                        html += "<div class=\"badge\">今日</div>";
+                    }
+                    html += "</div>";
+                    html += "</div>";
+                    html += "<div data-title=" + value.case_name + " id=\"collapse" + n + "\" class=\"panel-collapse collapse " + (n == 0 ? "in" : "") + "\" data-index=\"" + n + "\">";
+                    html += "<div class=\"panel-body aj-info\">";
+                    html += "<div class=\"col-md-offset-4 font_bigger\">"
+                    html += "<div class=\"col-md-7\">案　　由：" + value.case_action_name + "</div>";
+                    html += "<div class=\"col-md-5\">标　　的：" + value.biaode + "</div>";
+                    html += "<div class=\"col-md-12\">申<span class=\"dsr_spacing\"> &nbsp;请 </span>人：" + value.user_name + "</div>";
+                    html += "<div class=\"col-md-7\">申请日期：" + value.create_time + "</div>";
+                    html += "<div class=\"col-md-5\">通过日期：" + value.handle_time + "</div>";
+                    html += "</div></div></div></div>";
+                }
+                $(".aj-list").append(html);
+                /*下一步按钮点击事件*/
+                $("#btn_next").click(function() {
+                    set_selected_val();
+                });
+                /* 记录导航条步数的方法 */
+                nav_step("yyyjsq_last_step", 4);
+            });
+            /** 获取选中的值存入cookie*/
+            function set_selected_val() {
+                //保存当前选中的案号case_num和案件名称title;
+                //案号：
+                var case_ah = $(".panel-collapse.collapse.in").prev().children(".ah").attr('da_an');
+                var selected_index = $(".panel-collapse.collapse.in").data("index");
+                if (selected_index == undefined) {
+                    open_modal('请选择待查看的案件！');
+                    return false;
+                }
+                //案件名称
+                case_title = $(".panel-collapse.collapse.in").data("title");;
+                //判断该阅卷是否已经申请并且已经通过了
+                var user_id = getCookie('user_id') || 1;
+                var httpurl = global_data.httpurl;
+                ajax("" + httpurl + "/ssfw/yyyj/yyyjsq/checkyj.php", 'user_id=' + user_id + '&case_num=' + case_ah, function(defaultData) {
+                    if (defaultData.state == 2) {
+                        open_modal("该案件阅卷申请已经通过，不能重复申请!");
+                    } else {
+                        setCookie('case_ah', case_ah);
+                        setCookie('case_title', case_title);
+                        //跳转到下一步
+                        yyyjsq_next_step(2);
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>

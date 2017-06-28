@@ -1,0 +1,38 @@
+/*开庭公告内容*/
+.ktgg{
+   .ktgg_under_line{
+     width: 100%;
+     height: 2px;
+     background: #999999;
+    }
+
+  .ktgg_title{
+    font-weight: 500;
+    color: #000;
+    line-height: 40px;
+    }
+   .title{
+     padding-top: 10px;
+     margin-bottom: 30px;
+     line-height: 26px;
+    }
+   .content{
+     width: 100%;
+     margin-top: 50px;
+     margin-bottom: 40px;
+    }
+   .dayin{
+     width:100% ;
+     position: absolute;
+     bottom: 30px;
+     left: 0px;
+     padding: 0px 100px;
+    }
+   .dayinewizhi{
+     float: right;
+     width:180px ;
+     height: 60px;
+     line-height: 60px;
+     font-size: 28px !important;
+    }
+ }

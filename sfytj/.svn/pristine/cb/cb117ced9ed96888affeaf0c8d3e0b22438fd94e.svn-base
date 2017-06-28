@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+        <title>
+            高拍仪拍照
+        </title>
+        <link href="/sfytj/dist/styles/main.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body onunload="LeavePage()">
+        <!--页面-->
+        <div class="tjcl">
+            <div class="wrap">
+                <div class="common_body">
+                    <!-- 高拍仪拍摄照片界面 -->
+                    <div class="gpy_content">
+                        <img src="/sfytj/dist/images/bg/CN-wp5.jpg" style="width: 100%;height: 640px;"/>
+                        <div class="img_name">
+                        </div>
+                    </div>
+                    <!--按钮 -->
+                    <div class="btn_row ">
+                        <input class="common_btn fl" onclick="history.back()" type="button" value="返回"/>
+                        <input class="common_btn fl mid_btn preview" type="button" value="预览"/>
+                        <input class="common_btn fr" onclick="GetPic()" type="button" value="拍摄">
+                            />
+                        </input>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/sfytj/bower_components/jquery/dist/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/bower_components/jquery/dist/jquery.form.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/dist/scripts/main.min.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+            var cameraID = 1; //默认主摄像头,使用环境摄像头1
+           $(function() {
+               //开灯
+               LightControl.PowerOn(5);
+               //打开舱门
+               LightControl.OpenDoor();
+               $(".preview").click(function() {
+                   //高拍仪设置设备分辨率，并且开启预览
+                   SetResolution1();
+               });
+           });
+
+           function SetResolution1() //设置视频设备的分辨率（重启预览后生效）。并且开始预览
+           {
+               var width = 2592;
+               var height = 1944;
+               var bitcount = 16;
+               $("#ggcom", window.top.document).css("display", "block");
+               window.top.document.ggcom.SetResolution(cameraID, width, height, bitcount);
+               window.top.document.ggcom.StartView(cameraID);
+           }
+
+           function LeavePage() {
+               $("#ggcom", window.top.document).css("display", "none");
+               LightControl.PowerOff(5);
+               window.top.document.ggcom.StopView(cameraID);
+           }
+
+           function GetPic() //拍照
+           {
+               $(".img_name").text("");
+               var PicDir = "I:\\高拍仪图片" //照片存放路径
+               var PicFormat = "高拍仪%02d.jpg" //图片命名格式
+               window.top.document.ggcom.SetSys(PicDir, PicFormat, 80); //修改系统默认参数
+               var ret = window.top.document.ggcom.GrabPhoto(cameraID, 0, 0, 0, 0, 0, 0); //拍照
+               if (ret == 0) { //成功
+                   var img = window.top.document.ggcom.GetImgName();
+                   $(".img_name").text("拍摄成功！图片保存在" + img);
+               } else if (ret == -1) {
+                   $(".img_name").text("拍摄失败！");
+               }
+           }
+        </script>
+    </body>
+</html>

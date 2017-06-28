@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>诉讼工作流程图</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css" />
+</head>
+<body class="fyck msss_lc">
+<!--主体展示部分-->
+<div class="mssslc" id="mssslc">
+
+
+
+</div>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    /*模拟数据*/
+    var defaultData =
+            [
+                {
+                    title:'民事诉讼流程一览图 :',
+                    /*bz:'<p>备注 ：诉讼流程根据法院而定，上面对应流程带有点击事件，点击进入相应窗口介绍指南界面</p>',*/
+                    tp:'/sfytj/dist/images/icon/msss_lc.png',
+                    arrow:'/sfytj/dist/images/icon/arrow_r.png',
+                    arrow_l:'/sfytj/dist/images/icon/arrow_l.png',
+                    ktgg:"menu_common2('/sfytj/dist/html/ggxx/tsgk/ktgg_index.html')",
+                    sszy:"menu_common2('/sfytj/dist/html/ggxx/ygsf/ssyd/index.html')",
+                    yyla:"menu_common2('/sfytj/dist/html/ssfw/wsla/yylasq/ssfxts.html')",
+                    lajdcx:"menu_common2('/sfytj/dist/html/wycx/index.html')"
+                },{
+                title:'刑事自诉工作流程图一览图 :',
+               /* bz:'<p>备注 ：诉讼流程根据法院而定，上面对应流程带有点击事件，点击进入相应窗口介绍指南界面</p>',*/
+                arrow:'/sfytj/dist/images/icon/arrow_r.png',
+                arrow_l:'/sfytj/dist/images/icon/arrow_l.png',
+                tp:'/sfytj/dist/images/icon/msss_lc.png',
+                ktgg:"menu_common2('/sfytj/dist/html/ggxx/tsgk/ktgg_index.html')",
+                sszy:"menu_common2('/sfytj/dist/html/ggxx/ygsf/ssyd/index.html')",
+                yyla:"menu_common2('/sfytj/dist/html/ssfw/wsla/yylasq/ssfxts.html')",
+                lajdcx:"menu_common2('/sfytj/dist/html/wycx/index.html')"
+            },{
+                title:'行政诉讼工作流程图一览图 :',
+                tp:'/sfytj/dist/images/icon/msss_lc.png',
+                arrow:'/sfytj/dist/images/icon/arrow_r.png',
+                arrow_l:'/sfytj/dist/images/icon/arrow_l.png',
+                ktgg:"menu_common2('/sfytj/dist/html/ggxx/tsgk/ktgg_index.html')",
+                sszy:"menu_common2('/sfytj/dist/html/ggxx/ygsf/ssyd/index.html')",
+                yyla:"menu_common2('/sfytj/dist/html/ssfw/wsla/yylasq/ssfxts.html')",
+                lajdcx:"menu_common2('/sfytj/dist/html/wycx/index.html')"
+            }
+            ];
+
+</script>
+<script type="text/javascript">
+
+
+    console.log('开始加载');
+
+    $(function () {
+        /*填充页面*/
+        var html = "";
+        var n=getPar("id");
+        var value=defaultData[n];
+
+        console.log(value);
+        console.log(value.sszy);
+        console.log(value.ktgg);
+
+        html += "<div class=\"title font_h1 \">"+value.title+"</div>";
+        html += "<div class='ck_row'>" ;
+
+        html += "<div onclick=\"menu_common2('/sfytj/dist/html/ggxx/ygsf/ssyd/index.html')\"class=\"lc_a1 font_h1 fl\">诉讼指引窗口</div> ";
+        html += "<div class=\" arr fl\"><img src=\""+value.arrow+"\"> </div>";
+        html += "<div onclick=\"menu_common2('/sfytj/dist/html/ssfw/wyla_index.html')\"><div class=\"lc_a1 font_h1 fl\">预约立案窗口</div></div> ";
+        html += "<div class=\" arr fl\"><img src=\""+value.arrow+"\"> </div>";
+        html += "<div onclick=\"menu_common2('/sfytj/dist/html/wycx/index.html')\"><div class=\"lc_a1 font_h1 fl\">进度查询</div></div> ";
+        html += "<div class=\" arr fl\"><img src=\""+value.arrow+"\"> </div>";
+        html += "<div class=\"lc_a1 font_h1 fl mr\">审核通过</div> ";
+        html += "</div> ";
+
+        html += "<div class='arr_row'>" ;
+        html += "<div class=\" arr_l fl\"><img src=\""+value.arrow_l+"\"> </div>";
+        html += "</div> ";
+
+        html += "<div class='gg_row'>" ;
+        html += "<a onclick=\"menu_common2('/sfytj/dist/html/ggxx/tsgk/ktgg_index.html')\"><div class=\"lc_a1 font_h1 fl\">查看开庭公告</div></a> ";
+        html += "<div class=\" arr fl\"><img src=\""+value.arrow+"\"> </div>";
+        html += "<div class=\"lc_a1 font_h1 fl\">庭审</div> ";
+        html += "<div class=\" arr fl\"><img src=\""+value.arrow+"\"> </div>";
+        html += "<div class=\"lc_a1 font_h1 fl\">诉讼结束</div> ";
+        html += "</div> ";
+        <!--底部按钮-->
+        html += "<div class=\"btn_row\">";
+        html += "    <input type=\"button\" value=\"返回\" class=\"common_btn btn_fh\" onclick=\"window.history.back()\">";
+        html += "</div>";
+
+
+        /* <div onclick="menu_common('/sfytj/dist/html/common/sfytj_index.html')">*/
+
+       /* html += "<div onclick=\""+value.sszy+"\"><div class=\"lc_a1 font_h1 fl\">诉讼指引窗口</div></div> ";
+        html += "<div class=\" arr fl\"><img src=\""+value.arrow+"\"> </div>";
+        html += "<div onclick=\""+value.yyla+"\"><div class=\"lc_a1 font_h1 fl\">预约立案窗口</div></div> ";
+        html += "<div class=\" arr fl\"><img src=\""+value.arrow+"\"> </div>";
+        html += "<div onclick=\""+value.lajdcx+"\"><div class=\"lc_a1 font_h1 fl\">立案进度查询</div></div> ";
+        html += "<div class=\" arr fl\"><img src=\""+value.arrow+"\"> </div>";
+        html += "<div onclick=\""+value.lashtg+"\"><div class=\"lc_a1 font_h1 fl mr\">立案审核通过</div></div> ";
+        html += "</div> ";
+
+        html += "<div class='arr_row'>" ;
+        html += "<div class=\" arr_l fl\"><img src=\""+value.arrow_l+"\"> </div>";
+        html += "</div> ";
+
+        html += "<div class='gg_row'>" ;
+        html += "<a onclick=\""+value.ktgg+"\"><div class=\"lc_a1 font_h1 fl\">查看开庭公告</div></a> ";
+        html += "<div class=\" arr fl\"><img src=\""+value.arrow+"\"> </div>";
+        html += "<div class=\"lc_a1 font_h1 fl\">庭审</div> ";
+        html += "<div class=\" arr fl\"><img src=\""+value.arrow+"\"> </div>";
+        html += "<div class=\"lc_a1 font_h1 fl\">诉讼结束</div> ";
+        html += "</div> ";
+
+
+        <!--底部按钮-->
+        html += "<div class=\"btn_row\">";
+        html += "    <input type=\"button\" value=\"返回\" class=\"common_btn btn_fh\" onclick=\"window.history.back()\">";
+        html += "</div>";*/
+
+        $("#mssslc").append(html);
+
+            });
+    
+
+
+</script>
+<script>
+    /* 页面底部菜单点击跳转方法 */
+    function menu_common2(onclick) {
+        /*alert(onclick);*/
+        $("#iframe" , window.parent.parent.document).hide().attr('src',onclick) ;
+    }
+</script>
+
+</body>
+</html>

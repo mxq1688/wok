@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>选择法院</title>
+<link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css" />
+<!-- <link rel="stylesheet" type="text/css" href="/sfytj/src/styles/main.css" /> -->
+<link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+
+
+<body>
+
+<!--页面-->
+<div class="xzfy">
+    <div class="wrap">
+        <div class="common_body">
+            <!--导航条部分-->
+            <div class="ssfw_nav yylasq_nav clearfix">
+                <!--自助立案标题 -->
+                <div class="nav_title">
+                    <h2>自助立案</h2>
+                </div>
+
+                <!--进度条 -->
+                <div class="nav_process">
+                    <!-- 圆点和横线 -->
+                    <div class="process clearfix">
+                        <div class="process1">
+                            <div class="nav_line1"></div>
+                            <a href="javascript:void(0);" onclick="url_load('xzfy.html')">
+                                <div class="nav_circle">1</div>
+                            </a>
+                        </div>
+
+                        <div class="process2">
+                            <div class="nav_line"></div>
+                            <a href="javascript:void(0);" onclick="url_load('txaj_xzaj.html')">
+                                <div class="nav_circle">2</div>
+                            </a>
+                        </div>
+
+                        <div class="process3">
+                            <div class="nav_line"></div>
+                            <a href="javascript:void(0);" onclick="url_load('txryxx_xzaj.html')">
+                                <div class="nav_circle">3</div>
+                            </a>
+                        </div>
+
+                        <div class="process4">
+                            <div class="nav_line" ></div>
+                            <a href="javascript:void(0);" onclick="url_load('txdlr_xzaj.html')">
+                                <div class="nav_circle">4</div>
+                            </a>
+                        </div>
+
+                        <div class="process5">
+                            <div class="nav_line"></div>
+                            <a href="javascript:void(0);" onclick="url_load('tjcl.html')">
+                                <div class="nav_circle">5</div>
+                            </a>
+                        </div>
+
+                        <div class="process6">
+                            <div class="nav_line"></div>
+                            <a href="javascript:void(0);" onclick="url_load('yylaqrb.html')">
+                                <div class="nav_circle">6</div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 下方的文字 -->
+                    <div class="process_title clearfix">
+                        <div class="process_titleinfo">选择法院</div>
+                        <div class="process_titleinfo">案件信息</div>
+                        <div class="process_titleinfo">当事人信息</div>
+                        <div class="process_titleinfo">代理人信息</div>
+                        <div class="process_titleinfo">提交材料</div>
+                        <div class="process_titleinfo">信息确认</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--选择法院部分-->
+            <div class="chosefayuan">
+                <div class="pick_fayuan clearfix">
+                    <!-- 高级人民法院 -->
+                    <div class="high_grade">
+                        <h2 class="font_header font_weight title">高级人民法院</h2>
+                        <div class="high_grade_list">
+                            <ul class="gy fayuan font_bigger">
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 中级人民法院 -->
+                    <div class="middle_grade">
+                        <h2 class="font_header  font_weight title">中级人民法院</h2>
+                        <div class="middle_grade_list">
+                            <ul class="zy fayuan font_bigger">
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 基层人民法院 -->
+                    <div class="low_grade">
+                        <h2 class="font_header font_weight title">基层人民法院</h2>
+                        <div class="low_grade_list">
+                            <ul class="jy fayuan font_bigger">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 上一步 下一步按钮 -->
+            <div class="btn_row ">
+                <input type="button" value="上一步" class="common_btn "  onclick="window.location.href='ssfxts.html'"/>
+                <input id="btn_xzfy" type="button" value="下一步" class="common_btn fr" />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--- 保存选择的法院id  -->
+<input type="hidden" id="xzfy_court_id" value=""/>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+
+</script>
+<script type="text/javascript">
+// 初始化
+$(function(){
+        //添加一个随机数保存到cookie
+    var user_token = generateMixed(6);
+    var user_id = getCookie('user_id')||1; 
+    user_token = user_id+'_'+user_token;
+    setCookie('user_token',user_token);
+    
+    
+    var httpurl=global_data.httpurl;
+
+    /*初始化数据*/
+    var cookie_val = get_lasq_xzfy_xzaj();
+    if (!cookie_val) {
+            cookie_val = JSON.parse(getCookie("ggxx_xzfy"));
+    } 
+    // cur_gy = cookie_val.cur_gy || "a";
+    // cur_zy = cookie_val.cur_zy || "a";
+    // selected_fy = cookie_val.selected_fy || global_data.fymc;
+   cur_gy = cookie_val.cur_gy || 0;
+	cur_zy = cookie_val.cur_zy || 0;
+	selected_fy = cookie_val.selected_fy || global_data.fymc;
+    var court_id = getCookie('court_id');
+    
+    var xzfy_court_id = cookie_val.court_id;
+    if (typeof(xzfy_court_id) == "undefined") {
+            xzfy_court_id = getCookie('court_id');
+    }else{
+        court_id=xzfy_court_id;
+    }
+    var keys = 0;
+    
+    if(!court_id||court_id=='null'){
+      court_id = global_data.court_id;
+    }
+
+	//从数据库获取所有的法院列表：
+	ajax(
+	    ""+httpurl+"ssfw/wsla/yylasq/xzfy.php",
+	    'court_id='+court_id,
+	    function(defaultData){
+	       //console.log(defaultData.data);
+	        threeSelectData = defaultData.data;
+            allSelectData = defaultData.alldata;
+            var allSelectData_num = defaultData.num;
+            if(court_id && ! xzfy_court_id){
+                $.each(threeSelectData, function (key, value) {
+                    
+                    if(court_id!=58){
+                        $.each(allSelectData, function (n, val) {
+                            if(val.id==court_id){
+                                if(val.pid!=0&&val.pid!=58){
+                                  /*var court_num = val.court_num;
+                                  var num1 =  court_num.substr(3,1);
+                                  var num2 =  court_num.substr(2,1);
+                                    if(num2==0){
+                                         keys = parseInt(num1) - parseInt(1);
+                                    }else{
+                                         keys = parseInt(num1) + parseInt(10)-parseInt(1);
+                                    }*/
+                                    keys=allSelectData_num;
+                                }
+                                
+                                
+                                
+                            }
+                        })
+                    }
+                	//if(key== cur_gy){
+            		if(value.id == court_id){
+            		      $('#xzfy_court_id').val(value.id);
+                		  //cur_gy = value.name;
+                		  //cur_zy = value.items.a.name;
+                		  $('.gy').append("<li class='selected gy_li' data-id='"+value.id+"'  onclick='choose_gy()'>"+value.name+"</li>");
+                	}
+                	else{
+                		  $('.gy').append("<li class='gy_li' data-id='"+value.id+"' onclick='choose_gy()'>"+value.name+"</li>");
+                	}
+                    
+               });
+            }else{
+                $.each(threeSelectData, function (key, value) {
+                    
+                    if(xzfy_court_id!=58){
+                        $.each(allSelectData, function (n, val) {
+                            if(val.id==xzfy_court_id){
+                                if(val.pid!=0){
+                                // if(val.pid!=0&&val.pid!=58){
+                                  /*var court_num = val.court_num;
+                                  var num1 =  court_num.substr(3,1);
+                                  var num2 =  court_num.substr(2,1);
+                                    if(num2==0){
+                                         keys = parseInt(num1) - parseInt(1);
+                                    }else{
+                                         keys = parseInt(num1) + parseInt(10)-parseInt(1);
+                                    }*/
+                                    keys=allSelectData_num;
+                                    
+                                }
+                                
+                            }
+                        })
+                        
+                        
+                        //从判断该法院你是否是第三级
+                    //	ajax(
+//                    	    ""+httpurl+"ssfw/wsla/yylasq/xzfy.php",
+//                    	    'court_id='+xzfy_court_id+'&type=1',
+//                    	    function(defaultData){
+//                    	       //console.log(defaultData.data);
+//                    	        keys = defaultData.data;
+//                                
+//                    	    },
+//                    	    null,
+//                    	    null,
+//                    	    null,
+//                    	    false
+//                      	);
+                    }
+
+            		if(value.id == xzfy_court_id){
+            		      $('#xzfy_court_id').val(value.id);
+                		  //cur_gy = value.name;
+                		  //cur_zy = value.items.a.name;
+                		  $('.gy').append("<li class='selected gy_li' data-id='"+value.id+"'  onclick='choose_gy()'>"+value.name+"</li>");
+                	}
+                	else{
+                		  $('.gy').append("<li class='gy_li' data-id='"+value.id+"' onclick='choose_gy()'>"+value.name+"</li>");
+                	}
+               });
+            }
+            
+            
+	    },
+	    null,
+	    null,
+	    null,
+	    false
+  	);
+    
+    //中院和基院默认展示数据：
+    // var zy_ini  = threeSelectData.a.items;
+    // var jy_ini = zy_ini.a.items;
+    var zy_ini  = threeSelectData[0].items;
+    var jy_ini = zy_ini[keys].items;
+    show_zylian(zy_ini,xzfy_court_id,court_id);
+    show_jylian(jy_ini,xzfy_court_id,court_id);
+
+    /* 记录导航条步数的方法 */
+    nav_step_xzaj("last_step_xzaj", 6);
+
+
+    //如果选择的法院不在可视区，设置滚动条使选择的法院可见
+    show_scrollTop();
+
+    $("#btn_xzfy").click(function (){
+        /*保存到Cookie*/
+         var cookie_val = {};
+         var xzfy_court_id = $('#xzfy_court_id').val();
+         cookie_val.court_id=xzfy_court_id;
+         cookie_val.cur_gy = cur_gy ;
+         cookie_val.cur_zy=cur_zy;
+		 selected_fy = $("li.selected").text();
+         cookie_val.selected_fy = selected_fy;
+         save_lasq_xzfy_xzaj(cookie_val);
+         //清空
+         $('#xzfy_court_id').val('');
+         next_step_xzaj(1);
+    });
+    
+});
+
+
+</script>
+</body>
+
+</html>

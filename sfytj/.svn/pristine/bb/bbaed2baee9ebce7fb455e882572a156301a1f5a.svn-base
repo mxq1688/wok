@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新闻</title>
+    <meta http-equiv = "X-UA-Compatible" content="IE=edge"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="/sfytj/bower_components/3dgallery/style.css">-->
+    <script src="/sfytj/bower_components/3dgallery/modernizr.custom.53451.js"></script>
+</head>
+<body class="news index_html">
+<div class="header" style="position: relative">
+    <div class="header_logo"></div>
+    <div class="header_title">
+        <div class="header_titleup"><span class="current_fy_title"></span>诉讼服务终端</div>
+        <!--<div class="header_titleup">诉讼服务终端</div>-->
+        <div class="header_titledown">PEOPLE'S COURT SERVICES TERMINAL</div>
+    </div>
+
+    <div class="header_time">
+        <div class="header_timeup" id="theClock_t"></div>
+        <div class="header_timedown" id="theClock_d"></div>
+    </div>
+
+
+</div>
+
+<div class="main_body">
+
+    <!--视频通话显示区域-->
+    <div class="video_container video_chat">
+        <div class="remote_video" id="remote_video">
+        </div>
+        <div class="tips">
+        </div>
+        <div class="local_video" id="local_video"></div>
+        <div class="control_button_container">
+            <div class="btn_video"></div>
+            <div class="btn_audio"></div>
+            <div class="btn_msg"></div>
+            <div class="btn_hungup"></div>
+        </div>
+    </div>
+</div>
+<video class="fullscreen_video" controls autoplay></video>
+<div class="mask"></div>
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--视频通话-->
+<script type="text/javascript" src="/sfytj/bower_components/videochat/adapter.debug.js"></script>
+<script type="text/javascript"
+        src="/sfytj/bower_components/videochat/realtimecat-0.2-with-webrtc-plugin.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/videochat/videochat.js"></script>
+
+
+<script type="text/javascript">
+    var  isPlaying = false;
+
+    $(function () {
+
+        $('.btn_video').click(function () {
+            toggleVideo();
+        });
+
+        $('.btn_audio').click(function () {
+            toggleAudio();
+        });
+
+        $('.btn_msg').click(function () {
+            alert('正在开发中');
+        });
+
+        $('.btn_hungup').click(function () {
+            closeVideoChat();
+        });
+
+        /*调用这行代码打开视频通话*/
+        openVideoChat();
+
+        /*调用这行代码关闭视频通话*/
+        //closeVideoChat();
+
+    });
+
+
+</script>
+</body>
+</html>

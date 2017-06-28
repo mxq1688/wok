@@ -1,0 +1,101 @@
+/*填写查询密码*/
+.yyyjdl{
+  /* 导航条颜色的变化 */
+
+  /*输入内容上面提示的几个字*/
+  .tip{
+    position: relative;
+    top: 43px;
+  }
+  /*输入内容部分*/
+  .input_list{
+    /*字体样式*/
+    position: relative;
+    top: 65px;
+    margin-left: auto;
+    width: 60%;
+    margin-right: auto;
+   /* position: relative;
+    top: 135px;
+    left: 26%;
+    width: 50%;*/
+    .title{
+      float: left;
+      line-height: 65px;
+     /* font-size: 22px;*/
+      color: #999;
+      width: 20%;
+      text-align: left;
+    }
+
+    /*登录方式*/
+    .dlfs{
+      margin-top: 35px;
+      text-align: center;
+      line-height: 65px;
+      /*案件编号和手机号码样式*/
+      .anbm,.sjhm{
+          float: left;
+          width: 30%;
+          height: 65px;
+          border:2px solid #9e9e9e;
+          margin: 0 5%;
+          .icon{
+            margin-top: -5px;
+            margin-right: 21px;
+          }
+          /**/
+        .icon-sjh,.icon-ajbm{
+          height: 28px;
+          width: 22px;
+        }
+      }
+
+     
+    }
+    /*申请流水号*/
+    .sqlsh{
+      margin-top: 35px;
+      .input_lsh{
+        float: left;
+        width: 75%;
+        height: 65px;
+        border: 1px solid #9e9e9e;
+        margin-left: 10px;
+      }
+      /*手机号码*/
+      .input_sjh{
+        float: left;
+        width: 359px;
+        height: 65px;
+        border: 1px solid #9e9e9e;
+        margin-left: 10px;
+      }
+
+    }
+
+    /*查询密码*/
+    .cxmm,.sqlsh{
+      margin-top: 35px;
+      /*流水号，手机号*/
+      .input_lsh, .input_mm {
+        float: left;
+        width: 70%;
+        height: 65px;
+        border: 1px solid #9e9e9e;
+        margin: 0 5%;
+      }
+
+    }
+
+  }
+  /*底部按钮*/
+  /*底部按钮样式*/
+
+    .accept_btn{
+      color: #fff;
+      margin-right: 20px;
+      position: relative;
+      right: 802px;
+  }
+}

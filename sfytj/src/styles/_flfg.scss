@@ -1,0 +1,15 @@
+/*法律法规详情*/
+.flfg{
+  .flfg_content{
+    width: 100%;
+    font-size: 22px;
+    /*margin-top: 84px;
+    margin-left: 10px;*/
+    .content_list{
+      margin-top: 35px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      max-height: 520px;
+    }
+  }
+}

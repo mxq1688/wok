@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+    <style>
+        .ckzn{height: 550px;}
+    </style>
+</head>
+<body class="ckzn ckzn_grzx">
+
+<!--导航区-->
+<div class="right_nav">
+    <!--步骤列表-->
+    <ul class="nav nav-pills nav-stacked font_bigger">
+        <li role="presentation" class="active"><a href="#step1">1.我的立案</a></li>
+        <li role="presentation"><a href="#step2">2.我的阅卷</a></li>
+        <li role="presentation"><a href="#step3">3.我的受理案件</a></li>
+    </ul>
+
+    <div class="btn_row">
+        <input type="button" value="返回" class="common_btn btn_fh" onclick="history.back()">
+    </div>
+</div>
+<div class="left_content font_big" data-spy="scroll" data-target=".right_nav">
+
+    <div id="step1">
+        <div class="font_header step_header">1.我的案件</div>
+        <div class="info font_bigger">
+               <div class="step_content">如未查到您想要的信息，可以点击左下角的高级查询进入高级查询界面，同时您可以点击右下角的评价服务按钮对本次服务进行评价，点击案件右边查看详情按钮可以进行案件详情查看</div>
+               <img src="/sfytj/dist/images/icon/ckzn_grzx_step1.png">
+           
+        </div>
+    </div>
+    <div id="step2">
+
+        <div class="font_header step_header"> 2.我的阅卷</div>
+
+        <div class="info font_bigger">
+             <div class="step_content">如未查到您想要的信息，可以点击左下角的高级查询进入高级查询界面，同时您可以点击右下角的评价服务按钮对本次服务进行评价，点击案件右边查看卷宗按钮进行卷宗详情查看</div>
+            <img src="/sfytj/dist/images/icon/ckzn_grzx_step2.png">
+        </div>
+
+    </div>
+    <div id="step3">
+
+        <div class="font_header step_header"> 3.我的受理案件</div>
+                
+        <div class="info font_bigger">
+           <div class="step_content">如未查到您想要的信息，可以点击左下角的高级查询进入高级查询界面，同时您可以点击案件右边的查看详情按钮进行案件详情查看</div>
+                <img src="/sfytj/dist/images/icon/ckzn_grzx_step3.png">
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    /*更新父窗口标题*/
+    $(function () {
+        var ele = $('#third_title', window.parent.document);
+        ele.text("个人中心");
+        ele.css("display", "inline-block");
+    });
+</script>
+</body>
+</html>

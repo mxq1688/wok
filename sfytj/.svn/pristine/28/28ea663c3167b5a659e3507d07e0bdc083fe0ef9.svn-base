@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <title>
+                法院概况
+            </title>
+            <link href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+            <link href="/sfytj/dist/styles/main.min.css" rel="stylesheet" type="text/css"/>
+        </meta>
+    </head>
+    <body class="fyck fygk">
+        <!--主体展示部分-->
+        <div class="fygk_nr" id="fygkzs">
+        </div>
+        <script src="/sfytj/bower_components/jquery/dist/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/dist/scripts/main.min.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+            $(function() {
+               //页面初始化，从查询页面获取法院ID：
+               var httpurl = global_data.httpurl;
+               var court_id = getCookie("court_id");
+               console.log(court_id);
+               if (court_id) {
+                   court_id = court_id;
+               } else {
+                   court_id = global_data.court_id;
+               }
+               /*判断fygk_info中是否有该法院的法院概况信息*/
+//               var selected_fygk_info = JSON.parse(localStorage.getItem("selected_fygk_info"));
+//               console.log(selected_fygk_info)
+                   /*如果没有缓存信息，向服务器请求显示，并将其缓存到fygk_info数组中*/
+//               if (selected_fygk_info.fygk == null) {
+                   ajax("" + httpurl + "/ggxx/fyck/fyxx/fygk.php", "court_id=" + court_id, function(defaultData) {
+                       console.log(defaultData);
+                       var value = defaultData.data;
+                       /*将信息添加到数组fygk_info中*/
+                       /*var fygk_info = JSON.parse(localStorage.getItem("fygk_info"));
+                       $.each(fygk_info, function(key, val) {
+                           if (val.fy_court_id === court_id) {
+                               val.fygk = defaultData.data;
+                               selected_fygk_info.fygk = defaultData.data;
+                               localStorage.setItem("fygk_info", JSON.stringify(fygk_info));
+                               localStorage.setItem("selected_fygk_info", JSON.stringify(selected_fygk_info));
+                               return false;
+                           }
+                       });*/
+                       /*填充页面*/
+                       var html = "";
+                       html += "        <div class=\"js font_bigger\">" + value.info + "</div>";
+                       html += " <div class=\"jdsj font_bigger bj\">接待时间 ：" + value.reception + "</div>";
+                       html += " <div class=\"zxdh font_bigger bj \">立案咨询电话：" + value.lazx_tel + "</div>";
+                       html += " <div class=\"ssfwdh font_bigger bj\">诉讼服务电话：" + value.ssfw_tel + "</div>";
+                       html += " <div class=\"zzbsdh font_bigger bj\">总值班室电话：" + value.zzbgs_tel + "</div>";
+                       // html += "        <div class=\"tp\"><img src='" + value.path + "'> </div>";
+                       $("#fygkzs").append(html);
+                   });
+//               }
+               /*如果有缓存信息，则直接显示*/
+               /*else {
+                   var value = selected_fygk_info.fygk;
+                   var html = "";
+                   html += "        <div class=\"js font_bigger\">" + value.info + "</div>";
+                   html += " <div class=\"jdsj font_bigger bj\">接待时间 ：" + value.reception + "</div>";
+                   html += " <div class=\"zxdh font_bigger bj \">立案咨询电话：" + value.lazx_tel + "</div>";
+                   html += " <div class=\"ssfwdh font_bigger bj\">诉讼服务电话：" + value.ssfw_tel + "</div>";
+                   html += " <div class=\"zzbsdh font_bigger bj\">总值班室电话：" + value.zzbgs_tel + "</div>";
+                   // html += "        <div class=\"tp\"><img src='" + value.path + "'> </div>";
+                   $("#fygkzs").append(html);
+               }*/
+           });
+        </script>
+    </body>
+</html>

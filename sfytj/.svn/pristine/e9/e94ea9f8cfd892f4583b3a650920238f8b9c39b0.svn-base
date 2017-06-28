@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>立案申请</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+    <style>
+        .ckzn{height: 550px;}
+    </style>
+</head>
+<body class="ckzn ckzn_lasq">
+
+<!--导航区-->
+<div class="right_nav">
+    <!--步骤列表-->
+    <ul class="nav nav-pills nav-stacked font_bigger">
+        <li role="presentation" class="active"><a href="#step1">第一步：接受条款</a></li>
+        <li role="presentation"><a href="#step2">第二步：选择法院</a></li>
+        <li role="presentation"><a href="#step3">第三步：填写案件信息</a></li>
+        <li role="presentation"><a href="#step4">第四步：填写人员信息</a></li>
+        <li role="presentation"><a href="#step5">第五步：提交材料</a></li>
+        <li role="presentation"><a href="#step6">第六步：信息确认</a></li>
+    </ul>
+
+    <div class="btn_row">
+        <input type="button" value="返回" class="common_btn btn_fh" onclick="history.back()">
+    </div>
+</div>
+<div class="left_content font_big" data-spy="scroll" data-target=".right_nav">
+
+    <div id="step1">
+        <div class="font_header step_header">第一步：接受条款</div>
+        <div class="info font_bigger">
+            <div class="step_content">只有接受条款才可以进行后续操作，点击“我接受”表示您同意条款</div>
+            <img src="/sfytj/dist/images/icon/ckzn_lasq_step1.png">
+        </div>
+    </div>
+    <div id="step2">
+
+        <div class="font_header step_header"> 第二步：选择法院</div>
+
+        <div class="info font_bigger">
+            <div class="step_content">该步骤需要您选择想要申请的法院</div>
+            <img src="/sfytj/dist/images/icon/ckzn_lasq_step2.png">
+        </div>
+
+    </div>
+    <div id="step3">
+
+        <div class="font_header step_header"> 第三步：填写案件信息</div>
+
+        <div class="info font_bigger">
+            <div class="step_content">该步骤需要您填写案由信息以及申请人信息</div>
+            <img src="/sfytj/dist/images/icon/ckzn_lasq_step3.png">
+        </div>
+
+    </div>
+    <div id="step4">
+        <div class="font_header step_header"> 第四步：填写人员信息</div>
+        <div class="info font_bigger">
+            <div class="step_content">该步骤需要您填写人员信息，可填写原告信息、被告信息和第三人信息</div>
+            <div class="step_content">1、填写原告信息</div>
+            <img src="/sfytj/dist/images/icon/ckzn_lasq_step4-1.png">
+            <div class="step_content step_top">2、填写被告信息</div>
+            <img src="/sfytj/dist/images/icon/ckzn_lasq_step4-2.png">
+            <div class="step_content step_top">3、填写第三人信息</div>
+            <img src="/sfytj/dist/images/icon/ckzn_lasq_step4-3.png">
+            <div class="step_remark">您可以通过添加-保存按钮来添加新的人员信息，也可以通过更新来保存人员编辑信息，同时您可以通过刷身份证直接获取您的个人信息，也可以通过删除按钮来删除您已填加的人员信息。</div>
+        </div>
+    </div>
+    <div id="step5">
+        <div class="font_header step_header"> 第五步：提交材料</div>
+        <div class="font_bigger">
+            <div class="step_content">该步骤需要您上传申请立案相关材料</div>
+            <img src="/sfytj/dist/images/icon/ckzn_lasq_step5.png">
+            <div class="step_remark">您可以通过新增文件按钮来添加可选材料信息，也可以通过删除文件按钮删除已填加的材料。</div>
+        </div>
+    </div>
+    <div id="step6">
+        <div class="font_header step_header"> 第六步：信息确认</div>
+        <div class="font_bigger">
+            <div class="step_content">该步骤可以显示您之前申请立案所填信息，审核无误后可选择打印预览或确认提交</div>
+            <img src="/sfytj/dist/images/icon/ckzn_lasq_step6.png">
+            <div class="step_remark">当您点击确认提交按钮后会收到该预约立案进度查看的帐号和密码短信信息</div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    /*更新父窗口标题*/
+    $(function () {
+        var ele = $('#third_title', window.parent.document);
+        ele.text("立案申请");
+        ele.css("display", "inline-block");
+    });
+</script>
+</body>
+</html>

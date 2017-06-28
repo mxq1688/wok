@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开庭公告</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body>
+<div class="ktgg-index">
+    <div class="common_body">
+        <!--头部-->
+        <div class="ggxx-head">
+            <div class="ggxx-title fl font_header">开庭公告</div>
+            <!-- <div class="current_fy fr font_h1"></div> -->
+        </div>
+        <div class="ggxx-body clearfix">
+        <div class="loading_index1 loading_index">加载中...</div>
+            <div class="clearfix">
+                <!--搜索区-->
+                <div class="search-container font_h3 clearfix">
+                    <div class="fl aj-title font_header">筛选时间</div>
+                    <div class="fl search-form">
+                        <form class="form-horizontal">
+                            <div class="input-group col-md-12">
+
+                                <!-- <input type="datetime-local" class="date-from  form-control">
+                                 <div class="text font_big font_h1">至</div>-->
+                                <input type="text" class="date-from  form-control datetimepicker1 font_h2" id="date_begintime" readonly>
+
+
+                                <div class="text  font_h1">至</div>
+
+                                <!--  <span class="text font_big font_h1">至</span>-->
+
+                                <input type="text" class="date-to form-control datetimepicker1 font_h2" id="date_endtime" readonly>
+
+                                <!-- <input type="submit" class="btn-search form-control font_h1" value="查询"> -->
+                                <input type="button" class="btn-search form-control font_h1" onclick="btn_search()" value="查询">
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <!--主体区域，显示公告-->
+            <div id="gg-container">
+            </div>
+            
+            <!-- 查看更多按钮 -->
+            <div class="getmore_btn" onclick="nextpage()">点击查看更多</div>
+        </div>
+
+        <!-- 底部按钮区 -->
+        <div class="btn_row " style="height:60px;">
+            <input type="button" value="查看所有" onclick="search_all_ktgg()" style="display:none" class="common_btn search_all_btn mid_btn "/>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+var httpurl=global_data.httpurl;
+var court_name=null;                                                //法院名称
+var court_id = getCookie("court_id") || global_data.court_id        //法院court_id
+var page = 0;                                                       //全局变量，记载当前页数
+
+/*关于时间控件*/
+$('.datetimepicker1').datetimepicker({
+    format: "yyyy-mm-dd",
+    minView: "month",
+    language: 'zh-CN',
+    autoclose: true,
+    todayBtn: true,
+    pickerPosition: "input-left"
+});
+
+$(function(){
+  
+  $(".loading_index1").show();
+  ini_page();
+
+});
+
+
+function search_all_ktgg(){
+    $("#gg-container").empty(); 
+    ini_page();
+}
+
+//筛选时间查询开庭公告
+function btn_search(){ 
+    var begin_time = $("#date_begintime").val();
+    var end_time = $("#date_endtime").val();
+    console.log("begin_time:"+begin_time+" end_time:"+end_time);
+    if(begin_time==""&&end_time==""){
+        open_modal("请输入查询时间！");
+        return;
+    }
+    $("#gg-container").empty();
+
+    //点击查询给页面加上遮罩
+    $(".loading_index1").show();
+
+    //根据时间参数、法庭id查询数据
+    var ktggItemData_cx = null;
+
+    ajax(
+        ""+httpurl+"/ggxx/tsgk/ktgg.php",
+        "court_id="+court_id+"&begin_time="+begin_time+"&end_time="+end_time,
+        function(ktggItemData_cx){
+            console.log(ktggItemData_cx);
+            if(ktggItemData_cx.data.length==0){
+                var html1='';
+                html1 = '<div class=\"font_header myjg\">该时间段没有开庭公告！' +
+                        '</div>';
+                $("#gg-container").append(html1);
+                 $(".search_all_btn").show();
+                $(".gn_btn").hide();
+
+            }else{
+                var html = "";
+                $.each(ktggItemData_cx.data, function (n, value) {
+                    html += "<div class=\"panel panel-default aj-item \">";
+                    html += "<div class='title-line'></div>"
+                    html += "<div class=\"panel-heading clearfix\" role=\"tab\"  id=\"aj" + n + "\"" +
+                            "data-toggle=\"collapse\" data-parent=\"#gg-container\" data-target=\"#collapse" + n + "\"" +
+                            " aria-controls=\"collapse" + n + "\" >";
+                    html += "<div class='aj-title font_h1'>"
+                    html += "<div class=\"anhao\">" + value.case_num + "</div>";
+
+                    html += "<div class=\"date fl\">" + value.lawful_time + "</div>";
+
+                    if (value.today == "1") {
+                        html += "<div class=\"badge font_bigger\">今日</div>";
+                    }
+
+                    html += "<div class=\"ftmc\">" + value.course_room_name + "</div>";
+                    html += "</div>";
+                    html += "<a class=\"btn  xlzy font_h1\" fl_num='"+value.num+ "' spt_name='" +value.course_room_name+ "' onclick=\"ftfb_ckwz()\">线路指引</a>";
+                    html += "</div>"
+
+
+                    html += "<div id=\"collapse" + n + "\" class=\"panel-collapse collapse " + (n == 0 ? "in" : "")
+                            + "\" data-index=\"" + n + "\" role=\"tabpanel\" aria-labelledby=\"aj" + n + "\">";
+                    html += "<div class=\"panel-body  aj-info\">";
+                    html += "<div class=\"col-md-offset-3 font_bigger ktgg_ajxx\">";
+                    html += "<div class=\"col-md-12\">案由：" + value.anyou + "</div>";
+                    html += "<div class=\"col-md-6\">承办法院：" + value.court_name + "</div>";
+                    html += "<div class=\"col-md-6\">开庭日期：" + value.kt_time + "</div>";
+                    html += "</div>";
+                    html += "</div>";
+                    html += "</div>";
+                    html += "</div>";
+                });
+                $("#gg-container").append(html);
+                $(".search_all_btn").show();
+            }
+       
+        },
+        null,
+        null,
+        null,
+        true
+    );
+    
+}
+
+//查看开庭公告详情
+// function ckktgg(){
+//     var data_index = $(".panel-collapse.collapse.in").data("index");
+//     //console.log("data_index:"+data_index);
+
+//     if(data_index==undefined||data_index==null){
+//         open_modal("请选择需要查看的案件!");
+//     }else{
+//          //点击查看将公告信息保存至cookie；
+//         var str = JSON.stringify(ktggItemData[data_index]); 
+//         setCookie("ktgg_infomation", str); 
+//         window.location.href='ktgg.html';
+//     }
+    
+// }
+
+ /* 点击路线指引时，将楼层数和审判庭名字存入cookie */
+function ftfb_ckwz(){
+    var fl_num = $(event.target).attr('fl_num');
+    var spt_name = $(event.target).attr('spt_name');
+    setCookie("fl_num", fl_num);
+    setCookie("spt_name", spt_name);
+    //徐州中院定制化显示法庭所在楼层
+    if (court_id == 86) {
+        window.location.href = '/sfytj/dist/html/dingzhi/xuzhouzhongyuan/xzzy_ckftwz.html';
+    } else if (court_id == 58) {
+        window.location.href = '/sfytj/dist/html/ggxx/tsgk/ckftwz.html';
+    } else if (court_id == 152) {
+        window.location.href = '/sfytj/dist/html/dingzhi/sheyangfayuan/xzzy_ckftwz.html';
+    // } else if (court_id == 64) {
+    //     window.location.href = '/sfytj/dist/html/dingzhi/guloufayuan/xzzy_ckftwz.html';
+    } else{
+        alert("暂无线路指引图，如需要请联系开发商");
+    }
+}
+
+
+function ini_page(){
+    $(".search_all_btn").hide();
+    $(".gn_btn").show();
+    $("#date_begintime").val('');
+    $("#date_endtime").val('');
+    $(".getmore_btn").hide();
+
+     /* 当前展示的法院名称 */
+    // var xzfy = get_ggxx_xzfy();
+    // var fymc = xzfy.selected_fy;
+    // if (!fymc) {
+    //     fymc = global_data.fymc;
+    // }
+    // $(".current_fy").html(fymc);
+    // court_name = fymc; 
+    // console.log("court_name:"+court_name);
+
+    console.log(court_id);
+
+    var ktggItemData = null;
+
+    //页面初始化，请求开庭公告列表数据；
+     ajax(
+        ""+httpurl+"/ggxx/tsgk/ktgg.php",
+        "court_id="+court_id+"&page="+page,
+        function(defaultData){
+            console.log(defaultData);
+            ktggItemData = defaultData.data;  
+
+            init_data(ktggItemData, true);
+            $(".loading_index1").hide();
+
+            if(defaultData.next_page == 1){
+                $(".getmore_btn").show();
+            }else if(defaultData.nextpage == 0){
+                $(".getmore_btn").hide();
+            }
+        },
+        null,
+        null,
+        null,
+        true
+    );   
+}
+
+//填充开庭公告数据 if_init：第一次加载true， 点击查看更多：false
+function init_data(data, if_init){
+    var html = "";
+    if(data.length){
+        $.each(data, function (n, value) {  
+            html += "<div class=\"panel panel-default aj-item \">";
+            html += "<div class='title-line'></div>"
+            html += "<div class=\"panel-heading clearfix\" role=\"tab\"  id=\"aj" + (page*50+n) + "\"" +
+                    "data-toggle=\"collapse\" data-parent=\"#gg-container\" data-target=\"#collapse" + (page*50+n) + "\"" +
+                    " aria-controls=\"collapse" + (page*50+n) + "\" >";
+            html += "<div class='aj-title font_h1'>";
+            html += "<div class=\"anhao\">" + value.case_num + "</div>";
+            
+            html += "<div class=\"date fl\">" + value.lawful_time + "</div>";
+            
+            if (value.today == "1") {
+                html += "<div class=\"badge font_bigger\">今日</div>";
+            }
+            
+            html += "<div class=\"ftmc\">" + value.course_room_name + "</div>";
+            html += "</div>";
+            html += "<a class=\"btn  xlzy font_h1\" fl_num='"+value.num+ "' spt_name='" +value.course_room_name+ "' onclick=\"ftfb_ckwz()\">线路指引</a>";
+            html += "</div>"
+            
+            if(if_init){
+                html += "<div id=\"collapse" + (page*50+n) + "\" class=\"panel-collapse collapse " + (n == 0 ? "in" : "")
+                    + "\" data-index=\"" + (page*50+n) + "\" role=\"tabpanel\" aria-labelledby=\"aj" + (page*50+n) + "\">";
+            }else{
+                html += "<div id=\"collapse" + (page*50+n) + "\" class=\"panel-collapse collapse\" data-index=\"" + (page*50+n) + "\" role=\"tabpanel\" aria-labelledby=\"aj" + (page*50+n) + "\">";
+            }
+
+            html += "<div class=\"panel-body  aj-info\">";
+            html += "<div class=\"col-md-offset-3 font_bigger ktgg_ajxx\">";
+            html += "<div class=\"col-md-12\">案由：" + value.anyou + "</div>";
+            html += "<div class=\"col-md-6\">承办法院：" + value.court_name + "</div>";
+            html += "<div class=\"col-md-6\">开庭日期：" + value.kt_time + "</div>";
+            html += "</div>";
+            html += "</div>";
+            html += "</div>";
+            html += "</div>";
+        });
+    }else{
+        if(if_init) html = '<div class=\"font_header myjg\">该时间段没有开庭公告</div>';  
+    }
+
+    $("#gg-container").append(html);
+
+    set_scroll_top(data.length);
+}
+
+//查看更多
+function nextpage(){
+    $(".getmore_btn").text("正在加载中，请稍后...");
+    page += 1; 
+    var ktggItemData = null;
+
+    ajax(
+        ""+httpurl+"/ggxx/tsgk/ktgg.php",
+        "court_id="+court_id+"&page="+page,
+        function(defaultData){
+            console.log(defaultData);
+            ktggItemData = defaultData.data;  
+
+            if(defaultData.next_page == 1){
+                init_data(ktggItemData, false);
+                $(".getmore_btn").text("点击查看更多");   
+            }else if(defaultData.next_page == 0){
+                init_data(ktggItemData, false);
+                $(".getmore_btn").text("点击查看更多");
+                $(".getmore_btn").hide(); 
+            }
+        },
+        null,
+        null,
+        null,
+        true
+    );   
+}
+
+//设置滚动条的scrollTop
+function set_scroll_top(num){
+    var pannel_height = $(".panel.panel-default.aj-item").outerHeight();  //panel高度
+    var top = pannel_height*num*page;
+    $("#gg-container").scrollTop(top);
+}
+
+</script>
+</body>
+</html>

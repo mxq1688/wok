@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文书样式</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="/sfytj/bower_components/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body>
+<div class="wsys">
+    <div class="common_body">
+        <!--头部-->
+        <div class="ggxx-head">
+            <div class="ggxx-title font_header">文书样式</div>
+        </div>
+        <!--主体内容-->
+        <div class="ggxx-body">
+
+        <div class="clearfix">
+            <!--搜索区-->
+            <div class="search-container font_h3 clearfix">
+                <div class="fl search-form">
+                    <form class="form-horizontal">
+                        <div class="input-group col-md-12">
+                            <input type="text"  class="date-from  form-control  font_bigger" id="wsys_search">
+                            <div class="btn-search form-control font_h1"  onclick="wsys_search()">查询</div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <!--主体区域，显示公告-->
+        <div id="gg-container">
+
+        </div>
+
+        </div>
+        <!-- 底部按钮区 -->
+        <div class="btn_row ">
+            <input type="button" value="返回" class="common_btn "  onclick="history.back()"/>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    /*查询*/
+    function wsys_search(){
+        var wsys_search = $("#wsys_search").val();
+        console.log(wsys_search);
+
+        if(!wsys_search){
+            open_modal("请输入要查询的文书样式");
+        }
+        else{
+            //页面初始化，从查询页面获取法院ID：
+            var httpurl=global_data.httpurl;
+            ajax(
+                    ""+httpurl+"ggxx/ygsf/wsys.php",
+                    "keys="+wsys_search,
+                    function(datas){
+                        console.log("data.state:"+datas.state);
+                        console.log("data.result:"+datas.result);
+                        console.log(datas);
+                        if(!datas.data.length){
+                            open_modal("无查询结果");
+                            $("#gg-container").empty();
+                        }else{
+                            $("#gg-container").empty();
+                            var html = "";
+                            $.each(datas.data, function (n, value) {
+                                html += "<div class=\"list-group panel-default aj-item \">";
+                                html += "<div class='title-line'></div>"
+                                html += "<div class=\"panel-heading clearfix\" role=\"tab\"  id=\"aj" + n + "\"" +
+                                        "data-toggle=\"collapse\" data-parent=\"#gg-container\" data-target=\"#collapse" + n + "\"" +
+                                        " aria-controls=\"collapse" + n + "\" >";
+                                html += "<div class='aj-title font_h1'>"
+                                html += "<div class=\"anhao\">" + value.title + "</div>";
+
+                                html += "<div class=\"date fl\">" + value.create_time + "</div>";
+
+                                if (value.jinri == "1") {
+                                    html += "<div class=\"badge font_bigger\">最新</div>";
+                                }
+
+                                html += "</div>";
+                                html += "<a class=\"btn  xlzy font_h1\" data-id=\""+n+"\">查看</a>";
+                                html += "</div>";
+                                html += "</div>";
+                                html += "</div>";
+                                html += "</div>";
+
+                            });
+                            $("#gg-container").append(html);
+
+                            $(".xlzy").on('click', function(){
+                                $("#wsys_search").val('');
+                                var n = $(this).data("id");
+                                var data = sxrItemData[n].id;
+                                var wsys = sxrItemData[n].title;
+
+                                //将json转为字符串；
+                                var str = JSON.stringify(data);
+                                var wsys_title = JSON.stringify(wsys);
+
+                                //将法律法规id信息存入cookie
+                                setCookie("wsysid", str);
+                                setCookie("wsys_title",wsys_title);
+                                window.location.href="/sfytj/dist/html/ggxx/ygsf/wsys/msqsz.html";
+
+                            });
+
+                        }
+                    }
+            )
+        }
+    }
+</script>
+
+
+<script type="text/javascript">
+    $(function(){
+
+        //页面初始化
+        var httpurl=global_data.httpurl;
+
+        ajax(
+                ""+httpurl+"ggxx/ygsf/wsys.php",
+                "" ,
+                function(defaultData){
+                    console.log(defaultData);
+                    sxrItemData = defaultData.data;
+                },
+                null,
+                null,
+                null,
+                false
+        );
+
+        var html = "";
+        $.each(sxrItemData, function (n, value) {
+            html += "<div class=\"list-group panel-default aj-item \">";
+            html += "<div class='title-line'></div>"
+            html += "<div class=\"panel-heading clearfix\" role=\"tab\"  id=\"aj" + n + "\"" +
+                    "data-toggle=\"collapse\" data-parent=\"#gg-container\" data-target=\"#collapse" + n + "\"" +
+                    " aria-controls=\"collapse" + n + "\" >";
+            html += "<div class='aj-title font_h1'>"
+            html += "<div class=\"anhao\">" + value.title + "</div>";
+
+            html += "<div class=\"date fl\">" + value.create_time + "</div>";
+
+            if (value.jinri == "1") {
+                html += "<div class=\"badge font_bigger\">最新</div>";
+            }
+
+            html += "</div>";
+            html += "<a class=\"btn  xlzy font_h1\" data-id=\""+n+"\">查看</a>";
+            html += "</div>";
+            html += "</div>";
+            html += "</div>";
+            html += "</div>";
+
+        });
+        $("#gg-container").append(html);
+
+        //点击查看，将对应的id存入cookie,准备详情页面数据；
+        $(".xlzy").on('click', function(){
+            var n = $(this).data("id");
+            var data = sxrItemData[n].id;
+            var wsys = sxrItemData[n].title;
+
+            //将json转为字符串；
+            var str = JSON.stringify(data);
+            var wsys_title = JSON.stringify(wsys);
+
+            //将法律法规id信息存入cookie
+            setCookie("wsysid", str);
+            setCookie("wsys_title",wsys_title);
+            window.location.href="/sfytj/dist/html/ggxx/ygsf/wsys/wsys_list.html";
+
+        });
+
+    });
+</script>
+
+
+<!--<script type="text/javascript">
+    /*模拟数据*/
+    var defaultData =
+            [
+                {
+                    anhao: '民事起诉状',
+                    date: '2015/12/24',
+                    jinri: '1',
+                    href:'msqsz.html',
+                },
+                {
+                    anhao: '申请执行书',
+                    date: '2015/08/20',
+                    jinri: '1',
+                    href:'sqzxs.html',
+                }, {
+                anhao: '授权委托书',
+                date: '2015/12/24',
+                jinri: '0',
+                href:'sqwts.html',
+            }
+            ];
+
+</script>
+<script type="text/javascript">
+    $(function () {
+
+                /*填充页面*/
+
+
+                var html = "";
+                $.each(defaultData, function (n, value) {
+                    html += "<div class=\"list-group panel-default aj-item \">";
+                    html += "<div class='title-line'></div>"
+                    html += "<div class=\"panel-heading clearfix\" role=\"tab\"  id=\"aj" + n + "\"" +
+                            "data-toggle=\"collapse\" data-parent=\"#gg-container\" data-target=\"#collapse" + n + "\"" +
+                            " aria-controls=\"collapse" + n + "\" >";
+                    html += "<div class='aj-title font_h1'>"
+                    html += "<div class=\"anhao\">" + value.anhao + "</div>";
+
+                    html += "<div class=\"date fl\">" + value.date + "</div>";
+
+                    if (value.jinri == "1") {
+                        html += "<div class=\"badge font_bigger\">最新</div>";
+                    }
+
+                    html += "</div>";
+                    html += "<a class=\"btn  xlzy font_h1\" href=\""+value.href+"\">查看</a>";
+                    html += "</div>";
+                    html += "</div>";
+                    html += "</div>";
+                    html += "</div>";
+
+                });
+                $("#gg-container").append(html);
+
+                var xzfy = get_ggxx_xzfy();
+                $(".current_fy").html(xzfy.selected_fy);
+            }
+    );
+
+</script>-->
+</body>
+</html>

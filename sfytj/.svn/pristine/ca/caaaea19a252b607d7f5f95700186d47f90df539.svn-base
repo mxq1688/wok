@@ -1,0 +1,547 @@
+/* 公共模块代码，例如导航菜单 */
+
+/* 设置页面全部字体 */
+
+.index_iframe {
+  font-family: $font_yahei !important;
+  background-image: $body_background;
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  margin-top: 120px;
+}
+
+body {
+  background-color: transparent !important;
+  font-family: $font_yahei !important;
+}
+
+.fl {
+  float: left;
+}
+a:focus{
+  outline: none;
+}
+
+.fr {
+  float: right;
+}
+
+/*居中类  */
+.center_block {
+  @include center_block;
+}
+.center{
+  text-align: center!important;
+}
+
+.loading_index{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color:#999;
+  // margin: -25px 0 -25px 0;
+  // border-bottom: 6px solid rgba(0, 0, 0, .1);
+  // border-left: 6px solid rgba(0, 0, 0, .1);
+  // border-right: 6px solid rgba(0, 0, 0, .1);
+  // border-top: 6px solid rgba(0, 0, 0, .4);
+  // border-radius: 100%;
+  // height: 50px;
+  // width: 50px;
+  // animation: rot 1s infinite linear;
+display: none;
+}
+.loading_index1{
+  font-size: 25px;
+  margin-top: -17px;
+  margin-left: -46px;
+}
+// 右侧iframe的loading
+// .loading_frame{
+// @extend .loading_index;
+// }
+//右侧模块
+.right_content{
+  position: relative;
+}
+
+// 下拉框箭头
+.select_arrow{
+    right: 4px;
+    top: 15%;
+    width: 20px;
+    height: 60%;
+    position: absolute;
+    margin-top: -1px;
+    pointer-events: none;
+  img{
+     width: 100%;
+     height: 50%;
+  }
+}
+// 打印表格
+.qr_table{
+    overflow-y: auto!important;
+    overflow-x: hidden;
+  
+    max-height: auto!important;
+}
+
+/* 页面主体内容块 中心透明的区域 */
+.common_body {
+  height: 820px;
+  width: 1720px;
+  margin-top: 30px;
+  @include center_block;
+  border: 1px solid darken($whiteColor, 20%);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(0,0,0,.45);
+  padding: 56px 100px;
+  position: relative;
+  //设置页面主体通用字体颜色
+  color: #999999;
+}
+
+/* warpper 主体区域 */
+.common_wrap_body{
+  margin-top: 20px;
+}
+
+/* 清除浮动 */
+.clear {
+  clear: both;
+}
+
+/*选中的样式*/
+.active_choice_box {
+  border: 2px solid #53aee7 !important;
+  position: relative;
+}
+
+/*右上角的圆和√*/
+.active_choice_box:before {
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  content: url(../images/icon/icon_ok.png);
+  position: absolute;
+  right: -20px;
+  top: -21px;
+}
+
+/* 通用按钮样式 */
+.common_btn {
+  font-size: 30px !important;
+  font-weight: 600 !important;
+  width: 250px;
+  text-align: center;
+  height: 60px;
+  background-color: #53aee7;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  line-height: 60px;
+  display: inline-block;
+}
+
+.common_btn:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* 页面底部按钮区域 */
+.btn_row {
+  position: absolute;
+  bottom: 30px;
+  left: 0px;
+  padding: 0px 100px;
+  width: 100%;
+  color: #fff;
+  /*  居中按钮 */
+  .mid_btn {
+    position: absolute;
+    left: 50%;
+    margin-left: -125px;
+  }
+}
+
+
+/* 字体类 */
+.font_header {
+  font-size: 36px !important;
+}
+
+/* 一级菜单字号 */
+.font_h1 {
+  font-size: 30px !important;
+}
+
+/* 普通二级菜单字号 */
+.font_h2 {
+  /* font-size: 26px!important;*/
+  color: #999;
+  font-size: 28px !important;
+  font-weight: 600;
+}
+
+/* 普通三级菜单字号 */
+.font_h3 {
+  font-size: 22px !important;
+}
+/* 普通更大号字 */
+.font_bigger {
+  font-size: 24px !important;
+}
+/* 普通大号字 */
+.font_big {
+  font-size: 20px !important;
+}
+
+
+/* 普通内容字号 */
+.font_common {
+  font-size: 16px !important;
+}
+
+/*普通内容小号字*/
+.font_small {
+  font-size: 18px !important;
+}
+
+/* 普通按钮字号 */
+.font_button {
+  font-size: 22px !important;
+}
+/**********************************************诉讼服务通用样式*********************************************************/
+/*标题大小*/
+.font_weight{
+  font-weight: 700;
+}
+/*内容字体大小*/
+.font_title_style{
+  font-weight: 500;
+  font-size: 30px;
+}
+/*输入框边距*/
+.input_bj{
+  padding-left: 25px;
+  padding-right: 25px;
+
+}
+
+
+
+
+/*********************************************公共信息header body通用样式****************************************************************/
+.ggxx-head,.ggxx_head{
+
+  width: 100%;
+  height: 64px;
+  border-bottom: 2px solid #999999;
+  .ggxx-title,.ggxx_title{
+    font-weight: 500;
+    line-height: 40px;
+    color: black;
+  }
+}
+.ggxx-body,.ggxx_body{
+  position: relative;
+  width: 100%;
+  height: 610px;
+  margin: 20px 0;
+}
+.ggxx-body:after,.ggxx_body:after{
+  clear: both;
+}
+
+/*********************************************诉讼服务 导航栏 通用样式开始*********************************************************************/
+.ssfw_nav {
+  height: 100px;
+  width: 100%;
+  margin-top: -30px;
+
+  /* 标题 */
+  .nav_title {
+    float: left;
+    height: 100px;
+    h2 {
+      font-weight: bolder;
+      color: black;
+      font-size: 36px;
+    }
+  }
+
+  /* 导航菜单整体 */
+  .nav_process {
+    float: left;
+    height: 100px;
+  }
+  .process {
+    width: 100%;
+    height: 70px;
+    margin-left: 6%;
+  }
+  .process1, .process2, .process3, .process4, .process5, .process6{
+    width: 20%;
+    float: left;
+    height: 80px;
+    position: relative;
+  }
+
+  /* 导航中的横线 */
+  .nav_line1 {
+    float: left;
+    background-color: #cbcbcb;
+    position: relative;
+    top: 39px;
+  }
+  .nav_line {
+    float: left;
+    background-color: #cbcbcb;
+    position: relative;
+    top: 39px;
+  }
+  /* 导航中的圆点  */
+  .nav_circle {
+    float: left;
+    z-index: 10;
+    background-color: #cccccc;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    color: #ffffff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -25px;
+    margin-left: -20px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 0 8px 2px #cecece;
+    cursor: pointer;
+  }
+
+  /* 导航条颜色变化css */
+  .active .nav_line1, .active .nav_line, .active .nav_circle {
+    background-color: $blueColor;
+  }
+
+  /* 导航下方的文字信息 */
+  .process_title {
+    width: 100%;
+    height: 30px;
+    margin-left: 6%;
+  }
+  .process_titleinfo {
+    /*@include font(24);*/
+    font-size: 24px;
+    font-weight: 500;
+    float: left;
+    width: 33.3%;
+    text-align: center;
+    margin-top: -10px;
+    color: #999999;
+  }
+}
+/*********************************************诉讼服务 导航栏通用样式结束*********************************************************************/
+/*审委会等页面 边框阴影效果*/
+.shadow{
+  box-shadow: 0 0 10px 3px #b9b5b5;
+}
+
+
+/*********************************************失信人查询 我的案件header body通用样式*********************************************************************/
+.wdaj_head, .sxrcx_head {
+  width: 100%;
+  height: 64px;
+  border-bottom: 2px solid #999;
+}
+.wdaj_title, .sxrcx_title{
+  font-size: 36px!important;
+  font-weight: 500;
+  line-height: 40px;
+  color: #000;
+}
+.wdaj_body, .sxrcx_body{
+  width: 100%;
+  position: relative;
+  height: 610px;
+  margin: 20px 0;
+}
+
+/*导航入口页面统一body*/
+.nav_body{
+  height: 820px;
+  width: 1720px;
+  // margin-top: 45px;
+  @include center_block;
+  padding: 56px 100px;
+  position: relative;
+  //设置页面主体通用字体颜色
+  color: #999999;
+}
+
+/*虚拟键盘隐藏广告*/
+#kb_langselector, #kb_mappingselector, #copyrights {
+  display: none;
+}
+#ime_container{
+  position: fixed;
+
+}
+
+ /*搜索模态框*/
+    .modal-dialog{
+        margin-top: 220px;
+    }
+    .modal-content.ss_content{
+        border-radius: 27px;
+    }
+    .modal_body_search{
+        width: 100%;
+        position: relative;
+    }
+/*模态框字体样式*/
+.modal_style{
+  text-align: center;
+  font-size: 24px;
+  color: #999;
+}
+.modal_close{
+    font-size: 30px;
+    font-weight: 600;
+    width: 180px;
+    height: 60px;
+    background-color: #53aee7;
+    color: #fff;
+    border-radius: 5px;
+    border:1px solid #ccc;
+    line-height: 60px;
+    margin-right:20px;
+    display:none
+}
+
+.modal-close{
+    font-size: 30px;
+    font-weight: 600;
+    width: 180px;
+    height: 60px;
+    background-color: #53aee7;
+    color: #fff;
+    border-radius: 5px;
+    border:1px solid #ccc;
+    line-height: 60px;
+    margin-right:20px;
+}
+
+.modal_confirm{
+  width: 180px;
+}
+.modal-body{
+  min-height: 170px !important;
+  width: 100%;
+  padding: 0 15px!important;
+  text-align: center;
+}
+.modal_title{
+  text-align: center;
+  color: #000;
+  padding: 40px 55px;
+  font-weight:bold;
+  font-size: 36px;
+  padding-bottom: 20px;
+
+}
+.modal_info{
+  font-size: 22px;
+  color:#666;
+  padding:0px 20px 20px;
+}
+
+/*********************************************我的案件 wdaj_common_body统一样式*********************************************************************/
+.wdaj_common_body{
+    height: 746px;
+    width: 1518px;
+    //margin-top: 45px;
+    background: rgba(255,255,255,0);
+    padding: 55px 0px 0 0 ;
+    color: #999;
+}
+
+/* 页面底部按钮 */
+.wdaj_btn_row {
+  position: absolute;
+ /* bottom: 30px;*/
+  bottom: 15px;
+  left: 0px;
+  padding:0 0 0 0;
+  width: 100%;
+  color: #fff;
+  .mid_btn {
+    position: relative;
+    left: 50%;
+    margin-left: -125px;
+  }
+}
+
+  /*未查询到信息提示按钮*/
+  .info_none{
+    line-height: 400px;
+    text-align: center;
+    color: gray;
+  }
+
+  /*卷宗查看图片居中*/
+.jj_center{text-align:center;}
+
+ /*案件当事人空格*/
+.dsr_spacing{padding-left: 3px;}
+
+/* 个人中心、我要查询，案件展示字段截取 */
+
+  .col-md-8, .col-md-4{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+#model_img{
+  display: none;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  text-align: center;
+  z-index: 100;
+  float: right;
+  position: fixed;
+  right:0;
+  bottom:0;
+  top:0;
+  .buttons{
+    position: absolute;
+    right: 70px;top: 300px;
+    button{
+      background: #efefef;
+      color:#222 ;
+      margin: 10px 0;
+      text-align: center;
+      line-height: 50px;
+      width: 200px;
+      height: 50px;
+      font-size: 30px;
+      border-radius: 5px;
+      border: none;
+      display: inline-block;
+      box-shadow: 0 0 15px rgba(0,0,0,.4);
+      font-weight: 500;
+    }
+  }
+  img{
+    height: 100%;
+    width: 55%;
+  }
+}
+

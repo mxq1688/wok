@@ -1,0 +1,12 @@
+/*法院窗口模块iframe子页面统一样式*/
+.fyck{
+
+  background: none;
+  height: 600px;
+  width: 100%;
+  color: #999;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  box-sizing: border-box;
+}

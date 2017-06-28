@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开庭公告</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+    <style>
+        .ckzn{height: 550px;}
+    </style>
+</head>
+<body class="ckzn">
+
+<!--导航区-->
+<div class="right_nav">
+
+    <ul class="nav nav-pills nav-stacked font_bigger">
+        <li role="presentation" class="active"><a href="#step1">公告列表</a></li>
+        <li role="presentation"><a href="#step2">路线指引</a></li>
+        <li role="presentation"><a href="#step3">公告详情</a></li>
+    </ul>
+
+    <div class="btn_row">
+        <input type="button" value="返回" class="common_btn btn_fh" onclick="history.back()">
+    </div>
+</div>
+
+<div class="left_content font_big" data-spy="scroll" data-target=".right_nav">
+
+    <div id="step1">
+        <div class="font_header step_header">一、公告列表</div>
+        <div class="info font_bigger">
+            <div class="step_content">下图为开庭公告首页，列表展示了所有开庭公告。</div>
+            <img src="/sfytj/dist/images/icon/ckzn_ktgg_step1.png">
+        </div>
+    </div>
+    <div id="step2">
+
+        <div class="font_header step_header">二、路线指引</div>
+
+        <div class="info font_bigger">
+            <div class="step_content">点击步骤一中所示列表项的路线指引按钮可以查看该案件的开庭地址。</div>
+            <img src="/sfytj/dist/images/icon/ckzn_ktgg_step2.png">
+        </div>
+
+    </div>
+    <div id="step3">
+        <div class="font_header step_header"> 四、公告详情</div>
+        <div class="info font_bigger">
+            <div class="step_content">点击步骤一所示页面的底部“查看”按钮，可以查看列表中已展开列表项对应的公告详情</div>
+            <img src="/sfytj/dist/images/icon/ckzn_ktgg_step3.png">
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    /*更新父窗口标题*/
+    $(function () {
+        var ele = $('#third_title', window.parent.document);
+        ele.text("开庭公告");
+        ele.css("display", "inline-block");
+    });
+</script>
+
+</body>
+</html>

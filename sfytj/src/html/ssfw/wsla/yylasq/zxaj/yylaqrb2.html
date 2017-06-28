@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" class="yylaqrb zxaj_yylaqrb">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>自助立案确认表</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+</head>
+<!--自助立案确认表-->
+<body onunload="leave_qrb()">
+<!-- 打印机控件 -->
+<object id="ReceiptPrinter" name="ReceiptPrinter" width="10" height="10" style="display:none" classid="CLSID:A81F682A-E047-4674-8ECB-8D16C0AF505E"></object>
+ <div class="common_body">
+            <!--主要内容-->
+          
+            <iframe id="iframe" src="#" width="100%" height="550px" frameborder="0" border="none"></iframe>
+            
+            <!-- 打印预览、确认提交按钮 --> 
+            <div class="btn_row ">
+                <input type="button" value="打印" class="common_btn fr yyla_button_print" />
+                <input type="button" value="返回首页" class="common_btn "  onclick="window.location.href='/sfytj/dist/html/common/sfytj_index.html'"/>
+            </div>
+        </div>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+
+ function leave_qrb(){
+    clear_zxaj_info();
+    console.log("clear_zxaj_info");
+    close_light(3);
+ }
+ 
+  //获取保存的tdh_case_num
+  $(function () {
+    var tdh_case_num = localStorage.getItem("tdh_case_num");
+    var httpurl=global_data.httpurl;
+    var url = 'ssfw/wsla/yylajzcx/cklaqrbn.php?case_num='+tdh_case_num+ '&ext=.html';
+    var iframe_url = httpurl+url
+    $('#iframe').attr('src',iframe_url);
+    url = 'sfytjjk/'+url;
+$('.yyla_button_print').click(function(){
+    start_print(url);
+});
+  })
+
+
+
+</script>
+</body>
+</html>

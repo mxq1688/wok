@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>失信人查询结果</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body>
+<div class="common_body sxrcxjg">
+    <!--头部-->
+    <div class="sxrcx_head">
+        <div class="sxrcx_title">
+            失信人查询结果
+        </div>
+    </div>
+    <!--主体内容-->
+    <div class="sxrcx_body">
+        <!-- 失信人查询结果 -->
+        <div class="sxrcxjg_body">
+
+          <!-- 失信人查询结果列表 -->
+            <div class="sxrcxjg_list" id="sxrcxjg_list">
+            </div> 
+
+          <!-- 遮罩 -->
+          <div class="loading_index" style="display:block"></div>  
+
+        </div>
+    </div>
+        <!-- 按钮区 -->
+    <div class="btn_row">
+        <a href="javascript:history.back()"><input type="button" value="返回" class="common_btn fl" /></a>
+        <button type="submit" class="common_btn fr" onclick="getmore();" id="getmore">更多</button>
+    </div>
+</div>
+<input type="hidden" name="page" id="page" value='1'/>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+  //页面初始化，从查询页面获取姓名、身份证号码、省份：
+  var httpurl=global_data.httpurl;
+  var bzxrname = getCookie("bzxrname");
+  var sfzhm = getCookie("sfzhm");
+  if(sfzhm==null){sfzhm=""};
+  var province = getCookie("province");
+  var all_data = '';
+  var page_nums = 0;                     //当前每页展示的条数;这里20条
+$(function(){
+
+  //保存下来 从服务器请求的失信人列表数据
+  var sxrItemData = null;
+  ajax(
+    ""+httpurl+"sxrcx/bd_sxrcx.php" , 
+    "name="+bzxrname+"&code="+sfzhm+"&province_id="+province,
+    function(defaultData){
+       console.log("失信人查询数据");
+       console.log(defaultData);
+
+        $('#page').val(defaultData.page);
+        //当前页
+        sxrItemData = defaultData.data;
+        page_nums = sxrItemData.length;
+        console.log(sxrItemData);
+        all_data = defaultData.all_data;
+        //console.log("sxrItemData的length:"+sxrItemData.length);
+        if(sxrItemData.length){
+            //根据ajax返回的defaultData加载数据
+            var html='';
+            $.each(sxrItemData, function(n, value){
+                html+= "<div class=\"panel panel-default\">";
+                html+= "<div class=\"panel-body clearfix\">";
+                html+= "<div class=\"ssr_index fl\">"+(n+1)+"</div>";
+                html+= "<div class=\"name_anhao fl\">";
+                html+= "<div class=\"ssr_name\">"+value.iname+"</div>";
+                html+= "<div class=\"anhao\">"+value.caseCode+"</div>";
+                html+= "</div>";
+                html+= "<div class=\"title-line\"></div>";
+                html+= "<div class=\"fabu_time fl\">"+value.publishDate+"</div>";
+                html+= "<div class=\"ckxq fr\" onclick='sxrview("+n+")' data-id=\""+n+"\">查看详情</div>";
+                html+= "</div></div>";
+            });
+            $(".sxrcxjg_list").append(html);
+    
+        } else {
+            var html_error="<div class=\"find_result font_header\">未查询到相关结果!</div>"
+            $(".sxrcxjg_list").append(html_error);
+        }
+        if(defaultData.next_page==1){
+            $('#getmore').show();
+        }else{
+            $('#getmore').hide();
+        }
+        //ajax请求完成后，遮罩去除：
+        $('.loading_index').css("display","none");
+    },
+    null,
+    null,
+    null,
+    false
+  );
+
+  //点击查看详情，将对应的记录存入cookie,准备结果详情页面数据；
+//  $(".ckxq").on('click', function(){
+//    var n = $(this).data("id");
+//    alert(n);
+//    var data = all_data[n];
+//    //将json转为字符串；
+//    var str = JSON.stringify(data);
+//    
+//    //将失信人信息存入cookie
+//    setCookie("sxrxq", str);
+//    window.location.href="/sfytj/dist/html/sxrcx/sxrcxjgxq.html";
+//
+//  })
+
+}); 
+
+function getmore(){
+
+  //保存下来 从服务器请求的失信人列表数据
+   var sxrItemDatamore = null;
+   var page = $('#page').val();
+   page = parseInt(page) + parseInt(1);
+   $('#page').val(page);
+   
+   $(".loading_index").css("display", "block");
+
+   ajax(
+    ""+httpurl+"sxrcx/bd_sxrcx.php" , 
+    "name="+bzxrname+"&code="+sfzhm+"&province_id="+province+'&page='+page,
+    function(defaultData){
+        console.log(defaultData);
+        sxrItemDatamore = defaultData.data;
+        console.log(sxrItemDatamore);
+        all_data = defaultData.all_data;
+        console.log("sxrItemDatamore的length:"+sxrItemDatamore.length);
+        if(sxrItemDatamore.length){
+            //根据ajax返回的defaultData加载数据
+            var html='';
+            $.each(sxrItemDatamore, function(n, value){
+                var num =  (page-1)*20+n+1;
+                var data_id = (page-1)*20+n;
+                html+= "<div class=\"panel panel-default\">";
+                html+= "<div class=\"panel-body clearfix\">";
+                html+= "<div class=\"ssr_index fl\">"+num+"</div>";
+                html+= "<div class=\"name_anhao fl\">";
+                html+= "<div class=\"ssr_name\">"+value.iname+"</div>";
+                html+= "<div class=\"anhao\">"+value.caseCode+"</div>";
+                html+= "</div>";
+                html+= "<div class=\"title-line\"></div>";
+                html+= "<div class=\"fabu_time fl\">"+value.publishDate+"</div>";
+                html+= "<div class=\"ckxq fr\" onclick='sxrview("+data_id+")' data-id=\""+data_id+"\">查看详情</div>";
+                html+= "</div></div>";
+            });
+            $(".sxrcxjg_list").append(html);
+
+            //ajax请求完成后，遮罩去除：
+            $(".loading_index").css("display", "none");
+
+
+        }
+
+
+        if(defaultData.next_page==1){
+            $('#getmore').show();
+        }else{
+            $('#getmore').hide();    
+        } 
+        
+        
+    },
+    null,
+    null,
+    null,
+    false
+  );
+  
+  //将滚动条下移
+  set_scroll_top();
+}
+
+
+function sxrview(id){
+    var data = all_data[id];
+   // 将json转为字符串；
+    var str = JSON.stringify(data);
+    
+   // 将失信人信息存入cookie
+    setCookie("sxrxq", str);
+    window.location.href="/sfytj/dist/html/sxrcx/sxrcxjgxq.html";
+}
+
+//点击更多,滚动条下移
+function set_scroll_top(){
+  var panel_height = $(".panel.panel-default").outerHeight();  //pannel高度
+  var page = $('#page').val();                                 //当前第几页
+
+  var top = panel_height*page_nums*(page-1);
+  $(".sxrcxjg_body").scrollTop(top);
+}
+
+</script>
+
+</body>
+</html>

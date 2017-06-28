@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <title>
+                卷宗资料
+            </title>
+            <link href="/sfytj/dist/styles/main.min.css" rel="stylesheet" type="text/css"/>
+            <link href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        </meta>
+    </head>
+    <!--卷宗资料-->
+    <body>
+        <object classid="CLSID:A81F682A-E047-4674-8ECB-8D16C0AF505E" height="10" id="ReceiptPrinter" name="ReceiptPrinter" style="display:none" width="10">
+        </object>
+        <div class="common_body sxrcxjgxq">
+            <!--头部-->
+            <div class="sxrcx_head">
+                <div class="sxrcx_title">
+                    卷宗资料
+                </div>
+            </div>
+            <!--主体内容-->
+            <iframe border="none" frameborder="0" height="550px" id="iframe" src="/sfytj/dist/html/wdaj/ckjzzl_table.html" width="100%">
+            </iframe>
+            <!-- 按钮区 -->
+            <div class="btn_row">
+                <a href="javascript:history.back()">
+                    <input class="common_btn fl" type="button" value="返回"/>
+                </a>
+                <input class="common_btn mid_btn" id="btn_print" onclick="start_print()" type="button" value="打印"/>
+            </div>
+        </div>
+        <script src="/sfytj/bower_components/jquery/dist/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/dist/scripts/main.min.js" type="text/javascript">
+        </script>
+        <script>
+          function start_print() {
+              open_modal("开始为您打印阅卷资料，请稍等...", "开始打印", function() {
+                  $('.tip_modal', window.top.document).modal('hide');
+                  $('.tip_modal', window.top.document).on('hidden.bs.modal', function() {
+                      window.top.document.LightControl.PowerOff(3);
+                  });
+              }, "确定", "static");
+              var httpprinturl = global_data.httpprinturl;
+              $('.tip_modal', window.top.document).on('shown.bs.modal', function() {
+                  window.top.document.LightControl.PowerOn(3);  
+                  var i = ReceiptPrinter.Print_html(httpprinturl + "sfytj/dist/html/wdaj/ckjzzl_table.html");
+                  console.log(i);
+                  if (i == 0) {
+                      $('.tip_modal .modal_info', window.top.document).html("打印出错");
+                  } else {
+                      $('.tip_modal .modal_info', window.top.document).html("正在打印，请在打印结束后关闭此弹窗");
+                      $('.tip_modal .modal_title', window.top.document).html("正在打印");
+                      $('.tip_modal .modal_confirm', window.top.document).html("关闭");
+                  }
+              });
+          }
+        </script>
+    </body>
+</html>

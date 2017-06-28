@@ -1,0 +1,65 @@
+/*预约立案确认表*/
+.yylaqrb_table{
+  /* 导航条颜色的变化 */
+ .wrap{
+   color: #999;
+ }
+
+  /*标题大小颜色*/
+  .title{
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #b6b6b6;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  /*确认表*/
+  .qr_table{
+    overflow-y: auto;
+    overflow-x: hidden;
+    table{
+      width: 100%;
+      td{
+        height:35px;
+        padding: 0px 8px!important;   /*表单元格高度*/
+      }
+      /*表格内容字体样式*/
+      .fs{
+        font-weight: 400;
+        width: 32%;
+         vertical-align: middle;
+      }
+      .fs1{
+        width: 23%;
+      }
+      /*分割线*/
+      .fgx{
+       /* border: 1px solid rgba(221, 221, 221, 0);*/
+        border-left: 1px transparent solid;
+        border-right: 1px transparent solid;
+        height: 22.5px;
+      }
+      .ytjcl{
+        text-align: center;
+      }
+      .susongqq{
+        word-break:break-all;
+        overflow:auto;
+      }
+      .headline{
+        width: 25%;
+        font-weight: 400;
+        vertical-align: middle;
+      }
+    }
+  }
+
+}
+.yylaqrb{
+  /* 打印预览、确认提交按钮样式 */
+  .yyla_button_print {
+    margin-right: 20px;
+  }
+
+}

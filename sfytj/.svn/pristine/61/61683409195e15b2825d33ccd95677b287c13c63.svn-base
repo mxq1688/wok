@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html class="login_html">
+    <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+            <title>
+                用户登录
+            </title>
+    </head>
+    <style type="text/css">
+
+        .image_build{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 1920px;
+            height: 960px;
+            background-image: url(/sfytj/dist/images/icon/xzzy/building.jpg);
+            background-repeat: no-repeat;
+            background-size: 1920px 960px;
+            background-color: rgba(255,255,255,0);
+            opacity: 1;
+        }
+    </style>
+    <body>
+        <div class="xzzy_login">
+            <div class="wrap">
+                <div class="nav_body">
+                    <div class="main_body">
+                        <div class="image_build">
+                                <!-- <img src="/sfytj/dist/images/icon/xzzy/building.jpg"/> -->
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/sfytj/bower_components/jquery/dist/jquery.min.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+            //加载完成展开下面菜单
+            $(function(){
+                    $(".menu_btn", window.top.document).addClass("up_menu");
+                    $(".menu_holder", window.top.document).addClass("active_menu");
+            });
+        </script>
+    </body>
+</html>

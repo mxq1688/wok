@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <base target="_self">
+            <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+            <meta content="no-cache" http-equiv="pragma">
+                <meta content="no-cache,must-ridate" http-equiv="cache-control">
+                    <meta content="0" http-equiv="expires">
+                        <title>
+                            提交材料
+                        </title>
+                        <link href="/sfytj/dist/styles/main.min.css" rel="stylesheet" type="text/css"/>
+                        <link href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+                    </meta>
+                </meta>
+            </meta>
+        </base>
+    </head>
+    <body onunload="LeavePage()">
+        <!-- FTP上传控件 -->
+        <object classid="CLSID:C52C8A05-EC0A-4B91-BCC0-4BD9944E83B7" id="FTPControl" name="FTPControl" style="display:none;">
+        </object>
+        <object classid="CLSID:AA78841A-0226-4A74-997C-29F503049CF3" id="EScanControl" name="EScanControl" style="display:none;">
+        </object>
+        <!--页面-->
+        <div class="tjcl">
+            <div class="wrap">
+                <div class="common_body">
+                    <!-- 提交材料页面 -->
+                    <div id="tjclpage">
+                        <!--导航条部分-->
+                        <div class="ssfw_nav yylasq_nav clearfix">
+                            <!--自助立案标题 -->
+                            <div class="nav_title">
+                                <h2>
+                                    自助立案
+                                </h2>
+                            </div>
+                            <!--进度条 -->
+                            <div class="nav_process">
+                                <!-- 圆点和横线 -->
+                                <div class="process clearfix">
+                                    <div class="process1">
+                                        <div class="nav_line1">
+                                        </div>
+                                        <a href="javascript:void(0);" onclick="url_load('xzfy.html')">
+                                            <div class="nav_circle">
+                                                1
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="process2">
+                                        <div class="nav_line">
+                                        </div>
+                                        <a href="javascript:void(0);" onclick="url_load('txaj.html')">
+                                            <div class="nav_circle">
+                                                2
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="process3">
+                                        <div class="nav_line">
+                                        </div>
+                                        <a href="javascript:void(0);" onclick="url_load('txryxx.html')">
+                                            <div class="nav_circle">
+                                                3
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="process4">
+                                        <div class="nav_line">
+                                        </div>
+                                        <a href="javascript:void(0);" onclick="url_load('txdlr.html')">
+                                            <div class="nav_circle">
+                                                4
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="process5">
+                                        <div class="nav_line">
+                                        </div>
+                                        <a href="javascript:void(0);" onclick="url_load('tjcl.html')">
+                                            <div class="nav_circle">
+                                                5
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="process6">
+                                        <div class="nav_line">
+                                        </div>
+                                        <a href="javascript:void(0);" onclick="url_load('yylaqrb.html')">
+                                            <div class="nav_circle">
+                                                6
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- 下方的文字 -->
+                                <div class="process_title clearfix">
+                                    <div class="process_titleinfo">
+                                        选择法院
+                                    </div>
+                                    <div class="process_titleinfo">
+                                        案件信息
+                                    </div>
+                                    <div class="process_titleinfo">
+                                        当事人信息
+                                    </div>
+                                    <div class="process_titleinfo">
+                                        代理人信息
+                                    </div>
+                                    <div class="process_titleinfo">
+                                        提交材料
+                                    </div>
+                                    <div class="process_titleinfo">
+                                        信息确认
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--选取材料部分-->
+                        <div class="choosefile clearfix">
+                            <!--必选材料-->
+                            <div class="mustchoose">
+                                <div class="mustchoose_title font_header">
+                                    必选材料
+                                </div>
+                                <div class="choosefile_area">
+                                    <!-- 起诉状 -->
+                                    <div class="choosefile_child clearfix">
+                                        <div class="choose_word">
+                                            <span class="choose_word1">
+                                                起诉状
+                                            </span>
+                                            <span class="star">
+                                                *
+                                            </span>
+                                        </div>
+                                        <div class="choose_button btn-group" data-dirtype="qsz">
+                                            <input class="choose_button1" data-fileid="1" data-index="1" id="button_bxcl_1" onclick="choosefile(this, 'bxcl')" type="button" value="本地上传"/>
+                                            <button class="choose_button1 button_gs" data-filetype="bxcl" type="button">
+                                                高扫上传
+                                            </button>
+                                            <button class="choose_button1 button_gpy" data-filetype="bxcl" type="button">
+                                                高拍上传
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="show_bxcl_name">
+                                        <div class="uploading" id="uploading_bxcl_1">
+                                        </div>
+                                        <div class="getProcess" id="getProcess_bxcl_1">
+                                        </div>
+                                        <span class="filename filename_qsz" id="filename_bxcl_1" onclick="preImg(this,1)" data-filetype="bxcl">
+                                        </span>
+                                        <div class="delete_icon delete_icon_bxcl_1" data-filetype="bxcl" id="bxcl_1" onclick="delete_file(this,1)">
+                                            ×
+                                        </div>
+                                    </div>
+                                    <!-- 当事人身份证明 -->
+                                    <div class="choosefile_child margintop clearfix">
+                                        <div class="choose_word">
+                                            <span class="choose_word1">
+                                                当事人身份证明
+                                            </span>
+                                            <span class="star">
+                                                *
+                                            </span>
+                                        </div>
+                                        <div class="choose_button btn-group" data-dirtype="dsrsfzm">
+                                            <input class="choose_button1" data-fileid="2" data-index="1" id="button_bxcl_2" onclick="choosefile(this, 'bxcl')" type="button" value="本地上传"/>
+                                            <button class="choose_button1 button_gs" data-filetype="bxcl" type="button">
+                                                高扫上传
+                                            </button>
+                                            <button class="choose_button1 button_gpy" data-filetype="bxcl" type="button">
+                                                高拍上传
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="show_bxcl_name">
+                                        <div class="uploading" id="uploading_bxcl_2">
+                                        </div>
+                                        <div class="getProcess" id="getProcess_bxcl_2">
+                                        </div>
+                                        <span class="filename filename_sfzm" id="filename_bxcl_2" onclick="preImg(this,2)" data-filetype="bxcl">
+                                        </span>
+                                        <div class="delete_icon delete_icon_bxcl_2" data-filetype="bxcl" id="bxcl_2" onclick="delete_file(this,2)">
+                                            ×
+                                        </div>
+                                    </div>
+                                    <!-- 证据材料 -->
+                                    <div class="choosefile_child margintop clearfix">
+                                        <div class="choose_word">
+                                            <span class="choose_word1">
+                                                证据材料
+                                            </span>
+                                            <span class="star">
+                                                *
+                                            </span>
+                                        </div>
+                                        <div class="choose_button btn-group" data-dirtype="zjcl">
+                                            <input class="choose_button1" data-fileid="3" data-index="1" id="button_bxcl_3" onclick="choosefile(this, 'bxcl')" type="button" value="本地上传"/>
+                                            <button class="choose_button1 button_gs" data-filetype="bxcl" type="button">
+                                                高扫上传
+                                            </button>
+                                            <button class="choose_button1 button_gpy" data-filetype="bxcl" type="button">
+                                                高拍上传
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="show_bxcl_name">
+                                        <div class="uploading" id="uploading_bxcl_3">
+                                        </div>
+                                        <div class="getProcess" id="getProcess_bxcl_3">
+                                        </div>
+                                        <span class="filename filename_zjcl" id="filename_bxcl_3" onclick="preImg(this,3)" data-filetype="bxcl">
+                                        </span>
+                                        <div class="delete_icon delete_icon_bxcl_3" data-filetype="bxcl" id="bxcl_3" onclick="delete_file(this,3)">
+                                            ×
+                                        </div>
+                                    </div>
+                                    <!-- 确认书 -->
+                                    <div class="choosefile_child margintop clearfix">
+                                        <div class="choose_word">
+                                            <span class="choose_word1">
+                                                当事人送达地址确认书
+                                            </span>
+                                            <span class="star">
+                                                *
+                                            </span>
+                                        </div>
+                                        <div class="choose_button btn-group" data-dirtype="dzqrs">
+                                            <input class="choose_button1" data-fileid="4" data-index="1" id="button_bxcl_4" onclick="choosefile(this, 'bxcl')" type="button" value="本地上传"/>
+                                            <button class="choose_button1 button_gs" data-filetype="bxcl" type="button">
+                                                高扫上传
+                                            </button>
+                                            <button class="choose_button1 button_gpy" data-filetype="bxcl" type="button">
+                                                高拍上传
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="show_bxcl_name">
+                                        <div class="uploading" id="uploading_bxcl_4">
+                                        </div>
+                                        <div class="getProcess" id="getProcess_bxcl_4">
+                                        </div>
+                                        <span class="filename filename_qrs" id="filename_bxcl_4" onclick="preImg(this,4)" data-filetype="bxcl">
+                                        </span>
+                                        <div class="delete_icon delete_icon_bxcl_4" data-filetype="bxcl" id="bxcl_4" onclick="delete_file(this,4)">
+                                            ×
+                                        </div>
+                                    </div>
+                                    <!-- 申请执行书 -->
+                                    <div class="choosefile_child margintop clearfix">
+                                        <div class="choose_word">
+                                            <span class="choose_word1">
+                                                申请执行书
+                                            </span>
+                                        </div>
+                                        <div class="choose_button btn-group" data-dirtype="sqzss">
+                                            <input class="choose_button1" data-fileid="5" data-index="1" id="button_bxcl_5" onclick="choosefile(this, 'bxcl')" type="button" value="本地上传"/>
+                                            <button class="choose_button1 button_gs" data-filetype="bxcl" type="button">
+                                                高扫上传
+                                            </button>
+                                            <button class="choose_button1 button_gpy" data-filetype="bxcl" type="button">
+                                                高拍上传
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="show_bxcl_name">
+                                        <div class="uploading" id="uploading_bxcl_5">
+                                        </div>
+                                        <div class="getProcess" id="getProcess_bxcl_5">
+                                        </div>
+                                        <span class="filename filename_zxs" id="filename_bxcl_5" onclick="preImg(this,5)" data-filetype="bxcl">
+                                        </span>
+                                        <div class="delete_icon delete_icon_bxcl_5" data-filetype="bxcl" id="bxcl_5" onclick="delete_file(this,5)">
+                                            ×
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--可选材料-->
+                            <div class="chooseable">
+                                <div class="chooseable_title1 clearfix">
+                                    <div class="chooseable_title font_header">
+                                        可选材料
+                                    </div>
+                                </div>
+                                <!--选择文件按钮区-->
+                                <div class="chooseable_filearea">
+                                    <!--营业执照-->
+                                    <div class="chooseable_item">
+                                        <div class="selectarea clearfix padding_top">
+                                            <!--下拉框-->
+                                            <div class="selectbox">
+                                                <select class="select" id="select_file_10" onchange="change_file_type(this)">
+                                                    <option selected="selected" value="1">
+                                                        营业执照
+                                                    </option>
+                                                    <option value="2">
+                                                        授权委托书
+                                                    </option>
+                                                    <option value="3">
+                                                        生效裁判卷
+                                                    </option>
+                                                    <option value="4">
+                                                        执行线索材料
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <!--选择文件按钮-->
+                                            <div class="chooseable_button btn-group">
+                                                <input class="chooseable_button1" data-fileid="10" data-index="1" id="button_kxcl_10" onclick="choosefile(this, 'kxcl')" type="button" value="本地上传"/>
+                                                <button class="chooseable_button1 button_gs" data-filetype="kxcl" type="button">
+                                                    高扫上传
+                                                </button>
+                                                <button class="chooseable_button1 button_gpy" data-filetype="kxcl" type="button">
+                                                    高拍上传
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="choosefilename">
+                                            <div class="uploading" id="uploading_kxcl_10">
+                                            </div>
+                                            <div class="getProcess processmiddle" id="getProcess_kxcl_10">
+                                            </div>
+                                            <span class="filename" id="filename_kxcl_10" onclick="preImg(this,10)" data-filetype="kxcl">
+                                            </span>
+                                            <div class="delete_icon delete_icon_kxcl_10" data-filetype="kxcl" id="kxcl_10" onclick="delete_file(this,10)">
+                                                ×
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--授权委托书-->
+                                    <div class="chooseable_item">
+                                        <div class="selectarea clearfix">
+                                            <!--下拉框-->
+                                            <div class="selectbox">
+                                                <select class="select" id="select_file_11" onchange="change_file_type(this)">
+                                                    <option selected="selected" value="1">
+                                                        营业执照
+                                                    </option>
+                                                    <option value="2">
+                                                        授权委托书
+                                                    </option>
+                                                    <option value="3">
+                                                        生效裁判卷
+                                                    </option>
+                                                    <option value="4">
+                                                        执行线索材料
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <!--选择文件按钮-->
+                                            <div class="chooseable_button btn-group">
+                                                <input class="chooseable_button1" data-fileid="11" data-index="1" id="button_kxcl_11" onclick="choosefile(this, 'kxcl')" type="button" value="本地上传"/>
+                                                <button class="chooseable_button1 button_gs" data-filetype="kxcl" type="button">
+                                                    高扫上传
+                                                </button>
+                                                <button class="chooseable_button1 button_gpy" data-filetype="kxcl" type="button">
+                                                    高拍上传
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="choosefilename">
+                                            <div class="uploading" id="uploading_kxcl_11">
+                                            </div>
+                                            <div class="getProcess processmiddle" id="getProcess_kxcl_11">
+                                            </div>
+                                            <span class="filename" id="filename_kxcl_11" onclick="preImg(this,11)" data-filetype="kxcl">
+                                            </span>
+                                            <div class="delete_icon delete_icon_kxcl_11" data-filetype="kxcl" id="kxcl_11" onclick="delete_file(this,11)">
+                                                ×
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 上一步 高拍仪 下一步按钮 -->
+                        <div class="btn_row ">
+                            <input class="common_btn fl" onclick="window.location.href='txdlr.html'" type="button" value="上一步"/>
+                            <input class="common_btn fr" onclick="tjcl_nextstep()" type="button" value="下一步"/>
+                            <input class="del_btn common_btn fr" type="button" value="删除可选材料"/>
+                            <input class="button_new common_btn fr " type="button" value="新增可选材料"/>
+                        </div>
+                        <form action="" enctype="multipart/form-data" id="form_file" method="post" name="form_file">
+                            <input id="user_id" name="user_id" type="hidden" value=""/>
+                            <input id="user_token" name="user_token" type="hidden" value=""/>
+                            <input id="file_id" name="file_id" type="hidden" value=""/>
+                            <!-- 文件类型 1起诉状， 2当事人身份证明....-->
+                            <input id="file_index" name="file_index" type="hidden" value=""/>
+                            <!-- 文件序号index 1,2,3,4,5-->
+                            <input id="file_type" name="file_type" type="hidden" value=""/>
+                            <!-- 上传的文件类型，'bxcl'——必选材料； 'kxcl'——可选材料 -->
+                            <input id="kxcl_type" name="kxcl_type" type="hidden" value=""/>
+                            <!-- 可选材料的文件类型 -->
+                            <!-- 必选材料inputfile框 -->
+                            <!--
+                                    1: 起诉状 （类型）
+                                        bxcl: 可选/必选类型
+                                    1: input file子项的id
+                            -->
+                            <input class="none" data-type="bxcl" id="inputFile_bxcl_1_1" name="inputFile_bxcl_1_1" onchange="uploadfile(this, 1, 1)" type="file"/>
+                            <input class="none" data-type="bxcl" id="inputFile_bxcl_2_1" name="inputFile_bxcl_2_1" onchange="uploadfile(this, 2, 1)" type="file"/>
+                            <input class="none" data-type="bxcl" id="inputFile_bxcl_3_1" name="inputFile_bxcl_3_1" onchange="uploadfile(this, 3, 1)" type="file"/>
+                            <input class="none" data-type="bxcl" id="inputFile_bxcl_4_1" name="inputFile_bxcl_4_1" onchange="uploadfile(this, 4, 1)" type="file"/>
+                            <input class="none" data-type="bxcl" id="inputFile_bxcl_5_1" name="inputFile_bxcl_5_1" onchange="uploadfile(this, 5, 1)" type="file"/>
+                            <!-- 可选材料inputfile框 -->
+                            <input class="none" data-type="kxcl" id="inputFile_kxcl_10_1" name="inputFile_kxcl_10_1" onchange="uploadfile(this, 10, 1)" type="file"/>
+                            <input class="none" data-type="kxcl" id="inputFile_kxcl_11_1" name="inputFile_kxcl_11_1" onchange="uploadfile(this, 11, 1)" type="file"/>
+                        </form>
+                    </div>
+                    <!-- 高拍仪拍照界面 -->
+                    <div id="gpypage">
+                        <div class="nav_title" style="margin-top: -30px;">
+                            <h2>
+                                高拍仪拍照
+                            </h2>
+                        </div>
+                        <div class="gpy_content">
+                            <object align="middle" classid="clsid:5026E632-AE63-4094-8981-9CE9EE9EA003" id="ggcom" name="ggcom" viewastext="">
+                                <param name="_Version" value="65536">
+                                    <param name="_ExtentX" value="10583">
+                                        <param name="_ExtentY" value="7938">
+                                            <param name="_StockProps" value="0">
+                                                <img src="/sfytj/dist/images/bg/CN-wp5.jpg" style="width: 100%;height: 100%;"/>
+                                            </param>
+                                        </param>
+                                    </param>
+                                </param>
+                            </object>
+                        </div>
+                        <div class="img_name">
+                        </div>
+                        <div class="btn_row ">
+                            <input class="common_btn fl" onclick="gpyback()" type="button" value="返回"/>
+                            <input class="common_btn fl mid_btn" onclick="transUploadFile()" type="button" value="上传" style="display: none"/>
+                            <input class="common_btn fr" onclick="GetPic()" type="button" value="拍摄上传"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/sfytj/bower_components/jquery/dist/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/bower_components/jquery/dist/jquery.form.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/dist/scripts/main.min.js" type="text/javascript">
+        </script>
+        <!-- 待修改点：
+        1.ftp上传文件完后，将设置参数将对应文件删除；
+        3.高扫的监听事件下进行高扫方法的调用；目前是定时器 -ok
+        5.ftp服务器网址修改 -ok
+        -->
+        <script type="text/javascript">
+            var httpurl = global_data.httpurl;
+            var user_id = getCookie("user_id");
+            var user_token = getCookie("user_token");
+            var file_bxcl = JSON.parse(getCookie("file_bxcl_list")) || []; //保存必选材料文件名
+            var file_kxcl = JSON.parse(getCookie("file_kxcl_list")) || []; //保存可选材料文件名
+            var data_sum_max = getCookie("data_sum_max") || 11; //可选材料id当前最大值,默认11
+            var dir_type = ""; //保存高扫、高拍后文件类型，如起诉状(qsz), 当事人身份证明(dszsfzm);
+            var ftptype = 0; //记录当前ftp上传类型 0-高拍 1-高扫
+            var imgName;//当前拍摄（上传）文件名
+            try {
+                var machine_type = JSON.parse(getCookie("sftyj_config")).mid || ""; //当前设备类型 S200 还是 S200E
+            } catch(e) {
+                //默认S200E
+                var machine_type = "S200E";
+            }
+            
+            $(function() {
+                display_upload_type();
+                //初始化必选材料 可选材料 展示
+                init_showfilename_bxcl();
+                init_showfilename_kxcl();
+                //新增可选材料按钮：
+                $(".button_new").click(function() {
+                    data_sum_max++;
+                    var html = "<div class=\"chooseable_item\">"
+                    html += "<div class=\"selectarea clearfix\">";
+                    html += "<div class=\"selectbox\">";
+                    html += "<select class=\"select\" id=\"select_file_" + data_sum_max + "\" onchange=\"change_file_type(this)\">";
+                    html += "<option value=\"1\" selected=\"selected\">营业执照</option>";
+                    html += "<option value=\"2\">授权委托书</option>";
+                    html += "<option value=\"3\">生效裁判卷</option>";
+                    html += "<option value=\"4\">执行线索材料</option>";
+                    html += "</select>";
+                    html += "</div>";
+                    html += "<div class=\"chooseable_button btn-group\">";
+                    html += "<input type=\"button\" value=\"本地上传\" class=\"chooseable_button1\" id=\"button_kxcl_" + data_sum_max + "\" data-fileid=" + data_sum_max + " data-index=\"1\" onclick=\"choosefile(this, 'kxcl')\"/>"
+                    html += "<button type=\"button\" class=\"chooseable_button1 button_gs\" style=\"margin-left:4px; " + (machine_type == 'S200E' ? 'display:inline-block' : "") + "\" data-filetype=\"kxcl\">高扫上传</button>"
+                    html += "<button type=\"button\" class=\"chooseable_button1 button_gpy\" style=\"margin-left:4px; " + (machine_type == 'S200' ? 'display:inline-block' : "") + "\" data-filetype=\"kxcl\">高拍上传</button>"
+                    html += "</div></div>"
+                    html += "<div class=\"choosefilename\">"
+                    html += "<div class=\"uploading\" id=\"uploading_kxcl_" + data_sum_max + "\"></div>"
+                    html += "<div class=\"getProcess processmiddle\" id=\"getProcess_kxcl_" + data_sum_max + "\"></div>"
+                    html += "<span class=\"filename\" id=\"filename_kxcl_" + data_sum_max + "\" onclick=\"preImg(this,"+data_sum_max+")\" data-filetype=\"kxcl\"></span>"
+                    html += "<div class=\"delete_icon delete_icon_kxcl_" + data_sum_max + "\"  onclick=\"delete_file(this," + data_sum_max + ")\" data-filetype=\"kxcl\" id=\"kxcl_" + data_sum_max + "\">×</div>"
+                    html += "</div>"
+                    html += "</div>"
+                    $(".chooseable_filearea").append(html);
+                    //新增可选材料，同时新增inputfile框
+                    var html_file = "<input type=\"file\" onChange=\"uploadfile(this, " + data_sum_max + ", 1)\" class=\"none\" data-type=\"kxcl\" id=\"inputFile_kxcl_" + data_sum_max + "_1\" name=\"inputFile_kxcl_" + data_sum_max + "_1\"/>"
+                    $('#form_file').append(html_file);
+                });
+                // 删除可选材料按钮
+                $(".del_btn").click(function() {
+                    if ($(".chooseable_filearea").children().length > 2) {
+                        //从服务器删除文件，文件列表中删除文件记录
+                        var th = $(".chooseable_item:last-child").find(".delete_icon");
+                        var file_id = $(".chooseable_item:last-child").find(".chooseable_button1").data("fileid");
+                        delete_file(th, file_id, true);
+                    } else {
+                        open_modal("没有可删除的可选材料！", "提示消息");
+                    }
+                });
+                //从高拍仪上传按钮点击
+                $(".choosefile.clearfix").on('click', '.button_gpy', function() {
+                    $("#tjclpage").css("display", "none");
+                    $("#gpypage").css("display", "block");
+                    $("#file_type").val($(this).data("filetype"));
+                    var file_id = $(this).prev().prev().data("fileid");
+                    $("#file_id").val(file_id);
+                    if ($(this).data("filetype") == 'kxcl') {
+                        $("#kxcl_type").val($("#select_file_" + file_id).val());
+                        dir_type = getDirType($("#select_file_" + file_id).val());
+                    } else {
+                        dir_type = $(this).parent().data("dirtype");
+                    }
+                    ftptype = 0; //设置当前为高拍ftp上传
+                    $(".img_name").text("");
+                    //开灯
+                    LightControl.PowerOn(5);
+                    //打开舱门
+                     var fid_ytj = JSON.parse(getCookie("sftyj_config")).fid || ""; //当前法院的fid
+                     //判断是否打开舱门
+                     if(fid_ytj=="320900" || fid_ytj=="320516" || fid_ytj=="320500"|| fid_ytj=="320924"|| fid_ytj=="320925"){
+
+                     }
+                     else{
+                         LightControl.OpenDoor();
+                     }
+                   
+                    //开启预览
+                    setTimeout(function() {
+                        preview();
+                    }, 500)
+                });
+                //从高扫扫描材料按钮点击
+                $(".choosefile.clearfix").on('click', '.button_gs', function() {
+                    $("#file_type").val($(this).data("filetype"));
+                    var file_id = $(this).prev().data("fileid");
+                    $("#file_id").val(file_id);
+                    if ($(this).data("filetype") == 'kxcl') {
+                        $("#kxcl_type").val($("#select_file_" + file_id).val());
+                        dir_type = getDirType($("#select_file_" + file_id).val());
+                    } else {
+                        dir_type = $(this).parent().data("dirtype");
+                    }
+                    var modal = $(".scan_modal", window.top.document); //modal框    
+                    var modal_top = $(".scan_modal .modal_top", window.top.document); //背景图           
+                    var modal_content = $('.scan_modal .info_content', window.top.document); //dialog内容
+                    var modal_title = $('.scan_modal .info_title', window.top.document); //dialog标题
+                    var btn_confirm = $('.scan_modal .modal_confirm', window.top.document); //确定按钮
+                    var btn_close = $('.scan_modal .modal-close', window.top.document); //返回按钮
+                    var timer = null;
+                    //即重置为原始状态
+                    resetScanModal(modal_top, modal_title, modal_content, btn_close, btn_confirm);
+                    modal.modal({
+                        backdrop: 'static'
+                    });
+                    //开灯
+                    LightControl.PowerOn(7); 
+                    btn_confirm.click(function() {
+                        modal_content.html("正在准备，请稍等...");
+                        btn_confirm.html("请稍等");
+                        ftptype = 1; //设置当前为高扫ftp上传
+                        /* 触发扫描 */
+                        timer = setTimeout(function() {
+                            // alert("开始扫描");
+                            GsScan();
+                        }, 3000);
+                        btn_confirm.off();
+                    });
+                    btn_close.click(function() {
+                        clearTimeout(timer);
+                        LightControl.PowerOff(7);
+                    });
+                });
+                /* 记录导航条步数的方法 */
+                nav_step("last_step", 6);
+            });
+            //重置高扫modal为原始状态
+            function resetScanModal(modal_top, modal_title, modal_content, btn_close, btn_confirm) {
+
+                var machine_type = JSON.parse(getCookie("sftyj_config")).mid || ""; 
+                
+                if (machine_type == 'S200E') {
+                    modal_top.html('<img class="video" src="/sfytj/dist/images/show/scan_doc.gif"/>');
+                } else if (machine_type == 'S200') {
+                    modal_top.html('<img class="video" src="/sfytj/dist/images/show/scan_doc.gif"/>');
+                } else if (machine_type == 'S110') {
+                    modal_top.css('background-image', 'url(/sfytj/dist/images/scan/scanwaiting.png)');
+                }              
+
+                modal_title.html("高速扫描");
+                modal_content.html("请将材料正面向上放入进纸口，<br>点击开始扫描。");
+                btn_confirm.html("开始扫描");
+                btn_close.html("返回");
+                btn_close.off();
+                btn_confirm.off();
+                btn_confirm.removeAttr("data-dismiss");
+            }
+            //可选材料根据材料类型value值 获取dir_type
+            function getDirType(value) {
+                var dir_type = "";
+                if (value == 1) {
+                    dir_type = "yyzz";
+                } else if (value == 2) {
+                    dir_type = "sqwts";
+                } else if (value == 3) {
+                    dir_type = "sxcpj";
+                } else if (value == 4) {
+                    dir_type = "zxxscl";
+                }
+                return dir_type;
+            }
+            //读取配置文件判断当前设备类型，高扫上传or高拍仪上传
+            function display_upload_type() {
+                if (machine_type == "S200") {
+                    $(".button_gpy").show();
+                } else if (machine_type == "S200E") {
+                    $(".button_gs").show();
+                }
+            }
+            //选择文件按钮点击
+            function choosefile(th, type_string) {
+                var file_id = $(th).data("fileid");
+                var index = $(th).attr("data-index");
+                if (type_string == 'kxcl') { //可选材料上传需要增加"营业执照、等文件类型"
+                    $("#kxcl_type").val($("#select_file_" + file_id).val());
+                }
+                $("#inputFile_" + type_string + "_" + file_id + "_" + index).click();
+            }
+            /*
+                选择文件框change事件
+                th : this指代当前input file
+                id:  当前文件类型file_id
+            */
+            function uploadfile(th, file_id, index) {
+                var file_type = $(th).data("type"); // 必选材料('bxcl')还是可选材料('kxcl')
+                var kxcl_type = $("#kxcl_type").val(); // 可选材料的文件类型，营业执照1...                                       
+                var maxsize = 2 * 1024 * 1024; //2M 
+                var obj_file = document.getElementById("inputFile_" + file_type + "_" + file_id + "_" + index);
+                var filesize = 0;
+                if (obj_file.value != "") { //input file有值
+                    filesize = obj_file.files[0].size;
+                }
+                if (filesize <= maxsize && filesize != 0) { //小于2M
+                    upload_to_server(th, file_id, index, file_type, kxcl_type); //上传文件 
+                } else if (filesize > maxsize) {
+                    open_modal("上传的附件文件大小不能超过2M！", "提示消息");
+                } else if (filesize == 0) {
+                    open_modal("上传的附件内容为空！");
+                    return;
+                }
+            }
+            //选择文件展示展示文件名
+            function showfilename(th, file_type, file_id, if_show) {
+                var filename = $("#filename_" + file_type + "_" + file_id);
+                filename.css("visibility", "visible");
+                var fN = '';
+                //判断并获取文件名
+                if (fN = th.value.match(/[^\\\/]+\.[a-zA-Z0-9]+$/)) {
+                    //如果获取到文件名，赋值到已选择文件名
+                    var html = "" + fN + "" + "&nbsp;";
+                    filename.append(html);
+                    showUploadFileNum(file_type, file_id, if_show); //显示当前文件个数
+                    return fN[0];
+                } else {
+                    filename.innerHTML = "获取文件名失败";
+                }
+            }
+            /* ftp上传后显示文件名
+               file_name: 待显示的文件名
+               file_type: 'bxcl' or 'kxcl' 
+            */
+            function showfilename2(filename, file_type, file_id, if_show) {
+                var fileSelector = $("#filename_" + file_type + "_" + file_id);
+                fileSelector.css("visibility", "visible");
+                var file_name = "";
+                file_name += filename + "&nbsp;";
+                fileSelector.append(file_name);
+                showUploadFileNum(file_type, file_id, if_show); //显示当前文件个数
+            }
+            //保存选择的文件至必、可选文件列表
+            /*
+                file_id:文件类型 1起诉状， 2当事人身份证明....
+                index: 文件类型下 input file子项index
+                modyid: 服务器返回文件id
+                file_type: 可选材料'kxcl' 必选材料'bxcl'
+                file_name: 文件名
+                kxcl_type: 选材料 营业执照、授权委托书等类型值
+            */
+            function save_or_update_filelist(file_id, index, modyid, file_type, file_name, kxcl_type) {
+                var file_list; //根据文件类型判断哪个列表：'bxcl' -- file_bxcl ;  'kxcl'--file_kxcl;
+                var file_save; //保存到cookie的key name; 
+                if (file_type == 'bxcl') {
+                    file_list = file_bxcl;
+                    file_save = "file_bxcl_list";
+                } else if (file_type == 'kxcl') {
+                    file_list = file_kxcl;
+                    file_save = "file_kxcl_list";
+                }
+                if (file_list.length == 0) { //数组为空,直接创建
+                    file_list[file_list.length] = {
+                        "id": file_id,
+                        "children": [{
+                            "index": index,
+                            "modyid": modyid,
+                            "file_type": file_type,
+                            "file_name": file_name,
+                            "kxcl_type": kxcl_type
+                        }]
+                    }
+                } else {
+                    var id_exist = false;
+                    var index_exist = false;
+                    $.each(file_list, function(n, value) {
+                        if (value != null) {
+                            if (value.id == file_id) { //文件列表下存在该文件类型id
+                                id_exist = true;
+                                $.each(value.children, function(indx, value) {
+                                    if (value.index == index) { //该id下，index已经有了,覆盖
+                                        value.modyid = modyid;
+                                        value.file_type = file_type;
+                                        value.file_name = file_name;
+                                        value.kxcl_type = kxcl_type;
+                                        index_exist = true;
+                                        return false;
+                                    }
+                                });
+                                if (index_exist == false) { //该id下，index没有，新增
+                                    value.children[value.children.length] = {
+                                        "index": index,
+                                        "modyid": modyid,
+                                        "file_type": file_type,
+                                        "file_name": file_name,
+                                        "kxcl_type": kxcl_type
+                                    }
+                                }
+                                return false;
+                            }
+                        }
+                    });
+                    if (id_exist == false) { //文件列表下没有此文件类型id，新增
+                        file_list[file_list.length] = {
+                            "id": file_id,
+                            "children": [{
+                                "index": index,
+                                "modyid": modyid,
+                                "file_type": file_type,
+                                "file_name": file_name,
+                                "kxcl_type": kxcl_type
+                            }]
+                        }
+                    }
+                }
+                setCookie(file_save, JSON.stringify(file_list));
+                if (file_id >= data_sum_max) { //记录可选材料最大id序号    
+                    data_sum_max = file_id;
+                    setCookie("data_sum_max", data_sum_max); //保存可选材料的最大序号值
+                }
+            }
+            //上传文件到服务器
+            function upload_to_server(th, file_id, index, file_type, kxcl_type) {
+                $('#user_id').val(user_id);
+                $('#user_token').val(user_token);
+                $("#file_id").val(file_id); //文件类型id   
+                $("#file_index").val(index); //文件类型下 input file子项index
+                $("#file_type").val(file_type); //文件类型 必选材料('bxcl') 可选材料('kxcl') 
+                $("#kxcl_type").val(kxcl_type); // 可选材料 营业执照、授权委托书等类型值
+                //提交
+                $("#form_file").ajaxSubmit({
+                    type: 'post',
+                    timeout: 30000,
+                    url: "" + httpurl + "/ssfw/wsla/yylasq/tjcl.php",
+                    beforeSubmit: function() {
+                        $("#uploading_" + file_type + "_" + file_id).css("display", "block"); //显示loading图标
+                        $("#filename_" + file_type + "_" + file_id).css("visibility", "hidden"); //隐藏文件名
+                        deleteicon_hide(file_type, file_id); //隐藏删除图标
+                    },
+                    success: function(data) {
+                        if (data.state == 1) { //上传成功
+                            $("#uploading_" + file_type + "_" + file_id).css("display", "none"); //隐藏loading图标
+                            var file_name = showfilename(th, file_type, file_id, false); //显示文件名
+                            deleteicon_show(file_type, file_id);
+                            save_or_update_filelist(file_id, index, data.id, file_type, file_name, kxcl_type) //保存文件至必选、可选文件列表
+                            add_inputfile(file_type, file_id, index) //上传成功新增一个input file框
+                        } else if (data.state == 0) { //上传失败
+                            open_modal("上传文件失败，请重新上传！", "提示消息");
+                            reset_inputfile(file_type, file_id, index);
+                        } else {
+                            open_modal("未知错误！", "提示消息");
+                            reset_inputfile(file_type, file_id, index);
+                        }
+                    },
+                    complete: function(XMLHttpRequest, status) { //请求完成后最终执行参数
+                        　　　　
+                        if (status == 'timeout') { //超时,status还有success,error等值的情况
+                            var xmlhttp = window.XMLHttpRequest ? new window.XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHttp");
+                            xmlhttp.abort();
+                            $("#uploading_" + file_type + "_" + file_id).css("display", "none");
+                            open_modal("上传文件请求超时！", "提示消息");　　　　
+                        } else if (status == 'parsererror') {
+                            $("#uploading_" + file_type + "_" + file_id).css("display", "none");              
+                            open_modal("上传文件服务器错误！", "提示消息");
+                        }　　
+                    },
+                    error: function(XMLHttpRequest, status) {
+                        hideLoadingShowFile(file_type, file_id);
+                        reset_inputfile(file_type, file_id, index);                     
+                        open_modal("上传文件网络错误！", "提示消息");
+                    }
+                });
+            }
+
+            //input file框重置，用于上传失败再次上传时，触发onchange=uploadfile()事件
+            function reset_inputfile(file_type, file_id, index){
+                var inputfile = $("#inputFile_" + file_type + "_" + file_id + "_" + index);
+                $(inputfile).remove();
+                add_inputfile(file_type, file_id, index);
+            }
+
+            //新增input file框，用于该文件类型下上传多个文件
+            function add_inputfile(file_type, file_id, index) {
+                index++;
+                var html = "<input type=\"file\" onChange=\"uploadfile(this, " + file_id + ", " + index + ")\" class=\"none\" data-type=\"" + file_type + "\" id=\"inputFile_" + file_type + "_" + file_id + "_" + index + "\" name=\"inputFile_" + file_type + "_" + file_id + "_" + index + "\"/>";
+                $("#form_file").append(html);
+                //同时设置选择文件按钮点击，指向新增的input file
+                $("#button_" + file_type + "_" + file_id + "").attr("data-index", index);
+            }
+            //初始化必选材料文件名显示；
+            function init_showfilename_bxcl() {
+                if (file_bxcl != null && file_bxcl.length != 0) {
+                    $.each(file_bxcl, function(n, value) {
+                        if (value != null) {
+                            $("#filename_bxcl_" + value.id).prepend(display_filename('bxcl', value.children, value.id, true)); //显示文件名  //起诉状、当事人身份证明....
+                            deleteicon_show('bxcl', value.id);
+                            $("#button_bxcl_" + value.id).attr("data-index", disp_index_max(value.children)); //显示data-index最大值
+                            $("#inputFile_bxcl_" + value.id + "_1").attr("onChange", "uploadfile(this, " + value.id + ", " + disp_index_max(value.children) + ")").attr("id", "inputFile_bxcl_" + value.id + "_" + disp_index_max(value.children)).attr("name", "inputFile_bxcl_" + value.id + "_" + disp_index_max(value.children)); //将对应的input file属性修改，使点击可用
+                        }
+                    });
+                }
+            }
+            //显示文件名方法
+            function display_filename(file_type, json_array, file_id, if_show) {
+                var html = "";
+                for (var i = 0; i < json_array.length; i++) {
+                    html += json_array[i].file_name + "&nbsp;";
+                }
+                showUploadFileNum(file_type, file_id, if_show);
+                return html;
+            }
+
+            function display_filename2(json_array) {
+                var html = "";
+                for (var i = 0; i < json_array.length; i++) {
+                    html += json_array[i].file_name + "&nbsp;";
+                }
+                return html;
+            }
+            //返回每个文件类型（id）下面index的最大值
+            //用于回显，再次选择文件时，不会覆盖原有的文件。
+            function disp_index_max(json_array) {
+                var index_max = 1;
+                for (var i = 0; i < json_array.length; i++) {
+                    if (json_array[i].index > index_max) {
+                        index_max = json_array[i].index;
+                    }
+                }
+                return ++index_max;
+            }
+            //初始化可选材料文件名显示；
+            function init_showfilename_kxcl() {
+                if (file_kxcl != null && file_kxcl.length != 0) {
+                    var html = "";
+                    var html_file = "";
+                    $.each(file_kxcl, function(n, value) {
+                        if (value != null) {
+                            if (value.id == 10) { //先赋值已经有的可选材料
+                                $("#filename_kxcl_10").prepend(display_filename('kxcl', value.children, value.id, true));
+                                $("#select_file_10").val(value.children[0].kxcl_type); //将对应的select选中
+                                deleteicon_show('kxcl', 10);
+                                $("#button_kxcl_10").attr("data-index", disp_index_max(value.children)); //显示data-index最大值
+                                $("#inputFile_kxcl_10_1").attr("onChange", "uploadfile(this, 10, " + disp_index_max(value.children) + ")").attr("id", "inputFile_kxcl_10_" + disp_index_max(value.children)).attr("name", "inputFile_kxcl_10_" + disp_index_max(value.children));
+                            } else if (value.id == 11) {
+                                $("#filename_kxcl_11").prepend(display_filename('kxcl', value.children, value.id, true));
+                                $("#select_file_11").val(value.children[0].kxcl_type);
+                                deleteicon_show('kxcl', 11);
+                                $("#button_kxcl_11").attr("data-index", disp_index_max(value.children));
+                                $("#inputFile_kxcl_11_1").attr("onChange", "uploadfile(this, 11, " + disp_index_max(value.children) + ")").attr("id", "inputFile_kxcl_11_" + disp_index_max(value.children)).attr("name", "inputFile_kxcl_11_" + disp_index_max(value.children));
+                            } else if (value.id > 11) {
+                                html = "<div class=\"chooseable_item\">"
+                                html += "<div class=\"selectarea clearfix\">";
+                                html += "<div class=\"selectbox\">";
+                                html += "<select class=\"select\" id=\"select_file_" + value.id + "\" onchange=\"change_file_type(this)\">";
+                                html += "<option value=\"1\" " + ("1" == "" + value.children[0].kxcl_type + "" ? "selected" : "") + ">营业执照</option>";
+                                html += "<option value=\"2\" " + ("2" == "" + value.children[0].kxcl_type + "" ? "selected" : "") + ">授权委托书</option>";
+                                html += "<option value=\"3\" " + ("3" == "" + value.children[0].kxcl_type + "" ? "selected" : "") + ">生效裁判卷</option>";
+                                html += "<option value=\"4\" " + ("4" == "" + value.children[0].kxcl_type + "" ? "selected" : "") + ">执行线索材料</option>";
+                                html += "</select>";
+                                html += "</div>";
+                                html += "<div class=\"chooseable_button\">";
+                                html += "<input type=\"button\" value=\"本地上传\" class=\"chooseable_button1\" id=\"button_kxcl_" + value.id + "\" data-fileid=" + value.id + " data-index=\"1\" onclick=\"choosefile(this, 'kxcl')\"/>"
+                                html += "<button type=\"button\" class=\"chooseable_button1 button_gs\" style=\"margin-left:4px; " + (machine_type == 'S200E' ? 'display:inline-block' : "") + "\" data-filetype=\"kxcl\">高扫上传</button>"
+                                html += "<button type=\"button\" class=\"chooseable_button1 button_gpy\" style=\"margin-left:4px; " + (machine_type == 'S200' ? 'display:inline-block' : "") + "\" data-filetype=\"kxcl\">高拍上传</button>"
+                                html += "</div></div>"
+                                html += "<div class=\"choosefilename\">"
+                                html += "<div class=\"uploading\" id=\"uploading_kxcl_" + value.id + "\"></div>"
+                                html += "<div class=\"getProcess processmiddle\" id=\"getProcess_kxcl_" + value.id + "\"></div>"
+                                html += "<span class=\"filename\" id=\"filename_kxcl_" + value.id + "\">" + display_filename2(value.children) + "</span>"
+                                html += "<div class=\"delete_icon delete_icon_kxcl_" + value.id + "\"  onclick=\"delete_file(this," + value.id + ")\" data-filetype=\"kxcl\" id=\"kxcl_" + value.id + "\">×</div>"
+                                html += "</div>"
+                                html += "</div>"
+                                    //新增可选材料同时新增inputfile，并修改下次点击值
+                                html_file = "<input type=\"file\" onChange=\"uploadfile(this, " + value.id + ", " + disp_index_max(value.children) + ")\" class=\"none\" data-type=\"kxcl\" id=\"inputFile_kxcl_" + value.id + "_" + disp_index_max(value.children) + "\" name=\"inputFile_kxcl_" + value.id + "_" + disp_index_max(value.children) + "\" />"
+                                $(".chooseable_filearea").append(html);
+                                $('#form_file').append(html_file);
+                                deleteicon_show('kxcl', value.id);
+                                $("#button_kxcl_" + value.id).attr("data-index", disp_index_max(value.children));
+                                showUploadFileNum('kxcl', value.id, true);
+                            }
+                        }
+                    });
+                }
+            }
+            /*预览文件方法*/
+            function preImg(th, file_id, if_delbtn) {
+                var file_type = $(th).data("filetype");
+                var file_list;
+
+                if(file_type=='bxcl'){
+                    file_list = file_bxcl;
+                }else if(file_type=='kxcl'){
+                    file_list = file_kxcl;
+                }
+                var modyid = get_modyid_array(file_list, file_id);
+                //从服务器删除文件
+                if(modyid.length>0){
+                    pre_file_fromserver(file_id, file_type, JSON.stringify(modyid), if_delbtn);
+                }else if(if_delbtn){
+                    $(".chooseable_item:last-child").remove();
+                }
+            }
+            //根据返回的modyid数组,从服务器预览文件
+            function pre_file_fromserver(file_id, file_type, modyid_array, if_delbtn){
+                if(modyid_array.length>0){
+                    ajax(
+                        ""+httpurl+"ssfw/wsla/yylasq/view_cl.php",
+                        "id="+modyid_array,
+                        function(data){
+                            if(data.state==1){
+                                var dataImg=data.data;
+                                $("#model_img",parent.document).show().children("img").attr("src",dataImg[0]);
+
+                                //--------------------------
+                                var img=$("#model_img",parent.document).children("img");
+                                var s=0;
+                                var x=0;
+                                /*关闭预览*/
+                                $(".narrow",parent.document).click(function () {
+                                    $("#model_img",parent.document).hide();
+                                });
+                                /*旋转*/
+                                $(".skew",parent.document).click(function () {
+                                    if(s%2==0){
+                                        img.css("transform","rotate(180deg)");
+                                        s++;
+                                    }else if(s%2==1){
+                                        img.css("transform","rotate(0deg)");
+                                        s++;
+                                    }
+                                });
+                                /*恢复旋转函数*/
+                                function backSkew(){
+                                    img.css("transform","rotate(0deg)");
+                                }
+                                $(".forward",parent.document).click(function () {
+                                    backSkew();
+                                    x--;
+                                    x=x>dataImg.length-1?0:x;
+                                    img.attr("src",dataImg[x])
+                                });
+                                $(".backward",parent.document).click(function () {
+                                    backSkew();
+                                    x++;
+                                    x=x>dataImg.length-1?0:x;
+                                    img.attr("src",dataImg[x])
+                                });
+
+                                //--------------------------
+
+
+
+
+                            }else {
+                                open_modal("未知错误！", "提示消息");
+                            }
+                        },
+                        null,
+                        null,
+                        null,
+                        true
+                    );
+                }
+
+            }
+            /*
+            删除文件方法
+            if_delbtn ：是否通过删除可选材料按钮来删除（true），
+            */
+            function delete_file(th, file_id, if_delbtn) {
+                var file_type = $(th).data("filetype");
+                var file_list;
+                if (file_type == 'bxcl') {
+                    file_list = file_bxcl;
+                } else if (file_type == 'kxcl') {
+                    file_list = file_kxcl;
+                }
+                var modyid = get_modyid_array(file_list, file_id);
+                //从服务器删除文件
+                if (modyid.length > 0) {
+                    deletefile_fromserver(file_id, file_type, JSON.stringify(modyid), if_delbtn);
+                } else if (if_delbtn) {
+                    $(".chooseable_item:last-child").remove();
+                }
+            }
+            //根据可选/必选材料list，file_id，返回modyid数组
+            function get_modyid_array(file_list, file_id) {
+                var modyid = [];
+                $.each(file_list, function(n, value) {
+                    if (value != null) {
+                        if (value.id == file_id) { //待删除的文件类型file_id
+                            for (var i = 0; i < value.children.length; i++) {
+                                if (value.children[i].modyid != "") {
+                                    modyid.push(value.children[i].modyid);
+                                }
+                            }
+                            return false;
+                        }
+                    }
+                });
+                return modyid;
+            }
+            //根据返回的modyid数组,从服务器删除文件
+            function deletefile_fromserver(file_id, file_type, modyid_array, if_delbtn) {
+                if (modyid_array.length > 0) {
+                    ajax("" + httpurl + "ssfw/wsla/yylasq/delfile.php", "id=" + modyid_array, function(data) {
+                        if (data.state == 1) { //如果删除成功,将保存的文件列表中清空此数据
+                            delete_filelist(file_id, file_type);
+                            $('#filename_' + file_type + '_' + file_id + '').text("");
+                            deleteicon_hide(file_type, file_id);
+                            if (if_delbtn) {
+                                $(".chooseable_item:last-child").remove();
+                            }
+                            open_modal("删除成功！", "提示消息");
+                            //delete_inputfile_value(id);          //清空input file的值
+                        } else if (data.state == 0) {
+                            open_modal("删除失败！", "提示消息");
+                        } else {
+                            open_modal("未知错误！", "提示消息");
+                        }
+                    }, null, null, null, true);
+                }
+            }
+            //删除文件列表方法
+            function delete_filelist(file_id, file_type) {
+                var file_list;
+                var file_save;
+                if (file_type == 'bxcl') {
+                    file_list = file_bxcl;
+                    file_save = "file_bxcl_list";
+                } else if (file_type == 'kxcl') {
+                    file_list = file_kxcl;
+                    file_save = "file_kxcl_list";
+                }
+                if (file_list.length) {
+                    $.each(file_list, function(n, value) {
+                        if (value != null && value.id == file_id) {
+                            delete file_list[n];
+                            return false;
+                        }
+                    });
+                }
+                setCookie(file_save, JSON.stringify(file_list));
+            }
+            //清空input file value的值:
+            function delete_inputfile_value(id) {
+                var file = document.getElementById("inputFile_" + id);
+                if (file.outerHTML) { // for IE, Opera, Safari, Chrome
+                    file.outerHTML = file.outerHTML;
+                } else { // FF(包括3.5)
+                    file.value = "";
+                }
+            }
+            //可选材料下拉框 更改文件类型
+            function change_file_type(th) {
+                var kxcl_type = $(th).val();
+                var file_id = $(th).parent().next().children().data("fileid");
+                var modyid = get_modyid_array(file_kxcl, file_id);
+                if (modyid.length > 0) {
+                    modyid = JSON.stringify(modyid);
+                    ajax("" + httpurl + "ssfw/wsla/yylasq/filetypeupdate.php", "id=" + modyid + "&kxcl_type=" + kxcl_type, function(data) {
+                        if (data.state == 1) {
+                            updata_filetype(file_id, kxcl_type);
+                            open_modal("修改文件类型成功！", "提示消息");
+                        } else if (data.state == 0) {
+                            open_modal("修改文件类型失败", "提示消息");
+                        } else {
+                            open_modal("未知错误！", "提示消息");
+                        }
+                    }, null, null, null, true);
+                }
+            }
+            //更新已选文件类型
+            function updata_filetype(file_id, kxcl_type) {
+                $.each(file_kxcl, function(n, value) {
+                    if (value != null) {
+                        if (value.id == file_id) {
+                            for (var i = 0; i < value.children.length; i++) {
+                                value.children[i].kxcl_type = kxcl_type;
+                            }
+                            return false;
+                        }
+                    }
+                });
+                setCookie("file_kxcl_list", JSON.stringify(file_kxcl));
+            }
+            // ×图标显示:
+            function deleteicon_show(file_type, num) {
+                $(".delete_icon_" + file_type + "_" + num + "").css("visibility", "visible");
+            }
+            // ×图标隐藏:
+            function deleteicon_hide(file_type, num) {
+                $(".delete_icon_" + file_type + "_" + num + "").css("visibility", "hidden");
+            }
+            //下一步按钮
+            function tjcl_nextstep() {
+                //校验必选材料是否都已经选择
+                var bxcl_1 = $.trim($("#filename_bxcl_1").text());
+                var bxcl_2 = $.trim($("#filename_bxcl_2").text());
+                var bxcl_3 = $.trim($("#filename_bxcl_3").text());
+                var bxcl_4 = $.trim($("#filename_bxcl_4").text());
+                if (!bxcl_1) {
+                    open_modal("请提交起诉状材料！");
+                    return false;
+                } else if (!bxcl_2) {
+                    open_modal("请提交当事人身份证明材料！");
+                    return false;
+                } else if (!bxcl_3) {
+                    open_modal("请提交证据材料！");
+                    return false;
+                } else if (!bxcl_4) {
+                    open_modal("请提交当事人送达地址确认书材料！");
+                    return false;
+                } else {
+                    //跳转到下个页面
+                    next_step(5);
+                }
+            } 
+        </script> 
+        <script type = "text/javascript" >
+            var cameraID = 0; //默认使用环境摄像头0
+            var serverIp = global_data.ftpserverip; //ftp服务器地址
+            var port = global_data.ftpserverport; //端口号
+            var ftpuser = global_data.ftpusername; //ftp用户名    
+            var ftppwd = global_data.ftppassword; //ftp密码
+            var PicDir = global_data.PicDir //高拍仪照片存放路径 
+            var timeer = null; //ftp上传文件定时器，定义全局，ftp上传失败时，清除定时器
+            var dirname = ""; //ftp上传文件的目录
+            //高拍仪打开预览
+            function preview() {
+                //高拍仪设置设备分辨率，并且开启预览
+                SetResolution1();
+            }
+
+            function SetResolution1() //设置视频设备的分辨率（重启预览后生效）。并且开始预览
+            {
+                var width = 1600;
+                var height = 1200;
+                var bitcount = 16;
+                ggcom.SetResolution(cameraID, width, height, bitcount);
+                ggcom.StartView(cameraID);
+            }
+
+            function LeavePage() {
+                //离开页面断开ftp服务器连接
+                FTPControl.DisconnectFTP();
+                LightControl.PowerOff(5);   //关闭高拍仪灯
+                LightControl.PowerOff(7);   //关闭高扫灯
+                ggcom.StopView(cameraID);
+            }
+
+            function GetPic() //拍照
+            {
+                var PicFormat = "gpy%02d.jpg" //图片命名格式
+                var Qjpeg = 80; //图像质量，默认80，最大100；该值越大图片体积也越大
+                ggcom.SetSys(PicDir, PicFormat, Qjpeg); //修改系统默认参数
+                var iRotateType = 1; //旋转图片 0 不旋转；1 右转90 2 转180 3左转90
+                var ret = ggcom.GrabPhoto(cameraID, iRotateType, 0, 0, 0, 0, 0); //拍照
+                if (ret == 0) { //成功
+                    var img = ggcom.GetImgName();
+                    imgName=img;
+                    $(".img_name").text("拍摄成功！图片保存在" + img);
+                    transUploadFile();
+                } else if (ret == -1) {
+                    $(".img_name").text("拍摄失败！");
+                }
+            }
+            //上传文件至ftp服务器
+            //Op 是否删除源文件 0-不删除 1-删除
+            //TransferType 0-bin模式 1-ascii模
+            //Filter       过滤器（例： *.*所有文件)
+            //type 当前是高拍仪上传还是高扫 0 - 高拍  1- 高扫   
+            function ftpuploadToServer(localDirName, Op, TransferType, Filter, type) {
+                $("#uploading_" + $("#file_type").val() + "_" + $("#file_id").val()).css("display", "block"); //显示上传文件的loading图标
+                $("#filename_" + $("#file_type").val() + "_" + $("#file_id").val()).css("visibility", "hidden"); //隐藏文件名
+                deleteicon_hide($("#file_type").val(), $("#file_id").val()); //隐藏删除图标
+                FTPControl.mode = 1; //被动模式
+                var ret_con = FTPControl.ConnectFTP(serverIp, port, ftpuser, ftppwd); //链接服务器
+                if (ret_con == 0 || ret_con == 1) { //链接成功
+                    // var ret_root = FTPControl.ChangeDir('/');                                                //每次都返回到根目录
+                    // if(ret_root == 0){
+                    if ($("#file_type").val() == 'bxcl') {
+                        dirname = "" + user_token + "\\" + dir_type + ""; //更改上传目录为ftp跟目录下 user_token/dir_type
+                    } else if ($("#file_type").val() == 'kxcl') {
+                        dirname = "" + user_token + "\\" + $("#file_id").val() + "\\" + dir_type + ""; //目录格式为 user_token/file_id/dir_type 
+                    }
+                    var ret_changedir = FTPControl.ChangeDir(dirname);
+                    if (ret_changedir == 0) { //更改目录成功
+                        var ret_up = FTPControl.PutFilesByDir(localDirName, Op, TransferType, Filter); //上传指定文件夹下文件到服务器
+                        if (ret_up == 0) { //开始上传
+                            //获取上传进度显示
+                            timeer = setInterval(function() {
+                                var process = showUploadProcess($("#file_type").val(), $("#file_id").val(), type);
+                                if (process == 100) {
+                                    clearTimeout(timeer);
+                                }
+                            }, 500)
+                        } else {
+                            type == 0 ? $(".img_name").text("开始上传文件失败！") : open_modal("开始上传文件失败！");
+                        }
+                    } else {
+                        type == 0 ? $(".img_name").text("更改上传目录失败!") : open_modal("更改上传目录失败！");
+                        deleteLocaldirFile(type);
+                    }
+                } else {
+                    hideLoadingShowFile($("#file_type").val(), $("#file_id").val());
+                    type == 0 ? $(".img_name").text("连接FTP服务器失败！") : open_modal("连接FTP服务器失败！");
+                    deleteLocaldirFile(type);
+                }
+            }
+            //ftp上传失败时，删除本地文件
+            function deleteLocaldirFile(type) {
+                if (type == 0) {} else if (type == 1) {
+                    FTPControl.ClearDir(gsDir);
+                }
+            }
+            //上传失败时，隐藏loading、显示文件名、显示删除图标
+            function hideLoadingShowFile(file_type, file_id) {
+                $("#uploading_" + file_type + "_" + file_id).css("display", "none"); //隐藏loading
+                hideUploadProcess(file_type, file_id); //隐藏进度
+                $("#filename_" + file_type + "_" + file_id).css("visibility", "visible"); //显示文件名
+                if($.trim($("#filename_" + file_type + "_" + file_id).text()) != ""){ //显示删除图标
+                    deleteicon_show(file_type, file_id);
+                }else{
+                    deleteicon_hide(file_type, file_id); 
+                }
+            }
+            //高拍仪拍照返回按钮
+            function gpyback() {
+                $("#gpypage").css("display", "none");
+                $("#tjclpage").css("display", "block");
+                LightControl.PowerOff(5); //关灯
+            }
+            //高拍仪上传按钮
+            function transUploadFile() {
+                //正在上传
+                $(".img_name").text("正在上传，请稍等...");
+                //将图片ftp上传至服务器,上传完自动删除源照片
+                ftpuploadToServer(PicDir, 1, 1, '*.*', 0);
+            }
+            //获取指定file_id下最大index,(即file_id下children的最大index)
+            function getMaxIndex(file_id, file_type) {
+                var file_list; //根据文件类型判断哪个列表：'bxcl' -- file_bxcl ;  'kxcl'--file_kxcl;
+                var index = 1; //默认1
+                if (file_type == 'bxcl') {
+                    file_list = file_bxcl;
+                } else if (file_type == 'kxcl') {
+                    file_list = file_kxcl;
+                }
+                if (file_list.length > 0) { //当JSON数组不为空，且存在当前的file_id，index值改变；其他情况index=1;
+                    $.each(file_list, function(n, value) {
+                        if (value != null) {
+                            if (value.id == file_id) {
+                                $.each(value.children, function(n, data) {
+                                    if (data.index > index) {
+                                        index = data.index;
+                                    }
+                                });
+                                return ++index;
+                            }
+                        }
+                    });
+                }
+                return index;
+            }
+            //ftp上传成功，通知服务器，接受返回文件名 id，添加到文件列表
+            //type 当前是那种类型上传 0-高拍 1-高扫
+            function sendToServer_addToFileList(type,imgName) {
+                var httpurl = global_data.httpurl;
+                var file_type = $("#file_type").val(); //文件类型 必选材料('bxcl') 可选材料('kxcl') 
+                var file_id = $("#file_id").val(); //文件类型id 
+                var kxcl_type = $("#kxcl_type").val(); // 可选材料 营业执照、授权委托书等类型值
+                var index = getMaxIndex(file_id, file_type); //文件类型下 input file子项index
+                var index_begin = index; //该文件类型下，开始的最大index
+                var uptimer = null;
+                if(imgName!=null){
+                    imgName=imgName.substr(9);
+                }
+//                console.dir(imgName);
+                //FTP上传成功，通知服务器
+                var postUrl="" + httpurl + "ssfw/wsla/yylasq/gpytjcl.php";
+                var postData="user_id=" + user_id + "&user_token=" + user_token + "&dir_type=" + dir_type + "&file_id=" + file_id + "&file_type=" + file_type + "&kxcl_type=" + kxcl_type+ "&imgName=" + imgName;
+                if(type==0){
+                }else if(type==1){
+                    postUrl="" + httpurl + "ssfw/wsla/yylasq/gstjcl.php";
+                    postData="user_id=" + user_id + "&user_token=" + user_token + "&dir_type=" + dir_type + "&file_id=" + file_id + "&file_type=" + file_type + "&kxcl_type=" + kxcl_type;
+                }
+                $.ajax({
+                    timeout: 180000,
+                    type: "post",
+                    async: true,
+                    data: postData,
+                    url: postUrl,
+                    dataType: "json",
+                    beforeSend: function(XMLHttpRequest) {
+                        var process = 90;
+                        var step = 2;
+                        uptimer = setInterval(function() {
+                            process += step;
+                            if (process >= 99) {
+                                process = 99;
+                            }
+                            showUploadProcess2(file_type, file_id, process, type);
+                            if (process >= 99) {
+                                clearInterval(uptimer);
+                            }
+                        }, 2000)
+                    },
+                    success: function(record) {
+                        setTimeout(function(){
+                            if (record.state == 1) {
+                                clearInterval(uptimer);
+                                showUploadProcess2(file_type, file_id, 100, type); //进度直接100%
+                                hideUploadProcess(file_type, file_id); //隐藏进度
+                                $.each(record.data, function(n, value) {
+                                    showfilename2(value.filename, file_type, file_id, false); //显示文件名
+                                    save_or_update_filelist(file_id, index, value.id, file_type, value.filename, kxcl_type); //保存文件至必选、可选文件列表
+                                    index++;
+                                });
+                                deleteicon_show(file_type, file_id); //显示删除图标
+                                $("#uploading_" + file_type + "_" + file_id).css("display", "none"); //隐藏loading图标
+                                $("#button_" + file_type + "_" + file_id + "").attr("data-index", index); //本地上传按钮data-index重新赋值
+                                $("#inputFile_" + file_type + "_" + file_id + "_" + index_begin + "").attr("onChange", "uploadfile(this, " + file_id + ", " + index + ")").attr("id", "inputFile_" + file_type + "_" + file_id + "_" + index + "").attr("name", "inputFile_" + file_type + "_" + file_id + "_" + index); //同时设置input file框对应点击
+                                type == 0 ? $(".img_name").text("上传成功!") : "";
+                            } else if (record.state == 0) {
+                                clearInterval(uptimer);
+                                hideLoadingShowFile(file_type, file_id);
+                                hideUploadProcess(file_type, file_id); //隐藏进度
+                                type == 0 ? $(".img_name").text("服务器返回数据空!") : open_modal("服务器返回数据空！");
+                            }
+                        }, 300);
+
+                    },
+                    complete: function(XMLHttpRequest, status) {
+                        if (status == "timeout") {
+                            var xmlhttp = window.XMLHttpRequest ? new window.XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHttp");
+                            xmlhttp.abort();
+                            hideLoadingShowFile(file_type, file_id);
+                            type == 0 ? $(".img_name").text("服务器超时!") : open_modal("服务器超时！");
+                        }
+                        return;
+                    },
+                    error: function(XMLHttpRequest, textStatus) {
+                        clearInterval(uptimer);
+                        hideLoadingShowFile(file_type, file_id);
+                        type == 0 ? $(".img_name").text("FTP通知服务器错误!") : open_modal("FTP通知服务器错误");
+                        delFtpDir(type);
+                        return;
+                    }
+                });
+
+
+            }
+            //ftp上传 显示上传文件进度
+            function showUploadProcess(file_type, file_id, type) {
+                var process = FTPControl.GetRateOfProgress();
+                var process_html = Math.floor(process * 0.9) + "%";
+                if (type == 0) {
+                    $(".img_name").html("上传进度：" + process_html);
+                } else if (type == 1) {
+                    $("#getProcess_" + file_type + "_" + file_id).css("visibility", "visible");
+                    $("#getProcess_" + file_type + "_" + file_id).html(process_html);
+                }
+                return process;
+            }
+            //服务器获取ftp文件 显示上传进度
+            function showUploadProcess2(file_type, file_id, process, type) {
+                var process_html = process + "%";
+                if (type == 0) {
+                    $(".img_name").html("上传进度：" + process_html);
+                } else if (type == 1) {
+                    $("#getProcess_" + file_type + "_" + file_id).css("visibility", "visible");
+                    $("#getProcess_" + file_type + "_" + file_id).html(process_html);
+                }
+            }
+            //隐藏上传进度
+            function hideUploadProcess(file_type, file_id) {
+                $("#getProcess_" + file_type + "_" + file_id).css("visibility", "hidden");
+            }
+            /*ftp上传文件失败 通知服务器删除ftp创建的目录
+            1.由于网络原因导致的ftp上传失败;
+            2.由于后台响应失败导致的ftp上传失败;
+            */
+            function delFtpDir(type) {
+                $.ajax({
+                    timeout: 60000,
+                    type: "post",
+                    async: true,
+                    data: "user_token=" + user_token,
+                    url: "" + httpurl + "ssfw/wsla/yylasq/delgpy.php",
+                    dataType: "json",
+                    beforeSend: function(XMLHttpRequest) {},
+                    success: function(record) {
+                    },
+                    complete: function(XMLHttpRequest, status) {
+                        if (status == "timeout") {
+                            var xmlhttp = window.XMLHttpRequest ? new window.XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHttp");
+                            xmlhttp.abort();
+                            // type==0? $(".img_name").text("删除FTP目录超时!") : open_modal("删除FTP目录超时!");
+                        }
+                    },
+                    error: function(XMLHttpRequest, textStatus) {
+                        // type==0? $(".img_name").text("删除FTP目录错误!") : open_modal("删除FTP目录错误!");           
+                    }
+                });
+            } 
+        </script>
+        <script event = "OnTransferSuccessed" for = "FTPControl" language = "JavaScript">
+            //上传完成断开ftp服务器
+            FTPControl.DisconnectFTP();
+            sendToServer_addToFileList(ftptype,imgName);
+        </script> 
+        <script event = "OnTransferFailed" for = "FTPControl" language = "JavaScript">
+            clearTimeout(timeer);
+            hideLoadingShowFile($("#file_type").val(), $("#file_id").val());
+            hideUploadProcess($("#file_type").val(), $("#file_id").val());
+            ftptype == 0 ? $(".img_name").text("FTP上传文件失败!") : open_modal("FTP上传文件失败！");
+            //删除ftp创建的目录
+            delFtpDir(ftptype);
+            //FTP断开连接
+            FTPControl.DisconnectFTP(); 
+        </script> 
+        <script type = "text/javascript" >
+            var gsDir = global_data.GsDir;
+            var fid = JSON.parse(getCookie("sftyj_config")).fid || ""; //当前法院的fid
+            EScanControl.LicenseKey = "SSCC0100_1410201400204D";
+            EScanControl.DeviceName = "DS-520";
+            EScanControl.ImageType = 0; //0彩色图片扫描    -1自动(彩色/黑白) 1灰色  2黑白   
+            EScanControl.NumScan = 0; //扫描的纸张数量，0为所有
+            EScanControl.FilePath = gsDir; //保存的路径
+            EScanControl.FileFormat = 1;
+            // EScanControl.FileFormat = (fid=="320513"? 2 : 1);                                //保存文件格式 0bmp 1jpg 2tiff 3Multipage-Tiff 4pdf,如果是常熟法院则为tiff格式
+            EScanControl.FileNameType = 0; //命名方式使用前缀
+            EScanControl.FileNamePrefix = "img_"; //前缀为img
+            EScanControl.BlankPageSkip = 1; //设置空白页跳过 0关闭 1非常低敏感度 2低敏感度 3中等 4高敏感度
+            //开始扫描
+            function GsScan() {
+                var modal_top = $(".scan_modal .modal_top", window.top.document); //背景图       
+                var modal_content = $('.scan_modal .info_content', window.top.document); //dialog内容
+                var modal_title = $('.scan_modal .info_title', window.top.document); //dialog标题
+                var btn_confirm = $('.scan_modal .modal_confirm', window.top.document); //确定按钮
+                var btn_close = $('.scan_modal .modal-close', window.top.document); //返回按钮
+
+                modal_top.css("background-image", "url(/sfytj/dist/images/scan/scaning.png)");
+                modal_title.html("正在扫描");
+                modal_content.html("扫描中,请耐心等待...");
+                btn_confirm.html("确定");
+                btn_close.html("取消扫描");
+                btn_close.click(function() {
+                    LightControl.PowerOff(7);
+                    EScanControl.cancel(); //取消扫描
+                    //删除本地扫描文件
+                });
+                var ret = EScanControl.execute(0); //成功返回0; 失败其他 这里除了0是成功，注意增加其他返回码是警告等，但是扫描依然在继续的情况；
+                if (ret !== 0) {
+                    modal_top.css("background-image", "url(/sfytj/dist/images/scan/scanfail.png)");
+                    modal_title.html("扫描失败");
+                    modal_content.html("请检查扫描文件后再试或者联系管理员处理。");
+                    btn_confirm.html("确定");
+                    btn_close.html("返回");
+                    btn_close.off();
+                    btn_confirm.attr("data-dismiss", "modal");
+                    LightControl.PowerOff(7);
+                }
+            }
+            //扫描完成
+            function GsScanOver(status) {
+                var modal_top = $(".scan_modal .modal_top", window.top.document); //背景图       
+                var modal_content = $('.scan_modal .info_content', window.top.document); //dialog内容
+                var modal_title = $('.scan_modal .info_title', window.top.document); //dialog标题
+                var btn_confirm = $('.scan_modal .modal_confirm', window.top.document); //确定按钮
+                var btn_close = $('.scan_modal .modal-close', window.top.document); //返回按钮  
+                btn_close.html("返回");
+                btn_close.off();
+                if (status == 0) { //扫描成功
+                    modal_top.css("background-image", "url(/sfytj/dist/images/scan/scansuccess.png)");
+                    modal_title.html("扫描完成");
+                    modal_content.html("扫描完成，请关闭窗口。");
+                    btn_confirm.html("关闭并上传");
+                    btn_confirm.click(function() {
+                        $(".scan_modal", window.top.document).modal('hide');
+                        //关闭高扫灯光
+                        LightControl.PowerOff(7);
+                        //开始ftp上传文件,上传完成自动删除源文件
+                        ftpuploadToServer(gsDir, 1, 0, '*.*', 1);
+                    });
+                } else { //扫描失败
+                    modal_top.css("background-image", "url(/sfytj/dist/images/scan/scanfail.png)");
+                    modal_title.html("扫描失败");
+                    modal_content.html("请检查扫描文件后再试或者联系管理员处理。");
+                    btn_confirm.html("确定");
+                    btn_confirm.attr("data-dismiss", "modal");
+                    LightControl.PowerOff(7);
+                }
+            }
+            //显示通过高拍/高扫上传的当前文件个数
+            /*
+            file_type: 文件类型，是'bxcl' 还是 'kxcl'
+            file_id: 文件序号id
+            if_show： 当前显示文件个数是回显显示（true） 还是上传文件后显示(false)
+            */
+            function showUploadFileNum(file_type, file_id, if_show) {
+                var file_list;
+                var file_num = 0; //记录当前文件个数
+                var html = '';
+                var exist = false; //文件列表中是否存在该file_id
+                if (file_type == "bxcl") {
+                    file_list = file_bxcl;
+                } else if (file_type == "kxcl") {
+                    file_list = file_kxcl;
+                }
+                if (file_list.length >= 0) {
+                    $.each(file_list, function(n, value) {
+                        if (value != null) {
+                            if (value.id == file_id) {
+                                file_num = value.children.length;
+                                exist = true;
+                                return false;
+                            }
+                        }
+                    });
+                    if (!exist && !if_show) { //文件列表中不存在该file_id、用于上传显示
+                        file_num++;
+                    } else if (!if_show) { //文件列表中存在此记录，用于上传显示
+                        file_num++;
+                    }
+                }
+                html = "<span class=\"file_num\">共" + file_num + "个文件【点击预览】</span>";
+                if ($("#filename_" + file_type + "_" + file_id).children(".file_num")) {
+                    $("#filename_" + file_type + "_" + file_id).children().remove();
+                }
+                $("#filename_" + file_type + "_" + file_id).append(html);
+            }
+        </script>
+        <script event="OnScanStatus" for="EScanControl" language="JavaScript">
+            //开始扫描的方法
+            GsScan();
+        </script>
+        <!-- 监听保存文件事件 -->
+        <script event="OnSaveToFile" for="EScanControl" language="JavaScript">
+        </script>
+        <!-- 监听扫描结束的事件 -->
+        <script event="OnCompleted(status)" for="EScanControl" language="JavaScript">
+            GsScanOver(status);
+        </script>
+    </body>
+</html>

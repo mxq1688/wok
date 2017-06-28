@@ -1,0 +1,28 @@
+/* 21寸修改 */
+
+@media screen and (min-width: 1919px) {
+    .sfytj_index .mainbody{margin-left: 11.3%;}
+	.jstree-anchor{width:578px}
+    .yylaqrb_table{
+    	.wrap{
+    		.qr_table {
+    			margin-left: 20%!important;
+   		    }
+    	}
+    }
+    .tjcl {
+    	.btn_row .del_btn {width: 280px!important;}
+          }
+	.tjcl {
+	    	.btn_row .button_new  {width: 280px!important;}
+	      }
+	      /*提交材料*/
+	.tjcl .filename_cpj, .tjcl .filename_qrs, .tjcl .filename_sfzm, .tjcl .filename_xscl, .tjcl .filename_zxs{max-width: 150px;}
+
+}
+
+
+
+
+
+

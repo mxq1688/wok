@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Expires" content="0"/> 
+    <title>自助立案确认表</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/table.css"/>
+</head>
+<!--自助立案确认表-->
+<body>
+<div class="yylaqrb_table" >
+    <div class="wrap">
+        <!--主要内容-->
+        <div class="title font_header" style="overflow-y: auto!important; max-height: none!important; ">自助立案确认表</div>
+        <div class="qr_table " style="font-size:16px">
+            <!-- <table border="1">-->
+            <table class="table table-bordered">
+                <tr>
+                    <td class="headline">受理法院</td>
+                    <td id="slfy" class="fs"></td>
+                    <td rowspan="2" class="fs fs1">快速查询二维码:
+                        <br><span style="font-size:12px">(可在“我要查询”模块扫描此二维码)</span></td>
+                    <td rowspan="2" style=" text-align: center;"><div id="erweima"></div></td>
+
+                </tr>
+                <tr>
+                    <td class="headline">案由</td>
+                    <td id="ay" class="fs"></td>
+
+                </tr>
+
+                <tr>
+                    <td class="headline">案件标的</td>
+                    <td id="ajbd" class="fs"></td>
+                    <td class="headline">申请人</td>
+                    <td id="sqrmx" class="fs"></td>
+                </tr>
+                <tr>
+
+                </tr>
+                <!--申请人信息-->
+                <tr>
+                    <td class="headline">立案身份</td>
+                    <td id="lasf" class="fs"></td>
+                    <td class="headline">身份证</td>
+                    <td id="sqrsfz" class="fs"></td>
+                </tr>
+                <tr>
+                    <td class="headline">联系方式</td>
+                    <td id="lxfs" class="fs"></td>
+                    <!-- <td class="headline">邮箱</td>
+                    <td id="email" class="fs"></td> -->
+                    <td class="headline">执行依据</td>
+                    <td id="zxyj" class="fs"></td>
+                </tr>
+                <tr>
+                    <td class="headline">执行依据文号</td>
+                    <td id="zxyjwh" class="fs"></td>
+                    <td class="headline">执行依据单位</td>
+                    <td id="zxyjdw" class="fs"></td>
+                </tr>
+                 <tr>
+                    <td class="headline">诉讼与事实请求</td>
+                    <td id="susongqq" colspan="3" class="fs susongqq"></td>
+                </tr>
+               <!--  <tr>
+                    <td class="fgx" colspan="4"></td>
+                </tr> -->
+            </table>
+        </div>
+
+        </div>
+    </div>
+
+
+
+<!-- <script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script> -->
+<script type="text/javascript" src="/sfytj/bower_components/table.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/zepto.js"></script>
+<script src="/sfytj/dist/scripts/main.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+        function init_people_info() {
+
+            var baseinfo = JSON.parse(localStorage.getItem("yylasq_form_base_zxaj"));
+            var user_info  = JSON.parse(localStorage.getItem("user_info"));
+            $("#sqrmx").html(user_info.name);
+            $("#sqrsfz").html(user_info.id);
+            $("#lxfs").html(baseinfo.li_phone);
+            $("#slfy").html(baseinfo.fymc);
+            $("#ajlx").html(baseinfo.ajlx);
+            $("#ay").html(baseinfo.ay);
+            $("#ajbd").html(baseinfo.ajbd + " 元");
+            $("#lasf").html(baseinfo.lasf);
+            $("#zxyj").html(baseinfo.zxyj);
+            $("#zxyjwh").html(baseinfo.zxyjwh);
+            $("#zxyjdw").html(baseinfo.zxyjdw);
+            $("#susongqq").html(baseinfo.ssqq);
+
+            //当事人数组
+            var bg_list_data = JSON.parse(localStorage.getItem("bg_list_data_zxaj"));
+            var dsr_list_data = JSON.parse(localStorage.getItem("dsr_list_data_zxaj"));
+            var yg_list_data = JSON.parse(localStorage.getItem("yg_list_data_zxaj"));
+
+            //代理人数组
+            var bg_dlr_list_data = JSON.parse(localStorage.getItem("bg_dlr_list_data_zxaj"));
+            var yg_dlr_list_data = JSON.parse(localStorage.getItem("yg_dlr_list_data_zxaj"));
+
+            // var file_bxcl = JSON.parse(localStorage.getItem("file_bxcl_list_zxaj")); //必选材料列表
+            // var file_kxcl = JSON.parse(localStorage.getItem("file_kxcl_list_zxaj")); //可选材料列表
+            // var file_kxcl_new = [];                                             //可选材料列表用于展示
+            // var file_bxcl_new = [];                                             //必选材料列表用于展示
+
+            //必选材料添加到列表
+            /*var html_bxcl="";*/
+
+            //将必选材料列表中null的去掉，重新生成列表用于展示；
+           /* if(file_bxcl.length){
+                for(var i=0; i<file_bxcl.length; i++){
+                    if(file_bxcl[i]!=null){
+                        file_bxcl_new.push(file_bxcl[i]);
+                    }
+                }
+            }*/
+            
+
+            /*if(file_bxcl_new.length){
+              html_bxcl+="<tr>";
+              $.each(file_bxcl_new, function(n, value){
+                      if(value.id == 1){
+                          html_bxcl+="<td class=\"headline\">当事人身份证明材料</td>";
+                          if(value.file_name!=""){
+                              html_bxcl+="<td class=\"fs\">"+value.file_name+"</td>";
+                          }
+                      }else if(value.id == 2){
+                          html_bxcl+="<td class=\"headline\">申请执行书材料</td>";
+                          if(value.file_name!=""){
+                              html_bxcl+="<td class=\"fs\">"+value.file_name+"</td>";
+                          }
+                      }else if(value.id == 3){
+                          html_bxcl+="<td class=\"headline\">生效裁判卷材料</td>";
+                          if(value.file_name!=""){
+                              html_bxcl+="<td class=\"fs\">"+value.file_name+"</td>";
+                          }
+                      }else if(value.id == 4){
+                          html_bxcl+="<td class=\"headline\">执行线索材料</td>";
+                          if(value.file_name!=""){
+                              html_bxcl+="<td class=\"fs\">"+value.file_name+"</td>";
+                          }
+                      }else if(value.id == 5){
+                          html_bxcl+="<td class=\"headline\">当事人送达地址确认书材料</td>";
+                          if(value.file_name!=""){
+                              html_bxcl+="<td class=\"fs\">"+value.file_name+"</td>";
+                          }
+                      }
+
+                    if(n%2!=0){
+                        html_bxcl+="</tr><tr>";
+                    }
+              });
+
+               html_bxcl+="</tr>";
+
+               $(".table-bordered").append(html_bxcl);
+
+            }*/
+            
+
+            //可选材料添加到列表
+            /*var html_kxcl="";
+*/
+            //将可选材料列表中null的去掉，重新生成列表用于展示；
+            /*if(file_kxcl.length){
+                for(var i=0; i<file_kxcl.length; i++){
+                    if(file_kxcl[i]!=null){
+                        file_kxcl_new.push(file_kxcl[i]);
+                    }
+                }
+            }
+            if(file_kxcl_new.length){
+                html_kxcl+="<tr>";
+                $.each(file_kxcl_new, function(n, value){
+                    if(value.file_type=='6'){
+                        html_kxcl+="<td class=\"headline\">营业执照材料</td>";
+                        if(value.file_name!=""){
+                            html_kxcl+="<td class=\"fs\">"+value.file_name+"</td>";
+                        }
+                    }else if(value.file_type=='7'){
+                        html_kxcl+="<td class=\"headline\">授权委托书材料</td>";
+                        if(value.file_name!=""){
+                            html_kxcl+="<td class=\"fs\">"+value.file_name+"</td>";
+                        }
+                    }else if(value.file_type=='1'){
+                        html_kxcl+="<td class=\"headline\">当事人身份证明材料</td>";
+                        if(value.file_name!=""){
+                            html_kxcl+="<td class=\"fs\">"+value.file_name+"</td>";
+                        }
+                    }else if(value.file_type=='2'){
+                        html_kxcl+="<td class=\"headline\">申请执行书材料</td>";
+                        if(value.file_name!=""){
+                            html_kxcl+="<td class=\"fs\">"+value.file_name+"</td>";
+                        }
+                    }else if(value.file_type=='3'){
+                        html_kxcl+="<td class=\"headline\">生效裁判卷材料</td>";
+                        if(value.file_name!=""){
+                            html_kxcl+="<td class=\"fs\">"+value.file_name+"</td>";
+                        }
+                    }else if(value.file_type=='4'){
+                        html_kxcl+="<td class=\"headline\">执行线索材料材料</td>";
+                        if(value.file_name!=""){
+                            html_kxcl+="<td class=\"fs\">"+value.file_name+"</td>";
+                        }
+                    }else if(value.file_type=='5'){
+                        html_kxcl+="<td class=\"headline\">当事人送达地址确认书</td>";
+                        if(value.file_name!=""){
+                            html_kxcl+="<td class=\"fs\">"+value.file_name+"</td>";
+                        }
+                    }
+                    if(n%2!=0){
+                        html_kxcl+="</tr><tr>";
+                    }
+                })
+
+                html_kxcl+="</tr>";
+
+                $(".table-bordered").append(html_kxcl);
+            }*/
+
+            if(yg_list_data==null&&bg_list_data==null&&dsr_list_data==null){
+                html="";
+            }
+            else{
+
+                if(yg_list_data!=null){
+
+                    if(yg_list_data.length>0){
+                        for(var i=0;i<yg_list_data.length;i++){
+
+                            var html="";
+                            if(yg_list_data[i].length==10){
+                                html+="<tr>";
+                                html+="<td class=\"headline\">原告"+(i+1);
+                                html+="("+check_type(yg_list_data[i][1])+")";
+                                html+="</td>";
+                                html+="<td class=\"fs\">"+yg_list_data[i][2]+"</td>";
+                                html+="<td class=\"headline\">身份证</td>";
+                                html+="<td class=\"fs\">"+yg_list_data[i][3]+"</td>";
+                                html+="</tr>"
+                                html+="<tr>";
+                                html+="<td class=\"headline\">联系方式</td>";
+                                html+="<td class=\"fs\">"+yg_list_data[i][6]+"</td>";
+                                html+="<td class=\"headline\">立案身份</td>";
+                                html+="<td class=\"fs\">"+check_ssdw_zxaj(yg_list_data[i][9])+"</td>";
+                                html+="</tr>";
+                                html+="<tr>";
+                                html+="<td class=\"headline\">国籍</td>";
+                                html+="<td class=\"fs\">"+check_country(yg_list_data[i][7])+"</td>";
+                                html+="<td class=\"headline\">民族</td>";
+                                html+="<td class=\"fs\">"+check_nation(yg_list_data[i][4])+"</td>";
+                                html+="</tr>";
+                                html+="<tr>";
+                                html+="<td class=\"headline\">地址</td>";
+                                html+="<td colspan=\"3\" class=\"fs \">"+yg_list_data[i][8]+"</td>";
+                                html+="</tr>";
+                                $(".table-bordered").append(html);
+                            }
+                            else if(yg_list_data[i].length==7){  //法人或者非法人
+                                html+="<tr>";
+                                html+="<td class=\"headline\">原告"+(i+1);
+                                html+="("+check_type(yg_list_data[i][1])+")";
+                                html+="</td>";
+                                html+="<td class=\"fs\">"+yg_list_data[i][2]+"</td>";
+                                html+="<td class=\"headline\">联系电话</td>";
+                                html+="<td class=\"fs\">"+yg_list_data[i][3]+"</td>";
+                                html+="</tr>";
+                                html+="<tr>";
+                                html+="<td class=\"headline\">所在地址</td>";
+                                html+="<td class=\"fs\">"+yg_list_data[i][4]+"</td>";
+                                html+="<td class=\"headline\">法定代表人</td>"
+                                html+="<td class=\"fs\">"+yg_list_data[i][5]+"</td>";
+                                html+="</tr>";
+                                html+="<tr>"
+                                html+="<td class=\"headline\">国家或地区</td>"
+                                html+="<td colspan=\"3\" class=\"fs\">"+check_country(yg_list_data[i][6])+"</td>";
+                                html+="</tr>"
+                                $(".table-bordered").append(html);
+                            }
+                            else if(yg_list_data[i].length==8){
+                                html+="<tr>";
+                                html+="<td class=\"headline\">原告"+(i+1);
+                                html+="("+check_type(yg_list_data[i][1])+")";
+                                html+="</td>";
+                                html+="<td class=\"fs\">"+yg_list_data[i][2]+"</td>";
+                                html+="<td class=\"headline\">法定代表人</td>";
+                                html+="<td class=\"fs\">"+yg_list_data[i][5]+"</td>";
+                                html+="</tr>";
+                                html+="<tr>";
+                                html+="<td class=\"headline\">证件种类</td>";
+                                html+="<td class=\"fs\">"+get_dlr_zjzl(yg_list_data[i][6])+"</td>";
+                                html+="<td class=\"headline\">证件号码</td>";
+                                html+="<td class=\"fs\">"+yg_list_data[i][7]+"</td>";
+                                html+="</tr>";
+                                html+="<tr>";
+                                html+="<td class=\"headline\">联系方式</td>";
+                                html+="<td class=\"fs\">"+yg_list_data[i][3]+"</td>";
+                                html+="</tr>";
+                                html+="<tr>";
+                                html+="<td class=\"headline\">地址</td>";
+                                html+="<td colspan=\"3\" class=\"fs\">"+yg_list_data[i][4]+"</td>";
+                                html+="</tr>";
+                                $(".table-bordered").append(html);
+                            }
+                            else{
+                                html="";
+                                $(".table-bordered").append(html);
+                            }
+
+                        }
+                    }
+                }
+                if(bg_list_data!=null){
+                    if(bg_list_data.length>0){
+                        for(var i=0;i<bg_list_data.length;i++){
+                            html="";
+                            if(bg_list_data[i].length==10){
+                                html+="<tr>";
+                                html+="<td class=\"headline\">被告"+(i+1);
+                                html+="("+check_type(bg_list_data[i][1])+")";
+                                html+="</td>";
+                                html+="<td class=\"fs\">"+bg_list_data[i][2]+"</td>";
+                                html+="<td class=\"headline\">身份证</td>";
+
+                                if(bg_list_data[i][3]!=""){
+                                    html+="<td class=\"fs\">"+bg_list_data[i][3]+"</td>";
+                                }else{
+                                    html+="<td class=\"fs\">-</td>";
+                                }
+        
+                                html+="</tr>"
+                                html+="<tr>";
+                                html+="<td class=\"headline\">联系方式</td>";
+
+                                if(bg_list_data[i][6]!=""){
+                                  html+="<td class=\"fs\">"+bg_list_data[i][6]+"</td>";  
+                                }else{
+                                    html+="<td class=\"fs\">-</td>";
+                                }
+
+                                
+                                html+="<td class=\"headline\">立案身份</td>";
+                                html+="<td class=\"fs\">"+check_ssdw_zxaj(bg_list_data[i][9])+"</td>";
+                                html+="</tr>";
+                                html+="<tr>";
+                                html+="<td class=\"headline\">国籍</td>";
+                                html+="<td class=\"fs\">"+check_country(bg_list_data[i][7])+"</td>";
+                                html+="<td class=\"headline\">民族</td>";
+                                html+="<td class=\"fs\">"+check_nation(bg_list_data[i][4])+"</td>";
+                                html+="</tr>";
+                                html+="<tr>";
+                                html+="<td class=\"headline\">地址</td>";
+                                html+="<td colspan=\"3\" class=\"fs\">"+bg_list_data[i][8]+"</td>";
+                                html+="</tr>";
+                                $(".table-bordered").append(html);
+                            }
+                            else if(bg_list_data[i].length==7){
+
+                                html+="<tr>";
+                                html+="<td class=\"headline\">被告"+(i+1);
+                                html+="("+check_type(bg_list_data[i][1])+")";
+                                html+="</td>";
+                                html+="<td class=\"fs\">"+bg_list_data[i][2]+"</td>";
+                                html+="<td class=\"headline\">联系电话</td>";
+                                
+                                if(bg_list_data[i][3]!=""){
+                                    html+="<td class=\"fs\">"+bg_list_data[i][3]+"</td>";         
+                                }else{
+                                    html+="<td class=\"fs\">-</td>";
+                                }
+                                html+="</tr>";
+                                html+="<tr>";
+                                html+="<td class=\"headline\">所在地址</td>";
+                                html+="<td class=\"fs\">"+bg_list_data[i][4]+"</td>";
+                                html+="<td class=\"headline\">法定代表人</td>"
+
+                                if(bg_list_data[i][5]!=""){
+                                    html+="<td class=\"fs\">"+bg_list_data[i][5]+"</td>";
+                                }else{
+                                    html+="<td class=\"fs\">-</td>";
+                                }
+                                
+                                html+="</tr>";
+                                html+="<tr>"
+                                html+="<td class=\"headline\">国家或地区</td>"
+                                html+="<td colspan=\"3\" class=\"fs\">"+check_country(bg_list_data[i][6])+"</td>";
+                                html+="</tr>"
+
+                                $(".table-bordered").append(html);
+                            }
+                            else if(bg_list_data[i].length==8){
+                                html+="<tr>";
+                                html+="<td class=\"headline\">被告"+(i+1);
+                                html+="("+check_type(bg_list_data[i][1])+")";
+                                html+="</td>";
+                                html+="<td class=\"fs\">"+bg_list_data[i][2]+"</td>";
+                                html+="<td class=\"headline\">法定代表人</td>";
+                                html+="<td class=\"fs\">"+bg_list_data[i][5]+"</td>";
+                                html+="</tr>";
+                                html+="<tr>";
+                                html+="<td class=\"headline\">证件种类</td>";
+                                html+="<td class=\"fs\">"+get_dlr_zjzl(bg_list_data[i][6])+"</td>";
+                                html+="<td class=\"headline\">证件号码</td>";
+                                html+="<td class=\"fs\">"+bg_list_data[i][7]+"</td>";
+                                html+="</tr>";
+                                html+="<tr>";
+                                html+="<td class=\"headline\">联系方式</td>";
+                                html+="<td class=\"fs\">"+bg_list_data[i][3]+"</td>";
+                                html+="</tr>";
+                                html+="<tr>";
+                                html+="<td class=\"headline\">地址</td>";
+                                html+="<td colspan=\"3\" class=\"fs\">"+bg_list_data[i][4]+"</td>";
+                                html+="</tr>";
+                                $(".table-bordered").append(html);
+                            }
+                            else {
+                                html="";
+                                $(".table-bordered").append(html);
+                            }
+
+                        }
+                    }
+                }
+                if(dsr_list_data!=null){
+                    if(dsr_list_data.length>0){
+                        console.log(dsr_list_data);
+                        for(var i=0;i<dsr_list_data.length;i++){
+                            html="";
+                            if(dsr_list_data[i].length==10){
+                                html+="<tr>";
+                                html+="<td class=\"headline\">第三人"+(i+1);
+                                html+="("+check_type(dsr_list_data[i][1])+")";
+                                html+="</td>";
+                                html+="<td class=\"fs\">"+dsr_list_data[i][2]+"</td>";
+                                html+="<td class=\"headline\">身份证</td>";
+
+                                if(dsr_list_data[i][3]!=""){
+                                    html+="<td class=\"fs\">"+dsr_list_data[i][3]+"</td>";
+                                }else{
+                                    html+="<td class=\"fs\">-</td>";
+                                }
+
+                                
+                                html+="</tr>"
+                                html+="<tr>";
+                                html+="<td class=\"headline\">联系方式</td>";
+                                if(dsr_list_data[i][6]!=""){
+                                    html+="<td class=\"fs\">"+dsr_list_data[i][6]+"</td>";
+                                }else{
+                                    html+="<td class=\"fs\">-</td>";
+                                }
+
+                                html+="<td class=\"headline\">立案身份</td>";
+                                html+="<td class=\"fs\">"+check_ssdw_zxaj(dsr_list_data[i][9])+"</td>";
+                                html+="</tr>";
+                                html+="<tr>";
+                                html+="<td class=\"headline\">国籍</td>";
+                                html+="<td class=\"fs\">"+check_country(dsr_list_data[i][7])+"</td>";
+                                html+="<td class=\"headline\">民族</td>";
+                                html+="<td class=\"fs\">"+check_nation(dsr_list_data[i][4])+"</td>";
+                                html+="</tr>";
+                                html+="<tr>";
+                                html+="<td class=\"headline\">地址</td>";
+                                html+="<td colspan=\"3\" class=\"fs\">"+dsr_list_data[i][8]+"</td>";
+                                html+="</tr>";
+                                $(".table-bordered").append(html);
+                            }
+                            else if(dsr_list_data[i].length==7){
+
+                                html+="<tr>";
+                                html+="<td class=\"headline\">第三人"+(i+1);
+                                html+="("+check_type(dsr_list_data[i][1])+")";
+                                html+="</td>";
+                                html+="<td class=\"fs\">"+dsr_list_data[i][2]+"</td>";
+                                html+="<td class=\"headline\">联系电话</td>";
+                                if(dsr_list_data[i][3]!=""){
+                                    html+="<td class=\"fs\">"+dsr_list_data[i][3]+"</td>";
+                                }else{
+                                    html+="<td class=\"fs\">-</td>";
+                                }
+
+                                html+="</tr>";
+                                html+="<tr>";
+                                html+="<td class=\"headline\">所在地址</td>";
+                                html+="<td class=\"fs\">"+dsr_list_data[i][4]+"</td>";
+                                html+="<td class=\"headline\">法定代表人</td>"
+
+                                if(dsr_list_data[i][5]!=""){
+                                    html+="<td class=\"fs\">"+dsr_list_data[i][5]+"</td>";
+                                }else{
+                                    html+="<td class=\"fs\">-</td>";
+                                }
+                                
+                                
+                                html+="</tr>";
+                                html+="<tr>"
+                                html+="<td class=\"headline\">国家或地区</td>"
+                                html+="<td colspan=\"3\" class=\"fs\">"+check_country(dsr_list_data[i][6])+"</td>";
+                                html+="</tr>"
+
+                                $(".table-bordered").append(html);
+                            }
+                            else if(dsr_list_data[i].length==8){
+                                html+="<tr>";
+                                html+="<td class=\"headline\">第三人"+(i+1);
+                                html+="("+check_type(dsr_list_data[i][1])+")";
+                                html+="</td>";
+                                html+="<td class=\"fs\">"+dsr_list_data[i][2]+"</td>";
+                                html+="<td class=\"headline\">法定代表人</td>";
+                                html+="<td class=\"fs\">"+dsr_list_data[i][5]+"</td>";
+                                html+="</tr>";
+                                html+="<tr>";
+                                html+="<td class=\"headline\">证件种类</td>";
+                                html+="<td class=\"fs\">"+get_dlr_zjzl(dsr_list_data[i][6])+"</td>";
+                                html+="<td class=\"headline\">证件号码</td>";
+                                html+="<td class=\"fs\">"+dsr_list_data[i][7]+"</td>";
+                                html+="</tr>";
+                                html+="<tr>";
+                                html+="<td class=\"headline\">联系方式</td>";
+                                html+="<td class=\"fs\">"+dsr_list_data[i][3]+"</td>";
+                                html+="</tr>";
+                                html+="<tr>";
+                                html+="<td class=\"headline\">地址</td>";
+                                html+="<td colspan=\"3\" class=\"fs\">"+dsr_list_data[i][4]+"</td>";
+                                html+="</tr>";
+                                $(".table-bordered").append(html);
+                            }
+                            else {
+                                html="";
+                                $(".table-bordered").append(html);
+                            }
+                        }
+                    }
+                }
+            }
+
+            //table添加代理人信息
+            if(bg_dlr_list_data!=null || yg_dlr_list_data!=null){
+                //var html_fgx = '';
+                // html_fgx+="<tr>";
+                // html_fgx+="<td class=\"fgx\" colspan=\"4\"></td>";
+                // html_fgx+="</tr>";
+                //$(".table-bordered").append(html_fgx);
+
+                if(yg_dlr_list_data!=null){
+                  var html= "";
+                  for(var j=0; j<yg_dlr_list_data.length;j++){
+                    html+="<tr>";
+                    html+="<td class=\"headline\">原告代理人"+(j+1);
+                    html+="("+yg_dlr_list_data[j][3]+")";
+                    html+="</td>";
+                    html+="<td class=\"fs\">"+yg_dlr_list_data[j][4]+"</td>";
+                    html+="<td class=\"headline\">代理当事人</td>";
+                    html+="<td class=\"fs\">"+yg_dlr_list_data[j][2]+"</td>";
+                    html+="</tr>";
+
+                    html+="<tr>";
+                    html+="<td class=\"headline\">联系电话</td>";
+                    html+="<td class=\"fs\">"+yg_dlr_list_data[j][5]+"</td>";
+                    html+="<td class=\"headline\">地址</td>";
+                    html+="<td class=\"fs\">"+yg_dlr_list_data[j][8]+"</td>";
+                    html+="</tr>"
+
+                    html+="<tr>";
+                    html+="<td class=\"headline\">证件种类</td>";
+                    html+="<td class=\"fs\">"+get_dlr_zjzl(yg_dlr_list_data[j][6])+"</td>";
+                    html+="<td class=\"headline\">证件号码</td>";
+                    html+="<td class=\"fs\">"+yg_dlr_list_data[j][7]+"</td>";
+                    html+="</tr>"
+
+                    html+="<tr>";
+                    html+="<td class=\"headline\">单位名称</td>";
+                    html+="<td colspan=\"3\" class=\"fs\">"+yg_dlr_list_data[j][9]+"</td>";
+                    html+="</tr>"
+                  }
+
+                  $(".table-bordered").append(html);
+              }
+
+              if(bg_dlr_list_data!=null){
+                  var html= "";
+                  for(var i=0; i<bg_dlr_list_data.length;i++){
+                    html+="<tr>";
+                    html+="<td class=\"headline\">被告代理人"+(i+1);
+                    html+="("+bg_dlr_list_data[i][3]+")";
+                    html+="</td>";
+                    html+="<td class=\"fs\">"+bg_dlr_list_data[i][4]+"</td>";
+                    html+="<td class=\"headline\">代理当事人</td>";
+                    html+="<td class=\"fs\">"+bg_dlr_list_data[i][2]+"</td>";
+                    html+="</tr>";
+
+                    html+="<tr>";
+                    html+="<td class=\"headline\">联系电话</td>";
+                    html+="<td class=\"fs\">"+bg_dlr_list_data[i][5]+"</td>";
+                    html+="<td class=\"headline\">地址</td>";
+                    html+="<td class=\"fs\">"+bg_dlr_list_data[i][8]+"</td>";
+                    html+="</tr>"
+
+                    html+="<tr>";
+                    html+="<td class=\"headline\">证件种类</td>";
+                    html+="<td class=\"fs\">"+get_dlr_zjzl(bg_dlr_list_data[i][6])+"</td>";
+                    html+="<td class=\"headline\">证件号码</td>";
+                    html+="<td class=\"fs\">"+bg_dlr_list_data[i][7]+"</td>";
+                    html+="</tr>"
+
+                    html+="<tr>";
+                    html+="<td class=\"headline\">单位名称</td>";
+                    html+="<td colspan=\"3\" class=\"fs\">"+bg_dlr_list_data[i][9]+"</td>";
+                    html+="</tr>"
+                  }
+
+                  $(".table-bordered").append(html);
+              }
+            
+
+          }
+
+
+    }
+
+</script>
+<script type="text/javascript">
+    // 初始化
+    $(function () {
+        init_people_info();
+        
+        if(localStorage.getItem("qr_code_path_zxaj")){
+         var qr_code_path = localStorage.getItem("qr_code_path_zxaj");
+         
+        console.log(qr_code_path);
+         $('#erweima').html('<img src="' + qr_code_path + '" alt="">');
+       }
+       else{
+             $('#erweima').html("<span style='line-height:70px'>成功提交后显示</span>");
+       }
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,1068 @@
+/* 19寸修改 */
+@media screen and (max-width: 1441px) {
+.index_html .header{
+	position: fixed;
+}
+  .cklajz .aj-item {
+    .aj-title .fymc {
+      width: 29%;
+    }
+    .title-line {
+      left: 27%;
+    }
+    .aj-info {
+      padding-left: 75px;
+    }
+  }
+  .nav_body{
+    width: 1280px;
+    padding: 56px 0px;
+  }
+  .common_body {
+    width: 1220px;
+    padding: 35px 40px;
+    margin-top: 30px;
+    height: 790px;
+  }
+ // .index_iframe{
+   // height: 908px!important;
+  //}
+// 菜单标题调整
+  .index_html{
+    .header{
+      height: 115px;
+    }
+    overflow-x: hidden;
+    .header_logo{
+      margin-left: 20px;
+    }
+    .header_title {
+      margin-left: 15px;
+    }
+    .header_titledown {
+      font-size: 22px;
+    }
+    .menu_area{
+    //margin-right: 15px;
+      margin-right: 0px;
+    }
+    .sy{
+      //margin-right: 10px;
+      margin-right: 8px;
+      width: 90px;
+      .words{
+        font-size: 22px;
+      }
+      img{
+        width: auto;
+      }
+    }  
+    .header_time{
+      margin-right: 0px;
+    }
+  }
+
+  .font_title_style {
+    font-size: 24px!important;
+  }
+  .font_bigger{
+     font-size: 22px!important;
+  }
+  // 按钮区域
+  .common_btn {
+    font-size: 28px!important;
+    font-weight: 600!important;
+    width: 200px;
+  }
+  .btn_row{
+    padding: 0 40px;
+    .mid_btn {
+      margin-left: -100px;
+    }
+  }
+
+  // 导航栏
+  .nav_line {
+    left: -92px!important;
+  }
+  // 首页修改
+  .sfytj_index {
+    .nav_body{
+      margin-top: 0px;
+    }
+    .mainbody{ 
+      width: 1140px!important;
+      .mainbody-content .content{
+        width: 300px!important;
+        text-align: center;
+      }
+      .mainbody-button{
+        width: 100%!important;
+      }
+      .mainbody-image{
+        height: 130px!important;
+      }
+      .mainbody_child{
+        width: 30%!important;
+        height: auto!important;
+      }
+      .mainbody_child.child3{
+        float:left;
+        margin-left: 0;
+      }
+      .mainbody_child.child3{
+        margin-left: 5%;
+      }
+      .mainbody_child.child4{
+        display: none;
+      }
+    }
+  }
+
+  /**************************** ***************************** 法院概况 **************************** ****************************/
+  .swhry{
+    .swh .name {
+      color: #000;
+      width: 30%;
+      font-size: 22px;
+    } 
+  }
+  .font_header {
+    font-size: 30px !important;
+  }
+  // 法庭分布
+  .fyck{
+    .ftfb_search_right{
+      width: 18%;
+    }
+  }
+  .ftfb2{
+    padding-right:0px;
+  }
+  // 查看法院位置
+  .ckftwz{
+    .floor_sum {
+      margin-right: 22px;
+    }
+    .tips{
+      width: 415px;
+      margin: 0 auto;
+      padding: 0px 0px;
+    }
+  }
+  // 开庭公告
+  .ktgg-index{
+    .search-form{
+      width: 650px!important;
+    }
+    .title-line{
+      left: 450px!important;
+    }
+    .aj-title{
+      font-size:28px!important;
+      .anhao{
+        width: 430px!important;
+      }
+      .ftmc {
+        margin-left: 20px!important;
+      }
+    } 
+    .ktgg_ajxx{
+      margin-left: 440px!important;
+    }
+  }
+  // 失信人查询
+  .sxrcx_content{
+    padding: 30px 46px!important;
+  }
+  // 诉讼计算器
+  .sfjsq_body{
+    padding: 0 46px!important;
+  }
+  .ssfy_input {
+    margin-left: 132px;
+  }
+
+  // 左栏右栏
+  .ssyd_home {
+    height: 120%;
+  }
+  .right_content {
+   height: 100%;
+  }
+
+/***************************** 公共信息 **************************** /
+
+// 诉讼指引
+@media screen and (max-width: 1000px) {
+  .zhiyin {
+    width: 42%!important;
+    margin: 10px 7% 23px 1%!important;
+
+}
+.lc_index .fg{
+   width: 42%!important;
+    margin-right: 7%;
+}
+
+.swh{
+    width: 45%!important;
+    margin:10px 25px 20px 10px;
+  }
+  .fgxx{
+  .fg {
+    width: 45%!important;
+    .name {
+    font-size: 22px!important;
+    } 
+  }
+}
+// 工作流程
+.msss_lc .btn_fh{
+  margin-left: -40px;
+}
+}
+// 左栏右栏
+.ssyd_home{
+  .left_nav {
+    width: 25%;
+  }
+  .right_content{
+    width: 75%;
+  }
+
+  }
+  // 文书样式
+ .wsys2{
+    #wsys_search{
+      width:75%!important;
+    }
+    .btn-search{ 
+      width:25%!important;
+    }
+
+  } 
+
+
+/**************************** ***************************** 诉讼服务 **************************** ****************************/
+  // 我要立案法院表
+  .xzfy{
+    .fayuan {
+      width: 350px;
+    }
+    .low_grade {
+      margin-left: 6%;
+    }
+  }
+
+  // 填写案件
+  .txaj{
+    .txaj_reason{
+      width: 48%;
+    }
+    #search_ay{
+      width: 518.64px;
+    }
+    .txaj_request{
+      float: left;
+      width: 52%;
+      padding-left: 40px;
+    }
+    .apply_identity_child {
+      width:360px!important;
+    }
+    .apply_value_right {
+      width:360px!important
+    }
+    .susong_request_text {
+      width:360px!important;
+    }
+    .susong_title{
+      font-size: 24px!important;
+      font-weight: 100!important;
+    }
+    .susong_request{
+      margin-top: 36px;
+    }
+  } 
+  // 填写人员信息
+  .txryxx{
+      .body_line, .title_line{
+          left: 10%!important;
+      }
+  }
+
+  // 我要阅卷
+  .yyyjqr{
+    .dlfsleft{
+      width: 30%!important;
+    }
+    .dlfsright {
+      width: 65%!important;
+    }
+  }
+  //身份审核
+  .sfsh{
+    .sfsh_mainbody{
+      .input_yzm{
+        width: 33%!important;
+      }
+      .btn_yzm{
+        width: 22%!important;
+      }
+    }
+  } 
+
+  //我要查询
+  .wdaj_login{
+    .nav {
+      width: 62%;
+      left: 19%;
+    }
+    .input_list {
+      left: 22%;
+      width: 56%;
+    }
+    .input_list .title {
+      width: 25%;
+    }
+    .input_bj{
+      width: 65%!important;
+    }
+    .anbm ,.sjhm  {
+      width: 27.5%!important;
+    }
+  }
+  //我要查询已受理案件列表
+  .yslajcx{
+    .aj_name {
+      width: 38%;
+      margin-left: 2%;
+    }
+    .sqxinxi{
+      margin-left: 35%;
+    }
+    .nav_title{
+      width: 24%!important;
+    }
+  }
+  //预约立案查询
+  .cklajz{
+    .col-md-8{
+      width: 63%;
+    }
+    .col-md-4{
+      width: 37%;
+    }
+    .nav_title{
+      width: 28%!important;
+    }
+    .yyyjsq_title{
+      width: 20%!important;
+    }
+    .ssfw_nav{
+    } 
+  }
+
+  .nav_process{
+    width: 80%!important;
+    float: right!important;
+  } 
+  .nav_title{
+    width: 20%!important;
+  }
+  .process_title, .process{
+    margin-left: 0px!important;
+  }
+
+
+  //阅卷查询
+  .ckyjjz{
+    .nav_title{
+      width: 28%!important;
+    }
+/*    .col-md-8{
+     width: 63%;
+   }
+   .col-md-4{
+     width: 37%;
+   } */
+  }
+
+//我的立案
+
+#content_iframe1{ 
+/*height:716px!important;*/
+  height:716px;
+}
+.wdaj_index{
+  width: 1220px!important;
+  height: auto;
+  margin: 0 auto;
+}
+
+.wdaj_index{
+   .wdaj_mainbody
+    {
+      width:1220px!important;
+      height: 716px!important;
+      padding: 0 40px;
+    }
+   .wdaj_head{
+    width: 1220px!important;
+  }
+
+}
+
+.wdaj_common_body{
+   width:100%;
+ //   height: 712px!important;
+   height: 712px;
+ }
+
+
+ .cklajz2{
+   .col-md-8 {
+    width: 66%;
+    padding-right: 5px;
+    padding-left: 34px;
+    }
+    .col-md-4 {
+      width: 34%;
+      padding-right: 0px;
+      padding-left: 0px;
+    }
+    .aj-item .title-line {
+        left: 27%;
+    }
+    .col-md-3{
+      width: 29%!important;
+    }
+ }
+  
+
+//我的已受理案件
+.yslaj2{
+
+   .anhao {
+    width: 36%;
+    }
+   .aj_name {
+    width: 38%;
+    }
+    .yslaj_body{
+      font-size: 24px;
+     }
+    .yslaj_body{
+        .title-line{
+          left: 36%;
+        }
+    }
+    .sqxinxi {
+      font-size: 22px;
+  }
+    .col-md-7 {
+      width: 52%;
+      padding-left: 15px!important;
+    }
+    .col-md-5 {
+      width: 48%;
+    }
+}
+
+ //我的阅卷
+
+ .ckyjjz2{
+    .col-md-8 {
+      width: 55%;
+      padding-left: 15px!important;
+    }
+    .col-md-4 {
+      width: 45%;
+    }
+ } 
+
+
+//案件信息
+
+.ajxx{
+  .jindu .process {
+    padding: 0 30px 10px 30px;
+   }
+   .title {
+    font-size: 28px;
+   }
+   .jindu .line2, .jindu .line3 {
+    width: 204px;
+    right: 110px;
+  }
+  .jindu .line1 {
+    width: 96px;
+    right: 116px;
+  }
+  .jindu .line4 {
+    width: 284px;
+  }
+  .jzxx_info{
+   padding: 12px 8px 0 60px!important;
+  }
+  .ajxx_content{
+    height:546px!important;
+  }
+} 
+
+//提交材料
+.tjcl2{
+   .choose_button1 {
+    width: 136px;
+   }
+   .filename_qrs {
+    max-width: 74px;
+  }
+  .chooseable_button1 {
+    width: 128px;
+  }
+
+  .choosefile .chooseable {
+    padding-left: 105px;
+  }
+  .selectbox .select {
+    width: 360px;
+  }
+  
+}
+
+//提交材料
+.tjcl{
+   .choose_button1 {
+    // width: 136px!important;
+    width: 104px!important;
+   }
+  .chooseable_button1 {
+    /* width: 128px!important; */
+    width: 104px!important;
+  }
+
+  .chooseable {
+    padding-left: 90px!important;
+  }
+  .selectbox .select {
+    // width: 360px!important;
+    width: 300px!important;
+  }
+  .del_btn{
+        width: 198px!important;
+  }
+  .common_btn {
+    width: 175px!important;
+   }
+  .gpy_btn {
+  width: 290px!important;
+  }
+
+  .filename {
+    // max-width: 300px;
+    max-width: 160px;
+  }
+
+  .delete_icon{
+    left: 65%;
+  }
+}
+
+//填写案件人信息
+.txryxx{
+  .common_btn {
+    width: 152px!important;
+  } 
+  .txryxx_content .panel-body .people_list .list_content .list_content_item span {
+    left: 97px;
+  }
+  .col-sm-5 {
+    width: 45.666667%;
+   /* width: 36.66666667%;*/
+  }
+  .col-sm-7 {
+    width: 54.333333%;
+   /*width: 63.33333333%;*/
+  }
+  .txryxx_content .panel-body .input_list {
+    width: 70%;
+  }
+
+}
+
+//填写代理人信息页面
+.txdlr{
+  .common_btn {
+      width: 145px!important;
+  }
+
+  .add_width{
+     width: 170px!important;
+  }
+
+  .col-sm-5 {
+    width: 45.666667%;
+  }
+  .col-sm-7 {
+    width: 54.333333%;
+  }
+
+  .body_line, .title_line{
+      left: 10%!important;
+  }
+ 
+  .txdlr_content .panel-body .people_list .list_content .list_content_item span {
+    left: 116px;
+    max-width: 64px;
+  }
+
+  .txdlr_content .panel-body .people_list .list_content .list_content_item p{
+    width: 57%;
+  }
+
+  .txdlr_content .panel-body .input_list {
+    width: 68%;
+  }
+
+ .btn_row .zscg_btn {
+    margin-left: 16%!important;
+   }
+}
+
+.yyyjjzpj2{
+  .col-md-8 {
+    width: 64%!important;
+    }
+    .col-md-4 {
+      width: 36%!important;
+    }
+    .pingfen_left {
+      width: 12%!important;
+   }
+   .pingfen_right{
+     width: 24%!important;
+   }
+   .fymc{
+    font-size: 24px;
+   }
+   .ah{
+    font-size: 24px;
+   }
+}
+.txcxpj2{
+   .col-md-8 {
+    width: 64%!important;
+    }
+    .col-md-4 {
+      width: 36%!important;
+    }
+    .pingfen_left {
+      width: 12%!important;
+   }
+   .pingfen_right{
+     width: 24%!important;
+   }
+   .fymc{
+    font-size: 24px;
+   }
+   .ah{
+    font-size: 24px;
+   }
+}
+
+//窗口指南
+.ckzn{
+    .nav  li  a {
+    padding: 8px 15px!important;
+    }
+} 
+
+//导航条
+.yylasq_nav .nav_line{
+  width:194px!important;
+}
+
+//我要查询登录
+.wdaj_login .btn_cx {
+    left: 52%!important;
+}
+// 按钮大小
+ .tjcl {
+      .btn_row .del_btn {
+      width:180px!important;
+    }
+}
+ .tjcl {
+      .btn_row .button_new  {
+      width: 180px!important;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+  .sfytj_login {
+    .nav_body{
+      width: 1440px;
+      padding: 100px 50px;
+    }
+  }
+  .nav_body{
+    padding: 0;
+    height: 700px;
+  }
+
+  .common_body {
+    width: 1220px;
+    padding: 35px 40px;
+    margin-top: 30px;
+    height: 730px;
+  }
+
+  .btn_row {
+    bottom: 10px;
+  }
+  
+  //功能首页
+  .sfytj_index {
+    .mainbody {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 80px;
+      width: 100%;
+    }
+  }
+  //我要立案
+  .wyla_index {
+    .mainbody {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 80px;
+      width: 1140px;
+      .mainbody-left {
+        width: 30%;
+      }
+      .mainbody-right {
+        width: 30%;
+      }
+    }
+    .nav_body{
+    }
+  }
+  .index_iframe {
+    height: 800px;
+  }
+}
+
+  //头部header
+  .index_html {
+    .grzx_tip{
+        margin-left: -200%;
+    }
+    .header {
+      height: 100px;
+    }
+    .header_logo, .header_title, .sy {
+      margin-top: 10px; 
+    }
+    .index_iframe {
+      margin-top: 100px;
+    }
+  }
+
+  //立案
+  .ssfxts {
+    .content_all {
+      margin-top: 30px;
+      .sfgd{
+        margin-top: 30px;
+        max-height: 400px;
+      }
+    }
+  }
+
+  //阅卷
+  .yyyjtk {
+    .content_all {
+      margin-top: 30px;
+      .sfgd{
+        margin-top: 30px;
+        max-height: 400px;
+      }
+    }
+  }
+
+  .txaj{
+    .reason_list{
+      height: 380px;
+    }
+    .susong_request_text {
+      height: 70px;
+    }
+  }  
+  .txryxx {
+    .panel-group {
+      margin-top: 10px;
+    }
+    .panel-heading {
+      padding: 0px 15px;
+    }
+  }
+  .txdlr {
+    .panel-heading {
+      padding: 0px 15px;
+    }
+  }
+  //查询
+  .wdaj_login{
+    .tip {
+      margin: 10px 0;
+    }
+    .nav {
+      top: 30px;
+    }
+    .tab-content {
+      padding-top: 40px;
+    }
+  } 
+
+  //诉讼引导
+  .ssyd_home {
+    .ggxx-body{
+      height: 550px;
+    }
+  }
+
+  .yylaqrb {
+    #iframe{
+      height: 490px;
+    }
+  }
+
+  //我的案件
+  .wdaj_index{
+    .wdaj_mainbody {
+      width: 1220px!important;
+      height: 580px!important;
+      padding: 0 40px;
+    }
+    .wdaj_head {
+      margin-top: 30px;
+    }
+  }
+  .wdaj_common_body {
+    width: 100%;
+    height: 560px;
+    padding: 0;
+  }
+  .cklajz2 {
+    .aj-list {
+      max-height: 367px;
+    }
+    .wdaj_btn_row {
+      margin-top: 15px;
+      bottom: 0;
+    }
+  }
+  #content_iframe1 {
+    height: 570px;
+  }
+
+  //公共信息
+  .ggxx-body{
+    height: 530px;
+  }
+  .fyck {
+    height: 500px;
+  }
+
+  //诉讼引导
+  .ssyd {
+    .zhiyin{
+      .tp {
+        width: 30%;
+        img {
+          width: 65px;
+          //height: 78px;
+        }
+      }
+    } 
+  }
+  .fyck{
+    .fg {
+      width: 27%;
+      .tp{
+        margin-top: 45px;
+        img {
+          width: 78px;
+          height: 78px;
+        }
+      }
+      .name {
+        margin-top: 20px;
+      }  
+    } 
+    #sszy{
+      .tp {
+        width: 30%;
+        img {
+          width: 78px;
+          height: 78px;
+        }
+      }
+    }
+    .btn_fh {
+      margin-left: -5%;
+    }
+  }
+
+  .ssyd_home{
+    .left_nav{
+      padding-right: 0;
+      .nav {
+        .new:after{
+          margin-left: 5px;
+        }
+      } 
+    }
+    .right_content{
+      padding-left: 10px;
+    }
+  } 
+
+  //法律法规
+  .flfg_index{
+    .ggxx-body {
+      height: 500px;
+      margin: 10px 0;
+    }
+    .search-container {
+      margin: 20px 0;
+    }
+  }
+}
+
+/*修改当事人填写框宽度  1920*1280*/
+@media (min-width: 1281px) {
+  .col-sm-5 {
+    width: 36.66666667%;
+  }
+  .col-sm-7 {
+      width: 63.33333333%;
+  }
+  .col-sm-101{
+     float: left;
+    width: 100%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 0px;
+    padding-left: 32px;
+  }
+  .col-sm-102{
+    width: 14.5%;
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 0px;
+    padding-left: 32px;
+  }
+  .col-sm-103{
+    float: left;
+    width: 79.6%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 0px;
+    padding-left: 32px;
+  }
+}
+
+/*修改当事人填写框宽度  1280*1024*/
+@media (max-width: 1280px){
+  .col-sm-5 {
+    width: 36.66666667%;
+  }
+  .col-sm-7 {
+      width: 63.33333333%;
+  }
+  .col-sm-101{
+     float: left;
+    width: 100%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 0px;
+    padding-left: 32px;
+  }
+  .col-sm-102{
+    width: 17.5%;
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 0px;
+    padding-left: 32px;
+  }
+  .col-sm-103{
+    float: left;
+    width: 74.6%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 0px;
+    padding-left: 32px;
+  }
+   .index_iframe{
+    height: 908px!important;
+  }
+   /*诉讼引导 工作流程*/ 
+.msss_lc .mssslc .gg_row .arr{
+	margin-left:-68px;
+}
+.msss_lc .mssslc .ck_row .arr{
+	margin-left:-68px;
+}
+/*诉讼引导 工作流程 查看开庭公告*/
+ .ktgg-index .aj-title{
+     font-size: 23px!important;
+ }
+ /*案件信息*/
+ .jstree-anchor{width:519px!important;}
+ /*个人中心 我要阅卷*/
+ .ckyjjz2 .aj-list{    max-height: 380px;}
+}
+/*修改当事人填写框宽度  1366*768*/
+@media (max-width: 1440px){
+  .col-sm-5 {
+    width: 36.66666667%;
+  }
+  .col-sm-7 {
+      width: 63.33333333%;
+  }
+  .col-sm-101{
+     float: left;
+    width: 100%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 0px;
+    padding-left: 32px;
+  }
+  .col-sm-102{
+    width: 17.4%;
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 0px;
+    padding-left: 32px;
+  }
+  .col-sm-103{
+    float: left;
+    width: 74.6%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 0px;
+    padding-left: 32px;
+  }
+}
+@media screen and (max-width: 1441px) and (min-width: 1300px){
+	.common_body {
+    height: 700px;
+}
+}
+

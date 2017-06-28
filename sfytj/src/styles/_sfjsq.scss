@@ -1,0 +1,103 @@
+
+/* 标题 */
+.sfjsq{
+	.ggxx-title  h2 {
+	    font-weight: bolder;
+	    color: #000;
+	  }
+	.ggxx-body {
+		width:100%;
+		position: relative;
+
+	}
+
+	.sfjsq_body {
+	    min-height: 500px;
+		@include center-block;
+	    padding: 0 20% 0 20%;
+		margin-top: 60px;
+	}
+
+	.ajlx_title{
+		line-height:65px;
+	}
+	.selectbox {
+		margin-right: 50px;
+		position: relative;
+	}
+	/* 案件类型下拉框样式 */
+	.selectbox_ajlx {
+		width:650px;
+		border:2px solid #999999;
+		height: 65px;
+	}
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+	select::-ms-expand { 
+		display: none; 
+	}
+	/* 案件标的 */
+	.ajbd {
+		margin-top: 60px;
+	}
+	.ajbd_title{
+		line-height: 65px;
+	}
+
+	.ajbd_text {
+		width:650px;
+		border:2px solid #999999;
+		height: 65px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.ajbd_input {
+		
+	}
+
+	/*isSimple*/
+
+	.isSimple {
+		margin-top: 60px;
+	}
+	.isSimple_title{
+		line-height: 65px;
+		font-weight: normal;
+	}
+	.isSimple_text {
+		width:100px;
+		border:2px solid #999999;
+		height: 65px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	/* 诉讼费用 */
+	.ssfy {
+		margin-top: 60px;
+	}
+	.ssfy_title{
+		line-height: 65px;
+	}
+	// .ssfy_text {
+	// 	width:650px;
+	// 	//border:2px solid #999999;
+	// 	height: 65px;
+	//     border: 2px solid #fff;
+	// 	padding-left: 10px;
+	// 	padding-right: 10px;
+	// }
+	.ssfy_text{
+		display: inline-block;
+		margin: 0;
+		padding: 0 20px 0 61px;
+	}
+	.ssfy_input{
+		line-height: 65px;
+	}
+	//计算器按钮样式
+	.mid_btn{
+		position:relative;
+	}
+}
+
+

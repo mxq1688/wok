@@ -1,0 +1,112 @@
+
+/* 标题 */
+.sxrcx{
+	.sxrcx_content {
+		@include center-block;
+		font-size: 30px;
+		height: 530px;
+		padding: 30px 226px;
+	}
+
+	.bzxrname_title{
+		line-height:62px;
+		.star{
+		    font-size: 30px;
+    		color: red;
+    		font-weight: bold;
+		}
+	}
+
+	.bzxrname_text {
+		width:650px;
+		border:2px solid #999999;
+		height: 62px;
+	    padding: 0 25px;
+	}
+	.bzxrname_input {
+		
+	}
+	
+	/* 身份证号码/组织机构代码 */
+	.sfzhm {
+		margin-top: 50px;
+	}
+	.sfzhm_title{
+		line-height: 62px;
+	}
+
+	.sfzhm_text {
+		width:650px;
+		border:2px solid #999999;
+		height: 62px;
+	    padding: 0 25px;
+	}
+	.sfzhm_input {
+		
+	}
+
+	/* 省份 */
+	.province {
+		margin-top: 50px;
+	}
+	.province_title{
+		line-height: 62px;
+	}
+	.province_text {
+		width:650px;
+		border:2px solid #999999;
+		height: 62px;
+	}
+	.province_input{
+		margin-left: 90px;
+	}
+
+	.selectbox {
+		position: relative;
+	}
+
+	.selectbox_province {
+		width:650px;
+		border:2px solid #999999;
+		height: 62px;
+	    padding-left:25px;
+	    padding-right:30px;
+	}
+
+	/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+	select::-ms-expand { 
+		display: none; 
+	}
+
+	/* 验证码 */
+	.yzm {
+		margin-top: 50px;
+	}
+	.yzm_title{
+		line-height: 62px;
+	}
+
+	.yzm_text {
+		width:451px;
+		border:2px solid #999999;
+		height: 62px;
+	    padding: 0 25px;
+	}
+	.yzm_img{
+		height:62px;
+		width:199px;
+		border-right:2px solid #a9a9a9;
+		border-top:2px solid #a9a9a9;
+		border-bottom:2px solid #a9a9a9;
+	}
+	.yzm_input {
+		
+	}
+
+	/* 查询按钮 */
+	.btn_row {
+    	height: 60px;
+	} 
+
+}
+

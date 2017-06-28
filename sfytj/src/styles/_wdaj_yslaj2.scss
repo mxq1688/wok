@@ -1,0 +1,191 @@
+
+/* 标题 */
+.yslaj2{
+	max-height: 625px;
+	#slajcx_count {
+		color: $blueColor;
+	}
+
+	.tip{
+		margin: 20px 0;
+		font-weight: 700;
+	}
+
+  .aj-list {
+    max-height: 427px;
+    overflow-y: scroll;
+    padding-right: 30px;
+    margin-top: 10px;
+  }
+
+	.wdaj_body {
+	    width: 100%;
+	    position: relative;
+	    height: 504px;
+    	margin: 0px 0px;
+	}
+	.yslaj_body {
+		height: 492px;
+		font-size: 30px;
+		margin-top: 0px;
+		overflow-y: auto;
+		overflow-x: hidden;
+		color:#999999;
+	}
+	.yslaj_list {
+		height: 100%;
+		padding-right: 30px;
+		.panel{
+			margin-bottom: 0px;
+		}
+
+	}
+	.mestips{
+		line-height: 400px;
+		text-align: center;
+	}
+
+	.aj_item {
+		 position:relative;
+		.panel-heading{
+			color:#999999;
+			box-shadow: 0 4px 8px 0 #b9b5b5;
+			background-color:#fff;
+			width:100%;
+			height:100%;
+			padding: 10px 15px;
+			cursor: pointer;
+		}
+	}
+	.anhao{
+		width: 33%;
+		position: relative;
+	    min-height: 1px;
+	    padding-right: 0px;
+	    padding-left: 15px;
+	}
+	.state{
+		border-radius: 10px;
+	    color: #fff;
+	    padding: 3px 7px;
+	    text-align: center;
+	    width: 81px;
+	    height: 37px;
+	    line-height: 30px;
+	    font-size: 24px;
+	    margin: 0 5px;
+	    font-weight: 500;
+	    background-color:$blueColor;
+	}
+	.shzt{
+	    float: right;
+        width: 88px;
+        height: 37px;
+        line-height: 30px;
+        font-weight: 500;
+        font-size: 24px;
+        margin: 3px 20px;
+        border-radius: 10px;
+        color: white;
+        padding: 3px 7px;
+        text-align: center;
+        background-color:$blueColor;
+	}
+	.ckxq{
+		float: right;
+        height: 37px;
+        line-height: 30px;
+        margin: 3px 5px;
+        color: #fff;
+        padding: 3px 7px;
+        font-weight: 500;
+        border-radius: 10px;
+        text-align: center;
+        background-color: #53aee7;
+	}
+	.ckxq_gray{
+		background-color:gray;
+	}
+	.state-waiting .shzt, .state-waiting .title-line {
+    	background-color: gray;
+	}
+	.state-fail .shzt, .state-fail .title-line {
+    	background-color: red;
+	}
+
+    .aj-title {
+      padding-right: 15px;
+      position: relative;
+      background: white;
+
+    	/*法院名称*/
+      .fymc {
+        float: left;
+      }
+      /*案号*/
+      .ah {
+        float: left;
+      }
+    }
+
+	.aj-info {
+	    position: relative;
+	    padding: 25px;
+	    line-height: 35px;
+	}
+
+	/* 竖线 */
+	.title-line {
+      width: 7px;
+      height: 100%;
+      position: absolute;
+      left: 24%;
+      top: 0px;
+      z-index: 1;
+      background-color: #53aee7;
+    }
+
+	/* 按钮 */
+
+	/*高级查询*/
+	.gjsearch{
+		font-size: 28px;
+		text-decoration: none;
+		color: gray;
+		float: left;
+	}
+	.gjsearch_link{
+		font-size: 28px;
+		color: #0089FF;
+		font-family: "Microsoft YaHei";
+		font-weight: 600;
+		margin-left: 10px;
+	}
+
+	.gjsearch:hover{
+		color:gray;
+	}
+
+   /* 查看更多按钮 */
+  .getmore_btn{
+      position: relative;
+      width: 200px;
+      left:50%;
+      margin-left: -70px;
+      margin-top: 20px;
+      display: none;
+      color: #999;
+  }
+   .del_btn{
+    background:#e75353;
+  }
+
+   
+ /* 个人中心已受理案件位置调整 */
+   .ysl_btn{
+    bottom: 15px;
+  }
+ 
+
+}
+

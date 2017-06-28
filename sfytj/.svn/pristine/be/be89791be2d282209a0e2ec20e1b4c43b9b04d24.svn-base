@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>诉讼指引</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body class="fyck sszyym">
+<!--页面主体部分-->
+<div clss="sszy" id="sszy"></div>
+
+<div class="clear"></div>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        /*填充页面*/
+        var sxrItemData = null;
+        var httpurl=global_data.httpurl;
+        if(localStorage.getItem("fy_sszy")){
+            sxrItemData = JSON.parse(localStorage.getItem("fy_sszy"));
+        }else{
+           /*请求数据*/
+            ajax(
+                    ""+httpurl+"ggxx/ygsf/ssyd.php",
+                    null,
+                    function(defaultData){
+                        console.log(defaultData);
+                        sxrItemData = defaultData.data;
+                    },
+                    null,
+                    null,
+                    null,
+                    false
+            );
+           /*将服务器请求的数据保存起来*/
+            localStorage.setItem('fy_sszy',JSON.stringify(sxrItemData));
+        }
+        console.log(sxrItemData);
+
+                var html = "";
+                $.each(sxrItemData, function (n, value) {
+                    html +="<a href='javascript:;'  data-id=\""+n+"\">";
+                    if(n>2){
+                        html += "<div class=\"zhiyin ad shadow\">";
+                    }else {
+
+                        html += "<div class=\"zhiyin shadow\">";
+                    }
+                    var num = '';
+                    if(n<10){
+                        num = '0'+(n+1);
+                    }else{
+                        num = n;
+                    }
+                    html += "    <div class=\"tp\"><img src=\""+value.path+"\"></div>";
+                    html += "<div class='number font_h1'>"+num+"</div>";
+                    html += "<div class='name font_h1'>"+value.title+"</div>";
+                    html += "<div class=\"content font_small\">"+value.content+"</div>";
+                    html +="</div>";
+                    html +="</a>"
+
+                });
+                $("#sszy").append(html);
+                
+                 $("#sszy a").on('click', function(){
+                    var n = $(this).data("id");
+                    var data = sxrItemData[n];
+                   //将json转为字符串；
+                    /*var ssyd_str = JSON.stringify(n);*/
+                    //将法律法规字符串信息存入cookie
+                    /* var ssyd_str1=JSON.parse(localStorage.setItem("ssyd_str"));*/
+                    /* setCookie("ssyd_str", ssyd_str);*/
+                     var ssyd_str = JSON.stringify(data);
+                     localStorage.setItem("ssyd_str", ssyd_str);
+                    window.location.href="/sfytj/dist/html/ggxx/ygsf/ssyd/sszy/sszy_xq.html";
+
+                });
+}
+            
+            
+    );
+    
+               
+</script>
+</body>
+</html>

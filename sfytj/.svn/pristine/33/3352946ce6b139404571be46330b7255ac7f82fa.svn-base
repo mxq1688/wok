@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新闻</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="/sfytj/bower_components/3dgallery/style.css">-->
+    <script src="/sfytj/bower_components/3dgallery/modernizr.custom.53451.js"></script>
+</head>
+<body class="news index_html" style="overflow-y:hidden" onload="showDT()">
+<div class="header" style="position: relative">
+    <div class="header_logo" onclick="openVideoChat()"></div>
+    <div class="header_title">
+        <div class="header_titleup"><span class="current_fy_title"></span>诉讼服务终端</div>
+        <!--<div class="header_titleup">诉讼服务终端</div>-->
+        <div class="header_titledown">PEOPLE'S COURT SERVICES TERMINAL</div>
+    </div>
+
+    <div class="header_time">
+        <div class="header_timeup" id="theClock_t"></div>
+        <div class="header_timedown" id="theClock_d"></div>
+    </div>
+
+
+</div>
+
+<div class="main_body_xz">
+    <!-- <div onclick="openVideoChat()">shipin</div> -->
+    <!--新闻显示区域-->
+    <section id="news_container" class="news_container">
+        <div class="dg-wrapper">
+
+
+            <!--<nav>
+                <span class="dg-prev"><</span>
+                <span class="dg-next">></span>
+            </nav>-->
+            </div>
+    </section>
+
+    <!--视频通话显示区域-->
+    <div class="video_chat">
+        <div class="clear-fix">
+            <div class="title font_h1">
+                12368 诉讼服务热线
+            </div>
+
+            <div class="video_container">
+                <div class="remote_video" id="remote_video">
+                </div>
+                <div class="tips">
+                </div>
+                <div class="queue_tips">
+                </div>
+                <div class="local_video" id="local_video" style=" width: 220px!important;height: 166px!important;"></div>
+                <div class="control_button_container">
+                    <div class="btn_video"></div>
+                    <div class="btn_audio"></div>
+                    <div class="btn_msg"></div>
+                    <div class="btn_hungup"></div>
+                </div>
+                <div class="video_footer font_big">
+                    <div class="fymc" id='spfy_name'>江苏省高级人民法院</div>
+                    <div class="time">00:36:28</div>
+                </div>
+            </div>
+            
+            <div class="text font_big">
+                <p>12368诉讼服务热线在省法院诉讼服务中心设立总平台，各市中级人民法院和基层人民法院设置分平台和子平台，实行“一号对外、集中受理、
+                    分类处置、统一协调、限时办理”的工作机制，具备联系法官、案件查询、诉讼咨询、信访投诉、意见建议等功能。</p>
+
+                <p>1. 通过12368诉讼服务热线联系法官。当事人或诉讼代理人可以来电查询承办法官的电话号码，也可以要求诉讼服务热线代为联系。</p>
+
+                <p>2. 通过12368诉讼服务热线进行案件查询。当事人或诉讼代理人可以来电查询案件信息，在提供相关身份信息和案件信息并经坐席员核实
+                    后，由坐席员直接予以回复。</p>
+
+                <p>3. 通过12368诉讼服务热线进行法律咨询。当事人或社会公众来电进行法律程序问题咨询的，由坐席员直接予以答复。</p>
+
+                <p>4. 通过12368诉讼服务热线进行投诉举报和提出意见建议。当事人或社会公众来电投诉举报或提出意见建议的，坐席员进行
+                    记录登记后分类转交相关部门处理。</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<video class="fullscreen_video" controls autoplay style="background-color:#000;"></video>
+<!--<div class="mask"></div>-->
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/3dgallery/jquery.gallery.js"></script>
+<!--视频通话-->
+<script type="text/javascript" src="//cdn.realtimecat.com/realtimecat/realtimecat-0.4.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/videochat/vsCommon.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/videochat/client.js"></script>
+
+
+<script type="text/javascript">
+    var news_array=
+        [   
+        {
+              "type":0,
+                "content":'<div class="news_item laws"><div class="item_content clearfix"><div class="head"></div><div class="content_laws"><pre class="lawsformat"><video src="http://localhost:80/video/test.mp4"class="news_video"  controls="controls" style="display:none"></video></br></br></pre></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+        },
+            {  
+                "type": 1,
+                "content": '<div class="news_item singlepic"><div class="item_content clearfix"><div class="content_header">诉讼服务中心工作人员介绍</div><div class="content_img"><div class="img_area"><img class="news_pic mag_rt" src="img1.jpg"></div><div class="img_name clearfix"><div class="name_left">顾开龙</div></div></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+            {  
+                "type": 1,
+                "content": '<div class="news_item"><div class="item_content clearfix"><div class="content_header">诉讼服务中心工作人员介绍</div><div class="content_img"><div class="img_area"><img class="news_pic mag_rt" src="img2.jpg"><img class="news_pic" src="img3.jpg"></div><div class="img_name clearfix"><div class="name_left">曲莎琳</div><div class="name_right">徐蓓蓓</div></div></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+            {  
+                "type": 1,
+                "content": '<div class="news_item"><div class="item_content clearfix"><div class="content_header">诉讼服务中心工作人员介绍</div><div class="content_img"><div class="img_area"><img class="news_pic mag_rt" src="img4.jpg"><img class="news_pic" src="img5.jpg"></div><div class="img_name clearfix"><div class="name_left">赵冉</div><div class="name_right">张梅</div></div></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+            {  
+                "type": 1,
+                "content": '<div class="news_item"><div class="item_content clearfix"><div class="content_header">诉讼服务中心工作人员介绍</div><div class="content_img"><div class="img_area"><img class="news_pic mag_rt" src="img6.jpg"><img class="news_pic" src="img7.jpg"></div><div class="img_name clearfix"><div class="name_left">刘洋</div><div class="name_right">彭璐</div></div></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+            {  
+                "type": 1,
+                "content": '<div class="news_item"><div class="item_content clearfix"><div class="content_header">诉讼服务中心工作人员介绍</div><div class="content_img"><div class="img_area"><img class="news_pic mag_rt" src="img8.jpg"><img class="news_pic" src="img9.jpg"></div><div class="img_name clearfix"><div class="name_left">翟羽佳</div><div class="name_right">唐艺珍</div></div></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+            {  
+                "type": 1,
+                "content": '<div class="news_item"><div class="item_content clearfix"><div class="content_header">诉讼服务中心工作人员介绍</div><div class="content_img"><div class="img_area"><img class="news_pic mag_rt" src="img10.jpg"><img class="news_pic" src="img11.jpg"></div><div class="img_name clearfix"><div class="name_left">武晨曦</div><div class="name_right">孟冉</div></div></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+            {
+                "type":1,
+                "content":'<div class="news_item laws"><div class="item_content clearfix"><div class="head">徐州百姓办事“零障碍”工程十条禁令</div><div class="content_laws"><pre class="lawsformat" style="text-align:center">一、严禁作风散漫值守脱岗干私事</br></br>二、严禁态度恶劣生冷横硬不文明</br></br>三、严禁亲疏有别服务优劣看关系</br></br>四、严禁提示不详一次告知不全面</br></br>五、严禁推诿扯皮敷衍群众踢皮球</br></br>六、严禁限制不办工作拖拉效率低</br></br>七、严禁法规之外自设门槛刁难人</br></br>八、严禁有令不行执行政策打折扣</br></br>九、严禁执法随意自由裁量不规范</br></br>十、严禁为政不廉吃拿卡要谋私利</pre></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+            {
+                "type":1,
+                "content":'<div class="news_item laws"><div class="item_content clearfix"><div class="head">全省法院民事案件立案受理规范</div><div class="content_laws"><pre class="lawsformat">一、人民法院应当在诉讼服务中心和诉讼服务站设立起诉材料接收窗口，对当事人提交的起诉状和其他诉讼材料以及当事人口头提起的诉讼进行登记记载，并向当事人出具《起诉材料收据》，不得以当事人提交的起诉材料和手续不符合要求等任何理由拒绝接受当事人的起诉材料，进行登记和出具《起诉材料收据》。</br>二、当事人提交的起诉材料和手续不符合要求的，人民法院应当一次性书面或口头告知起诉应当具备的条件和要求，以及需要补充的材料。能够当场补正的，应当知道当事人当场不正，不能当场补正的，应当告知当事人续在自提交其诉讼材料的次日起七日内补正。</br>三、当事人提起的民事诉讼，符合《中华人民共和国民事诉讼法》第一百一十九条规定 的起诉条件的，人民法院必须自出具（起诉材料收据）七日内立案受理并通知当事人。</br>四、当事人提起的民事诉讼，不属于人民法院主管范围，不属于本院管辖范围或者不符合起诉起诉条件的，应当进行充分释明。经释明后，当事人仍然坚持诉讼的，人民法院必须自出具《起诉材料收据》的次日起七日内做出不予受理裁定书。</br>五、对于当事人提起的诉讼，可以引导当事人进行诉前调解，诉前调解必须征得双方当事人书面同意，诉前调解应当由附设在人民法院和人民法庭的调解工作室或者委托其他调解组织进行，当事人一方明确表示不同意诉前调解或者不同意继续进行诉前调解的，应当及时立案受理。</br>六、严禁认为阻滞收案、限制收案、拖延收案等妨碍当事人起诉权利的情况发生，一经查实，将严肃追究相关负责人和直接责任人员的责任。</br></br>全省法院立案受理工作投诉举报电话：025-83785013</br>徐州市中级人民法院立案受理工作投诉举报电话：85952307</br></pre></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+            {
+                "type":1,
+                "content":'<div class="news_item laws"><div class="item_content clearfix"><div class="head">诉讼风险提示书（一）</div><div class="content_laws"><pre class="lawsformat">     为方便人民群众诉讼，帮助当事人避免常见的诉讼风险，减少不必要的损失，根据《中华人民共和国民事诉讼法》、《中华人民共和国行政诉讼法》以及有关法律和司       法解释的规定，现将常见的诉讼风险提示如下：</br>一、起诉不符合条件</br>当事人起诉不符合法律规定条件的，人民法院不会受理，及时受理也会驳回起诉。</br>当事人诉讼应当符合管辖规定，人民法院对不属于本院管辖的案件将不予受理。</br>二、诉讼请求不适当</br>当事人提出的诉讼请求应明确、具体、完整，对未提出的诉讼请求人民法院不予审理。 </br>当事人提示的诉讼请求要适当，不要随意扩大诉讼请求范围；无根据的诉讼请求，除得不到人民法院支持外，当事人还要负担相应的诉讼费用。</br>三、逾期改变诉讼请求</br>当初人增加、变更诉讼请求或者提出反诉，超过人民法院许可或者指定期限的，可能不被审理。</br>四、超过诉讼时效</br>当事人请求人民法院保护民事权利的期间一般为二年（特殊的为一年）。原告向人民法院起诉后，被告提出原告的起诉已超过法律保护期间的，如果原告没有对超过法律保护期间的事实提供证据证明，起诉讼请求不会得到人民法院的支持。</br>五、授权不明</br>当事人委托诉讼代理人代为承认、放弃、变更诉讼请求，进行和解，提出反诉或者上诉等事项的，应在授权委托书肿特别注明。没有在授权委托书肿明确、具体记明特别授权事项的，诉讼代理人就上述特别授权事项发表的意见不具有法律效力。</br></pre></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+            {
+                "type":1,
+                "content":'<div class="news_item laws"><div class="item_content clearfix"><div class="head">诉讼风险提示书（二）</div><div class="content_laws"><pre class="lawsformat">六、不按时交纳诉讼费用</br>当事人起诉或者上诉，不按时预交诉讼费用，或者提出缓交、减交、免交诉讼费用申请未获批准扔不交纳诉讼费用的，人民法院将会裁定按自动撤回起诉、上诉处理。</br>七、申请财产保全部符合规定</br>当事人申请财产保全，应当按规定交纳保全费用而没有交纳的，人民法院不会对申请保全的  财产采取保全措施。</br>当事人提出财产保全申请，未按人民法院要求提供形影财产担保的，人民法院将依法驳回其申请。</br>申请人申请财产保全有错误的，将要赔偿被申请人因财产保全所受到的损失。</br>八、不提供或者不充分提供证据</br>除法律和司法解释规定不需要提供证据证明外，当事人提出诉讼请求或者反驳对方的诉讼请求，应提供证据证明。不能提供形影的证据或者提供的证据证明不了有关事实的，可能面临不利的裁判后果。</br>九、超过举证时限提供证据</br>当事人向人民法院提交的证据，应当在当事人协商一致并经人民法院认可或者人民法院指定的期限内完成。超过上述期限提交的，人民法院可能视其放弃了举证的权利，但属于法律和司法解释规定的新的证据除外。</br>十、不提供原始证据</br>当事人向人民法院提供证据，应当提供原件或者原物，特殊情况下也可以提供经人民法院核对无异的复制件或者复制品。提供的证据不符合上述条件的，可能影响证据的证明力，甚至可能不被采信。</br></pre></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+            {
+                "type":1,
+                "content":'<div class="news_item laws"><div class="item_content clearfix"><div class="head">诉讼风险提示书（三）</div><div class="content_laws"><pre class="lawsformat">十一、证人不出庭作证</br>除属于法律和司法解释负债看的证人确有困难不能出庭的特殊情况外，当事人提供证人证言的，证人应当出庭作证并接受质询，如果当事人不出庭作证，可能影响该证人证言的证据效力，甚至不被采信。</br>十二、不按规定申请审计、评估、鉴定</br>当事人申请审计、评估、鉴定，未在人民安防员指定期限内提出申请或者不预交审理、评估、鉴定费用，或者不提供相关材料，致使争议的试试无法通过审计、评估、鉴定结论予以认定的，可能对申请人产生不利的裁判后果。</br>十三、不按时出庭或者中途退出法庭</br>原告经传票传唤，五正当理由拒不到庭，或者未经法庭许可中途退出法庭的，人民法院将按自动撤回起诉处理。</br>被告经传票传唤，五正当理由拒不到庭，或者未经法庭许可中途退出法庭的，人民法院将缺席判决。</br>十四、不准确提供送达地址</br>适用简易程序审理的案件，人民法院按照当事人自己提供的送达地址送达诉讼文书时，因当事人提供的己方送达地址不准确，或者送达地址变更未及时告知人民法院，致使人民法院无法送达，造成诉讼文书被退回的，诉讼文书视为送达。</br>十五、超过期限申请强制执行</br>向人民法院申请强制执行的期间为二年。自生效法律文书确定的旅行义务期限届满之日起算。超过上述期间申请的，人民法院不予受理。</br>十六、五财产或者无足够财产可供执行</br>被执行人没有财产或者眉头足够财产旅行生效法律文书确定义务的，人民法院可能对未履行的部分裁定中止执行，申请执行人的财产权益将可能暂时无法实现或者不能完全实现。</br>十七、不履行生效法律文书确定义务</br>被执行人未按生效法律文书指定期间履行给付金钱义务的，将要支付迟延履行期间双倍债务利息。</br>被执行人未按生效法律文书指定期间履行其他义务的，将要支付迟延履行金。</br>十八、未在时限内申请再审</br>对已经发生法律效力的民事判决、裁定，当事人在二年内未提出申请再审的，再审申请将不予受理。</br></pre></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+            {
+                "type":1,
+                "content":'<div class="news_item laws"><div class="item_content clearfix"><div class="head">诉讼费用缴纳办法（节选）一</div><div class="content_laws"><pre class="lawsformat" style="font-size:12px"><div style="text-align:center;font-size:16px;">第二章　诉讼费用交纳范围</div></br>第六条　当事人应当向人民法院交纳的诉讼费用包括：</br>（一）案件受理费；</br>（二）申请费；</br>（三）证人、鉴定人、翻译人员、理算人员在人民法院指定日期出庭发生的交通费、住宿费、生活费和误工补贴。</br>第七条　案件受理费包括：</br>（一）第一审案件受理费；</br>（二）第二审案件受理费；</br>（三）再审案件中，依照本办法规定需要交纳的案件受理费。</br>第八条　下列案件不交纳案件受理费：</br>(一)依照民事诉讼法规定的特别程序审理的案件；</br>(二)裁定不予受理、驳回起诉、驳回上诉的案件；</br>(三)对不予受理、驳回起诉和管辖权异议裁定不服，提起上诉的案件</br>(四)行政赔偿案件。</br>第九条　根据民事诉讼法和行政诉讼法规定的审判监督程序审理的案件，当事人不交纳案件受理费。但是，下列情形除外：</br>（一）当事人有新的证据，足以推翻原判决、裁定，向人民法院申请再审，人民法院经审查决定再审的案件；</br>（二）当事人对人民法院第一审判决或者裁定未提出上诉，第一审判决、裁定或者调解书发生法律效力后又申请再审，人民法院经审查决定再审的案件。</br>第十条　当事人依法向人民法院申请下列事项，应当交纳申请费：</br>（一）申请执行人民法院发生法律效力的判决、裁定、调解书，仲裁机构依法作出的裁决和调解书，公证机构依法赋予强制执行效力的债权文书；</br>（二）申请保全措施；</br>（三）申请支付令；</br>（四）申请公示催告；</br>（五）申请撤销仲裁裁决或者认定仲裁协议效力；</br>（六）申请破产；</br>（七）申请海事强制令、共同海损理算、设立海事赔偿责任限制基金、海事债权登记、船舶优先权催告；</br>（八）申请承认和执行外国法院判决、裁定和国外仲裁机构裁决。</br>第十一条　证人、鉴定人、翻译人员、理算人员在人民法院指定日期出庭发生的交通费、住宿费、生活费和误工补贴，由人民法院按照国家规定标准代为收取。当事人复制案件卷宗材料和法律文书应当按实际成本向人民法院交纳工本费。</br>第十二条　诉讼过程中因鉴定、公告、勘验、翻译、评估、拍卖、变卖、仓储、保管、运输、船舶监管等发生的依法应当由当事人负担的费用，人民法院根据谁主张、谁负担的原则，决定由当事人直接支付给有关机构或者单位，人民法院不得代收代付。人民法院依照民事诉讼法第十一条第三款规定提供当地民族通用语言、文字翻译的，不收取费用。</br></pre></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+            {
+                "type":1,
+                "content":'<div class="news_item laws"><div class="item_content clearfix"><div class="head">诉讼费用缴纳办法（节选）二</div><div class="content_laws"><pre class="lawsformat">第十三条　案件受理费分别按照下列标准交纳：</br>（一）财产案件根据诉讼请求的金额或者价额，按照下列比例分段累计交纳：</br>1.不超过1万元的，每件交纳50元；</br>2.超过1万元至10万元的部分，按照2.5％交纳；</br>3.超过10万元至20万元的部分，按照2％交纳；</br>4.超过20万元至50万元的部分，按照1.5％交纳；</br>5.超过50万元至100万元的部分，按照1％交纳；</br>6.超过100万元至200万元的部分，按照0.9％交纳；</br>7.超过200万元至500万元的部分，按照0.8％交纳；</br>8.超过500万元至1000万元的部分，按照0.7％交纳；</br>9.超过1000万元至2000万元的部分，按照0.6％交纳；</br>10.超过2000万元的部分，按照0.5％交纳。</br>（二）非财产案件按照下列标准交纳：</br>1.离婚案件每件交纳50元至300元。涉及财产分割，财产总额不超过20万元的，不另行交纳；超过20万元的部分，按照0.5％交纳。</br>2.侵害姓名权、名称权、肖像权、名誉权、荣誉权以及其他人格权的案件，每件交纳100元至500元。涉及损害赔偿，赔偿金额不超过5万元的，不另行交纳；超过5万元至10万元的部分，按照1％交纳；超过10万元的部分，按照0.5％交纳。</br>3.其他非财产案件每件交纳50元至100元。</br>（三）知识产权民事案件，没有争议金额或者价额的，每件交纳500元至1000元；有争议金额或者价额的，按照财产案件的标准交纳。</br>（四）劳动争议案件每件交纳10元。</br>（五）行政案件按照下列标准交纳：</br>1.商标、专利、海事行政案件每件交纳100元；</br>2.其他行政案件每件交纳50元。</br>（六）当事人提出案件管辖权异议，异议不成立的，每件交纳50元至100元。</br>省、自治区、直辖市人民政府可以结合本地实际情况在本条第（二）项、第（三）项、第（六）项规定的幅度内制定具体交纳标准。</br></pre></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+            {
+                "type":1,
+                "content":'<div class="news_item laws"><div class="item_content clearfix"><div class="head">诉讼费用缴纳办法（节选）三</div><div class="content_laws"><pre class="lawsformat">第十四条　申请费分别按照下列标准交纳：</br>（一）依法向人民法院申请执行人民法院发生法律效力的判决、裁定、调解书，仲裁机构依法作出的裁决和调解书，公证机关依法赋予强制执行效力的债权文书，申请承认和执行外国法院判决、裁定以及国外仲裁机构裁决的，按照下列标准交纳：</br>1.没有执行金额或者价额的，每件交纳50元至500元。</br>2.执行金额或者价额不超过1万元的，每件交纳50元；超过1万元至50万元的部分，按照1.5％交纳；超过50万元至500万元的部分，按照1％交纳；超过500万元至1000万元的部分，按照0.5％交纳；超过1000万元的部分,按照0.1％交纳。</br>3.符合民事诉讼法第五十五条第四款规定，未参加登记的权利人向人民法院提起诉讼的，按照本项规定的标准交纳申请费，不再交纳案件受理费。</br>（二）申请保全措施的，根据实际保全的财产数额按照下列标准交纳：</br>财产数额不超过1000元或者不涉及财产数额的，每件交纳30元；超过1000元至10万元的部分，按照1%交纳；超过10万元的部分，按照0.5％交纳。但是，当事人申请保全措施交纳的费用最多不超过5000元。</br>（三）依法申请支付令的，比照财产案件受理费标准的1/3交纳。</br>（四）依法申请公示催告的，每件交纳100元。</br>（五）申请撤销仲裁裁决或者认定仲裁协议效力的，每件交纳400元。</br>（六）破产案件依据破产财产总额计算，按照财产案件受理费标准减半交纳，但是，最高不超过30万元。</br>（七）海事案件的申请费按照下列标准交纳：</br>1.申请设立海事赔偿责任限制基金的，每件交纳1000元至1万元；</br>2.申请海事强制令的，每件交纳1000元至5000元；</br>3.申请船舶优先权催告的，每件交纳1000元至5000元；</br>4.申请海事债权登记的，每件交纳1000元；</br>5.申请共同海损理算的，每件交纳1000元。</br></pre></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+            {
+                "type":1,
+                "content":'<div class="news_item laws"><div class="item_content clearfix"><div class="head">诉讼费用缴纳办法（节选）四</div><div class="content_laws"><pre class="lawsformat">第十五条　以调解方式结案或者当事人申请撤诉的，减半交纳案件受理费。</br>第十六条　适用简易程序审理的案件减半交纳案件受理费。</br>第十七条　对财产案件提起上诉的，按照不服一审判决部分的上诉请求数额交纳案件受理费。</br>第十八条　被告提起反诉、有独立请求权的第三人提出与本案有关的诉讼请求，人民法院决定合并审理的，分别减半交纳案件受理费。</br>第十九条　依照本办法第九条规定需要交纳案件受理费的再审案件，按照不服原判决部分的再审请求数额交纳案件受理费。</br></br>第四章　诉讼费用的交纳和退还</br></br>第二十条　案件受理费由原告、有独立请求权的第三人、上诉人预交。被告提起反诉，依照本办法规定需要交纳案件受理费的，由被告预交。追索劳动报酬的案件可以不预交案件受理费。</br>申请费由申请人预交。但是，本办法第十条第（一）项、第（六）项规定的申请费不由申请人预交，执行申请费执行后交纳，破产申请费清算后交纳。</br>本办法第十一条规定的费用，待实际发生后交纳。</br></br>第二十一条　当事人在诉讼中变更诉讼请求数额，案件受理费依照下列规定处理：</br>（一）当事人增加诉讼请求数额的，按照增加后的诉讼请求数额计算补交；</br>（二）当事人在法庭调查终结前提出减少诉讼请求数额的，按照减少后的诉讼请求数额计算退还。</br></pre></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+            {
+                "type":1,
+                "content":'<div class="news_item laws"><div class="item_content clearfix"><div class="head">诉讼费用缴纳办法（节选）五</div><div class="content_laws"><pre class="lawsformat">　　第二十二条　原告自接到人民法院交纳诉讼费用通知次日起7日内交纳案件受理费；反诉案件由提起反诉的当事人自提起反诉次日起7日内交纳案件受理费。</br>上诉案件的案件受理费由上诉人向人民法院提交上诉状时预交。双方当事人都提起上诉的，分别预交。上诉人在上诉期内未预交诉讼费用的，人民法院应当通知其在7日内预交。</br>申请费由申请人在提出申请时或者在人民法院指定的期限内预交。</br>当事人逾期不交纳诉讼费用又未提出司法救助申请，或者申请司法救助未获批准，在人民法院指定期限内仍未交纳诉讼费用的，由人民法院依照有关规定处理。</br></br>第二十三条　依照本办法第九条规定需要交纳案件受理费的再审案件，由申请再审的当事人预交。双方当事人都申请再审的，分别预交。</br></br>第二十四条　依照民事诉讼法第三十六条、第三十七条、第三十八条、第三十九条规定移送、移交的案件，原受理人民法院应当将当事人预交的诉讼费用随案移交接收案件的人民法院。</br></br>第二十五条　人民法院审理民事案件过程中发现涉嫌刑事犯罪并将案件移送有关部门处理的，当事人交纳的案件受理费予以退还；移送后民事案件需要继续审理的，当事人已交纳的案件受理费不予退还。</br></br>第二十六条　中止诉讼、中止执行的案件，已交纳的案件受理费、申请费不予退还。中止诉讼、中止执行的原因消除，恢复诉讼、执行的，不再交纳案件受理费、申请费。</br></br>第二十七条　第二审人民法院决定将案件发回重审的，应当退还上诉人已交纳的第二审案件受理费。</br>第一审人民法院裁定不予受理或者驳回起诉的，应当退还当事人已交纳的案件受理费；当事人对第一审人民法院不予受理、驳回起诉的裁定提起上诉，第二审人民法院维持第一审人民法院作出的裁定的，第一审人民法院应当退还当事人已交纳的案件受理费。</br></br>第二十八条　依照民事诉讼法第一百三十七条规定终结诉讼的案件，依照本办法规定已交纳的案件受理费不予退还。</br></br></pre></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+
+                {
+                "type":1,
+                "content":'<div class="news_item laws"><div class="item_content clearfix"><div class="head">江苏省高级人民法院关于进一步提高诉讼服务质量的规定（一）</div><div class="content_laws"><pre class="lawsformat">     为进一步提高诉讼服务的质量和水平，现就全省法院诉讼服务中心有关工作规定如下：一、延长服务时间。诉讼服务中心工作人员在工作日应当提前半小时到岗接待来访当事人和群众，工作日中午应当安排专人值班，特事特办。遇有当事人和群众来访事项无法在正常工作时间内办结的，下班时间顺延至事项办结时。 </br></br>二、提供导诉服务。对于来访当事人和群众，导诉人员应当主动热情地进行询问，根据来访目的和办理事项引导当事人和群众至相应的服务窗口办理，并积极帮助当事人解决遇到的困难和问题。</br></br>三、加强诉讼指导。对于前来起诉的当事人，应当主动进行法律释明、诉讼风险提示。对于诉讼确有困难的当事人，应当提供必要的法律帮助。当事人口头起诉的，要将当事人的起诉内容认真地记入笔录，并向当事人宣读以确认无误。</br></br>四、实行首问负责。对于来访的当事人和群众首位进行接待的工作人员是首问责任人。首问责任人应当认真做好接待工作，直到当事人和群众的来访事项全部办理完毕。来访事项有明确的经办人员的，首问责任人应当通知经办人员进行接待。</br></br>五、一次办结事务。当事人前来办理的各项诉讼事务原则上应当一次性办结。当事人提交的材料需要补正的，应当及时指导当事人当场补正；需要另行提供、收集或补充材料的，应当将需要补正的材料和内容一次性、准确地告知当事人，并同时向当事人发放书面的告知单。</br></br></pre></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+            {
+                "type":1,
+                "content":'<div class="news_item laws"><div class="item_content clearfix"><div class="head">江苏省高级人民法院关于进一步提高诉讼服务质量的规定（二）</div><div class="content_laws"><pre class="lawsformat">六、严格办理期限。对于投诉、来访、司法救助等事项不能当即处理或应由其他部门处理的，应当明确告知来访当事人和群众具体的办理期限，并在期限内将办理结果告知来访当事人和群众。</br></br>七、领导排期值班。诉讼服务中心每天由一名庭领导值班，负责处理来访、服务投诉及其他重大疑难复杂事务。涉及正在审理的案件的，由相关审判业务庭领导或其指定的其他人员到诉讼服务中心接待处理。</br></br>八、规范立案调解。各方当事人均同意在立案审查阶段进行调解的，由负责立案审查的法官在收到起诉材料之日起七日内组织调解。七日内调解不成的，应当在期限届满之次日立案移送审判业务庭审理。</br></br>九、告知立案信息。案件立案后，即时通过手机短信等方式告知当事人案件立案信息。</br></br>十、完善便民服务。为当事人和群众无偿提供文书范本、笔墨纸张等以及供当事人查阅法律法规和法律知识的相关设备、书籍、杂志。为当事人和群众无偿提供裁判文书查询、案件进程信息查询等服务。</br></br></pre></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+            {
+                "type":1,
+                "content":'<div class="news_item laws"><div class="item_content clearfix"><div class="head">江苏省高级人民法院关于依法及时保障当事人诉权的规定（一）</div><div class="content_laws"><pre class="lawsformat">    为进一步畅通立案渠道，切实保障当事人的合法诉权，现就全省法院立案审判工作的有关问题规定如下：一、统一审查受理机构，及时审查受理各类案件。当事人向人民法院提起的民事、行政、刑事自诉案件、执行申请以及其他各类案件，由诉讼服务中心立案窗口统一审查受理，在法律规定的期限内决定是否立案受理并及时通知当事人。对于疑难复杂、新类型案件，立案庭在立案前可以征询相关审判业务庭的意见。立案庭与相关审判业务庭就是否符合受理条件存在重大分歧的，可以提交审判委员会讨论决定，并在决定后两日内通知当事人。二、依法审查受理刑事案件，全力维护人民群众生命财产安全。人民检察院提起公诉的刑事案件，人民法院应当在七日内决定是否立案。当事人提起的刑事自诉案件，应当在十五日内决定是否立案。经审查符合《刑事诉讼法》规定的受理条件的，应当及时立案，并书面通知自诉人或代为告诉人。不符合《刑事诉讼法》规定的受理条件的，应当说服自诉人撤回起诉；自诉人坚持起诉的，应当依法制作不予受理裁定书并在五日内送达当事人。</br><三、依法审查受理民事案件，着力畅通当事人维权通道。严格执行《民事诉讼法》，严禁在法律规定之外设立受理条件，提高立案门槛。当事人提起的民事诉讼，经审查符合《民事诉讼法》规定的受理条件且能够当即立案的，应当当即立案，并即时向当事人送达《案件受理通知书》；不能当即立案的，应当在七日内立案，并向当事人送达《案件受理通知书》。经审查不符合《民事诉讼法》规定的受理条件的，应当明确告知当事人具体的解决途径，当事人坚持起诉的，应当依法制作不予受理裁定书并在五日内送达当事人。</br><四、依法审查受理行政案件，切实保障公民合法的行政诉权。严格依照《行政诉讼法》及相关司法解释的规定审查当事人提起的行政诉讼，并在七日内决定是否立案。符合《行政诉讼法》规定的受理条件的，应当及时立案，并向当事人送达《案件受理通知书》；不符合受理条件的，应当明确告知当事人具体的解决途径，当事人坚持起诉的，应当依法制作不予受理裁定书并在五日内送达当事人。</br><五、依法审查受理执行申请，及时实现当事人的合法权益。当事人向人民法院申请执行已经发生法律效力的民事判决、调解书、行政判决、裁定、行政赔偿判决、调解书以及法律规定的其他由人民法院执行的法律文书的，人民法院应当在七日内决定是否立案。经审查，符合受理条件的，应当及时立案，并向当事人送达《案件受理通知书》；不符合受理条件的，应当依法制作不予受理裁定书并在五日内送达当事人。</br></br></pre></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+            {
+                "type":1,
+                "content":'<div class="news_item laws"><div class="item_content clearfix"><div class="head">江苏省高级人民法院关于依法及时保障当事人诉权的规定（二）</div><div class="content_laws"><pre class="lawsformat"> <六、开展网上立案审查工作，健全便民立案工作机制。当事人可以通过人民法院网上远程立案系统提交起诉状、主要证据材料，人民法院应在法律规定的期限内，对当事人提交的材料进行审查，经审查符合立案受理条件的，及时告知当事人到诉讼服务中心立案窗口办理立案手续。</br><七、严格规范管辖工作秩序，从源头上保证公正审理。对于不属于本院管辖的案件，应当告知当事人向有管辖权的法院起诉，当事人坚持向本院起诉的，裁定不予受理。对于本院有管辖权的案件，不得以其他法院有管辖权为由不予受理，也不得违反法律规定移送其他法院审理；对两个以上法院都有管辖权的案件，受诉法院在受理当事人的起诉时发现其他有管辖权的法院已经受理的，不得立案受理。</br><八、严格依法收取诉讼费用，确保有理无钱的人打得起官司。严格按照国务院《诉讼费用交纳办法》规定的范围和标准收取诉讼费用。当事人申请缓交、减交、免交诉讼费用的，经审查符合缓、减、免条件的，应当及时办理有关手续；不符合缓、减、免条件的，应当及时告知当事人并详细说明理由。</br><九、严格案件流转期限，提高立案审查效率。立案审查工作应当在法定期限内进行。立案庭决定立案的案件，应当在立案后及时移送审判业务庭进行审理。当事人不服一审判决、裁定直接向二审法院提起上诉的案件，二审法院应在收到上诉状后五日内将上诉状移交一审法院。当事人、人民检察院不服一审判决、裁定提起上（抗）诉的案件，一审法院应当在收到上诉状或抗诉书后三十日内检齐全部上（抗）诉案件材料，并在检齐后三日内移送二审法院。当事人申诉、申请再审的案件，下级法院应当在上级法院发出调卷指令后十五日内将全部卷宗移送至上级法院。上级法院应当在收到下级法院移送的上（抗）诉案件、申诉、申请再审案件材料后三日内立案，并移送相关审判业务庭审理。</br><十、加强对立案工作的监督，及时查处违法违纪行为。全省各级法院要向社会公布立案投诉举报电话。对投诉举报要认真核查，查证属实的，要通报批评；发现有违法违纪嫌疑的，要依法依纪及时查处。经查证不实的，要认真向当事人做好解释工作。</br>江苏省高级人民法院立案投诉举报电话：025－83785013。</br></br></pre></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            },
+               {
+                "type":1,
+                "content":'<div class="news_item laws"><div class="item_content clearfix"><div class="head">徐州各辖区人民法院地址及电话</div><div class="content_laws"><pre class="lawsformat"><table><tr><td>泉山区法院</br>地址：徐州市三环南路与泉新路交叉口向东50米</br>电话：0516-83637785</br></td><td>铜山区法院</br>地址：徐州市铜山区长江西路</br>电话：0516-80262766</br></td></tr><tr><td>云龙区法院</br>地址：徐州市三环东路66号</br>电话：0516-67667138</br></td><td>鼓楼区法院</br>地址：徐州市经济开发区三环东路南段1号</br>电话：0516-80282252</br></td></tr> <tr><td>开发区法院</br>地址：徐州经济开发区徐淮路9号</br>电话：0516-80282051</br></td><td>贾汪区法院</br>地址：徐州市贾汪区前委路南</br>电话：0516-87887571</br></td></tr><tr><td>邳州法院</br>地址：邳州市运平路世纪大道</br>电话：0516-86260061</br></td><td>新沂法院</br>地址：新沂市钟吾南路6号</br>电话：0516-80262766</br></td></tr>  <tr><td>丰县法院</br>地址：徐州市丰县人民西路204号</br>电话：0516-89151991</br></td><td>沛县法院</br>地址：徐州市沛县沛公路4号</br>电话：0516-89151990</br></td></tr><tr><td>睢宁县法院</br>地址：徐州市睢宁县徐宁中路</br>电话：0516-80377029</br></td><td>铁路法院</br>地址：徐州市鼓楼区九里山西路2号</br>电话：0516-87887777</br></td></tr></table></br></br></pre></div></div><div class="news_footer"><div class="fymc">江苏省徐州市中级人民法院</div></div></div>'
+            }
+        ]
+               //用于播放的视频新闻、图片新闻json数组
+    var num = 0;               
+    var isPlaying = false;
+
+    $(function () {
+// 监听键盘按键，快速打开摄像头页面
+        //  document.onkeydown = function()  
+        // {  
+        //     var oEvent = window.event;  
+        //     if (oEvent.keyCode == 49 && oEvent.altKey) {  
+        //        openVideoChat();
+        //     }  
+        //     if (oEvent.keyCode == 50 && oEvent.altKey) {  
+        //          closeVideoChat(); 
+        //     }  
+        // } 
+        //初始化新闻
+      //页面初始化，从查询页面获取法院ID：
+      
+        var httpurl='https://139.224.26.151/sfytjjk';
+        // var court_id = getPar('fid');
+
+        //从配置文件读取当前法院fid
+        console.log("获取法院id");
+        var court_id = null;
+        var Request = new Object();
+    Request = GetRequest();
+    var court_id = Request['fid'];
+        // try{
+        //   var fso = new ActiveXObject("Scripting.FileSystemObject");
+        //   var sfytj_config = fso.OpenTextFile("c:\\sfytj_config.ini", 1);
+        //   sfytj_config.ReadLine();
+        //   court_id = sfytj_config.ReadLine().substr(4,6);    //法院代码
+        //   console.log(court_id);
+        // }
+        // catch(e){
+        //   console.error("配置文件读取出错");
+        // }
+        console.log("法院id:"+court_id);
+
+        if(news_array.length>0){
+            play_video_pic_news(news_array, num, 10000);
+        }
+
+
+        // var articleData = '';
+        // if(!court_id){
+        //    // court_id = global_data.court_id;
+        //    court_id = '320000'; //默认高院
+        // }
+        // ajax(
+        //         ""+httpurl+"/ggxx/new/getnews.php",
+        //         "court_id="+court_id,
+        //         function(defaultData){
+        //             articleData = defaultData.data;
+        //         },
+        //         null,
+        // 	    null,
+        // 	    null,
+        // 	    false
+        // );
+		ajax(
+                ""+httpurl+"/ggxx/new/getcourt.php",
+                "court_id="+court_id,
+                function(defaultData){
+                    // console.log('返回数据');
+                    // console.log(defaultData);
+                    $('#spfy_name').html(defaultData.data);
+                    $('.current_fy_title').html(defaultData.data);
+                },
+                null,
+        	    null,
+        	    null,
+        	    false
+        );
+        
+      //   var html = "";
+      // //  alert(defaultData.data.length);
+      //   $.each(articleData, function (n,value) {
+      //       if(value['cid']==3){ //代表视频新闻
+      //           html +='<div class="news_item video">';
+      //           html +='<div class="news_header">';
+      //           html +='<video class="news_video" src="'+value['path']+'" controls></video>';
+      //           html +='<div class="news_label"></div>';
+      //           html +='</div>';
+      //           html +='<div class="news_body clearfix">';
+      //           html +='<div class="news_date font_big">';
+      //           html +='<div class="news_date_day">'+value['day']+'</div>';
+      //           html +='<div class="clearfix fl">';
+      //           html +='<div class="news_date_month">'+value['month']+'</div>';
+      //           html +='<div class="news_date_year">'+value['year']+'</div></div>';
+      //           html +='</div>';
+      //           html +='<div class="news_title">'+value['title']+'</div>';
+      //           html +='</div>';
+      //           html +='<div class="news_footer">';
+      //           html +='<div class="fymc">'+value['court_name']+'</div>';
+      //           html +='<div class="news_author">'+value['author']+'</div>';
+      //           html +='</div>';
+      //           html +='</div>';
+      //       }else{
+      //           html +='<div class="news_item">';
+      //           html +='<div class="news_header">';
+      //           html +='<img class="news_pic" src="'+value['path']+'">';
+      //           html +='<div class="news_label"></div>';
+      //           html +='</div>';
+      //           html +='<div class="news_body clearfix">';
+      //           html +='<div class="news_date font_big">';
+      //           html +='<div class="news_date_day">'+value['day']+'</div>';
+      //           html +='<div class="clearfix fl">';
+      //           html +='<div class="news_date_month">'+value['month']+'</div>';
+      //           html +='<div class="news_date_year">'+value['year']+'</div></div>';
+      //           html +='</div>';
+      //           html +='<div class="news_title">'+value['title']+'</div>';
+      //           html +='</div>';
+      //           html +='<div class="news_text font_common">'+value['content']+'</div>';
+      //           html +='<div class="news_footer">';
+      //           html +='<div class="fymc">'+value['court_name']+'</div>';
+      //           html +='<div class="news_author">'+value['author']+'</div>';
+      //           html +='</div>';
+      //           html +='</div>';
+      //       }
+            
+      //   //    alert(html);
+            
+      //   });
+      //   $(".dg-wrapper").html(html); 
+                    
+        
+         /*视频播放状态*/
+        $('.fullscreen_video').bind('play', function () {
+            isPlaying = true;
+
+        });
+
+        /*视频暂停或结束或错误*/
+        $('.fullscreen_video').bind('error ended', function(){
+            $('.fullscreen_video').hide();
+            isPlaying = false;
+            play_video_pic_news(news_array, num, 10000);
+        })
+
+        /*视频暂停*/
+        $('.fullscreen_video').bind('pause', function () {
+            
+        });
+
+
+        $('.btn_video').click(function () {
+            toggleVideo();
+        });
+
+        $('.btn_audio').click(function () {
+            toggleAudio();
+        });
+
+        $('.btn_msg').click(function () {
+            alert('正在开发中');
+        });
+
+        $('.btn_hungup').click(function () {
+            closeVideoChat();
+        });
+
+         /*视频暂停或结束或错误*/
+        $('.fullscreen_video').bind('error ended', function(){
+            $('.fullscreen_video').hide();
+            isPlaying = false;
+            play_video_pic_news(news_array, num, 10000);
+        })
+
+
+
+
+        /*调用这行代码打开视频通话*/
+        //openVideoChat();
+
+        /*调用这行代码关闭视频通话*/
+        //closeVideoChat();
+
+      // phone.StartPhone();
+      
+      initWebSocket();
+    
+      
+      
+    });
+
+ /*
+        播放视频新闻、图片新闻的方法
+        news_array: 用于播放新闻的数组
+        index: 当前播放到数组的第几个
+        speed: 轮播速度，单位毫秒
+    */
+    function play_video_pic_news(news_array, index, speed){
+        $(".news_container").html(news_array[num].content);
+        $(".news_item").fadeIn(1000, function(){
+            if(news_array[index].type==0){
+                console.log("视频新闻");
+                num++;
+                if(num==news_array.length){
+                    num=0;
+                }
+                play_video();
+            }else{
+                setTimeout(function(){
+                    $(".news_item").fadeOut(1000, function(){
+                        num++;
+                        if(num==news_array.length){
+                            num=0;
+                        }
+                        play_video_pic_news(news_array, num, 10000);
+                    })
+                }, speed);
+            }
+        });
+    }
+
+//播放视频
+    function play_video(){
+       var fullscreen_ele = $('.fullscreen_video');
+       var video =  $(".news_item").find(".news_video");
+       if(video.length>0){
+            fullscreen_ele.attr("src", video[0].src);
+            fullscreen_ele.show();
+            fullscreen_ele[0].play();
+       }
+    }
+
+
+</script>
+</body>
+</html>

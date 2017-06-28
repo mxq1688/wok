@@ -1,0 +1,138 @@
+/*我要查询-预约立案进展查询*/
+.cklajz {
+
+  #lajzcx_count {
+    color: $blueColor;
+  }
+
+  .tip{
+    margin: 20px 0;
+    font-weight: 700;
+  }
+  .aj-list {
+    max-height: 480px;
+    overflow-y: auto;
+    padding-right: 30px;
+    margin-top: 10px;
+  }
+  .aj-item {
+
+    position: relative;
+    .title-line {
+      width: 7px;
+      height: 100%;
+      position: absolute;
+      left: 24%;
+      top: 0px;
+      z-index: 1;
+    }
+    /* 自定义panelheading */
+    .panel-heading {
+      position: relative;
+      background-color: #fff;
+      box-shadow: 0 10px 20px 0 #b9b5b5;
+      color: #9a9a9a;
+      cursor: pointer;
+      .ckxq {
+        float: right;
+        width: 125px;
+        height: 37px;
+        line-height: 30px;
+        font-weight: 500;
+        margin: 3px 5px;
+        border-radius: 10px;
+        color: #fff;
+        padding: 3px 7px;
+        text-align: center;
+        background-color: #53aee7;
+      }
+      .badge {
+        float: right;
+        background-color: #53aee7;
+        width: 81px;
+        height: 37px;
+        font-size: 24px;
+        line-height: 30px;
+        font-weight: 500;
+        margin: 0 5px;
+      }
+      .shzt {
+        float: right;
+        width: auto;
+        height: 37px;
+        line-height: 30px;
+        font-weight: 500;
+        margin: 3px 20px;
+        border-radius: 10px;
+        color: white;
+        padding: 3px 7px;
+        text-align: center;
+      }
+      .ckxq_gray{
+        background-color:gray;
+      }
+    }
+    .panel-title {
+      font-weight: 500;
+      color: #9a9a9a;
+    }
+
+    /* panel内容部分 */
+    .panel-body {
+      position: relative;
+      max-height: 400px;
+
+    }
+
+    .aj-title {
+      padding-right: 15px;
+      position: relative;
+      background: white;
+      /*font-weight: 500;*/
+
+
+      /*法院名称*/
+      .fymc {
+        float: left;
+      }
+      /*案号*/
+      .ah {
+        float: left;
+      }
+
+    }
+
+    .aj-info {
+      position: relative;
+      padding: 25px;
+      line-height: 35px;
+    }
+
+
+  }
+  /*审核已通过*/
+  .state-success {
+    .title-line, .shzt {
+      background-color: $blueColor;
+    }
+
+  }
+  /*审核中*/
+  .state-waiting {
+    .title-line, .shzt{
+      background-color: gray;
+    }
+  }
+  /*审核未通过*/
+  .state-failed {
+    .title-line, .shzt {
+      background-color: red;
+    }
+  }
+  
+    /*评价按钮*/
+    .btn-pj{
+      margin-left: 50px;
+    }
+
+}

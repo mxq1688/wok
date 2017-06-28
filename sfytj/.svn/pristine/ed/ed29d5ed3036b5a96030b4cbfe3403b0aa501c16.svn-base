@@ -1,0 +1,20 @@
+/* 设置icon */
+
+/* header的背景图片 */
+$header_background: url(../images/bg/headerBackground.png);
+
+/*header的logo*/
+$header_logo:url(../images/icon/header_logo.png);
+
+/* 页面内容背景图片 */
+$body_background: url(../images/bg/wrapBackground.png);
+
+/*底部菜单按钮*/
+$menu_button:url(../images/icon/menu_button.png);
+
+/*预约立案主菜单人物角色图标*/
+$yyla_nature:url(../images/icon/yyla_nature.png);
+$yyla_legal_person:url(../images/icon/yyla_legal_person.png);
+$yyla_unincorporated:url(../images/icon/yyla_unincorporated.png);
+$yyla_agent:url(../images/icon/yyla_agent.png);
+

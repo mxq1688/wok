@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>法律法规</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css" />
+</head>
+<body>
+
+<!--页面-->
+<div class="flfg">
+    <div class="common_body">
+        <!--头部-->
+        <div class="ggxx-head">
+            <div class="ggxx-title font_header"></div>
+        </div>
+
+        <!--主体内容-->
+        <div class="ggxx-body">
+            <div class="flfg_content font_bigger">
+
+            </div>
+        </div>
+
+        <!-- 底部按钮区 -->
+        <div class="btn_row ">
+            <input type="button" value="返回" class="common_btn "  onclick="history.go(-1)"/>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script>
+    var httpurl=global_data.httpurl;
+    var flfgid = getCookie("flfgid");
+    var flfgItemData = null;
+    var flfg_gid = {};
+</script>
+<script type="text/javascript">
+    $(function(){
+
+
+        if(flfgid==null){flfgid=""};
+
+        if(localStorage.getItem("flfg_gid")){
+            flfg_gid= JSON.parse(localStorage.getItem("flfg_gid"));
+        }else{
+            flfg_gid ={};
+        }
+        if(flfg_gid[flfgid]){
+                flfgItemData = flfg_gid[flfgid];
+
+        }/*else{
+            ajax(
+                        ""+httpurl+"ggxx/ygsf/flfg.php",
+                        "id="+flfgid,
+                        function(defaultData){
+                            console.log(defaultData);
+                            flfgItemData = defaultData.data;
+                        },
+                        null,
+                        null,
+                        null,
+                        false
+            );
+                flfg_gid[flfgid] = flfgItemData ;
+               /!* flfg_gid[flfgid] =JSON.stringify(flfgItemData)  ;*!/
+                localStorage.setItem("flfg_gid",JSON.stringify(flfg_gid));
+            }
+        }*/else{
+            ajax(
+                    ""+httpurl+"ggxx/ygsf/flfg.php",
+                    "id="+flfgid,
+                    function(defaultData){
+                        console.log(defaultData);
+                        flfgItemData = defaultData.data;
+                    },
+                    null,
+                    null,
+                    null,
+                    false
+            );
+            console.log(flfgid);
+            /*flfg_gid = {};*/
+            flfg_gid[flfgid] = flfgItemData ;
+            /* flfg_gid[flfgid] =JSON.stringify(flfgItemData);*/
+            console.log(typeof flfg_gid[flfgid]);
+            console.log(flfg_gid);
+            localStorage.setItem("flfg_gid",JSON.stringify(flfg_gid));
+        }
+
+
+
+        $(".ggxx-title").html(flfgItemData.title);
+
+        var html = '';
+
+        html += "<div class='content_list'>"+flfgItemData.content+"</div>"
+
+        $(".flfg_content").html(html);
+
+
+    });
+</script>
+
+
+<!--<script type="text/javascript">
+    $(".ggxx-title").html(JSON.parse(getCookie("fltk")));
+    var data = JSON.parse(getCookie("flnr"));
+    console.log(data);
+    var html = '';
+    $.each(data,function(n,value){
+        html += "<div class='content_list'>"+value+"</div>"
+
+    });
+    $(".flfg_content").html(html);
+</script>-->
+</body>
+</html>

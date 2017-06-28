@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <title>
+                查看立案进展
+            </title>
+            <link href="/sfytj/dist/styles/main.min.css" rel="stylesheet" type="text/css"/>
+            <link href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        </meta>
+    </head>
+    <body>
+        <div class="cklajz">
+            <div class="wrap">
+                <div class="common_body">
+                    <!--导航条部分-->
+                    <div class="ssfw_nav yylajzcx_nav clearfix">
+                        <!--自助立案进展查询标题 -->
+                        <div class="nav_title">
+                            <h2>
+                                自助立案进度查询
+                            </h2>
+                        </div>
+                    </div>
+                    <!--内容区-->
+                    <div class="font_weight font_header tip clearfix">
+                        <div class="fl">
+                            您当前立案申请件数：
+                            <span id="lajzcx_count">
+                            </span>
+                        </div>
+                    </div>
+                    <!--案件列表-->
+                    <div aria-multiselectable="true" class="aj-list panel-group" id="aj_list" role="tablist">
+                    </div>
+                    <!--end案件列表-->
+                    <!--end内容区-->
+                    <!--按钮区-->
+                    <div class="btn_row clearfix">
+                        <input class="common_btn" onclick="history.back()" type="button" value="返回"/>
+                        <div class="fr">
+                            <!-- <button class="common_btn" id="btn-ckjz">查看卷宗</button> -->
+                            <a class="common_btn" href="/sfytj/dist/html/ssfw/wyla_index.html">
+                                申请自助立案
+                            </a>
+                            <input class="del_btn common_btn fr" id="btn_sc" style="margin-left: 10px;" type="button" value="收藏到个人中心"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/sfytj/bower_components/jquery/dist/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/dist/scripts/main.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+            $(function() {
+               //从cookie中获取自助立案进展查询 数据
+               var yylacx_data = JSON.parse(getCookie("yylacx_data"));
+               var defaultData = yylacx_data;
+               /*填充页面*/
+               var html = "";
+               //根据返回的是defaultData.length是否为true来展示（true,手机号查多条数据， false,流水号查 1条数据)
+               //案件状态：state=0 未通过； state=1 审核中； state=2 已通过
+               if (defaultData.length) {
+                   $("#lajzcx_count").text(defaultData.length);
+                   $("#lajzcx_fymc").text(defaultData[0].court_name);
+                   $.each(defaultData, function(n, value) {
+                           html += "<div class=\"panel panel-default aj-item ";
+                           if (value.state == "2") {
+                               html += "state-success";
+                           } else if (value.state == "1") {
+                               html += "state-waiting";
+                           } else if (value.state == "0") {
+                               html += "state-failed";
+                           }
+                           html += "\">";
+                           html += "<div class='title-line'></div>"
+                           html += "<div class=\"panel-heading clearfix aj-title font_title_style\" role=\"tab\"  id=\"aj" + n + "\"" + "data-toggle=\"collapse\" data-parent=\"#aj_list\" data-target=\"#collapse" + n + "\"" + " aria-controls=\"collapse" + n + "\" >";
+                           html += "<div class=\"fymc col-md-3\">" + value.court_name + "</div>";
+                           html += "<div class=\"ah\">" + value.case_num + "</div>";
+                           html += "<div class=\"clearfix font_bigger\">";
+                           //查看详情按钮：当state=1(案件审核中)时需要判断请求确认表还是请求详情： 
+                           // ckxq_state: 0 不可以看
+                           // ckxq_state  1 请求确认表
+                           // ckxq_state: 2 请求详情
+                           var shzt = "";
+                           //提交中的状态：进入通达海系统之前
+                           if (value.case_status == '1') {
+                               shzt = "提交中";
+                               html += "<div class=\"ckxq\" onclick=\"ckajxq_local('" + value.id + "', window)\">查看详情</div>";
+                           //发送请求到通达海之后的状态
+                           } else if (value.case_status == '2') {
+                               if (value.state == "2") {
+                                   shzt = "已通过";
+                                   html += "<div class=\"ckxq\" onclick=\"ckajxq_lian('" + value.id + "',window)\">查看详情</div>";
+                               } else if (value.state == "1") {
+                                   shzt = "审核中";
+                                   if (value.ckxq_state == 0) {
+                                       html += "<div class=\"ckxq ckxq_gray\">查看详情</div>";
+                                   } else if (value.ckxq_state == 1) {
+                                       html += "<div class=\"ckxq\" onclick=\"ckajxq_local('" + value.id + "', window)\">查看详情</div>";
+                                   } else if (value.ckxq_state == 2) {
+                                       html += "<div class=\"ckxq\" onclick=\"ckajxq_lian('" + value.id + "', window)\">查看详情</div>";
+                                   }
+                              } else if (value.state == "0") {
+                                  shzt = "未通过";
+                                  html += "<div class=\"ckxq ckxq_gray\">查看详情</div>";
+                              }
+                          //显示快照数据：通达海接口崩溃，暂时维护未实现，需要增加图片显示
+                          } else if (value.case_status == '3') {
+                              if (value.state == "2") {
+                                   shzt = "已通过";
+                                   html += "<div class=\"ckxq\" onclick=\"ckajxq_local('" + value.id + "',window)\">查看详情</div>";
+                               } else if (value.state == "1") {
+                                   shzt = "审核中";
+                                   if (value.ckxq_state == 0) {
+                                       html += "<div class=\"ckxq ckxq_gray\">查看详情</div>";
+                                   } else if (value.ckxq_state == 1) {
+                                       html += "<div class=\"ckxq\" onclick=\"ckajxq_local('" + value.id + "', window)\">查看详情</div>";
+                                   } else if (value.ckxq_state == 2) {
+                                       html += "<div class=\"ckxq\" onclick=\"ckajxq_local('" + value.id + "', window)\">查看详情</div>";
+                                   }
+                              } else if (value.state == "0") {
+                                  shzt = "未通过";
+                                  html += "<div class=\"ckxq ckxq_gray\">查看详情</div>";
+                              }
+                          }
+                          html += "<div class=\"shzt\">" + shzt + "</div>";
+                          if (value.today == "1") {
+                             html += "<div class=\"badge\">今日</div>";
+                          }
+                          html += "</div>"; html += "</div>"; html += "<div data-lsh='" + value.lsh + "'  id=\"collapse" + n + "\" class=\"panel-collapse collapse " + (n == 0 ? "in" : "") + "\" data-index=\"" + n + "\" role=\"tabpanel\" aria-labelledby=\"aj" + n + "\">"; html += "<div class=\"panel-body  aj-info\">"; html += "<div class=\"col-md-offset-3 font_bigger\">"; html += "<div class=\"col-md-8\">案件名称：" + value.title + "</div>"; html += "<div class=\"col-md-4\">当<span class='dsr_spacing'> &nbsp;事 </span>人：" + value.dsr + "</div>"; html += "<div class=\"col-md-8\">案　　由：" + value.case_action_name + "</div>"; html += "<div class=\"col-md-4\">标　　的：" + (value.biaode ? value.biaode : '-') + "</div>"; html += "<div class=\"col-md-8\">申请日期：" + value.create_time + "</div>"; html += "<div class=\"col-md-4\">通过日期：" + value.handle_time + "</div>";
+                          //如果未通过，添加字段说明原因
+                          if (value.state == 0) {
+                              html += "<div class=\"col-md-8\">未通过原因：" + value.reason + "</div>";
+                          }
+                          html += "</div>"; html += "</div>"; html += "</div>"; html += "</div>";
+                       /**查看卷宗 获取选中的值存入cookie*/
+                       // $("#btn-ckjz").on('click', function(){
+                       //     //如果是评价页面的话，需要把页面当前信息保存到cookie 然后在传到下一个页面
+                       //     var val_selected = $(".panel-collapse.collapse.in").data("index");
+                       //     if (val_selected == undefined) {
+                       //         open_modal('请选择案件再查看卷宗！');
+                       //         return false;
+                       //     }
+                       //     var data = yylacx_data[val_selected];
+                       //     if(data.state==0){
+                       //         open_modal("该案件阅卷申请未通过，现在无法查看此案卷宗！");
+                       //     }if(data.state==1){
+                       //         open_modal("该案件阅卷申请正在审核中，现在无法查看此案卷宗！");
+                       //     }if(data.state==2){
+                       //         setCookie('cklajz', JSON.stringify(data));
+                       //         window.location.href = 'lackjz.html'
+                       //     }
+                       // });
+                   });
+           } else {
+               $("#lajzcx_count").text(1);
+               var value = defaultData;
+               $("#lajzcx_fymc").text(defaultData.court_name);
+               var n = 0;
+               html += "<div class=\"panel panel-default aj-item ";
+               //state 0失败 
+               if (value.state == "2") {
+                   html += "state-success";
+               } else if (value.state == "1") {
+                   html += "state-waiting";
+               } else if (value.state == "0") {
+                   html += "state-failed";
+               }
+               html += "\">";
+               // html +=" aria-expanded=\"true\" >";
+               html += "<div class='title-line'></div>"
+               html += "<div class=\"panel-heading clearfix aj-title font_title_style\" role=\"tab\"  id=\"aj" + n + "\"" + "data-toggle=\"collapse\" data-parent=\"#aj_list\" data-target=\"#collapse" + n + "\"" + " aria-controls=\"collapse" + n + "\" >";
+               html += "<div class=\"fymc col-md-3\">" + value.court_name + "</div>";
+               html += "<div class=\"ah\">" + value.case_num + "</div>";
+               html += "<div class=\"clearfix font_bigger\">";
+
+               var shzt = "";
+
+               //提交中的状态：进入通达海系统之前
+              if (value.case_status == '1') {
+                    shzt = "提交中";
+                    html += "<div class=\"ckxq\" onclick=\"ckajxq_local('" + value.id + "', window)\">查看详情</div>";
+             //发送请求到通达海之后的状态
+               } else if (value.case_status == '2') {
+                   if (value.state == "2") {
+                       shzt = "已通过";
+                       html += "<div class=\"ckxq\" onclick=\"ckajxq_lian('" + value.id + "',window)\">查看详情</div>";
+                   } else if (value.state == "1") {
+                       shzt = "审核中";
+                       if (value.ckxq_state == 0) {
+                           html += "<div class=\"ckxq ckxq_gray\">查看详情</div>";
+                       } else if (value.ckxq_state == 1) {
+                           html += "<div class=\"ckxq\" onclick=\"ckajxq_local('" + value.id + "', window)\">查看详情</div>";
+                       } else if (value.ckxq_state == 2) {
+                           html += "<div class=\"ckxq\" onclick=\"ckajxq_lian('" + value.id + "', window)\">查看详情</div>";
+                       }
+                   } else if (value.state == "0") {
+                       shzt = "未通过";
+                       html += "<div class=\"ckxq ckxq_gray\">查看详情</div>";
+                   }
+               } else if (value.case_status == '3') {
+                   if (value.state == "2") {
+                        shzt = "已通过";
+                        html += "<div class=\"ckxq\" onclick=\"ckajxq_local('" + value.id + "',window)\">查看详情</div>";
+                   } else if (value.state == "1") {
+                        shzt = "审核中";
+                        if (value.ckxq_state == 0) {
+                            html += "<div class=\"ckxq ckxq_gray\">查看详情</div>";
+                        } else if (value.ckxq_state == 1) {
+                            html += "<div class=\"ckxq\" onclick=\"ckajxq_local('" + value.id + "', window)\">查看详情</div>";
+                        } else if (value.ckxq_state == 2) {
+                            html += "<div class=\"ckxq\" onclick=\"ckajxq_local('" + value.id + "', window)\">查看详情</div>";
+                        }
+                   } else if (value.state == "0") {
+                        shzt = "未通过";
+                        html += "<div class=\"ckxq ckxq_gray\">查看详情</div>";
+                  }
+              }
+               html += "<div class=\"shzt\">" + shzt + "</div>";
+               if (value.today == "1") {
+                   html += "<div class=\"badge\">今日</div>";
+               }
+               html += "</div>";
+               html += "</div>";
+               html += "<div data-lsh='" + value.lsh + "'  id=\"collapse" + n + "\" class=\"panel-collapse collapse " + (n == 0 ? "in" : "") + "\" data-index=\"" + n + "\" role=\"tabpanel\" aria-labelledby=\"aj" + n + "\">";
+               html += "<div class=\"panel-body  aj-info\">";
+               html += "<div class=\"col-md-offset-3 font_bigger\">";
+               html += "<div class=\"col-md-8\">案件名称：" + value.title + "</div>";
+               html += "<div class=\"col-md-4\">当<span class='dsr_spacing'> &nbsp;事 </span>人：" + value.dsr + "</div>";
+               html += "<div class=\"col-md-8\">案　　由：" + value.case_action_name + "</div>";
+               html += "<div class=\"col-md-4\">标　　的：" + (value.biaode ? value.biaode : '-') + "</div>";
+               html += "<div class=\"col-md-8\">申请日期：" + value.create_time + "</div>";
+               html += "<div class=\"col-md-4\">通过日期：" + value.handle_time + "</div>";
+               //如果未通过，添加字段说明原因
+               if (value.state == 0) {
+                   html += "<div class=\"col-md-8\">未通过原因：" + value.reason + "</div>";
+               }
+               html += "</div>";
+               html += "</div>";
+               html += "</div>";
+               html += "</div>";
+               html += "</div>";
+               /**查看卷宗 获取选中的值存入cookie*/
+               // $("#btn-ckjz").on('click', function(){
+               //     if(value.state==0){
+               //         open_modal("该案件阅卷申请未通过，现在无法查看此案卷宗！");
+               //     }if(value.state==1){
+               //         open_modal("该案件阅卷申请正在审核中，现在无法查看此案卷宗！");
+               //     }if(value.state==2){
+               //         setCookie('cklajz', JSON.stringify(value));
+               //         window.location.href = 'lackjz.html'
+               //     }
+               // });
+           }
+           $(".aj-list").append(html);
+           });
+           //我的立案查看案件详情（ckxq_state  1 请求确认表）
+           function ckajxq_local(lsh, frame) {
+               var httpurl = global_data.httpurl;
+               setCookie('wdla_lsh', lsh);
+               frame.location.href = "/sfytj/dist/html/wycx/ajxqqrb/ajxqqrb.html";
+               //请求立案确认表中的本地立案数据
+               // ajax("" + httpurl + "/ssfw/wsla/yylajzcx/cklaqrb.php", "case_num=" + lsh, function(data) {
+               //     console.log(data);
+               //     var ajxq_local = data.data;
+               //     setCookie("ajxq_local", JSON.stringify(ajxq_local));
+               //     frame.location.href = "/sfytj/dist/html/wycx/ajxqqrb/ajxqqrb.html";
+               // }, null, null, null, false);
+           }
+           /*案件收藏*/
+           $("#btn_sc").on('click', function() {
+               var val_selected = $(".panel-collapse.collapse.in").data("index");
+               var lsh = $(".panel-collapse.collapse.in").data('lsh');
+               localStorage.setItem("sc_cx_lsh", lsh);
+               if (val_selected == undefined) {
+                   open_modal('请选择案件再收藏');
+                   return false;
+               }
+               //案件收藏
+               scaj();
+               //记录案件收藏次数
+               record_clicknum('ajsc_record');
+           });
+        </script>
+    </body>
+</html>

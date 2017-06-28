@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>开庭公告详情</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="ktgg_table">
+    <div class="wrap">
+        <!--开庭公告 -->
+
+            <div class="title font_bigger">责任编辑人 : <span class="author"></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布时间 : <span class="time"></span></div>
+            <div class="ktgg_under_line"></div>
+            <div class="content font_header">
+
+            </div>
+
+    </div>
+</div>
+
+</body>
+</html>
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    $(
+            function () {
+                //从cookie中取出开庭公告列表信息：
+                var ktgg_str = getCookie("ktgg_infomation");
+                var value = JSON.parse(ktgg_str);
+                console.log(value);
+
+                $('.ktgg_title.font_header').html(value.notice_title);
+                $('.author').html(value.author);
+                $('.content').html(value.content);
+                $('.time').html(value.create_time);
+
+            }
+    );
+</script>

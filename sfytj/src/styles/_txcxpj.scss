@@ -1,0 +1,174 @@
+.txcxpj {
+  .input_list {
+    position: relative;
+    top: 179px;
+    left: 147px;
+    width: 75%;
+  }
+
+  .tip {
+    margin:20px 0;
+    font-weight: 700;
+
+  }
+  /* 评价标题 */
+
+  .txcxpj_content {
+    margin-bottom: 10px;
+    position: relative;
+    padding-right: 30px;
+    /*案件内容*/
+    .aj-item {
+
+      position: relative;
+      .title-line {
+        width: 7px;
+        height: 100%;
+        position: absolute;
+        left: 24%;
+        top: 0px;
+        z-index: 1;
+      }
+      /* 自定义panelheading */
+      .panel-heading {
+        position: relative;
+        background-color: #fff;
+        box-shadow: 0 10px 20px 0 #b9b5b5;
+        color: #9a9a9a;
+        .badge {
+          float: right;
+          background-color: #53aee7;
+          width: 81px;
+          height: 37px;
+          line-height: 30px;
+          font-size: 20px;
+          font-weight: 500;
+          margin: 0 5px;
+        }
+        /*审核状态*/
+        .shzt {
+          float: right;
+          width: 81px;
+          height: 37px;
+          line-height: 30px;
+          font-size: 20px;
+          font-weight: 500;
+          margin: 0 5px;
+          border-radius: 10px;
+          color: white;
+          padding: 3px 7px;
+          text-align: center;
+        }
+      }
+      .panel-title {
+        font-weight: 500;
+        color: #9a9a9a;
+      }
+
+      /* panel内容部分 */
+      .panel-body {
+        position: relative;
+        max-height: 400px;
+
+      }
+
+      .aj-title {
+        padding-right: 15px;
+        position: relative;
+        background: white;
+        /*font-weight: 500;*/
+
+        /*法院名称*/
+        .fymc {
+          float: left;
+        }
+        /*案号*/
+        .ah {
+          float: left;
+        }
+
+      }
+
+      /*案件详细信息*/
+      .aj-info {
+        position: relative;
+        padding: 25px;
+        line-height: 35px;
+      }
+
+    }
+
+    /*审核已通过*/
+    .state-success {
+      .title-line, .shzt {
+        background-color: $blueColor;
+      }
+
+    }
+    /*审核中*/
+    .state-waiting {
+      .title-line, .shzt {
+        background-color: gray;
+      }
+    }
+    /*审核未通过*/
+    .state-failed {
+      .title-line, .shzt{
+        background-color: red;
+      }
+    }
+  }
+
+
+  .pingfen {
+    width: 100%;
+    margin-top: 40px
+  }
+
+  .pingfen_left {
+    float: left;
+    width: 10%;
+    margin-top: 11px;
+  }
+  .pingfen_right {
+    float: left;
+    width: 20%;
+    margin-left: -20px
+  }
+  .pingfen_com {
+    height: 40px;
+  }
+  .starts, .starts ul {
+    float: left;
+  }
+  .starts li {
+    list-style-type: none;
+  }
+  .starts {
+    padding-left: 16px;
+    padding-top: 7px;
+  }
+  .starts ul li {
+    width: 42px;
+    height: 40px;
+    float: left;
+    background: url('../images/icon/hui_star.png');
+  }
+  .starts ul li.on {
+    background: url('../images/icon/huang_star.png')
+  }
+  .starts ul span {
+    display: inline;
+    float: left;
+    padding-left: 10px;
+    height: 31px;
+    line-height: 31px;
+  }
+
+  .btn_cancel {
+    background-color: red;
+    margin-right: 112px;
+    width: 250px;
+  }
+
+}

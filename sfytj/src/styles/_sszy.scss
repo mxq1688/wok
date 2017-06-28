@@ -1,0 +1,62 @@
+/*诉讼指引*/
+.sszyym{
+  background: none;
+  height: 610px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  .sszy{
+
+  }
+  /*三个以上增加边距*/
+  .ad{
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  /*审委会组成人员边框样式*/
+  .zhiyin{
+    width: 29%;
+    height: 200px;
+    border-radius: 3%;
+    float: left;
+    position: relative;
+    box-shadow: 0px 0px 10px 3px #b9b5b5;
+    overflow: hidden;
+    margin:10px 3% 23px 1%;
+    /*图片*/
+    .tp{
+      width: 42%;
+      float: left;
+      text-align: center;
+      line-height: 200px;
+    }
+    /*编号*/
+    .number{
+      color: $blueColor;
+      float: left;
+      margin-top: 14px;
+      font-weight: 500;
+      margin-right: 5%;
+    }
+
+    /*姓名*/
+    .name{
+      color: black;
+      margin-top: 14px;
+      font-weight: 500;
+    }
+
+
+    /*简介信息*/
+    .content{
+      width: 53%;
+      height: 103px;
+      float: right;
+      overflow: hidden;
+      color: #999;
+      margin:10px 2% 17px 2%;
+
+    }
+
+  }
+}

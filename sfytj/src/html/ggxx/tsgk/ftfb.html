@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>法庭分布</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+
+</head>
+
+
+<body>
+
+
+<!--页面-->
+<div class="ftfb">
+    <div class="wrap">
+        <div class="common_body">
+
+            <!--头部-->
+            <div class="ggxx-head">
+                <div class="ggxx-title font_header">法庭分布总览</div>
+            </div>
+
+            <!--法庭分布内容 -->
+            <div class="ggxx-body clearfix">
+                <div class="ftfb_search">
+                    <div class="ftfb_search_left">
+                        <div class="search_content">
+                            <input type="text" class="search_content_input" id="search_input"/>
+                        </div>
+
+                            <div class="search_chaxun font_h1" onclick="search()">
+                                查询
+                            </div>
+
+                    </div>
+                    <div class="ftfb_search_right">
+                        <a href="ckftwz.html">
+                            <div class="ftfb_search_right_buttom font_h1">
+                                法庭总览图
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+z
+                <!--法庭分布位置列表 -->
+                <div class="ftfb_wzlist">
+                    <h2 class="font_header">各庭室位置列表</h2>
+                </div>
+                <!--法庭分布具体发布 -->
+                
+                    <div class="ftfb_list">
+                        <!--该宽度是计算出来的 -->
+                        <div id="ftfb_list_overflow" class="clearfix">
+
+                            <!--
+                              <div class="ftfb_list_content">
+                                <div class="ftfb_list_content_img">
+                                   <img src="../../images/icon/fating.jpg"/>
+                                </div>
+                                <div class="ftfb_list_content_wrap">
+                                  <div class="ftfb_list_content_wrap_title">
+                                     <div class="ftfb_list_content_wrap_title_left">
+                                        第一审判庭
+                                     </div>
+                                     <div class="ftfb_list_content_wrap_title_right">
+                                       东区二楼
+                                     </div>
+                                  </div>
+                                  <div class="clear"></div>
+
+                                  <div class="ftfb_list_content_wrap_jieshao">
+                                    该法庭可提供审判过程中的视频，音频，多媒体证据等资源实时采集，数字化等存储管理
+                                  </div>
+
+                                  <div class="ftfb_list_content_wrap_weizhi">
+                                    <a>查看位置</a>
+                                  </div>
+                                </div>
+                              </div>
+                              -->
+
+
+                        </div>
+                        <!-- 遮罩 -->
+                        <div class="loading_index"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script>
+
+
+    /*点击查询*/
+    function search(){
+        var court_search_name = $("#search_input").val();   //法庭名称
+        console.log(court_search_name);
+
+        if(!court_search_name){
+            open_modal("请输入要查询的法庭名称");
+        } else {
+            //页面初始化，从查询页面获取法院ID：
+            var httpurl=global_data.httpurl;
+            var court_id = getCookie("court_id");
+            console.log(court_id);
+            if(court_id){
+                court_id = court_id;
+            }else{
+                court_id = global_data.court_id;
+            }
+            ajax(
+                    ""+httpurl+"/ggxx/tsgk/ftfb.php",
+                    'court_id='+court_id+"&keys="+court_search_name,
+                    function(datas){
+                        console.log("data.state:"+datas.state);
+                        console.log("data.result:"+datas.result);
+                        console.log(datas);
+                        if(!datas.data.length){
+                            open_modal("无查询结果");
+                            $("#ftfb_list_overflow").empty();
+                        }else{
+                            $("#ftfb_list_overflow").empty();
+                            var html = "";
+                            var n = datas.data.length;
+                            var width = 354 * n - 70;
+                            $('#ftfb_list_overflow').css('width', width);
+                            $.each(datas.data, function (n,value) {
+                                html += "  <a href=\"javascript:void(0)\" onclick=\"ftfb_ckwz("+value.floor_id+", '"+value.name+"')\"> ";
+                                html += "<div id='a_location_" + n + "' class=\"ftfb_list_content\">";
+                                html += "<div class=\"ftfb_list_content_img\">";
+                                html += "<img src=" + value.path + "> </div>";
+                                html += "<div class=\"ftfb_list_content_wrap\">";
+                                html += "<div class=\"ftfb_list_content_wrap_title\">";
+                                html += "<div class=\"ftfb_list_content_wrap_title_left font_h1\">" + value.name + "</div>";
+                                html += "<div class=\"ftfb_list_content_wrap_title_right font_bigger\">" + value.area + value.floor_name + "</div></div>";
+                                html += "<div class=\"clear\"></div>"
+                                html += "<div class=\"ftfb_list_content_wrap_jieshao font_small\">" + value.dec+ "</div>";
+                                /*html += "<div class=\"ftfb_list_content_wrap_weizhi font_bigger\" fl_num='"+value.floor_id+ "' spt_name='" +value.name+ "' onclick=\"ftfb_ckwz()\">查看位置</div>";   */   
+                                html += "<div class=\"ftfb_list_content_wrap_weizhi font_bigger\" onclick=\"ftfb_ckwz("+value.floor_id+", '"+value.name+"')\">查看位置</div>";                         
+                                html += " </div></div>";
+                                html += "</a>";
+                            });
+                            $("#ftfb_list_overflow").append(html);
+
+                            //ajax请求完成后，遮罩去除：
+                            $('.loading_index').remove();
+                        }
+                    }
+            )
+        }
+    }
+</script>
+
+<script>
+
+    $(function () {
+
+
+                //页面初始化，从查询页面获取法院ID：
+                var httpurl=global_data.httpurl;
+                var court_id = getCookie("court_id");
+                console.log(court_id);
+                if(court_id){
+                    court_id = court_id;
+                }else{
+                    court_id = global_data.court_id;
+                }
+
+                //保存下来 从服务器请求的法庭分布数据 http://localhost/sfytjjk/ggxx/tsgk/ktgg.php
+                ajax(
+                        ""+httpurl+"/ggxx/tsgk/ftfb.php",
+                        "court_id="+court_id,
+                        function(defaultData){
+                            var html = "";
+                            var n = defaultData.data.length;
+                            var width = 444 * n - 70;
+                            $('#ftfb_list_overflow').css('width', width);
+                            $.each(defaultData.data, function (n,value) {
+                                //html += "  <a href=\"javascript:void(0)\" onclick=\"ftfb_ckwz("+value.floor_id+", '"+value.name+"')\"> ";
+                                html += "<div id='a_location_" + n + "' class=\"ftfb_list_content\">onclick=\"ftfb_ckwz("+value.floor_id+", '"+value.name+"')\">";
+                                html += "<div class=\"ftfb_list_content_img\">";
+                                html += "<img src=" + value.path + "> </div>";
+                                html += "<div class=\"ftfb_list_content_wrap\">";
+                                html += "<div class=\"ftfb_list_content_wrap_title\">";
+                                html += "<div class=\"ftfb_list_content_wrap_title_left font_h1\">" + value.name + "</div>";
+                                html += "<div class=\"ftfb_list_content_wrap_title_right font_bigger\">" + value.area + value.floor_name + "</div></div>";
+                                html += "<div class=\"clear\"></div>"
+                                html += "<div class=\"ftfb_list_content_wrap_jieshao font_small\">" + value.dec+ "</div>";                                
+                                //html += "<div class=\"ftfb_list_content_wrap_weizhi font_bigger\" fl_num='"+value.floor_id+ "' spt_name='" +value.name+ "' onclick=\"ftfb_ckwz()\">查看位置</div>";    
+                                html += "<div class=\"ftfb_list_content_wrap_weizhi font_bigger\" onclick=\"ftfb_ckwz("+value.floor_id+", '"+value.name+"')\">查看位置</div>";
+                                html += " </div></div>";
+                               // html += "</a>";
+                            });
+                            $("#ftfb_list_overflow").append(html); 
+
+                            //ajax请求完成后，遮罩去除：
+                            $('.loading_index').remove(); 
+                        }
+                );
+            });
+        
+        /* 点击查看位置时，将楼层数和审判庭名字存入cookie */
+        function ftfb_ckwz(fl_num, spt_name){
+            //console.log($(event.target));
+            // var fl_num = $(event.target).attr('fl_num');
+            // var spt_name = $(event.target).attr('spt_name');
+            setCookie("fl_num", fl_num);
+            setCookie("spt_name", spt_name);
+
+            window.location.href = 'ckftwz.html'
+        }
+
+
+
+                /*模拟数据*/
+               /* var courtData = [
+                    {
+                        imgurl: '../../images/icon/fating.jpg',
+                        ting: '第一审判庭',
+                        weizhi: '东区一楼',
+                        dec: '该法庭可提供审判过程中的视频，音频，多媒体证据等资源实时采集，数字化等存储管理',
+                        link: 'ckftwz.html',
+                        fl_num: 1,
+
+                    },
+                    {
+                        imgurl: '../../images/icon/fating.jpg',
+                        ting: '第二审判庭',
+                        weizhi: '东区二楼',
+                        dec: '该法庭可提供审判过程中的视频，音频，多媒体证据等资源实时采集，数字化等存储管理',
+                        link: 'ckftwz.html',
+                        fl_num: 2,
+
+                    },
+                    {
+                        imgurl: '../../images/icon/fating.jpg',
+                        ting: '第三审判庭',
+                        weizhi: '东区三楼',
+                        dec: '该法庭可提供审判过程中的视频，音频，多媒体证据等资源实时采集，数字化等存储管理',
+                        link: 'ckftwz.html',
+                        fl_num: 3,
+                    },
+                    {
+                        imgurl: '../../images/icon/fating.jpg',
+                        ting: '第四审判庭',
+                        weizhi: '东区四楼',
+                        dec: '该法庭可提供审判过程中的视频，音频，多媒体证据等资源实时采集，数字化等存储管理',
+                        link: 'ckftwz.html',
+                        fl_num: 4,
+                    }
+                ];
+*/
+                /*初始化宽度*/
+    
+
+
+</script>
+
+</body>
+</html>

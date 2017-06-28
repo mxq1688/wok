@@ -1,0 +1,103 @@
+<!-- 查看卷宗种类 -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <title>
+                卷宗资料
+            </title>
+            <link href="/sfytj/dist/styles/main.min.css" rel="stylesheet" type="text/css"/>
+            <link href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+            <style>
+                .jj_center img {
+                    width: 100%;
+                }
+            </style>
+        </meta>
+    </head>
+    <body>
+        <div class="sxrcx_body">
+            <!-- 卷宗资料 -->
+            <div class="sxrcxjgxq_body clearfix">
+                <div class="jj_center">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<script src="/sfytj/bower_components/jquery/dist/jquery.min.js" type="text/javascript">
+</script>
+<script src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript">
+</script>
+<script src="/sfytj/bower_components/jquery_lazyload/jquery.lazyload.js" type="text/javascript">
+</script>
+<script src="/sfytj/dist/scripts/main.min.js" type="text/javascript">
+</script>
+<script>
+    $(function() {
+         var yyyj_lsh = getCookie("yyyj_lsh"),
+             yyyj_jz = getCookie("yyyj_jz"),
+             arr_jz = [];
+         switch (yyyj_lsh) {
+             case '115000000086926':
+                 switch (yyyj_jz) {
+                     case 'a01':
+                         arr_jz = ['http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164934.062_00000035.tif', 'http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164933.359_00000014.tif', 'http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164933.375_00000015.tif' ];
+                         break;
+                     case 'b01':
+                         arr_jz = ['http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164933.093_00000004.tif', 'http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164933.406_00000016.tif', 'http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164933.437_00000017.tif' ];
+                         break;
+                    case 'c01':
+                         arr_jz = ['http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164933.453_00000018.tif', 'http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164933.500_00000020.tif', 'http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164933.531_00000022.tif' ];
+                         break;
+                    case 'd01':
+                         arr_jz = ['http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164933.562_00000023.tif', 'http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164933.718_00000027.tif', 'http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164933.828_00000028.tif' ];
+                         break;
+                    case 'e01':
+                         arr_jz = ['http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164933.984_00000032.tif', 'http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164934.062_00000035.tif', 'http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164934.140_00000038.tif' ];
+                         break;
+                    case 'f01':
+                         arr_jz = ['http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164933.921_00000029.tif', 'http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164934.015_00000033.tif', 'http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164934.109_00000037.tif','http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164934.265_00000043.tif','http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164934.171_00000039.tif','http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164934.218_00000041.tif' ];
+                         break;
+                    case 'g01':
+                         arr_jz = ['http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164933.187_00000007.tif', 'http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164933.156_00000006.tif', 'http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164933.312_00000012.tif',
+                         'http://139.224.26.151/sfytjjk/download/115014000111001/20160722.164933.359_00000014.tif',
+                         
+                          ];
+                         break;
+                 }
+                 break;
+             case '127500000089075':
+                 switch (yyyj_jz) {
+                     case 'f01':
+                         arr_jz = ['http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-F01/2016-苏0591民初-58-F01-0001.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-F01/2016-苏0591民初-58-F01-0002.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-F01/2016-苏0591民初-58-F01-0003.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-F01/2016-苏0591民初-58-F01-BK01.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-F01/2016-苏0591民初-58-F01-BK02.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-F01/2016-苏0591民初-58-F01-FM01.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-F01/2016-苏0591民初-58-F01-ML01.jpg', ];
+                         break;
+                     case 'z01':
+                         arr_jz = ['http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-Z01/2016-苏0591民初-58-Z01-0001.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-Z01/2016-苏0591民初-58-Z01-0002.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-Z01/2016-苏0591民初-58-Z01-0003.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-Z01/2016-苏0591民初-58-Z01-0004.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-Z01/2016-苏0591民初-58-Z01-0005.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-Z01/2016-苏0591民初-58-Z01-0006.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-Z01/2016-苏0591民初-58-Z01-0007.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-Z01/2016-苏0591民初-58-Z01-0008.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-Z01/2016-苏0591民初-58-Z01-0009.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-Z01/2016-苏0591民初-58-Z01-0010.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-Z01/2016-苏0591民初-58-Z01-BK01.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-Z01/2016-苏0591民初-58-Z01-BK02.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-Z01/2016-苏0591民初-58-Z01-FM01.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591民初-58-Z01/2016-苏0591民初-58-Z01-ML01.jpg', ];
+                         break;
+                 }
+                 break;
+             case '127500000093161':
+                 switch (yyyj_jz) {
+                     case 'f01':
+                         arr_jz = ['http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-F01/2016-苏0591行初-2-F01-0001.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-F01/2016-苏0591行初-2-F01-0002.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-F01/2016-苏0591行初-2-F01-0003.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-F01/2016-苏0591行初-2-F01-0004.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-F01/2016-苏0591行初-2-F01-0005.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-F01/2016-苏0591行初-2-F01-0006.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-F01/2016-苏0591行初-2-F01-BK01.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-F01/2016-苏0591行初-2-F01-BK02.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-F01/2016-苏0591行初-2-F01-FM01.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-F01/2016-苏0591行初-2-F01-ML01.jpg', ];
+                         break;
+                     case 'z01':
+                         arr_jz = ['http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0001.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0002.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0003.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0004.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0005.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0006.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0007.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0008.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0009.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0010.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-BK01.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-BK02.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-FM01.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-ML01.jpg', ];
+                         break;
+                 }
+                 break;
+         }
+         if (arr_jz.length == 0) {
+             arr_jz = ['http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0001.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0002.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0003.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0004.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0005.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0006.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0007.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0008.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0009.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-0010.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-BK01.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-BK02.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-FM01.jpg', 'http://112.124.14.240:12368/sfytjjk/download/2016-苏0591行初-2-Z01/2016-苏0591行初-2-Z01-ML01.jpg', ];
+         }
+         var str_jz = '';
+         for (var i = 0; i <= arr_jz.length - 1; i++) {
+             str_jz += '<img class="lazy" data-original="' + arr_jz[i] + '" />';
+         }
+         $('.jj_center').html(str_jz);
+         $("img.lazy").lazyload({
+             effect: "fadeIn",
+         });
+    })
+</script>

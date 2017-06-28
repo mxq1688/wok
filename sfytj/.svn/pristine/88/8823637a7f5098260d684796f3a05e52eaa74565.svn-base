@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新闻</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="/sfytj/bower_components/3dgallery/style.css">-->
+    <script src="/sfytj/bower_components/3dgallery/modernizr.custom.53451.js"></script>
+</head>
+<body class="news index_html" style="overflow-y:hidden" onload="showDT()">
+<div class="header" style="position: relative">
+    <div class="header_logo"></div>
+    <div class="header_title">
+        <div class="header_titleup"><span class="current_fy_title"></span>诉讼服务终端</div>
+        <!--<div class="header_titleup">诉讼服务终端</div>-->
+        <div class="header_titledown">PEOPLE'S COURT SERVICES TERMINAL</div>
+    </div>
+
+    <div class="header_time">
+        <div class="header_timeup" id="theClock_t"></div>
+        <div class="header_timedown" id="theClock_d"></div>
+    </div>
+
+
+</div>
+
+<div class="main_body">
+    <div onclick="openVideoChat()"></div>
+    <!--新闻显示区域-->
+    <section id="news_container" class="news_container">
+        <div class="dg-wrapper">
+
+            <div class="news_item text">
+                <div class="news_header">
+                    <img class="news_pic" src="/sfytj/dist/images/icon/news_pic.png">
+
+                    <div class="news_label">
+                    </div>
+                </div>
+                <div class="news_body clearfix">
+                    <div class="news_date font_big">
+                        <div class="news_date_day">03</div>
+                        <div class="clearfix fl">
+                            <div class="news_date_month">4月</div>
+                            <div class="news_date_year">2016</div>
+                        </div>
+                    </div>
+                    <div class="news_title font_big">
+                        姑苏法官前往看守所开展创新帮教活动
+                    </div>
+                </div>
+                <div class="news_text font_common">
+                    近日，我院少年庭法官联合市第一看守所、第三看守所以及苏大文正学院爱心帮教志愿者开展了“珍惜自由、真爱家庭、珍重未来--少年犯
+                    高墙内外的对话”专题活动。以创新的形式，首次组织被监禁刑未成年犯和非监禁刑未成年犯进行对话交流活动。活动将有针对性地组织未
+                    受过刑事羁押的未成年缓刑犯参观监所，与被监禁的未成年犯交流，促使他们能够珍惜“自由”，真诚悔罪，走好今后的人生之路。同时在
+                    一名在拘役所服刑的未成年犯刑满释放的当天，对其进行回访并为其庆祝，使其感受到来自家庭以外的爱和关怀，让其带着感恩的心回归社会。
+                </div>
+                <div class="news_footer">
+                    <div class="fymc">苏州市姑苏区人民法院</div>
+                    <div class="news_author">作者</div>
+                </div>
+            </div>
+
+            <div class="news_item video">
+                <div class="news_header">
+                    <!--http://www.jsfy.gov.cn/mediajszmfg.wmv-->
+                    <video class="news_video" src="fayuan.mp4" controls></video>
+
+                    <div class="news_label">
+                    </div>
+                </div>
+                <div class="news_body clearfix">
+                    <div class="news_date font_big">
+                        <div class="news_date_day">03</div>
+                        <div class="clearfix fl">
+                            <div class="news_date_month">4月</div>
+                            <div class="news_date_year">2016</div>
+                        </div>
+                    </div>
+                    <div class="news_title font_big">
+                        姑苏法官前往看守所开展创新帮教活动
+                    </div>
+                </div>
+                <div class="news_text font_common">
+                    近日，我院少年庭法官联合市第一看守所、第三看守所以及苏大文正学院爱心帮教志愿者开展了“珍惜自由、真爱家庭、珍重未来--少年犯
+                    高墙内外的对话”专题活动。以创新的形式，首次组织被监禁刑未成年犯和非监禁刑未成年犯进行对话交流活动。活动将有针对性地组织未
+                    受过刑事羁押的未成年缓刑犯参观监所，与被监禁的未成年犯交流，促使他们能够珍惜“自由”，真诚悔罪，走好今后的人生之路。同时在
+                    一名在拘役所服刑的未成年犯刑满释放的当天，对其进行回访并为其庆祝，使其感受到来自家庭以外的爱和关怀，让其带着感恩的心回归社会。
+                </div>
+                <div class="news_footer">
+                    <div class="fymc">苏州市姑苏区人民法院</div>
+                    <div class="news_author">作者</div>
+                </div>
+            </div>
+
+            <div class="news_item">
+                <div class="news_header">
+                    <img class="news_pic" src="/sfytj/dist/images/icon/news_pic.png">
+
+                    <div class="news_label">
+                    </div>
+                </div>
+                <div class="news_body clearfix">
+                    <div class="news_date font_big">
+                        <div class="news_date_day">03</div>
+                        <div class="clearfix fl">
+                            <div class="news_date_month">4月</div>
+                            <div class="news_date_year">2016</div>
+                        </div>
+                    </div>
+                    <div class="news_title">
+                        姑苏法官前往看守所开展创新帮教活动
+                    </div>
+                </div>
+                <div class="news_text font_common">
+                    近日，我院少年庭法官联合市第一看守所、第三看守所以及苏大文正学院爱心帮教志愿者开展了“珍惜自由、真爱家庭、珍重未来--少年犯
+                    高墙内外的对话”专题活动。以创新的形式，首次组织被监禁刑未成年犯和非监禁刑未成年犯进行对话交流活动。活动将有针对性地组织未
+                    受过刑事羁押的未成年缓刑犯参观监所，与被监禁的未成年犯交流，促使他们能够珍惜“自由”，真诚悔罪，走好今后的人生之路。同时在
+                    一名在拘役所服刑的未成年犯刑满释放的当天，对其进行回访并为其庆祝，使其感受到来自家庭以外的爱和关怀，让其带着感恩的心回归社会。
+                </div>
+                <div class="news_footer">
+                    <div class="fymc">苏州市姑苏区人民法院</div>
+                    <div class="news_author">作者</div>
+                </div>
+            </div>
+
+            <div class="news_item">
+                <div class="news_header">
+                    <img class="news_pic" src="/sfytj/dist/images/icon/news_pic.png">
+
+                    <div class="news_label">
+                    </div>
+                </div>
+                <div class="news_body clearfix">
+                    <div class="news_date font_big">
+                        <div class="news_date_day">03</div>
+                        <div class="clearfix fl">
+                            <div class="news_date_month">4月</div>
+                            <div class="news_date_year">2016</div>
+                        </div>
+                    </div>
+                    <div class="news_title">
+                        姑苏法官前往看守所开展创新帮教活动
+                    </div>
+                </div>
+                <div class="news_text font_common">
+                    近日，我院少年庭法官联合市第一看守所、第三看守所以及苏大文正学院爱心帮教志愿者开展了“珍惜自由、真爱家庭、珍重未来--少年犯
+                    高墙内外的对话”专题活动。以创新的形式，首次组织被监禁刑未成年犯和非监禁刑未成年犯进行对话交流活动。活动将有针对性地组织未
+                    受过刑事羁押的未成年缓刑犯参观监所，与被监禁的未成年犯交流，促使他们能够珍惜“自由”，真诚悔罪，走好今后的人生之路。同时在
+                    一名在拘役所服刑的未成年犯刑满释放的当天，对其进行回访并为其庆祝，使其感受到来自家庭以外的爱和关怀，让其带着感恩的心回归社会。
+                </div>
+                <div class="news_footer">
+                    <div class="fymc">苏州市姑苏区人民法院</div>
+                    <div class="news_author">作者</div>
+                </div>
+            </div>
+            <div class="news_item">
+                <div class="news_header">
+                    <img class="news_pic" src="/sfytj/dist/images/icon/news_pic.png">
+
+                    <div class="news_label">
+                    </div>
+                </div>
+                <div class="news_body clearfix">
+                    <div class="news_date font_big">
+                        <div class="news_date_day">03</div>
+                        <div class="clearfix fl">
+                            <div class="news_date_month">4月</div>
+                            <div class="news_date_year">2016</div>
+                        </div>
+                    </div>
+                    <div class="news_title">
+                        姑苏法官前往看守所开展创新帮教活动
+                    </div>
+                </div>
+                <div class="news_text font_common">
+                    近日，我院少年庭法官联合市第一看守所、第三看守所以及苏大文正学院爱心帮教志愿者开展了“珍惜自由、真爱家庭、珍重未来--少年犯
+                    高墙内外的对话”专题活动。以创新的形式，首次组织被监禁刑未成年犯和非监禁刑未成年犯进行对话交流活动。活动将有针对性地组织未
+                    受过刑事羁押的未成年缓刑犯参观监所，与被监禁的未成年犯交流，促使他们能够珍惜“自由”，真诚悔罪，走好今后的人生之路。同时在
+                    一名在拘役所服刑的未成年犯刑满释放的当天，对其进行回访并为其庆祝，使其感受到来自家庭以外的爱和关怀，让其带着感恩的心回归社会。
+                </div>
+                <div class="news_footer">
+                    <div class="fymc">苏州市姑苏区人民法院</div>
+                    <div class="news_author">作者</div>
+                </div>
+            </div>
+        </div>
+
+        <!--<nav>
+            <span class="dg-prev"><</span>
+            <span class="dg-next">></span>
+        </nav>-->
+    </section>
+
+    <!--视频通话显示区域-->
+    <div class="video_chat">
+        <div class="clear-fix">
+            <div class="title font_h1">
+                12368 诉讼服务热线
+            </div>
+
+            <div class="text font_big">
+                <div class="video_container">
+                    <div class="remote_video" id="remote_video">
+                    </div>
+                    <div class="tips">
+                    </div>
+                    <div class="queue_tips">
+                    </div>
+                    <div class="local_video" id="local_video"></div>
+                        <div class="control_button_container">
+                            <!-- <div class="btn_video"></div>
+                            <div class="btn_audio"></div>
+                            <div class="btn_msg"></div>
+                            <div class="btn_hungup"></div> -->
+                        </div>
+                    <div class="video_footer font_big">
+                        <div id="spfy_name" class="fymc">江苏省高级人民法院</div>
+                        <div class="time">00:36:28</div>
+                    </div>
+                </div>
+
+                <p>12368诉讼服务热线在省法院诉讼服务中心设立总平台，各市中级人民法院和基层人民法院设置分平台和子平台，实行“一号对外、集中受理、
+                    分类处置、统一协调、限时办理”的工作机制，具备联系法官、案件查询、诉讼咨询、信访投诉、意见建议等功能。</p>
+
+                <p>1. 通过12368诉讼服务热线联系法官。当事人或诉讼代理人可以来电查询承办法官的电话号码，也可以要求诉讼服务热线代为联系。</p>
+
+                <p>2. 通过12368诉讼服务热线进行案件查询。当事人或诉讼代理人可以来电查询案件信息，在提供相关身份信息和案件信息并经坐席员核实
+                    后，由坐席员直接予以回复。</p>
+
+                <p>3. 通过12368诉讼服务热线进行法律咨询。当事人或社会公众来电进行法律程序问题咨询的，由坐席员直接予以答复。</p>
+
+                <p>4. 通过12368诉讼服务热线进行投诉举报和提出意见建议。当事人或社会公众来电投诉举报或提出意见建议的，坐席员进行
+                    记录登记后分类转交相关部门处理。</p>
+            </div>                
+
+        </div>
+    </div>
+</div>
+<video class="fullscreen_video" controls autoplay></video>
+<!--<div class="mask"></div>-->
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/3dgallery/jquery.gallery.js"></script>
+<!--视频通话-->
+<script type="text/javascript" src="/sfytj/bower_components/videochat/adapter.debug.js"></script>
+<script type="text/javascript"
+        src="/sfytj/bower_components/videochat/realtimecat-0.2-with-webrtc-plugin.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/videochat/videochat.js"></script>
+
+
+<script type="text/javascript">
+    var isPlaying = false;
+
+    $(function () {
+        var httpurl=global_data.httpurl;
+        var court_id = getPar('fid');
+        var articleData = '';
+        if(!court_id){
+           // court_id = global_data.court_id;
+           court_id = '320000'; //默认高院
+        }
+        ajax(
+                ""+httpurl+"/ggxx/new/getcourt.php",
+                "court_id="+court_id,
+                function(defaultData){
+                    $('#spfy_name').html(defaultData.data);
+                },
+                null,
+        	    null,
+        	    null,
+        	    false
+        );
+        
+        
+        var fullscreen_ele = $('.fullscreen_video');
+        /*fullscreen_ele.height($(document).height());
+         fullscreen_ele.width($(document).width());*/
+       /* $('#news_container').gallery({
+            'current': 0,
+            'autoplay': true,
+            'interval': 10000,
+            onCenter: function (ele) {
+
+                if (!isPlaying) {
+                    var video = ele.find('.news_video');
+                    if (video.length > 0) {
+                        console.log('视频在前');
+                        pauseGallery();
+                        fullscreen_ele.attr('src', video[0].src);
+                        fullscreen_ele.show();
+                        //launchFullScreen(ele.find('#news_header'));
+                        fullscreen_ele[0].play();
+                        isPlaying = true;
+                    }
+                }
+            }
+        });*/
+
+        /*视频播放状态*/
+        fullscreen_ele.bind('play', function () {
+
+            isPlaying = true;
+            /*暂停画廊*/
+            pauseGallery();
+        });
+        /*视频暂停或结束或错误*/
+        fullscreen_ele.bind('error pause ended', function () {
+            isPlaying = false;
+            fullscreen_ele.hide();
+            refreshGallery();
+        });
+
+        $('.btn_video').click(function () {
+            toggleVideo();
+        });
+
+        $('.btn_audio').click(function () {
+            toggleAudio();
+        });
+
+        $('.btn_msg').click(function () {
+            alert('正在开发中');
+        });
+
+        $('.btn_hungup').click(function () {
+            closeVideoChat();
+        });
+
+        /*调用这行代码打开视频通话*/
+        openVideoChat(true);
+
+        /*调用这行代码关闭视频通话*/
+        //closeVideoChat();
+
+    });
+
+
+</script>
+</body>
+</html>

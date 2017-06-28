@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>失信人查询</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body>
+<div class="common_body sxrcx">
+    <!--头部-->
+    <div class="sxrcx_head">
+        <div class="sxrcx_title">
+            失信人查询
+        </div>
+    </div>
+    <!--主体内容-->
+    <div class="sxrcx_body">
+        <!-- 失信人查询 -->
+        <div class="sxrcx_content">
+          <form name="Form1" id="form1">
+              <!-- 被执行人姓名/名称 -->
+              <div class="bzxrname clearfix">
+                  <div class="bzxrname_title fl">被执行人姓名/名称<span class="star">*</span>：</div>
+                  <div class="bzxrname_input fr">
+                      <input type="text" class="bzxrname_text" name="textfield_bzxrname" id="textfield_bzxrnameId" />
+                  </div>
+              </div>
+
+              <!-- 身份证号码/组织机构代码 -->
+              <div class="sfzhm clearfix">
+                  <div class="sfzhm_title fl">身份证号码/组织机构代码：</div>
+                  <div class="sfzhm_input fr">
+                      <input type="text" class="sfzhm_text" name="textfield_sfzhm" id="textfield_sfzhmId" />
+                  </div>
+              </div>
+
+              <!-- 省份 -->
+              <div class="province clearfix">
+                  <div class="province_title fl">省份：</div>
+                  <div class="selectbox fr">
+                    <select id="select_province" class="selectbox_province" name="textfield_province" value="" size="1">
+                        <option value="">全国</option>  
+                        <option value="北京">北京</option>
+                        <option value="上海">上海</option>
+                        <option value="天津">天津</option>
+                        <option value="重庆">重庆</option>
+                        <option value="河北">河北</option>
+                        <option value="山西">山西</option>
+                        <option value="内蒙古">内蒙古</option>
+                        <option value="辽宁">辽宁</option>
+                        <option value="吉林">吉林</option>
+                        <option value="黑龙江">黑龙江</option>
+                        <option value="江苏">江苏</option>
+                        <option value="浙江">浙江</option>
+                        <option value="安徽">安徽</option>
+                        <option value="福建">福建</option>
+                        <option value="江西">江西</option>
+                        <option value="山东">山东</option>
+                        <option value="河南">河南</option>
+                        <option value="湖北">湖北</option>
+                        <option value="湖南">湖南</option>
+                        <option value="广东">广东</option>
+                        <option value="广西">广西</option>
+                        <option value="海南">海南</option>
+                        <option value="四川">四川</option>
+                        <option value="贵州">贵州</option>
+                        <option value="云南">云南</option>
+                        <option value="西藏">西藏</option>
+                        <option value="陕西">陕西</option>
+                        <option value="甘肃">甘肃</option>
+                        <option value="宁夏">宁夏</option>
+                        <option value="青海">青海</option>
+                        <option value="新疆">新疆</option>
+                        <option value="香港">香港</option>
+                        <option value="澳门">澳门</option>
+                        <option value="台湾">台湾</option>
+                    </select>
+                    <div class="select_arrow"><img src="/sfytj/dist/images/icon/select_arrow.png" alt=""></div>
+                  </div>
+              </div>
+
+              <!-- 验证码 -->
+               <div class="yzm clearfix">
+                  <div class="yzm_title fl">验证码<span style='color:red'>*</span>：</div>
+                  <div class="yzm_input fr">
+                      <input type="text" class="yzm_text" name="textfield_yzm" id="textfield_yzmId" />
+                      <div class="yzm_img fr"><img id="yzm_img"  onclick="getyzm();"/></div>
+                  </div>
+              </div>
+          </form>
+        </div>
+    </div> 
+    <!-- 按钮区 -->
+    <div class="btn_row">
+        <a href="javascript:;" onclick="find_sxr()"><input type="button" value="查询" class="common_btn mid_btn" /></a> 
+    </div>   
+</div>
+
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+
+
+</body>
+</html>
+<script>
+ var httpurl=global_data.httpurl;
+ var user_id = getCookie("user_id");
+ user_id = 5;
+
+var bzxrname = "";   //被执行人姓名
+var bzxrsfz = "";        //被执行人身份证号
+var bzxrpro = ""           //省份
+var yzm =  "";             //验证码
+
+
+ //初始化验证码
+ window.onload=function(){
+      getyzm();
+
+}
+  
+  //获取验证码
+  function getyzm(){
+    var linksrc = ""+httpurl+"sxrcx/getyzm.php?"+Math.random()+"&user_id="+user_id;
+    $('#yzm_img').attr('src',linksrc);
+  }
+
+  //检查姓名
+  function  check_bzxrname(){
+      bzxrname = $.trim($("#textfield_bzxrnameId").val());
+      return checkname(bzxrname, "被执行人姓名/名称");
+  }
+
+  //检查身份证号或组织机构代码
+  function check_bzxrsfz(){
+    bzxrsfz = $.trim($("#textfield_sfzhmId").val()); 
+
+    if(bzxrsfz==""){
+        return true;
+      }else{
+        if(sxrcx_isIdCardNo(bzxrsfz)==0 || sxrcx_checkorgcode(bzxrsfz)==0){
+          return true;
+        }else{
+          open_modal("身份证号码/组织机构代码不正确！");
+          return false;
+        }
+      }
+  }
+
+  /*验证身份证ID*/
+function sxrcx_isIdCardNo(num)
+{ 
+    var index = 0;                 //0 表示true  1表示false
+    if (isNaN(num)) {
+      //return false;
+      index = 1;
+    }
+    var len = num.length, re;
+    if (len == 15)
+        re = new RegExp(/^(\d{6})()?(\d{2})(\d{2})(\d{2})(\d{3})$/);
+    else if (len == 18)
+        re = new RegExp(/^(\d{6})()?(\d{4})(\d{2})(\d{2})(\d{3})(\d)$/);
+    else {
+        //open_modal("输入的身份证号码数字位数不对！");
+        //return false;
+        index = 1;
+    }
+    var a = num.match(re);
+    if (a !== null)
+    {
+        if (len==15)
+        {
+            var D = new Date("19"+a[3]+"/"+a[4]+"/"+a[5]);
+            var B = D.getYear()==a[3]&&(D.getMonth()+1)==a[4]&&D.getDate()==a[5];
+        }
+        else
+        {
+            var D = new Date(a[3]+"/"+a[4]+"/"+a[5]);
+            var B = D.getFullYear()==a[3]&&(D.getMonth()+1)==a[4]&&D.getDate()==a[5];
+        }
+        if (!B) {
+            //open_modal("输入的身份证号"+ a[0] +" 里出生日期不对！");
+            //return false;
+            index = 1;
+        }
+    }
+    return index;
+}
+/*验证组织机构代码是否正确*/
+function  sxrcx_checkorgcode(code){
+
+    var index = 0;                 //0 表示true  1表示false
+    //机构代码
+    var ws = [3, 7, 9, 10, 5, 8, 4, 2];
+    var str = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var reg = /^([0-9A-Z]){8}-[0-9|X]$/;
+
+    var sum = 0;
+    for (var i = 0; i < 8; i++) {
+        sum += str.indexOf(code.charAt(i)) * ws[i];
+    }
+    var c9 = 11 - (sum % 11);
+
+    if (!reg.test(code)) {
+        //open_modal("身份证号码/组织机构代码不正确！");
+        //return false;
+        index = 1;
+    }
+
+   else if(c9==10){
+        c9='X';
+    }
+    else if(c9==11){
+        c9='0';
+    }
+
+    else if(c9 != code.charAt(9)){
+        //open_modal("身份证号码/组织机构代码不正确！");
+        //return false;
+        index = 1;
+    }
+    else{
+        //return true;
+        index = 0;
+    }
+
+    return index;
+}
+
+  //检查验证码
+  function check_yzm(){
+    yzm =  $.trim($('#textfield_yzmId').val());
+
+
+    if(yzm=="" || yzm==null){
+      open_modal("请输入验证码！");
+      return false;
+    }else{
+      return true;
+    }
+    
+  }
+
+  //查询失信人信息
+  function find_sxr(){
+
+    //记录失信人查询 按钮点击使用次数
+    record_clicknum('sxrcx_record');
+
+    if(!check_bzxrname()){
+      return ;
+    }else if(!check_bzxrsfz()){
+      return;
+    } else if(!check_yzm()){
+      return;
+    }else{
+        bzxrpro = $("#select_province").val(); 
+        ajax(
+          ""+httpurl+"sxrcx/checkyzm.php",
+          "yzm="+yzm+"&user_id="+user_id,
+          function(data){
+              if(data.state==1 && data.result=='fail'){
+                  open_modal("验证码输入错误！");
+                }else{
+                  setCookie("bzxrname", bzxrname);
+                  setCookie("sfzhm", bzxrsfz);
+                  setCookie("province", bzxrpro);
+                  window.location.href="/sfytj/dist/html/sxrcx/sxrcxjg.html";
+                }
+              }
+        )   
+    }
+         
+  }
+
+
+</script>

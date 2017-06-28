@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="login_html">
+    <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+            <title>
+                用户登录
+            </title>
+            <link href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+                <link href="/sfytj/dist/styles/main.min.css" rel="stylesheet" type="text/css">
+                    <script event="IDCardOn" for="GGIDCard" language="JavaScript">
+                        close_IDCard();
+	           			sfytj_login(GGIDCard.IDCode,GGIDCard.Name);
+                    </script>
+                </link>
+            </link>
+        </meta>
+    </head>
+    <body>
+        <!-- 身份证 -->
+        <object classid="CLSID:A84304A7-959F-41CF-BF48-866865BF68F0" height="252" id="GGIDCard" style="display:none;" width="204">
+        </object>
+        <div class="sfytj_login">
+            <div class="wrap">
+                <div class="nav_body">
+                    <div class="main_body">
+                        <!-- 文字和图片 -->
+                        <div class="mainbody_content clearfix">
+                            <div class="content_info fl">
+                                <div class="title">
+                                    畅通司法信息公开内容
+                                </div>
+                                <div class="information">
+                                    为您提供信息浏览、扫描、打印及下载文书、给法官留言等功能，更多的获取司法咨询。
+                                </div>
+                            </div>
+                            <div class="image fr">
+                                <img src="/sfytj/dist/images/icon/login_image.png"/>
+                            </div>
+                        </div>
+                        <!-- 按钮 -->
+                        <div class="button">
+                            <input class="common_btn login_other" disabled="disabled" type="button" value="其他登录方式"/>
+                            <input class="common_btn login_ID" type="button" value="刷身份证登录"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/sfytj/bower_components/jquery/dist/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/dist/scripts/main.min.js" type="text/javascript">
+        </script>
+        <OBJECT classid="clsid:18EE8930-6993-4ADA-B8BB-02BA5820AC94" id="aaa" style="display: none" CODEBASE="Termb.cab#version=1,0,0,1"  VIEWASTEXT></OBJECT>
+        <script type="text/javascript">
+            //循环读取律所机的身份证信息
+            var handler;
+            //加载完成展开下面菜单
+            $(function(){
+                    $(".menu_btn", window.top.document).addClass("up_menu");
+                    $(".menu_holder", window.top.document).addClass("active_menu");
+            });
+            //刷身份证登录
+            $(".login_ID").click(function() {
+                //每次初始化登录框内容文字
+                var modal_content = $('.login_modal .info_content', window.top.document);
+                // var modal_title = $('.login_modal .info_title', window.top.document);
+                // modal_title.html("二代证登录");
+
+                // var html='<img class="video" src="/sfytj/dist/images/show/scan_id.gif">';
+                // $('.modal_top',window.top.document).html(html);
+                // 
+                //当前设备类型 S200 还是 S200E
+                var machine_type = JSON.parse(getCookie("sftyj_config")).mid || ""; 
+                if (machine_type == 'S200E') {
+                    var html='<img class="video" src="/sfytj/dist/images/show/scan_id.gif">';
+                    $('.modal_top',window.top.document).html(html);
+                    modal_content.html("欢迎使用第二代身份证登录，请您将身份证放置在多功能阅读区域");
+                } else if (machine_type == 'S200') {
+                    var html='<img class="video" src="/sfytj/dist/images/show/scan_s200.gif">';
+                    $('.modal_top',window.top.document).html(html);
+                    modal_content.html("欢迎使用第二代身份证登录，请您将身份证放置在二代证扫描区");
+                } else if (machine_type == 'S110') {
+                    $('.modal_top',window.top.document).css({
+                        'height':'180px',
+                        'background-color': '#1c8deb',
+                        'background-image': 'url(/sfytj/dist/images/icon/idcard_icon.png)',
+                        'background-repeat': 'no-repeat',
+                        'background-position': 'center'
+                    });
+                    modal_content.html("欢迎使用第二代身份证登录，请您将身份证放置在身份证扫描区");
+                } 
+
+                //律所机
+                if (machine_type == 'S110') {
+                    //读取身份证信息
+                    $('.login_modal', window.top.document).modal({
+                        backdrop: 'static'
+                    });
+                    $('.login_modal .card_btn', window.top.document).click(function() {
+                        $('.login_modal', window.top.document).modal("hide");
+                        Close_Read_IDCard();
+                    });
+                    Read_IDCard_Comm();
+                    handler = setInterval("Read_IDCard_Info()",3000);
+                //一体机
+                } else {
+                    open_IDCard();
+                    $('.login_modal', window.top.document).modal({
+                        backdrop: 'static'
+                    });
+                    $('.login_modal .card_btn', window.top.document).click(function() {
+                        $('.login_modal', window.top.document).modal("hide");
+                        close_IDCard();
+                    });
+                } 
+            });
+
+            //开发模拟登录  测试用
+            $(".login_other").click(function() {
+                 var modal_content = $('.login_modal .info_content', window.top.document);
+                 // var modal_title = $('.login_modal .info_title', window.top.document);
+                 // modal_title.html("二代证登录");
+
+                var html='<img class="video" src="/sfytj/dist/images/show/scan_id.gif">';
+                $('.modal_top',window.top.document).html(html);
+
+                //当前设备类型 S200 还是 S200E
+                try {
+                    var machine_type = JSON.parse(getCookie("sftyj_config")).mid || ""; 
+                } catch (e) {
+                    //测试 谷歌
+                    var machine_type = 'S200';
+                }
+                // var machine_type = 'S200';
+                if (machine_type == 'S200E') {
+                    modal_content.html("欢迎使用第二代身份证登录，请您将身份证放置在多功能阅读区域");
+                } else if (machine_type == 'S200') {
+                    modal_content.html("欢迎使用第二代身份证登录，请您将身份证放置在二代证扫描区");
+                } 
+                
+                $('.login_modal', window.top.document).modal({
+                    backdrop: 'static'
+                });
+                setTimeout(function() {
+                    sfytj_login("36242119561004021X", "何 滨");
+                }, 1000)
+            });
+            // 获取身份证信息登入
+            function sfytj_login(identity_num, name) {
+                console.log("读取身份证结束");
+                httpurl = global_data.httpurl;
+                setCookie("user_info", JSON.stringify({
+                    'name': name,
+                    'id': identity_num
+                }));
+                var identity_num = identity_num;
+                var name = name;
+                var modal_content = $('.login_modal .info_content', window.top.document);
+                var modal_title = $('.login_modal .info_title', window.top.document);
+                var modal_btn = $('.login_modal .card_btn', window.top.document);
+                $.ajax({
+                    timeout: 5000,
+                    type: "post",
+                    async: false,
+                    data: "identity_num=" + identity_num + "&name=" + name,
+                    url: "" + httpurl + "wdaj/login.php",
+                    dataType: "json",
+                    success: function(data) {
+                        var defaultData = eval(data);
+                        setCookie("user_id", defaultData.data);
+                        /* 登录成功后记录用户当时的登入时间 */
+                        var signin_time = getDateTime();
+                        setCookie("signin_time", signin_time);
+                    },
+                    complete: function(XMLHttpRequest, status) {
+                        if (status == "timeout") {
+                            var xmlhttp = window.XMLHttpRequest ? new window.XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHttp");
+                            xmlhttp.abort();
+                            console.log("登入超时!");
+                            modal_title.html("错误提示");
+                            modal_content.html("<p>登入超时，错误代码：10001</p>");
+                            $('.login_modal .card_btn', window.top.document).click(function() {
+                                $('.login_modal', window.top.document).modal('hide');
+                            });
+                            return;
+                        }
+                    },
+                    error: function(XMLHttpRequest, textStatus) {
+                        console.log("登入出错!");
+                        modal_content.html("<p>登入出错，错误代码：20001</p>");
+                        $('.login_modal .card_btn', window.top.document).click(function() {
+                            $('.login_modal', window.top.document).modal('hide');
+                        });
+                        return;
+                    }
+                });
+                var user_id1 = getCookie('user_id');
+                if (user_id1) {
+                    console.log("登入成功");
+                    modal_content.html("<p>登入成功，欢迎您" + name + "!</p>");
+                    modal_title.html("登入成功");
+                    modal_btn.html("确定");
+                    var myyyla = []; //预约立案查看详情数组
+                    var myyslaj = []; //已受理案件查看详情数组
+                    setCookie("myyyla", JSON.stringify(myyyla));
+                    setCookie("myyslaj", JSON.stringify(myyslaj));
+                    // initScreenSaver();
+                    setTimeout(function() {
+                        $('.login_modal', window.top.document).modal('hide');
+                        $('.login_modal', window.top.document).on('hidden.bs.modal', function() {
+                            if (getCookie("la_yj_cx")=="la") {
+                                var la_yj_cx_type = 2;
+                            } else if (getCookie("la_yj_cx")=="yj") {
+                                var la_yj_cx_type = 3;
+                            } else if (getCookie("la_yj_cx")=="cx") {
+                                var la_yj_cx_type = 4;
+                            } else {
+                                var la_yj_cx_type = 1;
+                            }
+                            //获取设备编号
+                            var sftyj_config_arr = JSON.parse(getCookie('sftyj_config'));
+                            
+                            //请求后台是否有权限跳转
+                            $.ajax({
+                                timeout: 5000,
+                                type: "post",
+                                async: false,
+                                data: "pid=" + sftyj_config_arr.pid+'&type='+la_yj_cx_type ,
+                                url: "" + httpurl + "yz/get_url.php",
+                                dataType: "json",
+                                success: function(data) {
+                                    var defaultData = eval(data);
+                                    if(defaultData.state==0){
+                                        open_modal(defaultData.info);
+                                    }else{
+                                        window.location.href=defaultData.url;
+                                    }
+                                },
+
+                            });
+
+                        });
+                    }, 1000);
+                }
+            }
+
+            var i=0;
+            var flag=0;
+            var j=1;
+            function Read_IDCard_Comm(){
+                for(i=1;i<3;i++){
+                    if(aaa.OpenComm(i)==1){
+                        flag=1;
+                        break;
+                    }
+                }
+                if(i==3){
+                    for(i=1001;i<1003;i++){
+                        if(aaa.OpenComm(i)==1){
+                            flag=1;
+                            break;
+                        }
+                    }
+                }
+            }    
+
+            function Read_IDCard_Info() {
+                var modal_content = $('.login_modal .info_content', window.top.document);
+                var modal_title = $('.login_modal .info_title', window.top.document);
+                if(flag==1){
+                    console.log("尝试读取身份证第"+j+"次");
+                    j++;
+                    if (aaa.Authen()==1){
+                        if(aaa.ReadCardPath("",1)==1){
+                            //读取到律所机的身份证
+                            clearInterval(handler);//关闭定时
+                            var name = aaa.sName;
+                            var id = aaa.sIDNo;
+                            aaa.EndComm(); 
+                            sfytj_login(id,name);
+                        } else {
+                            modal_title.html("错误提示");
+                            modal_content.html("<p>读卡错误！"+aaa.ReadCardPath("",1)+"</p>"); 
+                            clearInterval(handler);//关闭定时
+                        }
+                    } 
+                    // else{
+                    //     alert("找卡错误,请重新放卡!");
+                    // }
+                } else{
+                    modal_title.html("错误提示");
+                    modal_content.html("<p>打开端口失败</p>");     
+                    clearInterval(handler);//关闭定时         
+                }
+            }
+
+            function Close_Read_IDCard() {
+                clearInterval(handler);//关闭定时
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>查看法庭位置</title>
+<link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css" />
+<!-- <link rel="stylesheet" type="text/css" href="/sfytj/src/styles/main.css" /> -->
+<link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+
+
+<body>
+
+<!--页面-->
+<div class="ckftwz">
+	<div class="wrap">
+		<div class="common_body">
+
+			<!-- 标题区 -->
+			<div class="ggxx-head">
+				<div class="ggxx-title font_header">查看法庭位置</div>
+			</div>
+
+			<!--主体内容-->
+			<div class="ggxx-body clearfix">
+				<div class="wrap_body clearfix">
+					<!-- 楼层列表 -->
+					<div class="floor_list fl">
+						<ul class="floor">
+						</ul>
+					</div>
+
+					<!-- 法庭地址位置图 -->
+					<div class="map fl">
+						<div class="image"></div>
+						<!-- 目的地和楼层入口-->
+						<!-- <div class="tips clearfix">
+							<div class="dest_img fl"></div>
+							<div class="dest_name fl font_h1">目的地</div>
+							<div class="entry_name fr font_h1">楼层入口</div>
+							<div class="entry_img fr"></div>
+						</div> -->
+					</div>
+
+					<!-- 审判庭列表 -->
+					<div class="fating_list fr">
+						<ul class="fating">
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!-- 底部按钮区 -->
+			<!-- <div class="btn_row ">
+				<input type="button" value="打印" class="common_btn fr " />
+			</div> -->
+			<!-- 上一步 按钮 -->
+			<div class="btn_row ">
+				<input type="button" value="返回" class="common_btn "  onclick="history.back()"/>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+//初始化楼层列表、审判庭列表
+$(function(){
+	var httpurl=global_data.httpurl;
+
+	/* 获取楼层数和审判庭名字 */
+	var fl_num = getCookie("fl_num");
+	var spt_name = getCookie("spt_name");
+	fl_num = parseInt(fl_num);
+
+	var court_id = getCookie("court_id");
+	console.log(court_id);
+	if(court_id){
+		court_id = court_id;
+	}else{
+		court_id = global_data.court_id;
+	}
+	/*court_id = 16;*/
+	//从数据库获取所有的楼层和法庭数据
+	  ajax(
+	    ""+httpurl+"/ggxx/tsgk/ckftwz.php",
+	    "court_id="+court_id,
+	    function(Data){
+			ftLocationData = Data.room_data;	       	
+	    },
+	    null,
+	    null,
+	    null,
+	    false
+	  );
+console.log(ftLocationData);
+	var fating_ini; //记录待展示的审判庭item；
+	$.each(ftLocationData, function(n, value){
+		if(value.num==fl_num){
+			$('.floor').append("<li class='floor_li floor_active' onclick='choose_floor("+value.num+")'><span class='floor_sum'>"+value.num+"F</span>"+value.name+"</li>");
+			fating_ini = value.items;
+		}else{
+			$('.floor').append("<li class='floor_li' onclick='choose_floor("+value.num+")'><span class='floor_sum'>"+value.num+"F</span>"+value.name+"</li>");
+		}
+	});
+
+    showFating(fating_ini, spt_name);
+    
+
+	//设置页面上显示的地图
+	if(map_img!=null && map_img!=""){
+		$(".image").css("background","url("+map_img+") center no-repeat");
+	}
+	
+});
+</script>
+</body>
+
+</html>

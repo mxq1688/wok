@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>法律法规</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css" />
+</head>
+<body>
+
+
+<!--页面-->
+<div class="flfg_more">
+    <div class="common_body">
+        <!--头部-->
+        <div class="ggxx-head">
+            <div class="ggxx-title font_header"></div>
+        </div>
+
+        <!--主体内容-->
+        <div class="ggxx-body">
+            <!-- 遮罩 -->
+            <div class="loading_index"></div>
+
+            <iframe id="iframe"  width="100%" height="560px" frameborder="0" border="none"></iframe>
+        </div>
+
+        <!-- 底部按钮区 -->
+        <div class="btn_row ">
+            <input type="button" value="返回" class="common_btn "  onclick="history.back()"/>
+        </div>
+
+
+    </div>
+</div>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var loading_index = $(".loading_index");
+        var isOnLoad = true;
+        var more_href = JSON.parse(getCookie("more_href"));
+        $(".ggxx-title").html(JSON.parse(getCookie("flfg_title")));
+
+        $("#iframe").css("display", "none");
+        
+        if(more_href != null && more_href!=""){
+            $("#iframe").attr('src', more_href);
+            //$("#iframe").attr('src',"http://www.google.com.hk/webhp?hl=zh-CN&sourceid=cnhp"); //测试链接    
+        }else{
+            setTimeout(function(){
+                loading_index.remove();
+                $("#iframe").css("display", "block");
+                $("#iframe").contents().find("body").html("<p style=\"color:red; font-size:30px\">无搜索结果<p>");
+            }, 800);
+             
+        }
+        
+        //当ifrmae加载完成时 遮罩去除，iframe显示；
+        $("#iframe").load(function(){
+            isOnLoad = false; 
+            loading_index.remove();
+            $("#iframe").css("display", "block");
+        })
+        
+    });
+
+ 
+
+</script>
+</body>
+</html>

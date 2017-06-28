@@ -1,0 +1,84 @@
+/* 我的案件主界面 */
+.wdaj_index{
+  .wdaj_head{
+    margin-top: 45px;
+    width: 1720px;
+    border-bottom: none;
+    height: 72px;
+    padding: 0 100px 0 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .wdaj_mainbody {
+    height: 748px;
+    width: 1720px;
+    border:1px solid #ccc;
+    border-radius: 0px 10px 10px 10px;
+    background: rgba(255,255,255,.8);
+    position: relative;
+    color: #999;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px 100px 0px 100px;
+    box-shadow: 0 0 10px 3px #ddd;
+    position:relative;
+}
+  .nav {
+      li {
+        font-size: 36px;
+        font-weight: 500;
+        cursor: pointer;
+        float: left;
+        position: relative;
+      }
+      li.active {
+        box-shadow: 0 0 10px 3px #ddd;
+        border-radius: 4px 4px 0 0;
+    }
+  }
+  .white_block{
+    display: none;
+  }
+
+  .active .white_block{
+    display: block;
+  }
+  .white_block{
+    position: absolute;
+    background-color: #fff;
+    z-index: 10;
+    top: 59px;
+  }
+  .white_block1{
+    width: 227px;
+    height: 22px;
+    left: 1px;
+  }
+    .white_block2{
+    width: 227px;
+    height: 22px;
+    left: 1px;
+  }
+    .white_block3{
+    width: 299px;
+    height: 22px;
+    left: 1px;
+  }
+
+    
+  .wdaj_content{
+    width: 100%;
+    height: 100%;
+  }
+  .tab-pane{
+    width:100%;
+    height:100%;
+  }
+
+  .nav-tabs>li.active>a{
+    border-right-color: transparent;
+  }
+  .nav>li>a {
+    padding: 10px 40px;
+  }
+}

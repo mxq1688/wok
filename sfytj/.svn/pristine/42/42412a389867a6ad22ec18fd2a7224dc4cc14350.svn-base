@@ -1,0 +1,30 @@
+/*刑事自述工作流程图*/
+.xszs_lc{
+  background: none;
+  height: 610px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  .xszslc{
+    /*边距*/
+    .bj{
+      margin-bottom: 50px;
+    }
+    /*图片名字*/
+    .title{
+      /* margin-top: 50px;*/
+
+    }
+    /*流程图*/
+    .lct{
+      img{
+        width: 100%;
+      }
+
+    }
+    /*备注*/
+    .bz{
+
+    }
+
+  }
+}

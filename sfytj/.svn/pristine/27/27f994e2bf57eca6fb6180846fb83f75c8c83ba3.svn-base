@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>法律法规</title>
+
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body>
+
+
+<!--页面-->
+<div class="flfg_list">
+    <div class="common_body">
+        <!--头部-->
+        <div class="ggxx-head">
+            <div class="ggxx-title font_header"></div>
+        </div>
+        <!--主体内容-->
+        <div class="ggxx-body">
+            <div class="clearfix">
+                <!--搜索区-->
+                <div class="search-container font_h3 clearfix">
+                    <div class="fl search-form">
+                        <form class="form-horizontal">
+                            <div class="input-group col-md-12">
+                                <input type="text" class="date-from  form-control  font_h2" id="flfg_search"/>
+                                <div class="btn-search form-control font_h1"  onclick="flfg_search()">查询</div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <!--主体区域，显示公告-->
+            <div id="gg-container">
+
+            </div>
+
+
+
+
+        </div>
+
+        <!-- 底部按钮区 -->
+        <div class="btn_row ">
+            <input type="button" value="返回" class="common_btn " onclick="history.back()"/>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script>
+    var httpurl=global_data.httpurl;
+    var flfg_list_ItemData = null;
+    var flfgcid = getCookie("flfgcid");
+    var flfg_list_cotent = {};
+</script>
+<script type="text/javascript">
+
+    /*查询*/
+    function flfg_search(){
+        var flfg_search = $("#flfg_search").val();
+        console.log(flfg_search);
+        var flfgcid = getCookie("flfgcid");
+        if(flfgcid==null){flfgcid=""};
+
+        if(!flfg_search){
+            open_modal("请输入要查询法律法规的具体章节");
+        }
+        else{
+            //页面初始化，从查询页面获取法院ID：
+
+            ajax(
+                    ""+httpurl+"ggxx/ygsf/flfg.php",
+                    "cid="+flfgcid+"&keys="+flfg_search,
+                    function(datas){
+                        console.log("data.state:"+datas.state);
+                        console.log("data.result:"+datas.result);
+                        console.log(datas);
+                        if(!datas.data.length){
+                            open_modal("无查询结果");
+                            $("#gg-container").empty();
+                        }else{
+                            $("#gg-container").empty();
+                            var html = "";
+                            $.each(datas.data, function (n, value) {
+                                html += "<div class=\"list-group panel-default aj-item \">";
+                                html += "<div class='title-line'></div>";
+                                html += "<div class=\"panel-heading clearfix\" role=\"tab\"  id=\"aj" + n + "\"" +
+                                        "data-toggle=\"collapse\" data-parent=\"#gg-container\" data-target=\"#collapse" + n + "\"" +
+                                        " aria-controls=\"collapse" + n + "\" >";
+                                html += "<div class='aj-title font_h1'>";
+                                html += "<div class=\"list\">" + value.title + "</div>";
+
+                                html += "<div class=\"date fl\">" + value.create_time + "</div>";
+
+                                if (value.jinri == "1") {
+                                    html += "<div class=\"badge\">最新</div>";
+                                }
+
+                                html += "</div>";
+                                html += "<button class=\"btn xlzy font_h1 btn_chakan\" data-index=\"" + n + "\">查看</button>";
+                                html += "</div>";
+                                html += "</div>";
+                                html += "</div>";
+                                html += "</div>";
+                            });
+                            $("#gg-container").append(html);
+
+                            // var xzfy = get_ggxx_xzfy();
+                            // $(".current_fy").html(xzfy.selected_fy);
+
+
+                            //点击查看，将对应的id存入cookie,准备详情页面数据；
+                            $(".xlzy").on('click', function(){
+                                
+                                $("#flfg_search").val('');
+                                var n = $(this).data("index");
+                                var data = datas.data[n].id;
+
+                                //将json转为字符串；
+                                var str = JSON.stringify(data);
+
+                                //将法律法规id信息存入cookie
+                                setCookie("flfgid", str);
+                                window.location.href="/sfytj/dist/html/ggxx/ygsf/flfg/flfg.html";
+
+                            });
+
+                        }
+                    }
+            )
+        }
+    }
+</script>
+
+
+
+<script type="text/javascript">
+$(function(){
+
+    var flfg_title=JSON.parse(getCookie("flfg_title"));
+    if(flfgcid==null){flfgcid=""};
+    if(flfg_title==null){flfg_title=""};
+
+    var flfg_list;
+    if(localStorage.getItem("flfg_list_cotent")){
+        flfg_list= JSON.parse(localStorage.getItem("flfg_list_cotent"));
+    }else{
+        flfg_list ='';
+    }
+   /* console.log(JSON.parse(localStorage.getItem("flfg_list_cotent")));*/
+
+
+    if(flfg_list){
+        if(flfg_list[flfgcid]){
+            flfg_list_ItemData =flfg_list[flfgcid];
+        }else{
+            ajax(
+                    ""+httpurl+"ggxx/ygsf/flfg.php",
+                    "cid="+flfgcid,
+                    function(defaultData){
+                        console.log(defaultData);
+                        flfg_list_ItemData = defaultData.data;
+                    },
+                    null,
+                    null,
+                    null,
+                    false
+            );
+            /*将数据保存*/
+            flfg_list_cotent[flfgcid] = flfg_list_ItemData ;
+          /*  console.log(flfg_list_cotent);
+            console.log(JSON.stringify(flfg_list_cotent));*/
+            localStorage.setItem("flfg_list_cotent",JSON.stringify(flfg_list_cotent));
+           /* console.log(localStorage.getItem("flfg_list_cotent"));*/
+        }
+    }else{
+        ajax(
+                ""+httpurl+"ggxx/ygsf/flfg.php",
+                "cid="+flfgcid,
+                function(defaultData){
+                    console.log(defaultData);
+                    flfg_list_ItemData = defaultData.data;
+                },
+                null,
+                null,
+                null,
+                false
+        );
+        /*将数据保存*/
+        flfg_list_cotent[flfgcid] = flfg_list_ItemData ;
+        localStorage.setItem("flfg_list_cotent",JSON.stringify(flfg_list_cotent));
+       /* console.log(flfg_list_cotent);
+        console.log(JSON.stringify(flfg_list_cotent));
+        console.log(JSON.parse(localStorage.getItem("flfg_list_cotent")));*/
+    }
+
+    $(".ggxx-title").html(flfg_title);
+
+    var html = "";
+    $.each(flfg_list_ItemData, function (n, value) {
+        html += "<div class=\"list-group panel-default aj-item \">";
+        html += "<div class='title-line'></div>"
+        html += "<div class=\"panel-heading clearfix\" role=\"tab\"  id=\"aj" + n + "\"" +
+                "data-toggle=\"collapse\" data-parent=\"#gg-container\" data-target=\"#collapse" + n + "\"" +
+                " aria-controls=\"collapse" + n + "\" >";
+        html += "<div class='aj-title font_h1'>"
+        html += "<div class=\"list\">" + value.title + "</div>";
+
+        html += "<div class=\"date fl\">" + value.create_time + "</div>";
+
+        if (value.jinri == "1") {
+            html += "<div class=\"badge\">最新</div>";
+        }
+
+        html += "</div>";
+        html += "<button class=\"btn xlzy font_h1 btn_chakan\" data-index=\"" + n + "\">查看</button>";
+        html += "</div>";
+        html += "</div>";
+        html += "</div>";
+        html += "</div>";
+    });
+    html+="<div class=\"more\">";
+    html += "<div class=\"more_list font_h1\">更多......</div>";
+    html+="<a class=\"btn font_h1 btn_more\" >查看</a>";
+    html+="</div>";
+
+    $("#gg-container").append(html);
+
+    // var xzfy = get_ggxx_xzfy();
+    // $(".current_fy").html(xzfy.selected_fy);
+
+
+    //点击查看，将对应的id存入cookie,准备详情页面数据；
+    $(".xlzy").on('click', function(){
+        $("#flfg_search").val('');
+        var n = $(this).data("index");
+        var data = flfg_list_ItemData[n].id;
+
+        //将json转为字符串；
+        var str = JSON.stringify(data);
+
+        //将法律法规id信息存入cookie
+        setCookie("flfgid", str);
+        window.location.href="/sfytj/dist/html/ggxx/ygsf/flfg/flfg.html";
+
+    });
+    $(".btn_more").on('click',function(){
+        window.location.href="/sfytj/dist/html/ggxx/ygsf/flfg/flfg_more.html";
+    });
+});
+</script>
+
+
+
+<!--<script type="text/javascript">
+    /*模拟数据*/
+    var defaultData = {
+
+        more: {
+
+            list: '更多......',
+            flfg_type:'中华人民共和国民事诉讼法',
+            href:'http://www.chinacourt.org/law/detail/2012/08/id/145938.shtml',
+        },
+        data: [
+            {
+                list: '中华人民共和国民事诉讼法第一章',
+                date: '2012/02/12',
+                jinri: '0',
+                content: [
+                    '第一条 中华人民共和国民事诉讼法以宪法为根据，结合我国民事审判工作的经验和实际情况制定。',
+
+                    '第二条 中华人民共和国民事诉讼法的任务，是保护当事人行使诉讼权利，保证人民法院查明事实，分清是非，正确适用法律，及时审理民事案件，确认民事权利义务关系， 制裁民事违法行为，保护当事人的合法权益，教育公民自觉遵守法律，维护社会秩序、经济秩序，保障社会主义建设事业顺利进行。'
+                    ,
+
+                    '第三条 人民法院受理公民之间、法人之间、其他组织之间以及他们相互之间因财产关系和人身关系提起的民事诉讼，适用本法的规定。'
+
+                ],
+
+            },
+            {
+                list: '中华人民共和国民事诉讼法第二章',
+                date: '2012/02/12',
+                jinri: '0',
+                content: [
+
+                    '第十七条 基层人民法院管辖第一审民事案件，但本法另有规定的除外。'
+                    ,
+
+                    '第十八条 中级人民法院管辖下列第一审民事案件：(一)重大涉外案件；(二)在本辖区有重大影响的案件；(三)最高人民法院确定由中级人民法院管辖的案件。'
+
+                ],
+            }
+            ,
+            {
+                list: '中华人民共和国民事诉讼法第三章',
+                date: '2012/02/12',
+                jinri: '0',
+                content: [
+
+                    '第一条 中华人民共和国民事诉讼法以宪法为根据，结合我国民事审判工作的经验和实际情况制定。'
+                    ,
+
+                    '第二条 中华人民共和国民事诉讼法的任务，是保护当事人行使诉讼权利，保证人民法院查明事实，分清是非，正确适用法律，及时审理民事案件，确认民事权利义务关系， 制裁民事违法行为，保护当事人的合法权益，教育公民自觉遵守法律，维护社会秩序、经济秩序，保障社会主义建设事业顺利进行。'
+                    ,
+
+                    '第三条 人民法院受理公民之间、法人之间、其他组织之间以及他们相互之间因财产关系和人身关系提起的民事诉讼，适用本法的规定。'
+
+                ],
+            }
+            ,
+            {
+                list: '中华人民共和国民事诉讼法第四章',
+                date: '2012/02/12',
+                jinri: '0',
+                content: [
+
+                    '第一条 中华人民共和国民事诉讼法以宪法为根据，结合我国民事审判工作的经验和实际情况制定。'
+                    ,
+
+                    '第二条 中华人民共和国民事诉讼法的任务，是保护当事人行使诉讼权利，保证人民法院查明事实，分清是非，正确适用法律，及时审理民事案件，确认民事权利义务关系， 制裁民事违法行为，保护当事人的合法权益，教育公民自觉遵守法律，维护社会秩序、经济秩序，保障社会主义建设事业顺利进行。'
+                    ,
+
+                    '第三条 人民法院受理公民之间、法人之间、其他组织之间以及他们相互之间因财产关系和人身关系提起的民事诉讼，适用本法的规定。'
+
+                ],
+            }
+            ,
+            {
+                list: '中华人民共和国民事诉讼法第五章',
+                date: '2012/02/12',
+                jinri: '0',
+                content: [
+
+                    '第一条 中华人民共和国民事诉讼法以宪法为根据，结合我国民事审判工作的经验和实际情况制定。'
+                    ,
+
+                    '第二条 中华人民共和国民事诉讼法的任务，是保护当事人行使诉讼权利，保证人民法院查明事实，分清是非，正确适用法律，及时审理民事案件，确认民事权利义务关系， 制裁民事违法行为，保护当事人的合法权益，教育公民自觉遵守法律，维护社会秩序、经济秩序，保障社会主义建设事业顺利进行。'
+                    ,
+
+                    '第三条 人民法院受理公民之间、法人之间、其他组织之间以及他们相互之间因财产关系和人身关系提起的民事诉讼，适用本法的规定。'
+
+                ],
+            }
+        ]
+    };
+
+</script>
+<script type="text/javascript">
+    $(function () {
+
+        /*填充页面*/
+
+
+        var html = "";
+        $.each(defaultData.data, function (n, value) {
+            html += "<div class=\"list-group panel-default aj-item \">";
+            html += "<div class='title-line'></div>"
+            html += "<div class=\"panel-heading clearfix\" role=\"tab\"  id=\"aj" + n + "\"" +
+                    "data-toggle=\"collapse\" data-parent=\"#gg-container\" data-target=\"#collapse" + n + "\"" +
+                    " aria-controls=\"collapse" + n + "\" >";
+            html += "<div class='aj-title font_h1'>"
+            html += "<div class=\"list\">" + value.list + "</div>";
+
+            html += "<div class=\"date fl\">" + value.date + "</div>";
+
+            if (value.jinri == "1") {
+                html += "<div class=\"badge\">最新</div>";
+            }
+
+            html += "</div>";
+            html += "<button class=\"btn xlzy font_h1 btn_chakan\" data-index=\"" + n + "\">查看</button>";
+            html += "</div>";
+            html += "</div>";
+            html += "</div>";
+            html += "</div>";
+            /*html += "<div id=\"collapse" + n + "\" class=\"panel-collapse collapse " + (n == 0 ? "in" : "")
+             + "\" data-index=\""+n+"\" role=\"tabpanel\" aria-labelledby=\"aj" + n + "\">";
+             html += "<div class=\"panel-body  aj-info\">";
+             html += "<div class=\"col-md-offset-3 font_big\">";
+             html += "<div class=\"col-md-12\">" + value.content + "</div>";
+             html += "</div>";
+             html += "</div>";
+             html += "</div>";
+             html += "</div>";*/
+        });
+        html+="<div class=\"more\">";
+        html += "<div class=\"more_list font_h1\">" + defaultData.more.list + "</div>";
+        html+="<a class=\"btn xlzy font_h1 btn_more\" >查看</a>";
+        html+="</div>";
+
+        $("#gg-container").append(html);
+
+        var xzfy = get_ggxx_xzfy();
+        $(".current_fy").html(xzfy.selected_fy);
+
+
+        $(".btn_chakan").click(function () {
+
+            var index = $(event.target).data("index");
+            var value = defaultData.data[index];
+            setCookie("fltk", JSON.stringify(value.list));
+            setCookie("flnr", JSON.stringify(value.content));
+            window.location.href = 'flfg.html';
+
+
+        });
+
+        $(".btn_more").click(function(){
+            var value=defaultData.more;
+            setCookie("flfg_type",JSON.stringify(value.flfg_type));
+            setCookie("more",JSON.stringify(value.href));
+            window.location.href='flfg_more.html';
+        });
+
+    });
+
+
+</script>-->
+</body>
+</html>

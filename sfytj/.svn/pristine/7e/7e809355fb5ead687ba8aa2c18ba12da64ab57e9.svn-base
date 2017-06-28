@@ -1,0 +1,113 @@
+/*法庭分布-查看法庭位置css */
+.ckftwz {
+
+  /* 标题 查看法庭位置 */
+  .ckftwz_title  h2 {
+    font-weight: bolder;
+    color: #000;
+  }
+  .common_wrap_body {
+    width:100%;
+    border-top:2px solid #999;
+        height: 600px;
+  }
+
+  .wrap_body {
+    margin-top: 80px;
+    height: 500px;
+    width:100%;
+  }
+  .floor_list {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 400px;
+    width: 20%;
+  }
+
+  /* 楼层和审判庭列表 */
+  .floor {
+    float:left;
+    list-style: none;
+    width: 100%;
+    padding: 0px 20px 0px 0px;
+  }
+  .floor_li {
+    margin-bottom: -1px;
+    border:1px solid #999;
+    height: 80px;
+    padding: 0px 27px;
+    line-height: 80px;
+    cursor: pointer;
+    font-size: 30px;
+    text-align: right;
+  }
+  .floor_sum {
+    font-size: 42px;
+    color:#53aee7;
+    margin-right: 92px;
+  }
+  .floor_active .floor_sum{
+    color:#fff;
+  }
+
+  .fating_list {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width:30%;
+    height:400px;
+  }
+  .fating {
+    list-style: none;
+    width: 100%;
+    padding: 0px 20px 0px 0px;
+  }
+  .fating_li {
+    margin-bottom: -1px;
+    border:1px solid #999;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    font-size: 42px;
+    cursor: pointer;
+  }
+  .floor_active, .fating_active {
+    background: #53aee7;
+    color:#fff;
+  }
+
+  .map {
+    width:50%;
+    @include center-block;
+    height: 500px;
+  }
+  .image {
+    @include center-block;
+   // background: url(../images/icon/fating_map.png) no-repeat center;
+   // height: 380px;
+  }
+
+  .tips{
+     padding: 30px 165px 30px 179px;
+    .dest_img{
+      background: url(../images/icon/destination.png) no-repeat center;
+      width: 38px;
+      height: 49px;
+    }
+    .dest_name{
+      height: 49px;
+      line-height: 49px;
+      margin-left: 20px;
+    }
+    .entry_img{
+      background: url(../images/icon/floor_in.png) center no-repeat;
+      width: 52px;
+      height: 49px;
+    }
+    .entry_name{
+      height: 49px;
+      line-height: 49px;
+      margin-left: 20px;
+    }
+  }
+
+}

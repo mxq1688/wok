@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>窗口指南</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<style>
+    #ckzn{height: 550px;}
+</style>
+<body class="ssyd ckzn_index">
+<!--页面主体部分-->
+<div clss="ckzn" id="ckzn">
+
+</div>
+<div class="clear"></div>
+
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    /*模拟数据*/
+    var defaultData =
+            [
+                {
+                    number:'01',
+                    name:'开庭公告',
+                    content:'为诉讼参与人提供查看开庭公告详情服务',
+                    tp:'/sfytj/dist/images/icon/ktgg.png',
+                    href:'ktgg.html',
+                },
+                {
+                    number:'02',
+                    name:'立案申请',
+                    content:'为诉讼参与人提供自助预约立案申请服务',
+                    tp:'/sfytj/dist/images/icon/lasq.png',
+                    href:'lasq.html',
+                },
+                   {
+                    number:'03',
+                    name:'阅卷申请',
+                    content:'为诉讼参与人提供自助预约阅卷申请服务',
+                    tp:'/sfytj/dist/images/icon/yjsq.png',
+                    href:'yjsq.html',
+                },
+                {
+                    number:'04',
+                    name:'个人中心',
+                    content:'提供诉讼参与人案件列表显示服务，包括我的立案，我的阅卷以及我的已受理案件',
+                    tp:'/sfytj/dist/images/icon/grzx.png',
+                    href:'grzx.html', 
+                },
+                {
+                    number:'05',
+                    name:'我要查询',
+                    content:'为诉讼参与人提供预约立案进度查询、预约阅卷进度查询以及已受理案件详情查询服务',
+                    tp:'/sfytj/dist/images/icon/lacx.png',
+                    href:'wycx.html',
+                }
+            ];
+
+</script>
+<script type="text/javascript">
+    $(function () {
+
+                /*填充页面*/
+                var html = "";
+                $.each(defaultData, function (n, value) {
+                    html +="<a href=\""+value.href+"\">";
+                    if(n>2){
+                        html += "<div class=\"zhiyin ad yy\">";
+                    }else {
+
+                        html += "<div class=\"zhiyin\">";
+                    }
+                    html += "    <div class=\"tp\"><img src=\""+value.tp+"\"></div>";
+                    html += "<div class='number font_h1'>"+value.number+"</div>";
+                    html += "<div class='name font_h1'>"+value.name+"</div>";
+                    html += "<div class=\"content font_small\">"+value.content+"</div>";
+                    html +="</div>";
+                    html +="</a>"
+
+                });
+                $("#ckzn").append(html);
+
+                //删除第三级的面包屑
+				var ele = $('#third_title', window.parent.document);
+				ele.text("");
+				ele.css("display", "none");
+			
+
+            }
+    );
+</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+/*开庭公告*/
+.ktgg-index {
+  .dropdown-menu{
+    position: absolute;
+    top: 245px;
+  }
+  
+  .title {
+
+    font-weight: bolder;
+    color: #000;
+
+  }
+  .current_fy{
+    line-height: 55px;
+  }
+  /*搜索区*/
+  hr {
+    border-top: 0px;
+    width: 100%;
+    height: 2px;
+    background: #999;
+  }
+
+  .search-container {
+    margin: 20px 0;
+    float: left;
+
+    .aj-title{
+      color: #999;
+      font-weight: 500;
+    }
+
+    .search-form {
+      margin: 0 50px;
+      width: 950px;
+      /*起始时间，结束时间*/
+      .date-from, .date-to {
+        //border-radius: 5px 0 0 5px;
+        width: 35%;
+        margin: 0;
+        padding-left:10px;
+        padding-right: 10px;
+      }
+
+      .date-from {
+        border-right: none;
+        height: 48px;
+      }
+      .date-to {
+        border-right: none;
+        border-left: none;
+        height: 48px;
+      }
+      /*中间文字*/
+      .text {
+        float: left;
+        width: 10%;
+        text-align: center;
+        line-height: 44px;
+        background-color: gray;
+        color: white;
+        height: 48px;
+      }
+
+      .btn-search {
+        width: 17%;
+        color: white;
+        background-color: $blueColor;
+        height: 48px;
+        line-height: 2px;
+      }
+    }
+
+  }
+  .qhfy{
+    line-height: 48px;
+    margin-right: 18px;
+    height: 48px;
+    float: right;
+    border: 1px solid #999;
+    width: 226px;
+    background: #53aee7;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 5%;
+  }
+  .qhfy:hover{
+    text-decoration: none;
+  }
+  /*公告显示区*/
+  #gg-container {
+    margin: 10px 0;
+    height: 436px;
+    overflow-y: auto;
+
+    .myjg{
+      text-align: center;
+      line-height: 275px;
+    }
+    .jz{
+      margin-right: 43%;
+    }
+
+    .aj-item {
+
+      position: relative;
+      margin-bottom: 5px;
+      .title-line {
+        width: 7px;
+        height: 100%;
+        position: absolute;
+        left: 504px;
+        top: 0px;
+        z-index: 1;
+        background-color: $blueColor;
+      }
+      /* 自定义panelheading */
+      .panel-heading {
+        cursor: pointer;
+        position: relative;
+        background-color: #fff;
+        box-shadow: 0 10px 20px 0 #b9b5b5;
+        color: #9a9a9a;
+        padding: 0;
+        .badge {
+          float: left;
+          background-color: #53aee7;
+          width: 81px;
+          height: 37px;
+          line-height: 30px;
+          font-size: 20px;
+          margin: 0 5px;
+          font-weight: 500;
+        }
+
+      }
+      .panel-title {
+        font-weight: 500;
+        color: #9a9a9a;
+      }
+
+      /* panel内容部分 */
+      .panel-body {
+        position: relative;
+        max-height: 400px;
+
+      }
+
+      .aj-title {
+        padding: 10px 0 10px 15px;
+        position: relative;
+        float: left;
+        background: white;
+        width: 85%;
+        font-weight: 500;
+
+        /*案号*/
+        .anhao {
+          float: left;
+          width: 496px;
+          height: 40px;
+        }
+        /*法院名称*/
+        .ftmc {
+          float: left;
+          margin-left: 100px;
+        }
+        /*开庭时间*/
+        .date {
+          margin-left: 30px;
+          margin-right: 5px;
+        }
+
+      }
+      /*线路指引按钮*/
+      .xlzy {
+        background-color: $blueColor;
+        height: 62px;
+        width: 15%;
+        float: right;
+        border-radius: 0;
+        line-height: 47px;
+        color: white;
+      }
+
+      .aj-info {
+        position: relative;
+        padding: 25px;
+        line-height: 35px;
+      }
+      .ktgg_ajxx{
+        margin-left: 35%;
+      }
+
+    }
+  }
+
+    /* 查看更多按钮 */
+  .getmore_btn{
+      position: relative;
+      width: 137px;
+      left: 50%;
+      margin-left: -68px;
+      margin-top: 20px;
+      display: none;
+      color: #999;
+  }
+}

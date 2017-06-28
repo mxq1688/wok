@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>法院信息</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body class="fyxx_index">
+<!--法院要闻-->
+<div class="common_body">
+    <!--头部-->
+    <div class="ggxx-head">
+        <div class="ggxx-title font_header"><span class="current_fy_title"></span> > <span id="sub_title">法院概况</span></div>
+    </div>
+    <!--主体内容-->
+    <div class="ggxx-body clearfix">
+        <!-- 左侧导航栏 -->
+        <div class="left_nav">
+            <ul class="nav nav-stacked font_h1" role="tablist">
+                <li role="presentation" data-href="fygk.html">
+                    法院概况
+                </li>
+                <li role="presentation" data-href="ftfb.html">
+                    法庭分布
+                </li>
+                <li role="presentation" class="gxfw" data-href="gxfw.html">
+                    管辖范围
+                </li>
+                <li role="presentation" class="bmzn" data-href="bmjzn.html">
+                    部门及职能
+                </li>
+                <!-- <li role="presentation" class=" " data-href="swhry.html">
+                    审委会人员
+                </li> -->
+                <!-- <li role="presentation" data-href="fgxx.html">
+                    法官信息
+                </li> -->
+                <li role="presentation" class="" data-href="fydz.html">
+                    法院地址
+                </li>
+
+                <li role="presentation" data-href="tsqd.html">
+                    投诉渠道
+                </li>
+                
+            </ul>
+        </div>
+        <!--右侧嵌入窗口-->
+        <div class="right_content">
+            <iframe id="content_iframe" width="100%" height="100%" frameborder="0" src="fygk.html"></iframe>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // 如果法院id为96则隐藏部门职能和管辖范围
+        if (getCookie("court_id")==96) {
+            $(".gxfw").hide();
+            $(".bmzn").hide();
+        }
+        //如果是法庭总览图页面返回，页面初始化
+        if(getCookie("ftfb_page")){
+            $(".nav-stacked").children().eq(1).addClass("active");
+            $("#content_iframe").attr("src",'ftfb.html');
+            $("#content_iframe").attr("src",'xzzy_ftfb.html');
+            clearCookie("ftfb_page");
+        }else{
+            $(".nav-stacked").children().eq(0).addClass("active");
+        }
+        
+        if(getCookie("court_id")==286){
+            $(".nav-stacked").children().eq(1).remove();
+        }
+
+        $(".nav li").click(function () {
+            var ele = $(event.target);
+
+            if($.trim(ele.text())=="法官信息" || $.trim(ele.text())=="审委会人员"){
+                open_modal("该功能正在开发中...", "提示消息");
+            }else if($.trim(ele.text())=="法庭分布"){
+                $(".nav .active").removeClass("active");
+                ele.addClass("active");
+                /*更新标题*/
+                $("#sub_title").text(ele.text());
+                if(getCookie("court_id")=='86'){
+                    $("#content_iframe").attr("src",'/sfytj/dist/html/dingzhi/xuzhouzhongyuan/xzzy_ftfb.html'); 
+                } else if (getCookie("court_id")=='145') {
+                    $("#content_iframe").attr("src",'/sfytj/dist/html/dingzhi/yanchengzhongyuan/yczy_ftfb.html'); 
+                } else if (getCookie("court_id")=='152') {
+                    $("#content_iframe").attr("src",'/sfytj/dist/html/dingzhi/sheyangfayuan/syfy_ftfb.html'); 
+                } else if (getCookie("court_id")=='64') {
+                    $("#content_iframe").attr("src",'/sfytj/dist/html/dingzhi/guloufayuan/glfy_ftfb.html'); 
+                } else if (getCookie("court_id")=='58') {
+                    $("#content_iframe").attr("src",ele.data("href"));  
+                } else if (getCookie("court_id")=='74'){
+                    $("#content_iframe").attr("src",'/sfytj/dist/html/dingzhi/njtielufayuan/tielufy_ftfb.html');
+                } else if (getCookie("court_id")=='59'){
+                    $("#content_iframe").attr("src",'/sfytj/dist/html/dingzhi/nanjingzhongyuan/njzy_ftfb.html');
+                }else {
+                    $("#content_iframe").attr("src",'/sfytj/dist/html/dingzhi/nothing.html');  
+                }
+            }else{
+                
+                $(".nav .active").removeClass("active");
+                ele.addClass("active");
+
+                /*更新标题*/
+                $("#sub_title").text(ele.text());
+                /*更新iframe内容*/
+              
+
+                $("#content_iframe").attr("src",ele.data("href"));  
+            }
+
+        });
+        var xzfy = get_ggxx_xzfy();
+        var fymc = xzfy.selected_fy;
+        if (!fymc) {
+            fymc = global_data.fymc;
+        }
+        $(".current_fy_title").html(fymc);
+    });
+</script>
+</body>
+</html>

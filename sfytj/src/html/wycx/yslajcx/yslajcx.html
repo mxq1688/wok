@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>已受理案件</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+
+<body>
+<div class="yslajcx">  
+    <div class="wrap">
+        <div class="common_body">
+            <!--导航条部分-->
+            <div class="ssfw_nav clearfix">
+                <!--预约立案进展查询标题 -->
+                <div class="nav_title">
+                    <h2>已受理案件查询</h2>
+                </div>
+            </div>
+
+            <!--内容区-->
+            <div class="font_header tip">您当前已受理案件件数：
+                <span id="yslajcx_count"><!--4--></span></div>
+
+            <!--案件列表-->
+             <div class="yslaj_list" id="yslaj_list">
+
+                    <!-- 遮罩 -->
+                    <div class="loading_index"></div>
+            </div>
+            <!--end案件列表-->
+            <!--end内容区-->
+
+            <!--按钮区-->
+            <div class="btn_row clearfix">
+                    <input type="button" value="返回" class="common_btn fl" onclick="history.back()">
+                    <div class="fr">
+                    <input type="button" value="收藏到个人中心" id="btn_sc" class="del_btn  common_btn fr"  />
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    //从cookie中获取预约立案进展查询 数据
+    var yslajcx_data=JSON.parse(localStorage.getItem("yslajcx_data"));
+    var defaultData = yslajcx_data;
+    var court_id = localStorage.getItem("court_id");
+
+    //已受理案件_案件列表初始化；
+    //根据返回的是defaultData.length是否为true来展示（true,手机号查多条数据， false,流水号查 1条数据)
+    if(defaultData.length){
+
+        $("#yslajcx_count").text(defaultData.length);
+         if(court_id==861){
+           $("#yslajcx_fymc").text('浙江高级人民法院');
+         }else{
+            $("#yslajcx_fymc").text(defaultData[0].court_name);
+         }
+       
+
+        var html="";
+        $.each(defaultData, function(n, value){
+            html+= "<div class=\"panel panel-default ";
+            if(value.state == "1") {
+                html += "state-waiting";
+            }else if(value.state=='2'){
+                html+="state-success";
+            }else if(value.state=='0'){
+                html+="state-fail";
+            }
+            html+=" aj_item\">";
+            html+="<div class=\"title-line\"></div>";
+            html+="<div class=\"panel-heading clearfix font_title_style\" data-toggle=\"collapse\" data-target=\"#collapse"+n+"\" data-parent=\"#yslaj_list\" id=\"aj"+n+"\">";
+            html+="<div class=\"anhao fl\">"+value.case_num+"</div>";
+            html+="<div class=\"aj_name fl\">"+value.title+"</div>";
+            
+            var shzt =""
+            if(value.state=='1') {
+                html +="<div class=\"ckxq\">查看详情</div>";
+                shzt ="审核中"; 
+            }else if(value.state=='2'){
+                html +="<div class=\"ckxq\" onclick=\"ckajxq_ysl2('"+value.lsh+"')\">查看详情</div>";
+                shzt ="已通过";
+            }else if(value.state=='0'){
+                html +="<div class=\"ckxq\">查看详情</div>";
+                shzt ="未通过"
+            }
+            html+="<div class=\"fr shzt\">";
+            html+=shzt;
+            html+="</div>";
+
+            if(value.today=='1'){
+                html+="<div class=\"fr state\">今日</div>";
+            }
+            html+="</div>";
+
+            html+="<div data-lsh='"+value.lsh+"' id=\"collapse"+n+"\" class=\"panel-collapse collapse "+(n==0 ? "in":"")+"\" data-index=\""+n+"\">";
+            html+="<div class=\"panel-body aj-info\">";
+            html+="<div class=\"col-md-offset-4 sqxinxi\">";
+            html+="<div class=\"col-md-7\">案件名称："+value.title+"</div>";
+            html+="<div class=\"col-md-5\">标　　的："+value.biaode+"</div>";
+            html+="<div class=\"col-md-7\">案　　由："+value.case_action_name+"</div>";
+            html+="<div class=\"col-md-5\">申请日期："+value.create_time+"</div>";
+            html+="<div class=\"col-md-7\">当<span class=\"dsr_spacing\"> &nbsp;事 </span>人："+value.user_name+"</div>";
+            html+="<div class=\"col-md-5\">通过日期："+value.handle_time+"</div>";
+            html+="</div></div></div></div>";
+
+        });
+
+        // $(".ckajxq").click(function(){
+        //     //获取案件通过状态
+        //     var case_state = $(".panel-collapse.collapse.in").prev().children(".shzt").text();
+        //     if(case_state != "已通过"){
+        //         open_modal("该已受理案件未通过，现在无法查看详情！");
+        //     }
+        //     else{
+        //         //获取展开项的案号：
+        //         var case_num = $(".panel-collapse.collapse.in").prev().children(".anhao").html();
+        //         console.log(case_num);
+        //         if(case_num==undefined || case_num==null){
+        //             open_modal("请选择一个案件！")
+        //         }else{
+        //             setCookie("case_num", case_num);
+        //             window.location.href="../wdaj_ajxx.html";
+        //         }
+        //     }
+        // });
+
+        $("#yslaj_list").append(html);
+        
+    }
+    else{
+        $("#yslajcx_count").text(1);
+        if(court_id==861){
+            $("#yslajcx_fymc").text('浙江高级人民法院');
+         }else{
+            $("#yslajcx_fymc").text(defaultData.court_name);
+         }
+        
+
+        var html="";
+        var value=defaultData;
+        var n=0;
+        html+= "<div class=\"panel panel-default ";
+        if(value.state=='2'){
+            html+="state-success";
+        }else if (value.state == "1") {
+            html += "state-waiting";
+        }else if(value.state=='0'){
+            html+="state-fail";
+        }
+        html+=" aj_item\">";
+        html+="<div class=\"title-line\"></div>";
+        html+="<div class=\"panel-heading clearfix font_title_style\" data-toggle=\"collapse\" data-target=\"#collapse"+n+"\" data-parent=\"#yslaj_list\" id=\"aj"+n+"\">";
+        html+="<div class=\"anhao fl\">"+value.case_num+"</div>";
+        html+="<div class=\"aj_name fl\">"+value.title+"</div>";
+
+        var shzt =""
+        if(value.state=='1') {
+            html +="<div class=\"ckxq\">查看详情</div>";
+            shzt ="审核中"; 
+        }else if(value.state=='2'){
+            html +="<div class=\"ckxq\" onclick=\"ckajxq_ysl2('"+value.lsh+"')\">查看详情</div>";
+            shzt ="已通过";
+        }else if(value.state=='0'){
+            html +="<div class=\"ckxq\">查看详情</div>";
+            shzt ="未通过"
+        }
+        html+="<div class=\"fr shzt\">";
+        html+=shzt;
+        html+="</div>";
+
+        if(value.today=='1'){
+            html+="<div class=\"fr state\">今日</div>";
+        }
+        html+="</div>";
+        html+="<div data-lsh='"+value.lsh+"' id=\"collapse"+n+"\" class=\"panel-collapse collapse "+(n==0 ? "in":"")+"\" data-index=\""+n+"\">";
+        html+="<div class=\"panel-body aj-info\">";
+        html+="<div class=\"col-md-offset-4 sqxinxi\">";
+        html+="<div class=\"col-md-7\">案件名称："+value.title+"</div>";
+        html+="<div class=\"col-md-5\">标　　的："+value.biaode+"</div>";
+        html+="<div class=\"col-md-7\">案　　由："+value.case_action_name+"</div>";
+        html+="<div class=\"col-md-5\">申请日期："+value.create_time+"</div>";
+        html+="<div class=\"col-md-7\">当<span class=\"dsr_spacing\"> &nbsp;事 </span>人："+value.user_name+"</div>";
+        html+="<div class=\"col-md-5\">通过日期："+value.handle_time+"</div>";
+        html+="</div></div></div></div>";
+    
+        $("#yslaj_list").append(html);
+    }
+
+    //ajax请求完成后，遮罩去除：
+    $('.loading_index').remove(); 
+});
+
+    /*案件收藏*/
+          $("#btn_sc").on('click', function(){
+              var val_selected = $(".panel-collapse.collapse.in").data("index");
+              var lsh = $(".panel-collapse.collapse.in").data('lsh');
+              localStorage.setItem("sc_cx_lsh", lsh);
+              if (val_selected == undefined) {
+                  open_modal('请选择案件再收藏');
+                  return false;
+              }
+              
+              //案件收藏
+              scaj();
+              
+              //记录案件收藏次数
+              record_clicknum('ajsc_record');      
+            
+          }); 
+
+  function ckajxq_ysl2(value){
+    
+    localStorage.removeItem("yyla_case");
+    localStorage.removeItem("yslaj_case");
+    localStorage.setItem("yslaj_case",value);
+
+    // var httpurl=global_data.httpurl;
+    // ajax(
+    //             ""+httpurl+"/wdaj/ajckall.php",
+    //             "case_num="+value,
+    //             function(Data){
+    //                 console.log("案件基本信息");
+    //                 yslaj_ajxq = {}
+    //                 yslaj_ajxq.data = Data.data;
+    //                 yslaj_ajxq.dsrdata = Data.dsrdata;
+    //                 yslaj_ajxq.mardata = Data.mardata;
+    //                 console.log(yslaj_ajxq);
+    //                 localStorage.setItem("yslaj_ajxq",JSON.stringify(yslaj_ajxq));                
+    //             }
+    //         )
+
+    var yslajcx_data=JSON.parse(localStorage.getItem("yslajcx_data")),
+        yslaj_ajxq = {};
+    console.log("案件基本信息");
+    for (var i = yslajcx_data.length - 1; i >= 0; i--) {
+        if (value == yslajcx_data[i].lsh) {
+            yslaj_ajxq.data = yslajcx_data[i].allinfo;
+            // console.log(yslaj_ajxq);
+            break;
+        }
+    }
+    // console.log(yslaj_ajxq);
+    localStorage.setItem("yslaj_ajxq",JSON.stringify(yslaj_ajxq));
+    
+    
+    //保存日志搜索信息
+    var httpurl = global_data.httpurl;
+    var user_id = localStorage.getItem('user_id');
+    var sc_cx_account = localStorage.getItem('sc_cx_account');
+    var sc_cx_password = localStorage.getItem('sc_cx_password');
+    var yyyj_lsh = localStorage.getItem('yyyj_lsh');
+    
+    ajax(
+        ""+httpurl+"log/search_log.php",
+        "type=1&sc_cx_account="+sc_cx_account+"&user_id="+user_id+'&sc_cx_password='+sc_cx_password+'&yyyj_lsh='+yyyj_lsh,
+        function(defaultData){
+            console.log(defaultData);
+        }
+       
+    );
+            
+
+
+    /*
+        @author namimori
+        @date   16/4/29
+    */
+    var ajxx_jzdata = [];
+    switch(value)
+    {
+        case '127500000089007':
+            ajxx_jzdata = [
+                {'id' : 'f01', 'name' : '2016-苏0591民初-5-F01', 'url' : ''},
+                {'id' : 'z01', 'name' : '2016-苏0591民初-5-Z01', 'url' : ''},
+            ]
+            break;
+        case '127500000089075':
+            ajxx_jzdata = [
+                {'id' : 'f01', 'name' : '2016-苏0591民初-58-F01', 'url' : ''},
+                {'id' : 'z01', 'name' : '2016-苏0591民初-58-Z01', 'url' : ''},
+            ]
+            break;
+        case '127500000093161':
+            ajxx_jzdata = [
+                {'id' : 'f01', 'name' : '2016-苏0591民初-2-F01', 'url' : ''},
+                {'id' : 'z01', 'name' : '2016-苏0591民初-2-Z01', 'url' : ''},
+            ]
+            break;
+    }
+
+    localStorage.setItem('yyyj_lsh', value);
+    localStorage.setItem('ajxx_jzdata', JSON.stringify(ajxx_jzdata));
+
+    window.location.href="/sfytj/dist/html/wdaj/wdaj_ajxx.html";
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+/* 填写案件页面样式 */
+
+.txaj {
+	/* 导航条颜色的变化 */
+    .font_header{
+		color: #999999;
+		font-weight: 600;
+	}
+
+	.txaj_content {
+		width:100%;
+	}
+
+	/* 案由信息 */
+	.txaj_reason {
+		float: left;
+		width: 40%;
+		min-height: 450px;
+	}
+
+	.search_input {
+		position: relative;
+
+		img {
+			height: 30px;
+		    position: absolute;
+		    left: 15px;
+		    top: 10px;
+		}
+	}
+
+
+	.reason_list {
+		overflow-x:hidden;
+		overflow-y:auto;
+		height: 443px;
+		//margin-top: 27px;
+		font-size: 27px;
+	  .node-selected{
+		color: rgb(255, 255, 255);
+		background-color: rgb(83, 174, 231);
+	  }
+	}
+
+	#search_ay {
+		margin-bottom: -1px;
+	    width: 578.37px;
+	    padding: 10px 20px 10px 60px;
+	    height: 45px;
+	    font-size: 24px;
+	    color: #53aee7;
+	}
+
+	.list-group{
+		font-size: 27px;
+	}
+
+	/* 申请人信息 */
+	.txaj_request {
+		float: left;
+		min-height: 450px;
+		width: 60%;
+	    padding-left: 100px;
+	}
+	
+	/* 民商事一审list */
+	#sqrxx_mssys {
+		overflow-y: auto;
+    	max-height: 500px;
+    	margin-top: 27px;
+    	padding-right: 20px;
+	}
+
+	/* 执行案件list */
+	#sqrxx_zxaj {
+		overflow-y: auto;
+    	max-height: 500px;
+    	margin-top: 27px;
+    	padding-right: 20px;
+	}
+	/* 行政案件list */
+	#sqrxx_xzaj {
+		overflow-y: auto;
+    	max-height: 500px;
+    	margin-top: 27px;
+    	padding-right: 20px;
+	}
+
+
+	/* 申请执行金额 */
+	.apply_value {
+		width:100%;
+		margin-top: 5px;
+		.apply_value1{
+			float: left;
+			line-height: 30px;
+			color: $blackColor;
+		}
+		.apply_value_right {
+			float: right;
+			width:470px;
+			height:50px;
+		}
+	}
+
+	/* 立案身份 */
+	.apply_identity {
+		margin-top: 10px;
+		.apply_identity_left {
+			float: left;
+			.apply_identity_word {
+				line-height: 30px;
+				color: $blackColor;
+			}
+		}
+
+		.apply_identity_list {
+			float: right;
+			color: $blackColor;
+		}
+
+		.apply_identity_child {
+			width:470px;
+			height:50px;
+			color: #999;
+		}
+	  .apply_identity_child:first-child{
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+	  }
+	  .apply_identity_child:last-child{
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+	  }
+
+	}
+
+	.mssys_margintop {
+		margin-top: 30px;
+	}
+	// =======================================
+	.xzaj_margintop {
+		margin-top: 30px;
+	}
+	// ======================================
+
+	.star {
+		// color: $blueColor;
+		color: #a94442;
+	}
+
+	/* 诉讼请求 */
+	.susong_request {
+		margin-top: 10px;
+	}
+
+	.susong_title {
+		float: left;
+		color: $blackColor;
+		/*@include font(26);*/
+		/*@include font(28);//同一成28px*/
+	}
+
+	.susong_request1 {
+		float: right;
+	}
+
+	.susong_request_text  {
+		width: 470px;
+   		height: 100px;
+		overflow-x:hidden;
+		overflow-y:auto;
+		border: 1px solid #9d9d9d;
+		resize: none;
+	}
+
+	/* 事实请求 */
+	.true_request {
+		margin-top: 10px;
+	}
+
+	.true_title {
+		@extend .susong_title;
+	}
+
+	.true_request1 {
+		@extend .susong_request1;
+	}
+	.true_request_text {
+		@extend .susong_request_text;
+	}
+
+}

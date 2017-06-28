@@ -1,0 +1,16 @@
+/* 存放全局变量，如颜色，字体等等 */
+
+/* 颜色 */
+$whiteColor: #FFFFFF;
+$blueColor:  #53aee7;
+/* 字体颜色  */
+$blackColor: #999999; 
+
+
+
+/* 字体 */
+/* 微软雅黑 */
+$font_yahei: Microsoft YaHei;
+
+
+

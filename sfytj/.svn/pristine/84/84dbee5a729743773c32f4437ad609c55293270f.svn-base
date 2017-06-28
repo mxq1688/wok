@@ -1,0 +1,26 @@
+/*诉讼指引详情页面*/
+.sszy_xq{
+  background: none;
+  height: 610px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  .sszyxq{
+    /*新闻标题*/
+    .title{
+
+    }
+    /*内容*/
+    .nr{
+      margin-top: 30px;
+      color: #b6b6b6;
+      max-height: 400px;
+      overflow: auto;
+      padding-right: 30px;
+     /* margin-top: 76px;*/
+    }
+
+  }
+  .btn_fh{
+    margin-left: -3%;
+  }
+}

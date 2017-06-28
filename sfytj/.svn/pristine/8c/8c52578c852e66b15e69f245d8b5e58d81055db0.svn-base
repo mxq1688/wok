@@ -1,0 +1,75 @@
+
+/* 预约立案进展查询导航菜单 */
+.yylajzcx_nav {
+
+  /* 标题 立案进展查询 */
+  .nav_title {
+    width: 25%;
+  }
+
+  /* 导航菜单整体 */
+  .nav_process {
+    width: 75%;
+  }
+  .process1, .process2, .process3 {
+    width: 33%;
+  }
+
+  /* 导航中的横线 */
+  .nav_line1 {
+    width: 168px;
+    height: 4px;
+  }
+  .nav_line {
+    width: 337px;
+    left: -168px;
+    height: 4px;
+  }
+  
+  .process_titleinfo {
+    width: 33.3%;
+  }
+}
+
+// 我的案件 预约立案进展查询
+.yylajzcx_nav2 {
+
+  /* 标题 立案进展查询 */
+  .nav_title {
+    width: 25%;
+  }
+
+  /* 导航菜单整体 */
+  .process{
+    margin-left: 0%;
+  }
+  .nav_process {
+    width: 100%;
+  }
+  .process1, .process2, .process3 {
+    width: 33.3%;
+  }
+
+  /* 导航中的横线 */
+  .nav_line1 {
+    width: 102px;
+    left: 130px;
+    height: 4px;
+  }
+  .nav_line {
+    width: 464px;
+    left: -228px;
+    height: 4px;
+  }
+   .nav_line3 {
+    width: 591px;
+    left: -225px;
+    
+  }  
+  .process_title{
+    margin-left: 0%;
+  }
+  .process_titleinfo {
+    width: 33.3%;
+  }
+}

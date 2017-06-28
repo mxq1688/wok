@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>诉讼引导</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body class="ssyd_home">
+
+<!--诉讼引导-->
+<div class="common_body">
+    <!--头部-->
+    <div class="ggxx-head">
+        <div class="ggxx-title font_header"><!--诉讼引导 > <span id="sub_title">诉讼指引</span>-->
+            <ol class="top_nav">
+                <li id="first_title">诉讼引导</li>
+                <li id="second_title">诉讼指引</li>
+                <li id="third_title"></li>
+            </ol>
+        </div>
+    </div>
+    <!--主体内容-->
+    <div class="ggxx-body clearfix">
+        <!-- 左侧导航栏 -->
+        <div class="left_nav font_h1">
+            <ul class="nav nav-stacked " role="tablist">
+                <li role="presentation" id="sszy" class="active new" data-href="sszy/index.html">
+                    诉讼指引
+                </li>
+                <li role="presentation" id="ckzn" data-href="ckzn/index.html">
+                    操作指南
+                </li>
+                <li role="presentation" id="zzlc" data-href="gzlc/lc_index.html">
+                    工作流程
+                </li>
+                <li role="presentation" id="wsys" data-href="wsys/wsys.html">
+                    文书样式
+                </li>
+            </ul>
+        </div>
+        <!--右侧嵌入窗口-->
+        <div class="right_content">
+            <iframe id="content_iframe" width="100%" height="100%" frameborder="0" src="sszy/index.html"></iframe>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        /*左侧导航栏事件处理*/
+        $(".nav li").click(function () {
+            $(".nav .active").removeClass("active");
+            var ele = $(event.target);
+            ele.addClass("active");
+
+            /*更新二级标题*/
+            $("#second_title").text(ele.text());
+            $("#second_title").data("target_id",ele.attr('id'));
+            /*更新iframe内容*/
+            $("#content_iframe").attr("src",ele.data("href"));
+            /*隐藏三级标题*/
+            $("#third_title").hide();
+
+        });
+    });
+
+</script>
+</body>
+</html>

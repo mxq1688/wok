@@ -1,0 +1,330 @@
+
+/* 提交材料页面样式 */
+.tjcl {
+	/* 选择材料部分（必选和可选） */
+	.choosefile {
+		width: 100%;
+		padding: 20px 0px;
+
+		.mustchoose {
+			width: 45%;
+			float: left;
+		
+		}
+
+		.chooseable {
+			width: 54.7%;
+			float: left;
+			padding-left: 195px;
+		}
+	}
+
+	/* 必选材料标题 */
+	.mustchoose_title {
+		color: #999;
+	    font-weight: 600;
+	}
+
+	.choose_button {
+		float:right;
+		margin-right: 20px;
+	}
+
+	/* 选择按钮 */
+	.choose_button1 {
+		// width: 160px;
+		width: 110px;
+    	height: 40px;
+		@include font(22);
+		border:none;
+		color:$whiteColor;
+		background-color: $blueColor;
+		border-radius:5px;
+
+	}
+
+	.button_gs, .button_gpy {
+		display: none;
+	}
+
+	.show_bxcl_name{
+	    position: relative;
+	}
+
+	/* uploading图标 */
+	.uploading {
+		position: absolute;
+	    left: 0%;
+	    top: 86%;
+	    margin: -25px 0 -25px 0;
+	    // border-bottom: 4px solid #ccc;
+	    // border-left: 4px solid #53aee7;
+	    // border-right: 4px solid #53aee7;
+	    // border-top: 4px solid #53aee7;
+	    border-bottom: 2px solid #ccc;
+	    border-left: 2px solid #53aee7;
+	    border-right: 2px solid #53aee7;
+	    border-top: 2px solid #53aee7;
+	    border-radius: 100%;
+	    // height: 25px;
+	    // width: 25px;
+	    height: 30px;
+	    width: 30px;
+	    animation: upload 1s infinite linear;
+	    display:none;
+	}
+
+	.getProcess {
+		position: absolute;
+		top: 4%;
+    	font-size: 11px;
+	    left: 4px;
+	    color: #53aee7;
+	    text-align: center;
+	    line-height:20px;
+	    visibility:hidden;
+	}
+
+	.processmiddle{
+		top: 36%;
+	}
+
+	@keyframes upload {
+		from {transform: rotate(0deg);}
+		to {transform: rotate(359deg);}
+	}
+
+	.choosefile_area {
+		overflow-y: auto;
+		height: 420px;;
+		/* 选择文件 文字和按钮 */ 
+		.choosefile_child {
+			margin-top: 25px;
+			height:40px;
+			.choose_word {
+				float: left;
+				.choose_word1 {
+					@include font(24);
+					color: $blackColor;
+				}
+				.star {
+					font-size: 24px;
+					// color: $blueColor;
+					color: #a94442;
+				}
+			}
+		}
+
+		.margintop{
+			margin-top: 10px;
+		}
+
+	}
+
+
+	/* 可选材料标题 */
+	.chooseable_title {
+		color: #999;
+	    font-weight: 600;
+		float:left;
+	}
+
+	/* 选择文件下拉框 */
+	.selectarea {
+		
+	}
+	.padding_top{
+		padding-top : 25px;
+	}
+	.selectbox {
+		float:left;
+		/* 可选材料选择文件下拉框 */
+		.select {
+			width: 380px;
+    		height: 44px;
+			color: $blackColor;
+			font-size:24px;
+			padding: 5px;
+		}
+	}
+
+
+	/* 可选文件区域 */
+	.chooseable_filearea {
+		overflow-y: scroll;
+		max-height: 400px;
+		min-height: 140px;
+	}
+
+	.chooseable_button {
+		float:left;
+	}
+
+	.chooseable_button1 {
+		// width: 200px;
+		width: 115px;
+    	height: 44px;
+		@include font(22);
+		border:none;
+		color:$whiteColor;
+		background-color: $blueColor;
+	}
+	.choosefilename{
+	    height: 40px;
+		font-size: 18px;
+		color: #000;
+		padding: 5px;
+		line-height: 40px;
+		position:relative;
+	}
+
+    /* 高拍仪控件object样式 */
+    #ggcom{
+        background-image: url(/sfytj/dist/images/bg/CN-wp5.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        width:100%;
+        height: 100%;
+    }
+	.gpy_content{
+		border: 1px solid #666;
+		position:relative;
+		width: 100%;
+   		height: 580px;
+	}
+
+	.gs_content{
+		border: 1px solid #666;
+		position:relative;
+		width: 100%;
+   		height: 580px;
+	}
+
+	/* 按钮  */
+	.del_btn {
+	    background-color: #e75353;
+	    margin-left: 20px;
+	    margin-right: 20px;
+	    width:220px;
+	}
+
+	.gpy_btn{
+		margin-left: 20px;
+		width:300px;
+	}
+	.button_new{
+		width:220px;
+	}
+
+	.none {
+		width: 0px; 
+		height: 0px; 
+		display: none; 
+	}
+
+	.filename {
+	    // max-height: 22px;
+	    height: 20px;
+   	    overflow: hidden;
+        line-height: 20px;
+        font-size: 16px;
+        color:#000;
+        display:inline-block;
+        //font-weight: bold;
+        text-overflow: ellipsis;
+    	white-space: nowrap;
+    	//可选文件名显示限制最大宽度
+	    // max-width: 500px;
+	    max-width: 150px;
+	}
+
+	// .filename_sfzm{max-width: 376px;}
+	// .filename_zxs{max-width: 376px;}
+	// .filename_cpj{max-width: 376px;}
+	// .filename_xscl{max-width: 376px;}
+	// .filename_qrs{max-width: 376px;}
+	.filename_sfzm{max-width: 335px;}
+	.filename_zxs{max-width: 335px;}
+	.filename_cpj{max-width: 335px;}
+	.filename_xscl{max-width: 335px;}
+	.filename_qrs{max-width: 335px;}
+
+	.file_num{
+		display: inline-block;
+	    color: #53aee7;
+	    position: absolute;
+	    left: 45%;
+		width: 150px;
+	}
+
+	/* 选择文件模态框样式 */
+	.modal-dialog {
+		margin-top: 175px;
+		width:1082px;	
+	}
+
+	.modal-title{
+		font-weight: 600;
+	    color: #999;
+	    font-size:24px;
+	}
+	.modal-body{
+		height:auto;
+		width:100%;
+		padding:0px 15px !important; 
+		text-align: left;
+	}
+	.modal-footer{
+		position: relative;
+	}
+	.img_name{
+		//color:$blueColor;
+		color:red;
+		font-size: 20px;
+		text-align: center;
+		padding-top: 5px;
+	}
+	.btn_back, .btn_paishe {
+		//width:200px;
+	}
+
+	//删除图标
+	.delete_icon {
+		display: inline-block;
+		cursor:pointer;
+		font-size:24px;
+		visibility:hidden;
+		color: #53aee7;
+	    /*position: absolute;
+	    left: 62%;
+	    top: 50%;*/
+		margin-left: 15px;
+   		margin-top: -20px;
+	}
+
+	.center {
+		text-align: center !important;
+	}
+	.none {
+		width: 0px; 
+		height: 0px; 
+		display: none !important; 
+	}
+
+	#gpypage{
+		display:none;
+	}
+
+	#gspage{
+		display: none;
+	}
+
+	.nav_title h2{
+	    font-weight: bolder;
+    	color: #000;
+    	font-size: 36px;
+    	margin-top: 10px;
+    	margin-bottom: 20px;
+	}
+}
+

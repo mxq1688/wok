@@ -1,0 +1,22 @@
+/*管辖范围*/
+.gxfwym{
+  width: 100%;
+  padding-right: 40px;
+  .gxfw{
+    overflow: hidden;
+    color: #999;
+    font-weight: 400;
+  }
+  .ajlx{
+    color: #999;
+    font-weight: 400;
+    margin-top: 50px;
+  }
+  .gxfw_image{
+    width: 100%;
+    text-align: center;
+    img{
+      width: 100%;
+    }
+  }
+}

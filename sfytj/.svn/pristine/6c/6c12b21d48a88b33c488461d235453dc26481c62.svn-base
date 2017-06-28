@@ -1,0 +1,158 @@
+/*法律法规*/
+.flfg_index {
+  .dropdown-menu{
+    position: absolute;
+    top: 245px;
+  }
+
+  .title {
+
+    font-weight: bolder;
+    color: #000;
+    font-size: 33px;
+
+  }
+  /*搜索区*/
+  hr {
+    border-top: 0px;
+    width: 100%;
+    height: 2px;
+    background: #999;
+  }
+
+  .search-container {
+    margin: 26px 0;
+    float: left;
+    width: 100%;
+    .search-form {
+      width: 100%;
+      /*查询文书*/
+      .date-from {
+        border-right: none;
+        height: 60px;
+        width: 85%;
+        color: #999;
+      }
+      .btn-search {
+        width: 15%;
+        color: white;
+        background-color: $blueColor;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        padding: 0;
+      }
+    }
+
+  }
+  .qhfy{
+    line-height: 48px;
+    margin-right: 17px;
+    height: 48px;
+    float: right;
+    border: 1px solid #999;
+    width: 226px;
+    background: #53aee7;
+    color: #fff;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .qhfy:hover{
+    text-decoration: none;
+  }
+  /*公告显示区*/
+  #gg-container {
+    margin: 10px 0;
+    box-shadow: 10px 10px 20px 0 #b9b5b5;
+
+
+    .aj-item {
+
+      position: relative;
+      margin-bottom: 0px;
+      .title-line {
+        width: 7px;
+        height: 100%;
+        position: absolute;
+        left: 392px;
+        top: 0px;
+        z-index: 1;
+        background-color: $blueColor;
+      }
+      /* 自定义panelheading */
+      .panel-heading {
+        position: relative;
+        background-color: #fff;
+        color: #9a9a9a;
+        padding: 0;
+        border: 1px solid #ddd;
+        .badge {
+          float: left;
+          background-color: #53aee7;
+          width: 81px;
+          height: 37px;
+          line-height: 30px;
+          margin: 0 5px;
+          font-weight: 500;
+        }
+
+      }
+      .panel-title {
+        font-weight: 500;
+        color: #9a9a9a;
+      }
+
+      /* panel内容部分 */
+      .panel-body {
+        position: relative;
+        max-height: 400px;
+
+      }
+
+      .aj-title {
+        padding: 10px 0 10px 15px;
+        position: relative;
+        float: left;
+        background: white;
+        width: 85%;
+        font-weight: 500;
+
+        /*案号*/
+        .falv {
+          float: left;
+          width: 370px;
+          height: 40px;
+          overflow: hidden;
+        }
+        /*法院名称*/
+        .ftmc {
+          float: right;
+          margin-right: 60px;
+        }
+        /*开庭时间*/
+        .date {
+          margin-left: 30px;
+          margin-right: 5px;
+        }
+
+      }
+      /*线路指引按钮*/
+      .xlzy {
+        background-color: $blueColor;
+        height: 61px;
+        width: 15%;
+        float: right;
+        border-radius: 0;
+        line-height: 47px;
+        color: white;
+      }
+
+      .aj-info {
+        position: relative;
+        padding: 25px;
+        line-height: 35px;
+      }
+
+    }
+  }
+}

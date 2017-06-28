@@ -1,0 +1,129 @@
+/*窗口指南统一样式*/
+.ckzn{
+
+  background: none;
+  height: 610px;
+  width: 100%;
+  color: #999;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  box-sizing: border-box;
+
+  /*左侧内容区*/
+  .left_content {
+    position: relative;
+    width: 70%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 0 20px;
+    float: left;
+    /*所有引用图片默认全宽*/
+    img {
+      width: 100%;
+    }
+    /*step标题下边距*/
+    .step_header{
+      margin-bottom: 16px;
+    }
+    /*step内容下边距*/
+    .step_content{
+      margin-bottom: 14px;
+    }
+    /*step备注内容上边距*/
+    .step_remark{
+      margin-top: 28px;
+    }
+    /*step小标签上边距*/
+    .step_top{
+      margin-top: 14px;
+    }
+    /*step字体加粗*/
+    .step_font{
+      font-weight: 600;
+    }
+    /*步骤介绍内容*/
+    .info {
+
+    }
+  }
+
+  .left_content > div{
+    padding: 30px 0;
+    border-bottom: 1px solid #999999;
+  }
+  /*.left_content > div + div{
+    padding-top: 30px;
+    border-top: 1px solid #999999;
+  }*/
+
+  /*将左侧内容区的最后一个子元素的最低高度设为全高，即窗口指南的最后一个步骤，这样该div的锚点能顶到最高位置，能够正确触发右侧导航栏的高亮*/
+  .left_content > div:last-child {
+    min-height: 100%;
+  }
+  /*右侧步骤图*/
+  .right_nav {
+    float: left;
+    width: 30%;
+    height: 100%;
+    padding: 30px;
+
+  }
+}
+/*窗口指南首页*/
+.ckzn_index{
+  background: none;
+  height: 610px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  /*三个以上增加边距*/
+  .ad{
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  /*审委会组成人员边框样式*/
+  .zhiyin{
+    width: 29%;
+    height: 200px;
+    border-radius: 3%;
+    float: left;
+    position: relative;
+    box-shadow: 0px 0px 10px 3px #b9b5b5;
+    overflow: hidden;
+    margin:10px 3% 23px 1%;
+    /*图片*/
+    .tp{
+      width: 43%;
+      float: left;
+      text-align: center;
+      line-height: 200px;
+    }
+    /*编号*/
+    .number{
+      color: $blueColor;
+      float: left;
+      margin-top: 14px;
+      font-weight: 500;
+      margin-right: 16px;
+    }
+
+    /*姓名*/
+    .name{
+      color: black;
+      margin-top: 14px;
+      font-weight: 500;
+    }
+
+
+    /*简介信息*/
+    .content{
+
+      color: #999;
+      margin: 20px 8px 8px 8px;
+
+    }
+
+  }
+}

@@ -1,0 +1,170 @@
+.wyla_index {
+
+  .wyla_padding{
+    padding: 12px 265px;
+  }
+
+  /* 页面body部分*/
+  .mainbody {
+    width: 1150px;
+    @include center_block;
+    margin-top: 100px;
+
+    a:link {
+      text-decoration: none;
+    }
+    /*页面body左边框*/
+    .mainbody-left {
+      width: 350px;
+      height: 460px;
+      border-radius: 3%;
+      float: left;
+      position: relative;
+      -moz-box-shadow: 0 0 11px 6px rgba(165, 193, 200, .5);
+      -webkit-box-shadow: 0 0 11px 6px rgba(165, 193, 200, .5);
+      box-shadow: 0 0 11px 6px rgba(165, 193, 200, .5);
+      background: rgba(255, 255, 255, 0.8);
+
+    }
+
+    /*页面body中间框*/
+    .mainbody-middle {
+      width: 350px;
+      height: 460px;
+      border-radius: 3%;
+      float: left;
+      margin-left: 50px;
+      position: relative;
+      -moz-box-shadow: 0 0 11px 6px rgba(165, 193, 200, .5);
+      -webkit-box-shadow: 0 0 11px 6px rgba(165, 193, 200, .5);
+      box-shadow: 0 0 11px 6px rgba(165, 193, 200, .5);
+      background: rgba(255, 255, 255, 0.8);
+
+    }
+
+    /*页面body右边框*/
+    .mainbody-right {
+      width: 350px;
+      height: 460px;
+      float: left;
+      border-radius: 3%;
+      margin-left: 50px;
+      position: relative;
+      -moz-box-shadow: 0 0 11px 6px rgba(165, 193, 200, .5);
+      -webkit-box-shadow: 0 0 11px 6px rgba(165, 193, 200, .5);
+      box-shadow: 0 0 11px 6px rgba(165, 193, 200, .5);
+      background: rgba(255, 255, 255, 0.8);
+
+    }
+
+    /*body标题*/
+    .mainbody-title {
+      @include font(36);
+      color: #333333;
+      font-family: $font_yahei;
+      font-weight: 900;
+      width: 100%;
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+    }
+
+    /*body图片*/
+    .mainbody-image {
+      text-align: center;
+      width: 350px;
+      height: 96px;
+      line-height: 96px;
+    }
+    img{
+      height: 95px;
+    }
+
+    /*body内容*/
+    .mainbody-content {
+        width: 100%;
+        height: 133px;
+
+      .content {
+          width: 85%;
+          height: 145px;
+          color: #333;
+          font-family: $font_yahei;
+          font-size: 24px;
+          font-weight: 500;
+          margin-top: 20px;
+          overflow: hidden;
+          margin-left: auto;
+          margin-right: auto;
+      }
+    }
+
+    /*body底部按钮*/
+    .mainbody-button {
+        width: 350px;
+        height: 115px;
+        line-height: 120px;
+        text-align: center;
+      .btn-bottom {
+        width: 200px;
+        height: 45px;
+        color: #53aee7;
+        background-color: #53aee7;
+
+        span {
+          @include font(20);
+          font-weight: 800;
+          color: $whiteColor;
+        }
+      }
+
+    }
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

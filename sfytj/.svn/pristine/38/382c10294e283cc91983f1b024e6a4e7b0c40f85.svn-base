@@ -1,0 +1,34 @@
+/*新闻风采展示*/
+.xwfc_zs{
+  background: none;
+  height: 610px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-right: 30px;
+  .xwfczs{
+    /*新闻标题*/
+    .title{
+      color: black;
+      margin: 10px 0;
+    }
+    /*编辑时间编辑人*/
+    .bj_row{
+      color: #b6b6b6;
+      margin-top: 20px;
+      .fbsj{
+        margin-left: 88px;
+      }
+
+    }
+    /*内容*/
+    .nr{
+      color: #b6b6b6;
+      margin-top: 76px;
+    }
+    /*图片*/
+    .tp{
+      text-align: center;
+    }
+
+  }
+}

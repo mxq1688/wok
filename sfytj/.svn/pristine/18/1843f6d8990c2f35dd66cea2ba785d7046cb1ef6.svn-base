@@ -1,0 +1,124 @@
+
+/* 标题 */
+.yslajcx{
+  .tip{
+    margin: 20px 0;
+    font-weight: 700;
+  }
+  #yslajcx_count {
+    color: #53aee7;
+  }
+	.yslaj_list {
+		overflow-y: auto;
+		max-height: 490px;
+		padding-right: 30px;
+		.panel{
+			margin-bottom: 0px;
+		}
+
+	}
+	.aj_item {
+		 position:relative;
+		.panel-heading{
+			color:#999999;
+			box-shadow: 0 4px 8px 0 #b9b5b5;
+			background-color:#fff;
+			width:100%;
+			height:100%;
+			padding: 10px 15px;
+			cursor: pointer;
+		}
+	}
+	.anhao{
+		width: 33%;
+		position: relative;
+	    min-height: 1px;
+	    padding-right: 0px;
+	    padding-left: 0px;
+	}
+	.aj_name{
+		 width: 40%;
+    	margin-left: 6%;
+	}
+	.state{
+		border-radius: 10px;
+	    color: #fff;
+	    padding: 3px 7px;
+	    text-align: center;
+	    width: 81px;
+	    height: 37px;
+	    line-height: 30px;
+	    font-size: 24px;
+	    margin: 0 5px;
+	    font-weight: 500;
+	    background-color:$blueColor;
+	}
+	.shzt{
+		border-radius: 10px;
+	    color: #fff;
+	    padding: 3px 7px;
+	    text-align: center;
+	    width: 90px;
+	    height: 37px;
+	    line-height: 30px;
+	    font-size: 24px;
+	    margin: 0 5px;
+	    font-weight: 500;
+	    background-color:$blueColor;
+	}
+	.ckxq {
+		float: right;
+        border-radius: 10px;
+	    color: #fff;
+	    padding: 3px 7px;
+	    text-align: center;
+	    width: 125px;
+	    height: 37px;
+	    line-height: 30px;
+	    font-size: 24px;
+	    margin: 0 5px;
+	    font-weight: 500;
+	    background-color:$blueColor;
+      }
+	.state-waiting {
+		.shzt, .title-line, .ckxq {
+    	background-color: gray;
+    	}
+	}
+	.state-fail {
+		.shzt, .title-line {
+    		background-color: red;
+    	}
+    	.ckxq {
+     	 background-color: gray;
+    	}
+	}
+
+	.aj-info {
+		position: relative;
+	    padding: 10px 25px;
+	    line-height: 35px;
+	}
+
+	.sqxinxi{
+		font-size: 24px;
+	    margin-left: 39%;
+		.col-md-7{
+			padding-left: 0px;
+		}
+	}
+
+	/* 竖线 */
+	.title-line {
+	     width: 7px;
+	    height: 100%;
+	    position: absolute;
+	    background-color: #53aee7;
+	    left: 33%;
+	    top: 0;
+	    z-index: 1;
+    }
+
+	/* 按钮 */
+}
+

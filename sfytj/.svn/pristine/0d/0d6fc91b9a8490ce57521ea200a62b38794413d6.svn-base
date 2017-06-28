@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>视频新闻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body class="fyck spxw_detail">
+<div class="news_container">
+    <!--<div class="info clearfix">
+        <div class="author font_bigger">责任编辑人：<span id="author">朱息头</span></div>
+        <div class="date font_bigger">发布时间：<span id="date">2015年11月12日</span></div>
+    </div>-->
+<!--    <div class="content font_bigger">
+        &lt;!&ndash;<div id="text">
+           &lt;!&ndash; <p>我院定于二〇一六年九月二十一日上午九时三十分，在本院12法庭依法公开开庭审理北京荣世恒达投资中心（有限合伙）诉孙启银、
+                北京大基康明医疗设备有限公司、大基集团有限公司（TOP GRADE HOLDINGS LIMITED）股权转让纠纷一案。</p>&ndash;&gt;
+        </div>&ndash;&gt;
+        <div class="video_container">
+            <video id="video" preload="auto"controls>
+                <source src="fayuan.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>-->
+</div>
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+
+        var httpurl=global_data.httpurl;
+        var spxwid = JSON.parse(getCookie("spxwid"));
+        if(spxwid==null){spxwid=""};
+
+        ajax(
+                ""+httpurl+"ggxx/fyck/fyyw/tpxwck.php",
+                "id="+spxwid,
+                function(defaultData){
+                    console.log(defaultData);
+                    sxrItemData = defaultData.data;
+                },
+                null,
+                null,
+                null,
+                false
+        );
+
+
+        var html = "";
+        var value=sxrItemData;
+        html += "<div class=\"tilte font_header\">"+value.title+"</div>";
+        html += "<div class=\"info clearfix\">";
+        html += "        <div class=\"author font_bigger\">"+'责任编辑人：'+value.author+"</div>";
+        html += "        <div class=\"date font_bigger\">"+'发布时间：'+value.create_time+"</div>";
+        html += "        </div>";
+        html += "<div class=\"content font_bigger\">"
+        html += "        <div id=\"text\">"+value.content+"</div>";
+        html += "        <div class=\"video_container\">";
+        html +="<video id=\"video\" preload=\"auto\"controls>";
+        html +="<source src=\"fayuan.mp4\" type=\"video/mp4\">"
+        html +="</vedio>";
+        html +="</div>";
+        html +="</div>";
+        $(".news_container").append(html);
+    });
+</script>
+
+
+
+<!--<script type="text/javascript">
+    var data =
+    {
+        title: '北京荣世恒达投资中心股权转让纠纷',
+        author: '朱息头',
+        date: '2015年11月12日',
+        content: '<p>我院定于二〇一六年九月二十一日上午九时三十分，在本院12法庭依法公开开庭审理北京荣世恒达投资中心（有限合伙）诉孙启银、' +
+        '北京大基康明医疗设备有限公司、大基集团有限公司（TOP GRADE HOLDINGS LIMITED）股权转让纠纷一案。</p>',
+        video: 'fayuan.mp4'
+    };
+</script>
+<script type="text/javascript">
+
+    $(function () {
+
+    });
+</script>-->
+</body>
+</html>

@@ -1,0 +1,146 @@
+/*身份审核界面*/
+.sfsh{
+
+  /*标题*/
+  .tip{
+    position: relative;
+    top: 43px;
+  }
+  .sfsh_mainbody {
+    width: 75%;
+    @include center_block;
+    margin-top: 40px;
+    padding-left: 10%;
+    /*左侧标题样式*/
+    .title {
+      float: left;
+      width: 25%;
+    }
+    .sfz,.hz{
+      margin-right: 5%;
+    }
+
+      /*申请人姓名*/
+    .sqrxm {
+     /* width:80%;*/
+      @include center_block;
+      line-height: 65px;
+      
+
+      .input_name {
+        width: 55%;
+        height: 65px;
+        border: 1px solid #9e9e9e;
+       /* margin-left: 38px;*/
+      }
+    }
+
+    /*申请人证件*/
+    .sqrzj{
+      /*width:80%;*/
+      @include center_block;
+      margin-top: 35px;
+      line-height: 65px;
+
+
+      .zjtype{
+        float:left;
+       /* width:133px;*/
+        width: 15%;
+        height:65px;
+        border: 1px solid #9e9e9e;
+       /* margin-left: 37px;*/
+        background-color: #f8f8f8;
+        line-height: 65px;
+        text-align: center;
+      }
+
+    }
+
+    /*证件号*/
+    .zjh{
+     /* width:80%;*/
+      @include center_block;
+      margin-top: 35px;
+      line-height: 65px;
+
+      .input_zjh {
+       /* width: 472px;*/
+        width: 55%;
+        height: 65px;
+        border: 1px solid #9e9e9e;
+        /*margin-left: 80px;*/
+      }
+    }
+
+    /*联系电话*/
+    .lxdh{
+      /*
+      width:620px;
+      */
+     /* width:80%;*/
+      @include center_block;
+      margin-top: 35px;
+      line-height: 65px;
+
+      .input_lxdh {
+        /*
+        width: 472px;
+        */
+        width:55%;
+        height: 65px;
+        border: 1px solid #9e9e9e;
+        /*margin-left: 57px;*/
+      }
+
+    }
+
+    /*验证码*/
+    .yzm{
+    /*  width:620px;*/
+     /* width:80%;*/
+      @include center_block;
+      line-height: 65px;
+      margin-top: 35px;
+      .common_btn{
+         border-radius: 0px;
+      }
+
+      .input_yzm {
+       /* width: 344px;*/
+        width:35%;
+        height: 65px;
+        border: 1px solid #9e9e9e;
+       /* margin-left: 76px;*/
+        float: left;
+      }
+
+      .hqyzm{
+        margin-left: 0px;
+        line-height: 65px;
+        text-align: center;
+
+        .btn_yzm{
+          background-color: #53aee7;
+         /* width: 132px;*/
+          width:20%;
+          height: 65px;
+          color: #fff;
+          line-height: 65px;
+          font-weight: 600!important;
+        }
+      }
+    }
+
+    /*底部按钮样式*/
+
+  }
+
+    .accept_btn{
+      color: #fff;
+      margin-right: 20px;
+      position: relative;
+      right: 802px;
+    }
+
+}

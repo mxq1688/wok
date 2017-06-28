@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <title>
+                案件信息
+            </title>
+            <link href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+            <link href="/sfytj/dist/styles/main.min.css" rel="stylesheet" type="text/css"/>
+        </meta>
+    </head>
+    <body>
+        <div class="common_body ajxx">
+            <!--头部-->
+            <div class="wdaj_head">
+                <div class="wdaj_title">
+                    案件信息
+                </div>
+            </div>
+            <!--主体内容-->
+            <div class="wdaj_body">
+                <!-- 案件信息 -->
+                <div class="ajxx_content">
+                    <!-- 立案信息 -->
+                    <div class="info_wrap">
+                        <div class="info_title" id="info_laxx">
+                            立案信息
+                        </div>
+                        <div class="info_content">
+                            <div class="info_row">
+                                <div class="info_col">
+                                    案件名称：
+                                    <span id="info_ajmc">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="info_row">
+                                <div class="info_col width55">
+                                    案　　号：
+                                    <span id="info_case_num">
+                                    </span>
+                                </div>
+                                <div class="info_col width45">
+                                    立案案由：
+                                    <span id="info_laay">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="info_row margin10top">
+                                <div class="info_col">
+                                    法院名称：
+                                    <span id="info_fymc">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="info_row">
+                                <div class="info_col width55">
+                                    承办部门：
+                                    <span id="info_cbts">
+                                    </span>
+                                </div>
+                                <div class="info_col width45">
+                                    承办法官：
+                                    <span id="info_cbfg">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 开庭信息 -->
+                    <div class="info_wrap margin20top">
+                        <div class="info_title" id="info_ktxx">
+                            排期开庭信息
+                        </div>
+                        <div class="info_content">
+                            <div class="info_row">
+                                <div class="info_col width55">
+                                    开庭时间：
+                                    <span id="info_ktsj">
+                                    </span>
+                                </div>
+                                <div class="info_col width30">
+                                    法庭：
+                                    <span id="info_wzxx">
+                                    </span>
+                                </div>
+                                <div class="info_col width15" id="info_lxzy" onclick="ajxx_ckwz()">
+                                    路线指引
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 案件审理进展 -->
+                    <div class="content_ajsljz margin20top clearfix">
+                        <div class="info_title" id="info_ajslzj">
+                            案件审理进展
+                        </div>
+                        <div class="jindu fr">
+                            <!-- 横线和圆圈 -->
+                            <div class="process">
+                                <div class="process_one fl">
+                                    <div class="circle" id="circle1">
+                                        1
+                                    </div>
+                                    <div class="line line1" id="line1">
+                                    </div>
+                                    <div class="pro_name">
+                                        立案
+                                    </div>
+                                </div>
+                                <div class="process_two fl">
+                                    <div class="circle" id="circle2">
+                                        2
+                                    </div>
+                                    <div class="line line2" id="line2">
+                                    </div>
+                                    <div class="pro_name">
+                                        审理
+                                    </div>
+                                </div>
+                                <div class="process_three fl">
+                                    <div class="circle" id="circle3">
+                                        3
+                                    </div>
+                                    <div class="line line3" id="line3">
+                                    </div>
+                                    <div class="pro_name">
+                                        开庭
+                                    </div>
+                                </div>
+                                <div class="process_four fl">
+                                    <div class="circle" id="circle4">
+                                        4
+                                    </div>
+                                    <div class="line line4" id="line4">
+                                    </div>
+                                    <div class="pro_name">
+                                        结案
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 当事人信息 -->
+                    <div class="info_wrap margin20top">
+                        <div class="info_title" id="info_dsrxx">
+                            当事人信息
+                        </div>
+                        <div class="info_content">
+                            <div class="info_row">
+                                <div class="info_col width35" id="dsrxx_info">
+                                </div>
+                                <div class="info_col width65" id="dsrxx_info3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 材料信息 -->
+                    <div class="info_wrap margin20top">
+                        <div class="info_title" id="info_clxx">
+                            材料信息
+                        </div>
+                        <div class="info_content">
+                            <div class="info_row">
+                                <div class="info_col width35" id="clxxinfo_left">
+                                </div>
+                                <div class="info_col width65" id="clxxinfo_right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 按钮区 -->
+            <div class="btn_row">
+                <div class="common_btn fl" id="ajxx_back" onclick="history.back()" type="button">
+                    返回
+                </div>
+            </div>
+        </div>
+        <script src="/sfytj/bower_components/jquery/dist/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/dist/scripts/main.min.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+            var fl_num = null; //法庭所在楼层号
+            var spt_name = null; //审判庭名字
+            // var aj_court_id = null; //案件对应的法院号
+            var ajxxData_data = null; //案件信息
+            var ajxxData_dsrdata = null; //当事人信息
+            var ajxxData_mardata = null; //材料信息
+            var httpurl = global_data.httpurl;
+            window.onload = function() {
+                    $(".loading_index1", window.top.document).show();
+                    /*清除登录的cookie信息*/
+                    clearCookie("lsh");
+                    clearCookie("sjh");
+                    clearCookie("cxmm");
+                    clearCookie("login_type");
+                    //获取立案、阅卷、已受理案件的案件case
+                    var yyla_case = getCookie("yyla_case");
+                    var yslaj_case = getCookie("yslaj_case");
+                    if (yyla_case != null) { //预约立案案件详情
+                        var yyla_ajxq = JSON.parse(getCookie("yyla_ajxq"));
+                        ajxxData_data = yyla_ajxq.data;
+                        ajxxData_dsrdata = ajxxData_data.dsrdata;
+                        ajxxData_mardata = ajxxData_data.mardata;
+                        fl_num = yyla_ajxq.data.floor_id;
+                        spt_name = yyla_ajxq.data.course_room_name;
+                        init_pages();
+                    } else if (yslaj_case != null) { //已受理案件案件详情
+                        var yslaj_ajxq = JSON.parse(getCookie("yslaj_ajxq"));
+                        ajxxData_data = yslaj_ajxq.data;
+                        ajxxData_dsrdata = ajxxData_data.dsrdata;
+                        ajxxData_mardata = ajxxData_data.mardata;
+                        fl_num = yslaj_ajxq.data.floor_id;
+                        spt_name = yslaj_ajxq.data.course_room_name;
+                        init_pages();
+                    }
+                    $(".loading_index1", window.top.document).hide();
+                }
+                //页面初始化的函数
+            function init_pages() {
+                /* 页面初始化时，给各个信息字段赋值 */
+                var value = ajxxData_data;
+
+                var court_id = localStorage.getItem("court_id");
+                if(court_id==861){
+                    document.getElementById('info_fymc').innerHTML = '浙江高级人民法院';
+                   
+                 }else{
+                    if (value.court_name != undefined) {
+                        document.getElementById('info_fymc').innerHTML = value.court_name;
+                    }
+                 }
+                
+
+                if (value.case_num != undefined) {
+                    document.getElementById('info_case_num').innerHTML = value.case_num;
+                }
+                if (value.case_action_name != undefined) {
+                    document.getElementById('info_laay').innerHTML = value.case_action_name;
+                }
+                if (value.course_room_name != undefined) {
+                    document.getElementById('info_cbts').innerHTML = value.course_room_name;
+                }
+                if (value.case_name != undefined) {
+                    document.getElementById('info_ajmc').innerHTML = value.case_name;
+                }
+                if (value.type != undefined) {
+                    document.getElementById('info_ajlb').innerHTML = value.type;
+                }
+                if (value.judge_name != undefined) {
+                    document.getElementById('info_cbfg').innerHTML = value.judge_name;
+                }
+                if (value.ktdata.kt_time != undefined) {
+                    document.getElementById('info_ktsj').innerHTML = value.ktdata.kt_time;
+                }
+                if (value.ktdata.kt_room != undefined) {
+                    document.getElementById('info_wzxx').innerHTML = value.ktdata.kt_room;
+                }
+                /* 给案件审理进展的背景颜色赋值 */
+                var ajsljz_index = parseInt(value.case_view_state);
+                for (var i = 1; i <= ajsljz_index; i++) {
+                    document.getElementById("circle" + i + "").style.background = "#53aee7";
+                    document.getElementById("line" + i + "").style.background = "#53aee7";
+                }
+                /*当事人信息插入数据*/
+                var html_dw = "";
+                var html_dsr = "";
+                $.each(ajxxData_dsrdata, function(n, value) {
+                    html_dw += "<div class=\"info\">诉讼地位：<span class=\"info_dsrlx\">" + value.type + "</span></div>";
+                    if (value.name != null && value.name != undefined) {
+                        html_dsr += "<div class=\"info\">当事人：<span class=\"info_dsr\">" + value.name + "</span></div>"
+                    }
+                });
+                $("#dsrxx_info").append(html_dw);
+                $("#dsrxx_info3").append(html_dsr);
+                /* 材料信息插入数据 */
+                var html_left = "";
+                var html_right = "";
+                $.each(ajxxData_mardata, function(n, value) {
+                    if (n % 2 == 0) {
+                        html_left += "<div class=\"info\">";
+                        html_left += "<span class=\"filename_type\">" + value.type_name + "</span>："
+                        html_left += "<span class=\"filename\">" + value.name + "</span>"
+                        html_left += "<input type=\"button\" class=\"download_cl fr\" value=\"查看\" onclick=\"download_file(" + value.id + ")\">"
+                        html_left += "</div>"
+                    } else {
+                        html_right += "<div class=\"info\">";
+                        html_right += "<span class=\"filename_type\">" + value.type_name + "</span>："
+                        html_right += "<span class=\"filename\">" + value.name + "</span>"
+                        html_right += "<input type=\"button\" class=\"download_cl fr\" value=\"查看\" onclick=\"download_file(" + value.id + ")\">"
+                        html_right += "</div>"
+                    }
+                });
+                $("#clxxinfo_left").append(html_left);
+                $("#clxxinfo_right").append(html_right);
+                //设置立案信息标题行高
+                $(".info_title").each(function() {
+                    var $that = $(this);
+                    $that.css('line-height', $that.parent('div').outerHeight() + 'px');
+                });
+            }
+            // 路线指引按钮点击,保存楼层号和审判庭名字到cookie
+            function ajxx_ckwz() {
+                if (fl_num != null && spt_name != null) {
+                    setCookie("fl_num", fl_num);
+                    setCookie("spt_name", spt_name);
+                }
+                // setCookie("aj_court_id", aj_court_id);
+                window.location.href = 'wdaj_ckftwz.html';
+            }
+            //下载材料信息文件
+            function download_file(file_id) {
+                var url = '/sfytj/dist/html/wdaj/ckjzzl.html';
+                // setCookie('la_id', file_id);
+                // setCookie('ckcl_type', 2);
+                $("#iframe", window.parent.document).hide().attr('src', url);
+            }
+        </script>
+    </body>
+</html>

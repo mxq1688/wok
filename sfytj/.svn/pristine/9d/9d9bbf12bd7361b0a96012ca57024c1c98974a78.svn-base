@@ -1,0 +1,50 @@
+/*预约立案卷宗表*/
+.lackjz2{
+  /*表格上面提示的几个字*/
+  .title{
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: #999;
+    padding: 20px;
+  }
+  /*表格部分*/
+  .qr_table{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    //max-height: 391px;
+    max-height: 400px;
+    table{
+      width: 100%;
+      td{
+        height: 45px;   /*表单元格高度*/
+      } 
+      /*表格内容字体样式*/
+      .fs{
+        color: #9a9a9a;
+        /*font-size: 24px;*/
+        font-weight: 500;
+        line-height: 45px;
+        text-align: center;
+        width:20%;
+      }
+      .fss{
+        color: #9a9a9a;
+        font-size: 26px;
+        font-weight: 500;
+        line-height: 45px;
+        text-align: center;
+        width:40%;
+      }
+
+
+    }
+  }
+
+
+  /* 返回、打印按钮样式 */
+  .yyyjjzjz_button {
+    margin-right: 20px;
+  }
+
+}

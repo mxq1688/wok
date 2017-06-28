@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+        <title>
+            我的案件
+        </title>
+        <link href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/sfytj/dist/styles/main.min.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <!--页面-->
+        <div class="wdaj_login">
+            <div class="wrap">
+                <div class="common_body">
+                    <!--主要内容-->
+                    <div class="font_header tip">
+                        请输入您案件通过后被告知的信息
+                    </div>
+                    <!--输入内容列表-->
+                    <div class="input_list">
+                        <!--选择登录方式-->
+                        <div class="dlfs clearfix font_title_style">
+                            <div class=" title">
+                                登录方式
+                            </div>
+                            <div class=" font_title_style anbm choice_box active_choice_box" onclick="show_login_type(1)">
+                                <img class="icon icon-ajbm" src="/sfytj/dist/images/icon/yyla_ajbm.png">
+                                    查询帐号
+                                </img>
+                            </div>
+                            <div class=" font_title_style sjhm choice_box" onclick="show_login_type(2)">
+                                <img class="icon icon-sjh" src="/sfytj/dist/images/icon/yyla_sjh.png">
+                                    手机号码
+                                </img>
+                            </div>
+                        </div>
+                        <!--对应填的内容-->
+                        <div class="sqlsh clearfix font_title_style">
+                            <div class=" title">
+                                查询帐号
+                            </div>
+                            <div>
+                                <input class="input_lsh input_bj ">
+                                </input>
+                            </div>
+                        </div>
+                        <div class="cxmm clearfix font_title_style">
+                            <div class=" title">
+                                查询密码
+                            </div>
+                            <div>
+                                <input class="input_mm input_bj" id="mm" type="password"/>
+                            </div>
+                        </div>
+                    </div>
+                    <!--按钮-->
+                    <div class="btn_row">
+                        <input class="common_btn" onclick="history.back()" type="button" value="返回"/>
+                        <button class="common_btn btn_cx" id="btn_chaxun" type="submit">
+                            查询
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/sfytj/bower_components/jquery/dist/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/dist/scripts/main.min.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+            $(function() {
+                var login_type = getCookie("login_type");;
+                var lsh;
+                var cxmm;
+                var sjh;
+                var ajxq_ItemData;
+                var type;
+                var yslaj_case = getCookie("yslaj_case");
+                $("#btn_chaxun").click(function() {
+                    if (login_type == null) {
+                        login_type = 1;
+                    }
+                    var httpurl = global_data.httpurl;
+                    cxmm = $(".input_mm").val();
+                    /*申请流水号登录验证*/
+                    if (login_type == 1) {
+                        lsh = $(".input_lsh").val();
+                        if ((!lsh) || (!cxmm)) {
+                            open_modal("请输入您申请的查询帐号和查询密码！");
+                        } else {
+                            ajax("" + httpurl + "wdaj/ajck.php", "type=" + login_type + "&case=" + yslaj_case + "&case_num=" + lsh + "&password=" + cxmm, function(defaultData) {
+                                ajxq_ItemData = defaultData;
+                            }, null, null, null, false);
+                            if (ajxq_ItemData.data == false) {
+                                open_modal("未查询到任何信息，请重新输入！");
+                            } else {
+                                //将账号跟密码写入缓存
+                                setCookie("my_yslajcx_account", lsh);
+                                setCookie("my_yslajcx_type", login_type);
+                                setCookie("my_yslajcx_pwd", cxmm);
+                                yslajcx_data = ajxq_ItemData.data;
+                                setCookie("yslajcx_data", JSON.stringify(yslajcx_data));
+                                window.location.href = "/sfytj/dist/html/wdaj/login_yslajcx.html";
+                            }
+                        }
+                    }
+                    /*申请手机号登录*/
+                    else if (login_type == 2) {
+                        sjh = $(".input_lsh").val();
+                        if ((!validatemobile(sjh)) || (!cxmm)) {
+                            open_modal("请输入正确的手机号码和查询密码");
+                        } else {
+                            ajax("" + httpurl + "wdaj/ajck.php", "type=" + login_type + "&case=" + yslaj_case + "&mobile=" + sjh + "&password=" + cxmm, function(defaultData) {
+                                ajxq_ItemData = defaultData;
+                            }, null, null, null, false);
+                            if (ajxq_ItemData.data == false) {
+                                open_modal("未查询到任何信息，请重新输入！");
+                            } else {
+                                //将账号跟密码写入缓存
+                                setCookie("my_yslajcx_account", sjh);
+                                setCookie("my_yslajcx_type", login_type);
+                                setCookie("my_yslajcx_pwd", cxmm);
+                                yslajcx_data = ajxq_ItemData.data;
+                                setCookie("yslajcx_data", JSON.stringify(yslajcx_data));
+                                window.location.href = "/sfytj/dist/html/wdaj/login_yslajcx.html";
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

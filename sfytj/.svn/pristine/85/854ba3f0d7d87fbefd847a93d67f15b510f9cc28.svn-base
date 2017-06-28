@@ -1,0 +1,151 @@
+/* 页面头部 */
+
+.index_html{
+    .header {
+        width: 100%;
+        height: 120px;
+        background-image: url(../images/bg/headerBackground.png);
+        background-size: 100% 100%;
+        box-shadow: 0 0 15px rgba(0,0,0,.45);
+        text-shadow: 1px 1px 1px rgba(0,0,0,.45);
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+
+    /*头部Logo*/
+    .header_logo{
+        width: 76px;
+        height: 82px;
+        background-image: url(../images/icon/header_logo.png);
+        background-repeat: no-repeat;
+        float: left;
+        margin-left:2%;
+        margin-top: 19px;
+    }
+
+    /*头部标题*/
+    .header_title {
+        float: left;
+        margin-left: 35px;
+        margin-top: 19px;
+        color: #FFFFFF;
+        font-family: Microsoft YaHei;
+    }
+
+    .header_titleup {
+        font-size: 36px;
+    }
+
+    .header_titledown {
+        font-size: 24px;
+    }
+
+
+    /*头部时间*/
+    .header_time {
+        float: right;
+        margin-right: 5%;
+        margin-top: 12px;
+        color: #FFFFFF;
+        font-family: Microsoft YaHei;
+    }
+
+    .header_timeup {
+        font-size: 36px;
+    }
+
+    .header_timedown {
+        font-size: 28px;
+    }
+    /*头部房子*/
+    .menu_area{
+        //margin-right: 3%;
+        margin-right: 0;
+    }
+    .sy{
+        width: 100px;
+        height: 88px;
+        margin-right: 15px;;
+        margin-top: 19px;
+        text-align: center;
+        img{
+            height: 50%;
+            cursor:pointer;
+        }
+        .words{
+            font-size: 24px;
+            color: #FFF;
+            text-align: center;
+            line-height: 42px;
+            height: 42px;
+        }
+    }
+    .gnsy, .znss, .exit, .grzx {
+        display: none;
+    }
+   
+   /*提醒进入个人中心*/
+    .grzx_tip {
+        margin-left: -173%;
+    }
+
+    /*搜索图片*/
+    .ss_icon{
+        width: 8%;
+        height: 37%;
+        text-align: center;
+        line-height: 82px;
+    }
+    /*模态框高度*/
+    .modal_body_search.ss_body{
+        height: 100px;
+        padding: 0 15px!important;
+        padding-top: 9px;
+    }
+    /*input框*/
+    .form-control-ss{
+        display: block;
+        //width: 90%; 
+        width: 185%; 
+        /* height: 34px; */
+        padding: 11px 12px;
+        line-height: 1.42857143;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    
+    }
+    /*搜索文字字体样式*/
+    .ss_font{
+        color:#666666;
+        font-size: 35px;
+    }
+
+    .search_title{
+     height: 70px;
+     width: 90%;
+     line-height: 30px;
+     padding-left: 2%;
+     margin-top:20px;
+     
+    }
+    .title_left{
+       width: 200px;
+    }
+    .search_result{
+      border-bottom: 1px solid #ccc;
+      height: 44px;
+      line-height: 33px;
+      width: 96%;
+      margin-left: 2%;
+      display:none;
+    }
+
+    //搜索弹出文字样式
+    div.awesomplete>ul{
+        font-size: 35px;
+        top:70px;
+    }
+
+}

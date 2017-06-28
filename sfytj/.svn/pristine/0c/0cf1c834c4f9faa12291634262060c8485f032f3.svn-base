@@ -1,0 +1,138 @@
+/*我要阅卷-预约立案进展查询*/
+.ckyjjz {
+
+  #yjjzcx_count {
+    color: $blueColor;
+  }
+  .tip{
+    margin: 20px 0;
+  }
+  .aj-list {
+    max-height: 480px;
+    overflow-y: auto;
+    margin-top: 10px;
+  }
+  .aj-item {
+
+    position: relative;
+    .title-line {
+      width: 7px;
+      height: 100%;
+      position: absolute;
+      left: 31%;
+      top: 0px;
+      z-index: 1;
+    }
+    /* 自定义panelheading */
+    .panel-heading {
+      position: relative;
+      background-color: #fff;
+      box-shadow: 0 10px 20px 0 #b9b5b5;
+      color: #9a9a9a;
+      cursor: pointer;
+      .ckxq {
+        float: right;
+        width: 125px;
+        height: 37px;
+        line-height: 30px;
+        font-size: 24px;
+        margin: 0 5px;
+        border-radius: 10px;
+        color: white;
+        padding: 3px 7px;
+        font-weight: 500;
+        text-align: center;
+      }
+      .badge {
+        float: right;
+        background-color: #53aee7;
+        width: 81px;
+        height: 37px;
+        line-height: 30px;
+        font-size: 20px;
+        margin: 0 5px;
+        font-weight: 500;
+      }
+      .shzt {
+        float: right;
+        width: 88px;
+        height: 37px;
+        line-height: 30px;
+        font-size: 20px;
+        margin: 0 5px;
+        border-radius: 10px;
+        color: white;
+        padding: 3px 7px;
+        font-weight: 500;
+        text-align: center;
+      }
+    }
+    .panel-title {
+      font-weight: 500;
+      color: #9a9a9a;
+    }
+
+    /* panel内容部分 */
+    .panel-body {
+      position: relative;
+      max-height: 400px;
+
+    }
+
+    .aj-title {
+      padding-right: 15px;
+      position: relative;
+      background: white;
+
+      /*法院名称*/
+      .fymc {
+        float: left;
+      }
+      /*案号*/
+      .ah {
+        float: left;
+      }
+
+    }
+
+    .aj-info {
+      position: relative;
+      padding: 25px;
+      line-height: 35px;
+    }
+
+  }
+  /*审核已通过*/
+  .state-success {
+    .title-line, .shzt, .ckxq {
+      background-color: $blueColor;
+    }
+
+  }
+  /*审核中*/
+  .state-waiting {
+    .title-line, .shzt, .ckxq {
+      background-color: gray;
+    }
+  }
+  /*审核未通过*/
+  .state-failed {
+    .title-line, .shzt {
+      background-color: red;
+    }
+    .ckxq {
+      background-color: gray;
+    }
+  }
+
+  /*查看卷宗按钮*/
+  .btn-ckjz{
+    margin-right: 50px;
+    cursor: pointer;
+  }
+
+  #btn-ckjz{
+    margin-left: 50px;
+  }
+
+}

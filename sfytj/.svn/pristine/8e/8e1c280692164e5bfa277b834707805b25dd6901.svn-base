@@ -1,0 +1,203 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+        <title>
+            预约阅卷申请确认身份和用途
+        </title>
+        <link href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/sfytj/dist/styles/main.min.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <!--页面-->
+        <div class="yyyjyt">
+            <div class="wrap">
+                <div class="common_body">
+                    <!--导航条部分-->
+                    <div class="ssfw_nav yyyjsq_nav clearfix">
+                        <!--预约立案标题 -->
+                        <div class="nav_title">
+                            <h2>
+                                预约阅卷申请
+                            </h2>
+                        </div>
+                        <!--进度条 -->
+                        <div class="nav_process">
+                            <!-- 圆点和横线 -->
+                            <div class="process clearfix">
+                                <div class="process1">
+                                    <div class="nav_line1">
+                                    </div>
+                                    <a href="javascript:void(0);" onclick="url_load('yyyjdl.html')">
+                                        <div class="nav_circle">
+                                            1
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="process2">
+                                    <div class="nav_line">
+                                    </div>
+                                    <a href="javascript:void(0);" onclick="url_load('yyyjxzaj.html')">
+                                        <div class="nav_circle">
+                                            2
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="process3">
+                                    <div class="nav_line">
+                                    </div>
+                                    <a href="javascript:void(0);" onclick="url_load('yyyjyt.html')">
+                                        <div class="nav_circle">
+                                            3
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="process4">
+                                    <div class="nav_line">
+                                    </div>
+                                    <a href="javascript:void(0);" onclick="url_load('yyyjqr.html')">
+                                        <div class="nav_circle">
+                                            4
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- 下方的文字 -->
+                            <div class="process_title clearfix">
+                                <div class="process_titleinfo">
+                                    当事人登录
+                                </div>
+                                <div class="process_titleinfo">
+                                    选择案件
+                                </div>
+                                <div class="process_titleinfo">
+                                    确认身份和用途
+                                </div>
+                                <div class="process_titleinfo">
+                                    信息确认
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--主要内容-->
+                    <div class="common_wrap_body">
+                        <div class="font_weight font_header tip">
+                            确认身份和用途
+                        </div>
+                        <!--输入内容列表-->
+                        <div class="input_list">
+                            <!-- 申请人姓名 -->
+                            <div class="sqrxm clearfix font_title_style">
+                                <div class="title dlfsleft">
+                                    申请人姓名
+                                </div>
+                                <div>
+                                    <input class="input_name input_bj" type="text">
+                                    </input>
+                                </div>
+                            </div>
+                            <!--选择登录方式-->
+                            <div class="dlfs clearfix font_title_style">
+                                <div class="title dlfsleft">
+                                    申请内容
+                                </div>
+                                <div class="dlfsright">
+                                    <div class="yuangao choice_box active_choice_box" onclick="yyyjyt_showtab(1)">
+                                        庭审笔录
+                                    </div>
+                                    <div class="beigao choice_box" onclick="yyyjyt_showtab(2)">
+                                        证据材料
+                                    </div>
+                                    <div class="disanren choice_box" onclick="yyyjyt_showtab(3)">
+                                        调查笔录
+                                    </div>
+                                </div>
+                            </div>
+                            <!--对应填的内容-->
+                            <div class="sqlsh clearfix font_title_style">
+                                <div class=" title dlfsleft" id="zhanghaotype">
+                                    申请原因
+                                </div>
+                                <div>
+                                    <textarea class="input_sqyt">
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--按钮-->
+                    <div class="btn_row">
+                    </div>
+                    <!-- 上一步 下一步按钮 -->
+                    <div class="btn_row ">
+                        <input class="common_btn " onclick="window.location.href='yyyjxzaj.html'" type="button" value="上一步"/>
+                        <button class="common_btn fr" id="btn_next" type="submit">
+                            下一步
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/sfytj/bower_components/jquery/dist/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/dist/scripts/main.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript">
+        </script>
+        <script>
+            $(function() {
+                /* 记录导航条步数的方法 */
+                nav_step("yyyjsq_last_step", 4);
+                //判断是否有申请人姓名，没有的话通过user_id重新获取，有的话直接输出
+                var input_name = getCookie("input_name");
+                if (!input_name) {
+                    var httpurl = global_data.httpurl;
+                    var user_id = getCookie("user_id");
+                    ajax("" + httpurl + "/ssfw/yyyj/yyyjsq/getdsrname.php", 'user_id=' + user_id, function(defaultData) {
+                        if (defaultData.state == 1) {
+                            input_name = defaultData.name;
+                        }
+                    }, null, null, null, false);
+                }
+                $('.input_name').val(input_name);
+            });
+            /*获取cookie值*/
+            var sqyt_type;
+            sqyt_type = getCookie("sqyt_type");
+            if (sqyt_type == 1) {
+                $('.active_choice_box').removeClass("active_choice_box");
+                $('.yuangao').addClass("active_choice_box");
+            } else if (sqyt_type == 2) {
+                $('.active_choice_box').removeClass("active_choice_box");
+                $('.beigao').addClass("active_choice_box");
+            } else if (sqyt_type == 3) {
+                $('.active_choice_box').removeClass("active_choice_box");
+                $('.disanzhe').addClass("active_choice_box");
+            }
+            $('.input_sqyt').val(getCookie("sqyt"));
+            $('#btn_next').click(function() {
+                /*设置cookie值*/
+                setCookie("sqyt", $('.input_sqyt').val(), 1000);
+                var sqyt_type;
+                sqyt_type = getCookie("sqyt_type") || 1;
+                if (sqyt_type == 1) {
+                    setCookie("sqyt_type", 1, 1000);
+                } else if (sqyt_type == 2) {
+                    setCookie("sqyt_type", 2, 1000);
+                } else if (sqyt_type == 3) {
+                    setCookie("sqyt_type", 3, 1000);
+                }
+                //验证是否输入用途、姓名
+                var yt = $(".input_sqyt").val();
+                var input_name = $(".input_name").val();
+                if (!checkname(input_name, "申请人姓名", false)) {} else if (!yt) {
+                    open_modal("请填写您申请阅卷的用途！");
+                } else {
+                    setCookie("input_name", input_name);
+                    /*跳转到下一步*/
+                    yyyjsq_next_step(3);
+                }
+            });
+        </script>
+    </body>
+</html>

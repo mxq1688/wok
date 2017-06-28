@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>民事起诉状</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body>
+<!--查看文书样式-->
+<div class="msqsz">
+    <!--头部-->
+    <div class="ggxx-head">
+        <div class="ggxx-title font_header"></div>
+    </div>
+    <!--主体内容-->
+    <div class="wsys_body">
+        <div class="ms font_bigger ">
+            <!--<tr>
+                <td height="36" align="center"><br/>
+                    <div  style="font-size: 13px;color:#2b2b2b;text-decoration: none;line-height: 23px;"></div></td>
+            </tr>-->
+            <!--<tr>
+                <td valign="top" class="wz">&nbsp;&nbsp;&nbsp;&nbsp;<p>　　民事起诉状，是公民、法人或其他组织作为民事原告在自己的民事权益受到侵害或者与他人发生争议时，为维护自身的民事权益，依据事实和法律，向人民法院提起诉讼，要求依法裁判时所提出的书面请求。</p>
+                    <p>&nbsp;</p>
+                    <p>　　【文书样式】</p>
+                    <p style="text-align: center">　　民 事 起 诉 状</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>　　原告：</p>
+                    <p>　　被告：</p>
+                    <p>　　案由：</p>
+                    <p>　　诉讼请求：</p>
+                    <p>　　事实与理由：</p>
+                    <p>&nbsp;</p>
+                    <p>　　&nbsp;&nbsp;&nbsp; 此致：</p>
+                    <p>　　&nbsp;&nbsp;&nbsp; x x x 人民法院</p>
+                    <p>　　附：本诉状副本&nbsp; 份</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 　　起诉人：</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 　　年 &nbsp; 月 &nbsp; 日</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>　　【填写说明】</p>
+                    <p>　　1.当事人栏，注明自然情况。自然人要列出姓名、性别、年龄、民族、工作单位、住址。法人或其他组织要列出名称、住所地、法定代表人或负责人姓名、职务、填写要准确，特别是姓名（名称）栏不能有任何错字。地址要尽量详实，具体到门牌号。最好注明邮编及通讯方式。（下列文书当事人栏要求同此）</p>
+                    <p>　　2.案由。主要写明当事人之间讼争的法律关系及其争议。</p>
+                    <p>　　3.诉讼请求。主要写明请求解决争议的权益和争议的事实，以及请求人民法院依法解决原告一方要求的有关民事权益争议的具体事项。</p>
+                    <p>　　4.事实和理由。事实部分，要全面反映案件事实的客观真实情况。</p>
+                    <p>　　5.在起诉状尾部，当事人是自然人的，要由本人签字，是法人或其他组织的，由法定代表人或负责人签字并加盖单位公章。日期要填写准确。（下列文书要求同此）<br />
+                        &nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p></td>
+            </tr>
+-->
+           <!-- <div class="title font_h1">民事起诉状</div>
+            <p class="yg">
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span><span class="bg">原告</span> :xx（身份证号33020xxx）,女，xxxx年xx月xx日出生，汉族，住xxxx，电话xxxxx
+            </p>
+            <p class="yg">
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span><span class="bg">被告</span> :xxxx(身份证号33020xxxxx），男，xxxx年x月xx日出生，x族，住xxxxx，电话xxxxx
+            </p>
+            <p class="t1">诉 讼 请 求</p>
+            <ol>
+                <li class="">
+                    判令被告立即归还借款xxx元，并按银行1-3年期同期贷款利率的4倍向原告支付自借款发生之日起至本金还清之日的利息
+                    （从20xx年xx月xx日起，暂计算到20xx年xx月xx日，即xxx×6.65%÷12×4×24-xx=xxxx元）
+                </li>
+                <li class="">
+                    本案诉讼费用由被告承担。
+                </li>
+            </ol>
+            <p class="t1">事 实 与 理 由</p>
+            <p>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>  20xx年xx月xx日，被告向原告借款人民币xxxx元，并于同日向原告出具借条一份。双方约定借款日为20xx年xx月xx日到xxx年xx月xx日止，到期归还本金及利息，共计人民币xxx元。同时，双方当事人还约定，原告借给被告的xxxx元直接打入xxx的农业银行个人账户xxxxxxx。但是，借款到期后，被告并未还本付息。后经原告多次催讨，被告陆续支付了xxx元利息，其余本息至今未付。
+            </p>
+            <p>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>  原告认为：作为借款人，被告理应在到期时偿还本息，拒不支付显属无理。原告在催讨无着的情况下有权通过诉讼实现自身权利。由于当时双方约定的月息高于司法解释规定标准，现单方予以调整，要求被告按司法解释允许的银行同期贷款基准利率的4倍计算支付利息。为此，特向贵院提起诉讼，请依法支持原告的诉请。
+            </p>
+            <p class="t2">
+                此致
+            </p>
+            <p class="t3">
+                xx市xx区人民法院
+            </p>
+            <p class="t4">
+                具状人
+            </p>
+            <p class="t5">
+                二0xx年x月
+            </p>-->
+        </div>
+    </div>
+    <!--返回按钮-->
+    <div class="btn_row">
+        <!-- <input type="button" value="返回" class="common_btn "  onclick="window.location.href='wsys.html'"/> -->
+        <input type="button" value="返回" class="common_btn "  onclick="history.back()"/>
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+
+        var httpurl=global_data.httpurl;
+        var wsysid = JSON.parse(getCookie("wsysid"));
+        var wsys_title=getCookie("wsys_title");
+        if(wsysid==null){wsysid=""};
+        if(wsys_title==null){wsys_title=""};
+
+        var sxrItemData = null;
+        ajax(
+                ""+httpurl+"ggxx/ygsf/wsys.php",
+                "id="+wsysid,
+                function(defaultData){
+                    console.log(defaultData);
+                    sxrItemData = defaultData.data;
+                },
+                null,
+                null,
+                null,
+                false
+        );
+
+        $(".ggxx-title").html(JSON.parse(wsys_title));
+
+        $(".ms").html(sxrItemData.content);
+
+
+    });
+</script>
+</body>
+</html>

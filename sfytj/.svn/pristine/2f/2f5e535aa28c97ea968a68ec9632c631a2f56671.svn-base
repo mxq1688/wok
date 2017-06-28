@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+        <title>
+            法庭分布
+        </title>
+        <link href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <style type="text/css">
+        padding-right: 40px;
+  /*去掉链接下滑线*/
+  a:link {
+    text-decoration: none;
+  }
+  a:hover{
+    text-decoration: none;
+  }
+  .font_ftfb{
+      margin-top: 0px!important;
+      margin-bottom: 0px!important;
+      font-size: 30px!important;
+  }
+  .ftfb_list{
+     width: 100%;
+    }
+   .ftfb_pic_flo {
+   }
+    .ftfb_pic_flo img{
+        width: 100%;
+        margin-top: 40px;
+    }
+    </style>
+    <body>
+        <!--页面-->
+        <!--法庭分布内容 -->
+        <div class="ftfb_body clearfix">
+            <div class="clear">
+            </div>
+            <!--法庭分布位置列表 -->
+            <div class="ftfb_wzlist">
+                <h2 class="font_ftfb">
+                    各庭室位置列表
+                </h2>
+            </div>
+            <!--法庭分布具体发布 -->
+            <div class="ftfb_list">
+                <div class="ftfb_pic_flo">
+                    <img src="/sfytj/dist/html/dingzhi/nanjingzhongyuan/1.jpg">
+                    </img>
+                </div>
+                <div class="ftfb_pic_flo">
+                    <img src="/sfytj/dist/html/dingzhi/nanjingzhongyuan/2.jpg">
+                    </img>
+                </div>
+                <div class="ftfb_pic_flo">
+                    <img src="/sfytj/dist/html/dingzhi/nanjingzhongyuan/3.jpg">
+                    </img>
+                </div>
+                <div class="ftfb_pic_flo">
+                    <img src="/sfytj/dist/html/dingzhi/nanjingzhongyuan/4.jpg">
+                    </img>
+                </div>
+                <div class="ftfb_pic_flo">
+                    <img src="/sfytj/dist/html/dingzhi/nanjingzhongyuan/5.jpg">
+                    </img>
+                </div>
+                <div class="ftfb_pic_flo">
+                    <img src="/sfytj/dist/html/dingzhi/nanjingzhongyuan/6.jpg">
+                    </img>
+                </div>
+                <div class="ftfb_pic_flo">
+                    <img src="/sfytj/dist/html/dingzhi/nanjingzhongyuan/7.jpg">
+                    </img>
+                </div>
+                <div class="ftfb_pic_flo">
+                    <img src="/sfytj/dist/html/dingzhi/nanjingzhongyuan/8.jpg">
+                    </img>
+                </div>
+                <div class="ftfb_pic_flo">
+                    <img src="/sfytj/dist/html/dingzhi/nanjingzhongyuan/9.jpg">
+                    </img>
+                </div>
+                <div class="ftfb_pic_flo">
+                    <img src="/sfytj/dist/html/dingzhi/nanjingzhongyuan/10.jpg">
+                    </img>
+                </div>
+                <div class="ftfb_pic_flo">
+                    <img src="/sfytj/dist/html/dingzhi/nanjingzhongyuan/11.jpg">
+                    </img>
+                </div>
+                <div class="loading_index"></div>
+            </div>
+        </div>
+        <script src="/sfytj/bower_components/jquery/dist/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/dist/scripts/main.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript">
+        </script>
+    </body>
+</html>

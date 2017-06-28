@@ -1,0 +1,93 @@
+/* 选择法院页面样式 */
+
+.xzfy {
+
+	/* 导航条样式 */
+
+	font-weight: 600;
+	/* 选择法院内容 高级、中级、基层 */
+	.chosefayuan {
+		min-height: 485px;
+		width:100%;
+		margin-top: 20px;
+	}
+	.title{
+		color: #999;
+	}
+
+	.pick_fayuan {
+		width: 100%;
+		.title{
+			margin-bottom: 20px;
+		}
+	}
+
+	/* 高级人民法院 */
+	.high_grade {
+		float: left;
+		width: 29%;
+	}
+	.high_grade_list {
+		height:425px;
+		overflow-y: auto;
+	}
+
+	/* 中级人民法院 */
+	.middle_grade {
+		float: left;
+		width: 29%;
+    	margin-left: 6%;
+	}
+	.middle_grade_list {
+		height:425px;
+		overflow-y: auto;
+	}
+
+	/* 基层人民法院 */
+	.low_grade {
+		float: left;
+		width: 29%;
+		margin-left: 105px;
+	}
+	.low_grade_list {
+		height:425px;
+		overflow-y: auto;
+	}
+
+	.fayuan{
+		list-style: none;
+		width: 450px;
+
+	}
+	.gy {
+		margin-left: -40px;
+	}
+	.zy {
+		margin-left: -40px;
+	}
+	.jy {
+		margin-left: -40px;
+	}
+
+	/* 具体每个法院 */
+	.fayuan li{
+		border: 1px solid #999;
+		margin-bottom: -1px;
+		height: auto;
+		text-align: center;
+	    line-height: 60px;
+	    color: #999;
+	    /*font-size: 22px;*/
+	    cursor: pointer;
+	}
+	.selected{
+		background-color: #53aee7;
+		color: #ffffff !important;
+	}
+	
+	/* 上一步、下一步按钮  */
+	.back_next {
+
+	}
+
+}

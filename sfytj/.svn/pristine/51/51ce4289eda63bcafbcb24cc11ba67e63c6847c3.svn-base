@@ -1,0 +1,31 @@
+/* 预约立案申请 导航菜单 */
+.yylasq_nav {
+  /* 标题 */
+  .nav_title {
+    width:15%;
+   }
+
+  /* 导航菜单整体 */
+  .nav_process {
+    width: 85%;
+  }
+  .process1, .process2, .process3, .process4, .process5, .process6 {
+    width: 16%;
+  }
+
+  /* 导航中的横线 */
+  .nav_line1 {
+    width: 145px;
+    height: 4px;
+  }
+  .nav_line {
+    width: 200px;
+    left: -94px;
+    height: 4px;
+  }
+
+
+  .process_titleinfo {
+     width: 16%;
+  }
+}

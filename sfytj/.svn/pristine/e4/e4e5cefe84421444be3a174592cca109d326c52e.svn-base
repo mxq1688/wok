@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>填写案件</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="/sfytj/src/styles/main.css" /> -->
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+</head>
+<body>
+<!--页面-->
+<div class="txaj">
+    <div class="wrap">
+        <div class="common_body">
+            <!--导航条部分-->
+            <div class="ssfw_nav yylasq_nav clearfix">
+                <!--自助立案标题 -->
+                <div class="nav_title">
+                    <h2>自助立案</h2>
+                </div>
+
+                <!--进度条 -->
+                 <div class="nav_process">
+                    <!-- 圆点和横线 -->
+                    <div class="process clearfix">
+                        <div class="process1">
+                            <div class="nav_line1"></div>
+                            <a href="javascript:void(0);" onclick="url_load('xzfy.html')">
+                                <div class="nav_circle">1</div>
+                            </a>
+                        </div>
+
+                        <div class="process2">
+                            <div class="nav_line"></div>
+                            <a href="javascript:void(0);" onclick="url_load('txaj_xzaj.html')">
+                                <div class="nav_circle">2</div>
+                            </a>
+                        </div>
+
+                        <div class="process3">
+                            <div class="nav_line"></div>
+                            <a href="javascript:void(0);" onclick="url_load('txryxx_xzaj.html')">
+                                <div class="nav_circle">3</div>
+                            </a>
+                        </div>
+
+                        <div class="process4">
+                            <div class="nav_line" ></div>
+                             <a href="javascript:void(0);" onclick="url_load('txdlr_xzaj.html')">
+                                <div class="nav_circle">4</div>
+                            </a>
+                        </div>
+
+                        <div class="process5">
+                            <div class="nav_line"></div>
+                            <a href="javascript:void(0);" onclick="url_load('tjcl.html')">
+                                <div class="nav_circle">5</div>
+                            </a>
+                        </div>
+
+                        <div class="process6">
+                            <div class="nav_line"></div>
+                            <a href="javascript:void(0);" onclick="url_load('yylaqrb.html')">
+                                <div class="nav_circle">6</div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 下方的文字 -->
+                    <div class="process_title clearfix">
+                        <div class="process_titleinfo">选择法院</div>
+                        <div class="process_titleinfo">案件信息</div>
+                        <div class="process_titleinfo">当事人信息</div>
+                        <div class="process_titleinfo">代理人信息</div>
+                        <div class="process_titleinfo">提交材料</div>
+                        <div class="process_titleinfo">信息确认</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--填写案件内容部分-->
+            <div class="txaj_content clearfix">
+                <!-- 案由信息 -->
+                <div class="txaj_reason">
+                    <h2 class="font_header">案由信息</h2>
+                    <!-- 搜索框 -->
+                    <div class="search_input">
+                        <input type="text" id="search_ay"  /> 
+                        <img src="/sfytj/dist/images/icon/ss_search.png" />
+                    </div>
+
+                    <!-- 案由列表 -->
+                    <div class="reason_list">
+                        <div id="treeview1" class="treeview">
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 申请人信息 -->
+                <div class="txaj_request">
+                    <h2 class="font_header">申请人信息</h2>
+                    
+                    <!-- 行政的申请人填写信息 -->
+                    <div id="sqrxx_xzaj">
+                        <!-- 申请执行金额 -->
+                        <div class="apply_value clearfix">
+                            <div class="apply_value1">
+                                <span class="apply_value_left font_bigger">诉讼标的金额</span><span
+                                    class="star font_bigger">*</span>
+                            </div>
+                            <div><input type="text"class="apply_value_right form-control zxje">
+                            </div>
+                        </div>
+
+                        <!-- 立案身份 -->
+                        <div class="apply_identity clearfix xzaj_margintop">
+                            <div class="apply_identity_left">
+                                <span class="apply_identity_word font_bigger">立案身份</span><span
+                                    class="star font_bigger">*</span>
+                            </div>
+                            <div class="apply_identity_list">                  
+                                <select class="apply_identity_child font_bigger form-control lasf">
+                                    <option value="案件当事人" selected="selected">案件当事人</option>
+                                    <option value="律师">律师</option>
+                                    <option value="基层法律工作者">基层法律工作者</option>
+                                    <option value="其他诉讼代理人">其他诉讼代理人</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- 立案查询密码 -->
+                        <!--<div class="apply_identity clearfix">
+                            <div class="apply_identity_left">
+                                <span class="apply_identity_word font_bigger">立案查询密码</span><span
+                                    class="star font_bigger">*</span>
+                            </div>
+                            <div class="apply_identity_list">                  
+                                <input type="password" class="apply_identity_child form-control cxmm" />
+                            </div>
+                        </div>-->
+
+                        <!-- 再次确认密码 -->
+                        <!--<div class="apply_identity clearfix">
+                            <div class="apply_identity_left">
+                                <span class="apply_identity_word font_bigger">再次确认密码</span><span
+                                    class="star font_bigger">*</span>
+                            </div>
+                            <div class="apply_identity_list">                  
+                                <input type="password" class="apply_identity_child form-control zccxmm" />
+                            </div>
+                        </div>-->
+
+                        <!--输入手机号-->
+                        <div class="apply_value clearfix apply_identity xzaj_margintop">
+                            <div class="apply_value1">
+                                <span class=" apply_identity_word font_bigger">手机号码</span><span
+                                    class="star font_bigger">*</span>
+                            </div>
+                            <div>
+                                <input type="text"class="apply_value_right form-control lian_phone_num">
+                            </div>
+                        </div>
+
+                       <input type="hidden"  class="apply_identity_child form-control dzyj" />
+                        <!-- 电子邮件地址 
+
+                        <div class="apply_identity clearfix">
+                            <div class="apply_identity_left">
+                                <span class="apply_identity_word font_bigger">电子邮件地址</span>
+                            </div>
+                            <div class="apply_identity_list">                  
+                                <input type="text" class="apply_identity_child form-control dzyj" />
+                            </div>
+                        </div>
+-->
+                        <!-- 其他联系方式 
+                        <div class="apply_identity clearfix">
+                            <div class="apply_identity_left">
+                                <span class="apply_identity_word font_bigger">其他联系方式</span>
+                            </div>
+                            <div class="apply_identity_list">                  
+                                <input type="text" class="apply_identity_child form-control qtfs" />
+                            </div>
+                        </div>
+                                        -->
+                        <!-- 诉讼与事实请求 -->
+                        <div class="apply_identity clearfix xzaj_margintop">
+                            <div class="apply_identity_word font_bigger apply_identity_left">诉讼与事实请求<span
+                                    class="star font_bigger">*</span></div>
+                            <div class="susong_request1">
+                                <textarea class="susong_request_text form-control sy"></textarea>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+
+            <!-- 上一步 下一步按钮 -->
+            <div class="btn_row clearfix">
+                <input type="button" value="上一步" class="common_btn " onclick="window.location.href='xzfy.html'">
+                <input id="btn_next" type="button" value="下一步" class="common_btn fr">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/jstree.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+//判断申请执行金额是否为正数
+        function validate(num)
+        {
+            var reg = /^\d+(?=\.{0,1}\d+$|$)/;
+            if(reg.test(num)){
+                return true;          //正数
+            }else{
+                return false ;        //负数
+            }
+        }
+ $("#btn_next").click(function () {
+
+                var sqzxje = $("#sqrxx_xzaj .zxje").val();
+                var lasf = $("#sqrxx_xzaj .lasf").val();
+                // var cxmm = $.trim($("#sqrxx_mssys .cxmm").val());
+                //var zccxmm = $.trim($("#sqrxx_mssys .zccxmm").val());
+                var li_phone = $.trim($("#sqrxx_xzaj .lian_phone_num").val());
+                var dzyj = $.trim($("#sqrxx_xzaj .dzyj").val());
+                var qtfs = $.trim($("#sqrxx_xzaj .qtfs").val());
+                var ssqq = $.trim($("#sqrxx_xzaj .sy").val());
+
+                $('[data-toggle="tooltip"]').tooltip();
+
+                reg = /^(0|[1-9][0-9]*)$/;
+
+                if(!$('.jstree-clicked')[0]){
+                    open_modal("请选择案由！");
+                }
+                else if(!sqzxje){
+                    open_modal("请输入诉讼标的金额！");
+                }else if ((!validate(parseFloat(sqzxje)))|| isNaN(sqzxje)) {
+                    open_modal("请输入大于等于0的诉讼标的金额！");
+                }else if (!lasf) {
+                    open_modal("请选择立案身份！");
+                // }else if(cxmm.split("").length<6){
+                //     open_modal("查询密码至少输入6位，请重新输入！");
+                // }else if(zccxmm!=cxmm){
+                //     open_modal("两次密码输入不一致！");
+                }else if(!validatemobile(li_phone)){
+
+                }else if(dzyj!="" && !/^\w+@[a-z0-9]+\.[a-z]+$/i.test(dzyj)){
+                    open_modal("请输入有效的电子邮件地址！");
+                }else if(!ssqq){
+                    open_modal("请输入诉讼与事实请求！");
+                // }else if((!validatemobile(li_phone))||(!lasf)||(!ssqq)||(!validate(parseFloat(sqzxje)))||(isNaN(sqzxje))||(sqzxje=='0')){
+                //     open_modal("请输入完整，并检查输入的申请执行金额为大于0的数字！");
+                // }
+                }else{
+                    var user_id = getCookie('user_id')||1;
+                    form_data_xzaj.user_id = user_id;
+                    form_data_xzaj.ajbd = sqzxje;
+                    form_data_xzaj.lasf = lasf;
+                    //form_data.cxmm = cxmm;
+                    form_data_xzaj.li_phone = li_phone;
+                    form_data_xzaj.dzyj = dzyj;
+                    form_data_xzaj.qtfs = qtfs;
+                    form_data_xzaj.ssqq = ssqq;
+                    
+
+                    /*保存案件基本信息*/
+                    save_lasq_form_base_xzaj(form_data_xzaj); 
+                    next_step_xzaj(2);
+                }
+        });    
+
+    /*全局变量*/
+    var form_data_xzaj = get_lasq_form_base_xzaj();
+
+    function init_data() {
+        console.log("form_data_xzaj数据:");
+        console.log(form_data_xzaj);
+
+        //行政列表输入框初始化值
+        if(form_data_xzaj.ajbd){$("#sqrxx_xzaj .zxje").val(form_data_xzaj.ajbd);}
+        if(form_data_xzaj.lasf){$("#sqrxx_xzaj .lasf").val(form_data_xzaj.lasf);}
+        // if(form_data.cxmm){
+        //     $("#sqrxx_mssys .cxmm").val(form_data.cxmm);
+        //     $("#sqrxx_mssys .zccxmm").val(form_data.cxmm);
+        // }
+        if(form_data_xzaj.li_phone){$("#sqrxx_xzaj .lian_phone_num").val(form_data_xzaj.li_phone);}
+        if(form_data_xzaj.dzyj){$("#sqrxx_xzaj .dzyj").val(form_data_xzaj.dzyj);}
+        if(form_data_xzaj.qtfs){$("#sqrxx_xzaj .qtfs").val(form_data_xzaj.qtfs);}
+        if(form_data_xzaj.ssqq){$("#sqrxx_xzaj .sy").val(form_data_xzaj.ssqq);} 
+    }
+
+    function init_event() {
+
+        //tree change时事件
+        $('#treeview1').on("changed.jstree", function (e, data) {
+            console.log("The selected nodes are:");
+            console.log(data.node.id);               //选择的node id
+            console.log(data.node.text);            //选择的node text
+
+            form_data_xzaj.ay = data.node.text;
+            form_data_xzaj.ay_id = data.node.id;
+
+        });
+
+        //jstree单击事件
+        $("#treeview1").bind("select_node.jstree", function (e, data) {
+
+            //单击li展开下面的节点
+            if(data.node.id !=1 ){                           //排除第一个节点(2011民事案由)
+                data.instance.toggle_node(data.node);
+            }
+
+            //搜索后点击，去掉搜索li的背景
+            if($(".jstree-search")[0]){
+                $(".jstree-search").removeClass("jstree-search");
+            }
+            
+        }); 
+
+        //输入框输入定时自动搜索
+        var to = false;
+        $('#search_ay').keyup(function () {
+            if(to) {
+              clearTimeout(to); 
+            }
+
+            to = setTimeout(function () {
+                $('#treeview1').jstree(true).search($('#search_ay').val());
+
+                if($(".jstree-search")[0]){
+                   //如果搜索的内容不在可视区设置scrollTop
+                    var height = $(".jstree-search").outerHeight();
+                    var eles = $("#treeview1").find("a");
+                    var index = 0;
+                    for(var i=1; i<=eles.length; i++){
+                        if($(eles[i-1]).hasClass("jstree-search")){
+                            index = i;
+                            console.log(index);
+                            break;
+                        }
+                    }
+
+                    if(index>8){
+                        var top = (index-8)*height;
+                        $(".reason_list").scrollTop(top);
+                    }
+ 
+                }
+
+                if($(".jstree-search")[0] && $(".jstree-clicked")){
+                    $(".jstree-clicked").removeClass("jstree-clicked");
+                }
+
+            }, 250);
+        });
+
+        
+        
+    }
+
+    function init_view() {
+
+        $("#treeview1").jstree({
+            'core' : {
+                "multiple" : false,
+                'data' : xz_ay,
+                'dblclick_toggle': false          //禁用tree的双击展开
+            },
+            "plugins" : ["search"] 
+
+        });
+
+        //案由列表展示已选择的案由
+        $("#treeview1").on("ready.jstree", function(){
+            if(form_data_xzaj.ay){
+                var ay = form_data_xzaj.ay;
+                $('#treeview1').jstree(true).search(ay);
+
+                //遍历找到的a,将id=form_data.ay_id的a找到,增加背景色
+                $(".jstree-search").each(function(){
+
+                    $(".jstree-search").removeClass("jstree-search");
+                    if($(this).attr("id") == (form_data_xzaj.ay_id+"_anchor")){
+                        $(this).addClass("jstree-clicked");
+                        return false;
+                    }   
+                });
+            }
+
+            //如果a不再可视区，设置scrollTop将其显示
+            var a_height = $(".jstree-clicked").outerHeight();
+            var eles =  $("#treeview1").find("a");
+            var index = 0;                                          //记录第几个a被选中;
+            for(var i=1; i<=eles.length; i++){
+                if($(eles[i-1]).hasClass("jstree-clicked")){
+                    index = i;
+                    console.log(index);
+                    break;
+                }
+            }
+
+            if(index>8){
+                var top = (index-8)*a_height;
+                $(".reason_list").scrollTop(top);
+            }
+
+        });
+        
+        /* 记录导航条步数的方法 */
+        nav_step_xzaj("last_step_xzaj", 6);
+
+        //演示代码，给手机号码赋初值
+  
+    }
+</script>
+<!-- 立案身份选择js -->
+<script type="text/javascript">
+    $(function () {
+        init_view();
+        init_data();
+        init_event();
+       
+
+    });
+</script>
+</body>
+
+</html>

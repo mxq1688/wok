@@ -1,0 +1,60 @@
+/*法官信息*/
+.lc_index{
+  background: none;
+  height: 610px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  .lcindex{
+    margin-left: 15px;
+  }
+  /*三个以上增加边距*/
+  .ad{
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  /*法官边框样式*/
+  .fg{
+    width: 29%;
+    height: 200px;
+    border-radius: 3%;
+    float: left;
+    position: relative;
+    margin-right: 50px;
+    margin-bottom: 23px;
+    margin-top: 10px;
+    padding: 15px;
+    /*图片*/
+    .tp{
+      width: 34%;
+      float: left;
+      margin-top: 18px;
+    }
+    /*编号*/
+    .number{
+      color: $blueColor;
+      float: left;
+      margin-top: 14px;
+      font-weight: 500;
+      margin-right: 31px;
+    }
+
+    /*姓名*/
+    .name{
+      color:#999;
+      font-weight: 500;
+      margin-top: 38px;
+      text-align: center;
+      width: 60%;
+      float: right;
+    }
+
+
+    /*部门，职务，电话和地址信息*/
+    .info{
+      margin-top: 9px;
+      color: #999;
+    }
+
+  }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工作流程选择</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body class="fyck lc_index">
+<!--主体展示部分-->
+<div class="lcindex" id="lcindex">
+</div>
+
+
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+    /*模拟数据*/
+    var defaultData =
+            [
+                {
+                    name:'民事诉讼工作流程图',
+                    href:'lct.html?id=0',
+                    tp:'/sfytj/dist/images/icon/gzlc.png',
+                },
+                {
+                    name:'刑事自诉工作流程图',
+                    href:'lct.html?id=1',
+                    tp:'/sfytj/dist/images/icon/gzlc.png',
+                },
+                {
+                    name:'行政诉讼工作流程图',
+                    href:'lct.html?id=2',
+                    tp:'/sfytj/dist/images/icon/gzlc.png',
+                },
+            ];
+
+</script>
+<script type="text/javascript">
+    $(function () {
+
+                /*填充页面*/
+
+
+                var html = "";
+                $.each(defaultData, function (n, value) {
+                    html += "<a href=\""+value.href+"\"><div class=\"fg shadow\"> ";
+                    html += "    <div class=\"tp\"><img src=\""+value.tp+"\"></div>";
+                    html += "<div class='name font_h1'>"+value.name+"</div>";
+                    html += "<div class=\"info font_big\">";
+                    html += "</div>";
+                    html +="</div>";
+                    html +="</a>";
+
+                });
+                $("#lcindex").append(html);
+            }
+    );
+</script>
+</body>
+</html>

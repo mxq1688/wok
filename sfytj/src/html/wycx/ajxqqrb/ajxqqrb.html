@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案件信息</title>
+    <link rel="stylesheet" type="text/css" href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/sfytj/dist/styles/main.min.css"/>
+</head>
+<body onunload="close_light(3)">
+<!-- 打印机控件 -->
+<object id="ReceiptPrinter" name="ReceiptPrinter" width="10" height="10" style="display:none" classid="CLSID:A81F682A-E047-4674-8ECB-8D16C0AF505E"></object>
+<div class="common_body ajxx">
+    <!--头部-->
+    <div class="wdaj_head">
+        <div class="wdaj_title">
+            案件信息
+        </div>
+    </div>
+    <!--主体内容-->
+    <div class="wdaj_body">
+        <!-- 案件信息 -->
+        <div class="ajxx_content" style="padding-right:0px; overflow-y:hidden; overflow-x:auto;">
+            <iframe id="iframe"  width="100%" height="550px" frameborder="0" border="none"></iframe>
+        </div>
+    </div>
+    <!-- 按钮区 -->
+    <div class="btn_row">
+        <div type="button" class="common_btn fl" id="ajxx_back" onclick="history.back()">返回</div>
+        <input type="button" value="打印" class="common_btn fr yyla_button_print"/>
+    </div>
+</div>
+<script type="text/javascript" src="/sfytj/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/sfytj/dist/scripts/main.min.js"></script>
+<script type="text/javascript">
+var lsh = localStorage.getItem('wdla_lsh');
+var url = 'ssfw/wsla/yylajzcx/cklaqrbn.php?case_num=' + lsh + '&ext=.html';
+var httpurl=global_data.httpurl;
+iframe_url = httpurl +url ;
+$('#iframe').attr('src',iframe_url);
+url = 'sfytjjk/'+url;
+$('.yyla_button_print').click(function(){
+    start_print(url);
+});
+</script>
+</body> 
+</html>

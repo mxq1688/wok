@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+        <title>
+            我要查询登录首页
+        </title>
+        <link href="/sfytj/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/sfytj/dist/styles/main.min.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <style>
+        body {
+        position: relative;
+    }
+    .loading-backdrop {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1040;
+        background-color: #fff;
+        display: none;
+    }
+    .loading-backdrop.in {
+        opacity: 0.5;
+    }
+
+    .loading_div {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin: -25px 0 -25px 0;
+      border-bottom: 6px solid rgba(0, 0, 0, .1);
+      border-left: 6px solid rgba(0, 0, 0, .1);
+      border-right: 6px solid rgba(0, 0, 0, .1);
+      border-top: 6px solid rgba(0, 0, 0, .4);
+      border-radius: 100%;
+      height: 50px;
+      width: 50px;
+      animation: rot 1s infinite linear;
+    }
+    </style>
+    <body onunload="LeavePage()">
+        <!--页面-->
+        <object classid="CLSID:EC194364-F404-4B28-A149-D4A94F47D1DF" height="100" id="OSScan" name="OSScan" style="display:none" width="100">
+        </object>
+        <div class="wdaj_login">
+            <div class="wrap">
+                <div class="common_body">
+                    <!--主要内容 -->
+                    <div class="font_header tip">
+                        请输入您申请时告知的信息
+                    </div>
+                    <!-- 查询的tab页签 -->
+                    <ul class="nav nav-tabs font_title_style my_tab_menu" id="myTab">
+                        <li class="active" cx_type="1" data-id="yylacx">
+                            <a data-toggle="tab">
+                                自助立案查询
+                            </a>
+                        </li>
+                        <li cx_type="2" data-id="yyyjcx">
+                            <a data-toggle="tab">
+                                预约阅卷查询
+                            </a>
+                        </li>
+                        <li cx_type="3" data-id="yslajcx">
+                            <a data-toggle="tab">
+                                已受理案件查询
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content my_tab_content" id="myTabContent">
+                        <!-- 预约立案进展input_list -->
+                        <div class="input_list tab-pane fade active in" id="yylacx">
+                            <!--选择登录方式-->
+                            <div class="dlfs clearfix font_title_style">
+                                <div class="title">
+                                    登录方式
+                                </div>
+                                <div class=" font_title_style anbm active_choice_box_la" onclick="wycx_login_type(3)">
+                                    <img class="icon icon-ajbm" src="/sfytj/dist/images/icon/yyla_ajbm.png">
+                                        查询账号
+                                    </img>
+                                </div>
+                                <div class=" font_title_style sjhm" onclick="wycx_login_type(2)">
+                                    <img class="icon icon-sjh" src="/sfytj/dist/images/icon/yyla_sjh.png">
+                                        手机号码
+                                    </img>
+                                </div>
+                            </div>
+                            <!--对应填的内容-->
+                            <div class="sqlsh clearfix font_title_style">
+                                <div class="title cx_title">
+                                    查询账号
+                                </div>
+                                <div>
+                                    <input class="input_lsh input_bj">
+                                    </input>
+                                </div>
+                            </div>
+                            <div class="cxmm clearfix font_title_style">
+                                <div class="title">
+                                    查询密码
+                                </div>
+                                <div>
+                                    <input class="input_mm input_bj" id="yylacx_mm" type="password"/>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 预约阅卷查询input_list -->
+                        <div class="input_list tab-pane fade" id="yyyjcx">
+                            <!--选择登录方式-->
+                            <div class="dlfs clearfix font_title_style">
+                                <div class=" title">
+                                    登录方式
+                                </div>
+                                <div class=" font_title_style anbm active_choice_box_yj" onclick="wycx_login_type(1)">
+                                    <img class="icon icon-ajbm" src="/sfytj/dist/images/icon/yyla_ajbm.png">
+                                        查询账号
+                                    </img>
+                                </div>
+                                <div class=" font_title_style sjhm " onclick="wycx_login_type(2)">
+                                    <img class="icon icon-sjh" src="/sfytj/dist/images/icon/yyla_sjh.png">
+                                        手机号码
+                                    </img>
+                                </div>
+                            </div>
+                            <!--对应填的内容-->
+                            <div class="sqlsh clearfix font_title_style">
+                                <div class="title cx_title">
+                                    查询账号
+                                </div>
+                                <div>
+                                    <input class="input_lsh input_bj">
+                                    </input>
+                                </div>
+                            </div>
+                            <div class="cxmm clearfix font_title_style">
+                                <div class="title">
+                                    查询密码
+                                </div>
+                                <div>
+                                    <input class="input_mm input_bj" id="yyyjcx_mm" type="password">
+                                    </input>
+                                </div>
+                            </div>
+                            <div class="cxmm clearfix font_title_style">
+                                <div class="title">
+                                    申请人姓名
+                                </div>
+                                <div>
+                                    <input class="input_mm input_bj" id="yyyjcx_name">
+                                    </input>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 已受理案件input_list -->
+                        <div class="input_list tab-pane fade" cx_type="3" id="yslajcx">
+                            <!--选择登录方式-->
+                            <div class="dlfs clearfix font_title_style">
+                                <div class=" title">
+                                    登录方式
+                                </div>
+                                <div class=" font_title_style anbm active_choice_box_ysl" onclick="wycx_login_type(1)">
+                                    <img class="icon icon-ajbm" src="/sfytj/dist/images/icon/yyla_ajbm.png">
+                                        查询账号
+                                    </img>
+                                </div>
+                                <div class=" font_title_style sjhm " onclick="wycx_login_type(2)">
+                                    <img class="icon icon-sjh" src="/sfytj/dist/images/icon/yyla_sjh.png">
+                                        手机号码
+                                    </img>
+                                </div>
+                            </div>
+                            <!--对应填的内容-->
+                            <div class="sqlsh clearfix font_title_style">
+                                <div class="title cx_title">
+                                    查询账号
+                                </div>
+                                <div>
+                                    <input class="input_lsh input_bj">
+                                    </input>
+                                </div>
+                            </div>
+                            <div class="cxmm clearfix font_title_style">
+                                <div class="title">
+                                    查询密码
+                                </div>
+                                <div>
+                                    <input class="input_mm input_bj" id="yslaj_mm" type="password">
+                                    </input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--按钮-->
+                    <div class="btn_row">
+                        <input class="common_btn fl" onclick="history.back()" type="button" value="返回"/>
+                        <button class="common_btn fr" id="btn_smy" onclick="search_by_smy()">
+                            扫描仪录入
+                        </button>
+                        <button class="common_btn btn_cx" id="btn_chaxun" onclick="aj_search()" type="submit">
+                            查询
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <object classid="clsid:6C6A0DE4-193A-48f5-BA91-3C180558785B" codebase="WebSerialSetup.msi" width="442" height="87" id="webSerial" name="webSerial">
+        </object>
+        <script src="/sfytj/bower_components/jquery/dist/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript">
+        </script>
+        <script src="/sfytj/dist/scripts/main.min.js" type="text/javascript">
+        </script>
+        <script event="OnReadComplete" for="OSScan" language="JavaScript">
+            OSScanOnCompleteEvent(); //读磁条完成触发
+        </script>
+        <script event="OnTimeOut" for="OSScan" language="JavaScript">
+            OSScanOnTimeOutEvent(); //扫描超时触发
+        </script>
+        <script type="text/javascript">
+            $(function() {
+                var user_info = JSON.parse(getCookie("user_info"));
+                //给徐州中院的首页判断，都不显示
+                $("#xzsy", window.top.document).css("display","none");
+                $(".grzx_name", window.top.document).html(user_info.name);
+                //显示上面图标
+                $("#exit", window.top.document).fadeIn("slow");
+                $("#grzx", window.top.document).fadeIn("slow");
+                if (getCookie("la_yj_cx")) {
+                    clearCookie("la_yj_cx");
+                    $(".grzx_tip", window.top.document).fadeIn("slow");
+                    $(".grzx_tip", window.top.document).fadeOut(1500);
+                }
+                $("#gnsy", window.top.document).fadeIn("slow");
+                $("#znss", window.top.document).fadeIn("slow");
+
+                //5s后隐藏进入个人中心的提醒
+                // window.top.window.hide_grzx_tip();
+            })
+
+            function OSScanOnTimeOutEvent() {
+                $('.tip_modal', window.parent.document).modal('hide');
+                //关灯
+                LightControl.PowerOff(6);
+            }
+
+            function OSScanOnCompleteEvent() //读磁条完成触发
+            {
+                //关灯
+                LightControl.PowerOff(6);
+                $('.tip_modal', window.parent.document).modal('hide');
+                var BarData = OSScan.BarData;
+                // var BarDataArr = BarData.split("/");
+                // var BarData_pwd = getDecode(BarDataArr[1]);
+                // init_input_data(BarDataArr[0], BarData_pwd);
+                //二维码扫描结果只是一段字符串，没/区分
+                init_input_data(BarData);
+                //查询
+                setTimeout(function() {
+                    aj_search();
+                }, 1000);
+            }
+
+            function search_by_smy() {
+                var machine_type = JSON.parse(getCookie("sftyj_config")).mid || ""; 
+                //律所机
+                if (machine_type == 'S110') {
+                    var com = "COM3";
+                    var baudRate = 115200;
+                    var result = webSerial.connect(com,baudRate);
+                    console.log("打开串口结果："+result);
+                    if (result=="false" || result==false) {
+                        open_modal("打开串口失败，请联系系统管理员或者铉盈公司", "提示信息", function() {
+                            $('.tip_modal', window.parent.document).modal('hide');
+                            webSerial.close();
+                        }, "确定", "static");
+                    }else{
+                        open_modal("请将二维码置于扫描区域");
+                    }
+                } else {
+                    var timeout = 10; //点击确定，开始启动扫描,默认timeout 30s
+                    // //开灯
+                    LightControl.PowerOn(6);
+                    var ret = OSScan.StartRead(timeout); //扫描仪开启等待
+                    open_modal_video("请将二维码置于扫描区域...", "/sfytj/dist/images/show/scan_code.gif", function() {
+                        $('.tip_modal', window.parent.document).modal('hide');
+                        //关灯
+                        LightControl.PowerOff(6);
+                        OSScan.CancelRead(); //扫描仪取消等待
+                    }, "static");
+                }
+            }                   
+            //扫描仪扫描到字符串，请求对密码进行解密
+            function getDecode(val) {
+                var httpurl = global_data.httpurl;
+                var password;
+                ajax("" + httpurl + "ssfw/wsla/yylasq/jieerweima.php", "pwd=" + val, function(data) {
+                        // console.log(data);
+                        password = data;
+                    }, null, null, null, false //同步
+                );
+                return password;
+            }
+            //输入框通过扫描仪赋值
+            // function init_input_data(account, password) {
+            function init_input_data(account) {
+                var cx_type = $("#myTab .active").attr("cx_type");
+                if (cx_type == 1) { //预约立案
+                    //二维码扫描结果显示。。。
+                    $("#yylacx .input_lsh").val("**********");
+                    $("#yylacx_mm").val("**********");
+                    setCookie("ewm_code_info",account);
+                } else if (cx_type == 2) { //预约阅卷
+                    // $("#yyyjcx .input_lsh").val(account);
+                    // $("#yyyjcx_name").val(password);
+                } else if (cx_type == 3) { //已受理案件
+                    // $("#yslajcx .input_lsh").val(account);
+                    // $("#yslaj_mm").val(password);
+                }
+            } 
+        </script> 
+        <script type = "text/javascript" > 
+            $(function() {
+                //页面初始化将查询类别、登录方式选中:
+                var cx_type = localStorage.getItem("cx_type") || 1;
+                var yyla_login_type = localStorage.getItem("yyla_login_type") || 3;
+                var yyyj_login_type = localStorage.getItem("yyyj_login_type") || 1;
+                var ysl_login_type = localStorage.getItem("ysl_login_type") || 1;
+                //查询返回时将对应的类别、登录方式选中：
+                $("#myTab li").each(function() {
+                    $("#myTab .active").removeClass("active");
+                    if ($(this).attr("cx_type") == cx_type) {
+                        $(this).addClass("active");
+                        $("#myTabContent .active").removeClass("active").removeClass("in");
+                        if (cx_type == 1) {
+                            $("#yylacx").addClass("active in");
+                            $(".active_choice_box_la").removeClass("active_choice_box_la");
+                            if (yyla_login_type == 3) {
+                                $("#yylacx .anbm").addClass("active_choice_box_la");
+                                $("#yylacx .cx_title").text("查询账号");
+                            } else if (yyla_login_type == 2) {
+                                $("#yylacx .sjhm").addClass("active_choice_box_la");
+                                $("#yylacx .cx_title").text("手机号码");
+                            }
+                        } else if (cx_type == 2) {
+                            $("#yyyjcx").addClass("active in");
+                            $(".active_choice_box_yj").removeClass("active_choice_box_yj");
+                            if (yyyj_login_type == 1) {
+                                $("#yyyjcx .anbm").addClass("active_choice_box_yj");
+                                $("#yyyjcx .cx_title").text("查询账号");
+                            } else if (yyyj_login_type == 2) {
+                                $("#yyyjcx .sjhm").addClass("active_choice_box_yj");
+                                $("#yyyjcx .cx_title").text("手机号码");
+                            }
+                        } else if (cx_type == 3) {
+                            $("#yslajcx").addClass("active in");
+                            $(".active_choice_box_ysl").removeClass("active_choice_box_ysl");
+                            if (ysl_login_type == 1) {
+                                $("#yslajcx .anbm").addClass("active_choice_box_ysl");
+                                $("#yslajcx .cx_title").text("查询账号");
+                            } else if (ysl_login_type == 2) {
+                                $("#yslajcx .sjhm").addClass("active_choice_box_ysl");
+                                $("#yslajcx .cx_title").text("手机号码");
+                            }
+                        }
+                        return false;
+                    }
+                });
+                /*清除cookie值*/
+                clearCookie("yylacx_data");
+                clearCookie("yyyjcx_data");
+                clearCookie("yslajcx_data");
+            });
+            //查询按钮点击
+            function aj_search() {
+                var sc_cx_name = '';
+                var httpurl = global_data.httpurl;
+                //当前选择的查询类型
+                var cx_type = $("#myTab .active").attr("cx_type");
+                //保存查询类别
+                setCookie("cx_type", cx_type);
+                yyla_login_type = getCookie("yyla_login_type") || 3;
+                yyyj_login_type = getCookie("yyyj_login_type") || 1;
+                ysl_login_type = getCookie("ysl_login_type") || 1;
+                var yylacx_data = null;
+                var yyyjcx_data = null;
+                var yslajcx_data = null;
+                var court_id = getCookie("court_id");
+                var user_id = getCookie("user_id");
+                var modal = $('.tip_modal', window.top.document);
+                var modal_content = $('.tip_modal .modal_info', window.top.document);
+                var modal_btn = $('.tip_modal .modal_confirm', window.top.document);
+                //查询数据
+                if (cx_type == 1) { //预约立案列表
+                    if (getCookie("ewm_code_info")) {
+                        $.ajax({
+                                    timeout: 10000,
+                                    type: "post",
+                                    async: true,
+                                    data: "case_id=" + getCookie("ewm_code_info") + '&court_id=' + court_id + '&user_id=' + user_id,
+                                    url: "" + httpurl + "ssfw/wsla/yylajzcx/ewmcxlajz.php",
+                                    dataType: "json",
+                                    beforeSend: function(XMLHttpRequest) {
+                                        open_modal("查询中，请稍候...");
+                                        modal_btn.html("取消");
+                                    },
+                                    success: function(defaultData) {
+                                        yylacx_data = defaultData.data;
+                                        if (yylacx_data == false || yylacx_data == null) {
+                                            modal_content.html("<p>账号或密码错误，请重新输入！</p>");
+                                        } else {
+                                            modal.modal('hide');
+                                            //保存帐号信息
+                                            // set_sc_info(1, lshyz, yylacx_mm, 1, sc_cx_name);
+                                            setCookie("yylacx_data", JSON.stringify(yylacx_data));
+                                            modal.on('hidden.bs.modal', function() {
+                                                clearCookie("ewm_code_info");
+                                                window.location.href = "yylacx/yylacx.html"; //跳转到预约立案查询列表页面
+                                            });
+                                        }
+                                    },
+                                    complete: function(XMLHttpRequest, status) {},
+                                    error: function(XMLHttpRequest, textStatus) {
+                                        modal_content.html("<p>服务器错误！</p>");
+                                    }
+                        });
+                    } else {
+                        if (yyla_login_type == 3) { //查询账号
+                            var lshyz = $("#yylacx .input_lsh").val();
+                            var yylacx_mm = $("#yylacx_mm").val();
+                            if (lshyz == "") {
+                                open_modal("请输入您申请的案件查询账号！");
+                            } else if (yylacx_mm == "") {
+                                open_modal("请输入您申请的案件查询密码！");
+                            } else {
+                                //查询账号+密码 请求预约立案列表数据 yylacx_data
+                                $.ajax({
+                                    timeout: 10000,
+                                    type: "post",
+                                    async: true,
+                                    data: "lei_type=" + cx_type + "&type=1&case_num=" + lshyz + "&password=" + yylacx_mm + '&court_id=' + court_id + '&user_id=' + user_id,
+                                    url: "" + httpurl + "ssfw/wsla/yylajzcx/cklajz.php",
+                                    dataType: "json",
+                                    beforeSend: function(XMLHttpRequest) {
+                                        open_modal("查询中，请稍候...");
+                                        modal_btn.html("取消");
+                                    },
+                                    success: function(defaultData) {
+                                        yylacx_data = defaultData.data;
+                                        if (yylacx_data == false || yylacx_data == null) {
+                                            modal_content.html("<p>账号或密码错误，请重新输入！</p>");
+                                        } else {
+                                            modal.modal('hide');
+                                            //保存帐号信息
+                                            set_sc_info(1, lshyz, yylacx_mm, 1, sc_cx_name);
+                                            localStorage.setItem("yylacx_data", JSON.stringify(yylacx_data));
+                                            modal.on('hidden.bs.modal', function() {
+                                                window.location.href = "yylacx/yylacx.html"; //跳转到预约立案查询列表页面
+                                            });
+                                        }
+                                    },
+                                    complete: function(XMLHttpRequest, status) {},
+                                    error: function(XMLHttpRequest, textStatus) {
+                                        modal_content.html("<p>服务器错误！</p>");
+                                    }
+                                });
+                            }
+                        } else if (yyla_login_type == 2) { //手机号
+                            var sjh = $("#yylacx .input_lsh").val();
+                            var yylacx_mm = $("#yylacx_mm").val();
+                            if (!validatemobile(sjh)) {
+                                // open_modal("请输入正确的手机号码!");
+                            } else if (yylacx_mm == "") {
+                                open_modal("请输入您申请的案件查询密码！");
+                            } else {
+                                //手机号+密码 请求预约立案列表数据 yylacx_data
+                                $.ajax({
+                                    timeout: 10000,
+                                    type: "post",
+                                    async: true,
+                                    data: "lei_type=" + cx_type + "&type=" + yyla_login_type + "&mobile=" + sjh + "&password=" + yylacx_mm + '&court_id=' + court_id + '&user_id=' + user_id,
+                                    url: "" + httpurl + "ssfw/wsla/yylajzcx/cklajz.php",
+                                    dataType: "json",
+                                    beforeSend: function(XMLHttpRequest) {
+                                        open_modal("查询中，请稍候...");
+                                        modal_btn.html("取消");
+                                    },
+                                    success: function(defaultData) {
+                                        // console.log(defaultData);
+                                        yylacx_data = defaultData.data;
+                                        //如果查询无数据，弹窗提示
+                                        if (yylacx_data.length == 0) {
+                                            // open_modal("未查询到任何信息，请重新输入！" ,function(){show_iframe();});
+                                            modal_content.html("<p>账号或密码错误，请重新输入！</p>");
+                                        } else {
+                                            modal.modal('hide');
+                                            //保存帐号信息
+                                            set_sc_info(1, sjh, yylacx_mm, 2, sc_cx_name);
+                                            localStorage.setItem("yylacx_data", JSON.stringify(yylacx_data));
+                                            modal.on('hidden.bs.modal', function() {
+                                                window.location.href = "yylacx/yylacx.html";
+                                            });
+                                        }
+                                    },
+                                    complete: function(XMLHttpRequest, status) {},
+                                    error: function(XMLHttpRequest, textStatus) {
+                                        modal_content.html("<p>服务器错误！</p>");
+                                    }
+                                });
+                            }
+                        }
+                    }
+                } else if (cx_type == 2) { //预约阅卷列表
+                    if (yyyj_login_type == 1) { //查询账号
+                        var cxzh = $("#yyyjcx .input_lsh").val();
+                        var yyyjcx_mm = $("#yyyjcx_mm").val();
+                        var yyyjcx_name = $("#yyyjcx_name").val();
+                        if (cxzh == "") {
+                            open_modal("请输入您申请的案件查询账号！");
+                        } else if (yyyjcx_mm == "") {
+                            open_modal("请输入您申请的案件查询密码！");
+                        } else if (!checkname(yyyjcx_name, "申请人姓名", false)) {} else {
+                            // 查询账号+密码+申请人姓名 请求预约阅卷列表数据 yyyjcx_data
+                            $.ajax({
+                                timeout: 10000,
+                                type: "post",
+                                async: true,
+                                data: "lei_type=" + cx_type + "&type=" + yyyj_login_type + "&case_num=" + cxzh + "&password=" + yyyjcx_mm + "&name=" + yyyjcx_name + '&court_id=' + court_id + '&user_id=' + user_id,
+                                url: "" + httpurl + "ssfw/wsla/yylajzcx/cklajz.php",
+                                dataType: "json",
+                                beforeSend: function(XMLHttpRequest) {
+                                    open_modal("查询中，请稍候...");
+                                    modal_btn.html("取消");
+                                },
+                                success: function(defaultData) {
+                                    yyyjcx_data = defaultData.data;
+                                    // console.log(yyyjcx_data);
+                                    if (yyyjcx_data == false || yyyjcx_data == null || yyyjcx_data.length == 0) {
+                                        // open_modal("未查询到卷宗信息，请重新输入！" ,function(){show_iframe();});
+                                        modal_content.html("<p>账号或密码错误，请重新输入！</p>");
+                                    } else {
+                                        modal.modal('hide');
+                                        //保存帐号信息
+                                        set_sc_info(2, cxzh, yyyjcx_mm, 1, yyyjcx_name);
+                                        localStorage.setItem("yyyjcx_data", JSON.stringify(yyyjcx_data));
+                                        modal.on("hidden.bs.modal", function() {
+                                            window.location.href = "yyyjcx/yyyjcx.html";
+                                        });
+                                    }
+                                },
+                                complete: function(XMLHttpRequest, status) {},
+                                error: function(XMLHttpRequest, textStatus) {
+                                    modal_content.html("<p>服务器错误！</p>");
+                                }
+                            });
+                        }
+                    } else if (yyyj_login_type == 2) { //手机号
+                        var sjh = $("#yyyjcx .input_lsh").val();
+                        var yyyjcx_mm = $("#yyyjcx_mm").val();
+                        var yyyjcx_name = $("#yyyjcx_name").val();
+                        if (sjh == "") {
+                            open_modal("请输入您申请的案件关联的手机号码!");
+                        } else if (!validatemobile(sjh)) {
+                            open_modal("请输入正确的手机号码!");
+                        } else if (yyyjcx_mm == "") {
+                            open_modal("请输入您申请的案件查询密码！");
+                        } else if (!checkname(yyyjcx_name, "申请人姓名", false)) {} else {
+                            //手机号+密码+申请人姓名 请求预约阅卷列表数据 yyyjcx_data
+                            $.ajax({
+                                timeout: 10000,
+                                type: "post",
+                                async: true,
+                                data: "lei_type=" + cx_type + "&type=" + yyyj_login_type + "&mobile=" + sjh + "&password=" + yyyjcx_mm + "&name=" + yyyjcx_name + '&court_id=' + court_id + '&user_id=' + user_id,
+                                url: "" + httpurl + "ssfw/wsla/yylajzcx/cklajz.php",
+                                dataType: "json",
+                                beforeSend: function(XMLHttpRequest) {
+                                    open_modal("查询中，请稍候...");
+                                    modal_btn.html("取消");
+                                },
+                                success: function(defaultData) {
+                                    yyyjcx_data = defaultData.data;
+                                    if (yyyjcx_data.length == 0) {
+                                        modal_content.html("<p>账号或密码错误，请重新输入！</p>");
+                                    } else {
+                                        modal.modal('hide');
+                                        //保存帐号信息
+                                        set_sc_info(2, sjh, yyyjcx_mm, 2, yyyjcx_name);
+                                        localStorage.setItem("yyyjcx_data", JSON.stringify(yyyjcx_data));
+                                        modal.on("hidden.bs.modal", function() {
+                                            window.location.href = "yyyjcx/yyyjcx.html";
+                                        })
+                                    }
+                                },
+                                complete: function(XMLHttpRequest, status) {},
+                                error: function(XMLHttpRequest, textStatus) {
+                                    modal_content.html("<p>服务器错误！</p>");
+                                }
+                            });
+                        }
+                    }
+                } else if (cx_type == 3) { //已受理案件列表
+                    if (ysl_login_type == 1) { //查询账号
+                        var cxzh = $("#yslajcx .input_lsh").val();
+                        var yslaj_mm = $("#yslaj_mm").val();
+                        if (cxzh == "") {
+                            open_modal("请输入您申请的案件查询号！");
+                        } else if (yslaj_mm == "") {
+                            open_modal("请输入您申请的案件查询密码！");
+                        } else {
+                            // 查询账号+密码 请求已受理案件列表数据 yslajcx_data
+                            $.ajax({
+                                timeout: 10000,
+                                type: "post",
+                                async: true,
+                                data: "lei_type=" + cx_type + "&type=" + ysl_login_type + "&case_num=" + cxzh + "&password=" + yslaj_mm + '&court_id=' + court_id + '&user_id=' + user_id,
+                                url: "" + httpurl + "ssfw/wsla/yylajzcx/cklajz.php",
+                                dataType: "json",
+                                beforeSend: function(XMLHttpRequest) {
+                                    open_modal("查询中，请稍候...");
+                                    modal_btn.html("取消");
+                                },
+                                success: function(defaultData) {
+                                    yslajcx_data = defaultData.data;
+                                    // console.log(yslajcx_data);
+                                    if (yslajcx_data == false || yslajcx_data == null) {
+                                        // open_modal("未查询到任何信息，请重新输入！" ,function(){show_iframe();});
+                                        modal_content.html("<p>账号或密码错误，请重新输入！</p>");
+                                    } else {
+                                        modal.modal('hide');
+                                        //保存帐号信息
+                                        set_sc_info(3, cxzh, yslaj_mm, 1, sc_cx_name);
+                                        localStorage.setItem("yslajcx_data", JSON.stringify(yslajcx_data));
+                                        modal.on("hidden.bs.modal", function() {
+                                            window.location.href = "yslajcx/yslajcx.html";
+                                        })
+                                    }
+                                },
+                                complete: function(XMLHttpRequest, status) {},
+                                error: function(XMLHttpRequest, textStatus) {
+                                    modal_content.html("<p>服务器错误！</p>");
+                                }
+                            });
+                        }
+                    } else if (ysl_login_type == 2) { //手机号
+                        var sjh = $("#yslajcx .input_lsh").val();
+                        var yslaj_mm = $("#yslaj_mm").val();
+                        if (!validatemobile(sjh)) {
+                            //open_modal("请输入正确的手机号码!");
+                        } else if (yslaj_mm == "") {
+                            open_modal("请输入您申请的案件查询密码！");
+                        } else {
+                            //手机号+密码 请求已受理案件列表数据 yslajcx_data
+                            $.ajax({
+                                timeout: 10000,
+                                type: "post",
+                                async: true,
+                                data: "lei_type=" + cx_type + "&type=" + ysl_login_type + "&mobile=" + sjh + "&password=" + yslaj_mm + '&court_id=' + court_id + '&user_id=' + user_id,
+                                url: "" + httpurl + "ssfw/wsla/yylajzcx/cklajz.php",
+                                dataType: "json",
+                                beforeSend: function(XMLHttpRequest) {
+                                    open_modal("查询中，请稍候...");
+                                    modal_btn.html("取消");
+                                },
+                                success: function(defaultData) {
+                                    yslajcx_data = defaultData.data;
+                                    // console.log(yslajcx_data);
+                                    //如果查询无数据，弹窗提示
+                                    if (yslajcx_data.length == 0) {
+                                        modal_content.html("<p>账号或密码错误，请重新输入！</p>");
+                                    } else {
+                                        modal.modal('hide');
+                                        //保存帐号信息
+                                        set_sc_info(3, sjh, yslaj_mm, 2, sc_cx_name);
+                                        localStorage.setItem("yslajcx_data", JSON.stringify(yslajcx_data));
+                                        modal.on("hidden.bs.modal", function() {
+                                            window.location.href = "yslajcx/yslajcx.html";
+                                        });
+                                    }
+                                },
+                                complete: function(XMLHttpRequest, status) {},
+                                error: function(XMLHttpRequest, textStatus) {
+                                    modal_content.html("<p>服务器错误！</p>");
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+            //把搜藏的帐号信息写入缓存
+            function set_sc_info(sc_cx_type, sc_cx_account, sc_cx_password, sc_cx_login_type, sc_cx_name) {
+                localStorage.setItem("sc_cx_account", sc_cx_account);
+                localStorage.setItem("sc_cx_password", sc_cx_password);
+                localStorage.setItem("sc_cx_type", sc_cx_type); //查询类型 1 预约案件 2 阅卷 3 已受理
+                localStorage.setItem("sc_cx_name", sc_cx_name);
+                localStorage.setItem("sc_cx_login_type", sc_cx_login_type); //登录类型 1 帐号 2 手机
+            }
+            //离开页面
+            function LeavePage() {
+                var machine_type = JSON.parse(getCookie("sftyj_config")).mid || ""; 
+                //律所机
+                if (machine_type == 'S110') {
+                    webSerial.close();
+                } else {
+                    LightControl.PowerOff(6); //关掉扫描仪灯
+                }   
+            }
+
+            function hexToString(str){
+    　　　var val="";
+    　　　var arr = str.split(" ");
+    　　　for(var i = 0; i < arr.length; i++){
+    　　　　val += String.fromCharCode(parseInt(arr[i],16));
+    　　　}
+    　　　return val;
+    　　}
+
+           function webSerial::OnReceive(dataString){
+               var data = hexToString(dataString);
+               init_input_data(data);
+               //查询
+               setTimeout(function() {
+                    aj_search();
+               }, 1000);
+           }
+        </script>
+    </body>
+</html>

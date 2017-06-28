@@ -1,0 +1,43 @@
+/*窗口指南-个人中心*/
+.ckzn_grzx {
+
+  /*左侧内容区*/
+  .left_content {
+    position: relative;
+    width: 70%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 0 20px;
+    float: left;
+    /*所有引用图片默认全宽*/
+    img {
+      width: 100%;
+    }
+    /*步骤介绍内容*/
+    .info {
+
+    }
+  }
+
+  .left_content > div{
+    padding: 30px 0;
+    border-bottom: 1px solid #999999;
+  }
+  /*.left_content > div + div{
+    padding-top: 30px;
+    border-top: 1px solid #999999;
+  }*/
+
+  /*将左侧内容区的最后一个子元素的最低高度设为全高，即窗口指南的最后一个步骤，这样该div的锚点能顶到最高位置，能够正确触发右侧导航栏的高亮*/
+  .left_content > div:last-child {
+    min-height: 100%;
+  }
+  /*右侧步骤图*/
+  .right_nav {
+    float: left;
+    width: 30%;
+    height: 100%;
+    padding: 30px;
+
+  }
+}
