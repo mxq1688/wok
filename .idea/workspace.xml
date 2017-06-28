@@ -48,8 +48,8 @@
       <file leaf-file-name="global.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/to_court_yg/trunk/common/global.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="2050" column="5" selection-start-line="2050" selection-start-column="5" selection-end-line="2050" selection-end-column="5" />
+            <state relative-caret-position="517">
+              <caret line="2060" column="25" selection-start-line="2060" selection-start-column="25" selection-end-line="2060" selection-end-column="25" />
               <folding>
                 <marker date="1498627508933" expanded="true" signature="22063:22139" ph="select name,... ssfw_court" />
                 <marker date="1498627508933" expanded="true" signature="25530:25592" ph="select name,... ssfw_court" />
@@ -289,12 +289,12 @@
       <option name="presentableId" value="Default" />
       <updated>1498548588813</updated>
       <workItem from="1498548590453" duration="6636000" />
-      <workItem from="1498611590417" duration="10858000" />
+      <workItem from="1498611590417" duration="11273000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17494000" />
+    <option name="totallyTimeSpent" value="17909000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -703,7 +703,7 @@
         <state relative-caret-position="69">
           <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
           <folding>
-            <marker date="1498626060940" expanded="true" signature="36602:36614" ph="..." />
+            <marker date="1498628131632" expanded="true" signature="36600:36612" ph="..." />
           </folding>
         </state>
       </provider>
@@ -803,8 +803,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/to_court_yg/trunk/common/global.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="2050" column="5" selection-start-line="2050" selection-start-column="5" selection-end-line="2050" selection-end-column="5" />
+        <state relative-caret-position="517">
+          <caret line="2060" column="25" selection-start-line="2060" selection-start-column="25" selection-end-line="2060" selection-end-column="25" />
           <folding>
             <marker date="1498627508933" expanded="true" signature="22063:22139" ph="select name,... ssfw_court" />
             <marker date="1498627508933" expanded="true" signature="25530:25592" ph="select name,... ssfw_court" />
