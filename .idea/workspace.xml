@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e6adffe-2b7e-4b33-b64a-48ae215f0141" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/a.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/a/b.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/a/c.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/to_court_yg/trunk/yg/yg_sdhz_type.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/showdoc" afterPath="$PROJECT_DIR$/showdoc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/to_court_yg/trunk/common/config.php" afterPath="$PROJECT_DIR$/to_court_yg/trunk/common/config.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/to_court_yg/trunk/common/global.php" afterPath="$PROJECT_DIR$/to_court_yg/trunk/common/global.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/to_court_yg/trunk/yg/get_now_file_info.php" afterPath="$PROJECT_DIR$/to_court_yg/trunk/yg/get_now_file_info.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/to_court_yg/trunk/yg/yg_list.php" afterPath="$PROJECT_DIR$/to_court_yg/trunk/yg/yg_admin_list.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/to_court_yg/trunk/yg/yg_admin_list.php" afterPath="$PROJECT_DIR$/to_court_yg/trunk/yg/yg_admin_list.php" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,44 +54,44 @@
       <file leaf-file-name="yg_admin_list.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/to_court_yg/trunk/yg/yg_admin_list.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="562">
+              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding>
                 <element signature="e#6#89#0#PHP" expanded="true" />
-                <marker date="1498644801829" expanded="true" signature="244:554" ph="select * fro... yg_box" />
-                <marker date="1498644801829" expanded="true" signature="257:308" ph="select yb.nu... yg_admin" />
-                <marker date="1498644801829" expanded="true" signature="257:367" ph="select yb.nu... yg_admin" />
-                <marker date="1498644801829" expanded="true" signature="411:553" ph="select j.id yg_admin" />
+                <marker date="1498645335747" expanded="true" signature="244:554" ph="select * fro... yg_box" />
+                <marker date="1498645335747" expanded="true" signature="257:308" ph="select yb.nu... yg_admin" />
+                <marker date="1498645335747" expanded="true" signature="257:367" ph="select yb.nu... yg_admin" />
+                <marker date="1498645335747" expanded="true" signature="411:553" ph="select j.id yg_admin" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/to_court_yg/trunk/common/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
+            <state relative-caret-position="322">
+              <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="global.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="global.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/to_court_yg/trunk/common/global.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="2042" column="9" selection-start-line="2042" selection-start-column="9" selection-end-line="2042" selection-end-column="9" />
+            <state relative-caret-position="576">
+              <caret line="2077" column="29" selection-start-line="2077" selection-start-column="29" selection-end-line="2077" selection-end-column="29" />
               <folding>
-                <marker date="1498644728121" expanded="true" signature="22076:22152" ph="select name,... ssfw_court" />
-                <marker date="1498644728121" expanded="true" signature="25543:25605" ph="select name,... ssfw_court" />
-                <marker date="1498644728121" expanded="true" signature="28019:28081" ph="select name,... ssfw_court" />
-                <marker date="1498644728121" expanded="true" signature="31008:31050" ph="select court... ssfw_court" />
-                <marker date="1498644728121" expanded="true" signature="31501:31545" ph="select name ssfw_court" />
-                <marker date="1498644728121" expanded="true" signature="37005:37067" ph="select name,... ssfw_court" />
-                <marker date="1498644728121" expanded="true" signature="43316:43378" ph="select type ssfw_case_action" />
-                <marker date="1498644728121" expanded="true" signature="48416:48527" ph="select * fro... ssfw_material" />
-                <marker date="1498644728121" expanded="true" signature="50294:50452" ph="select id,nu... ssfw_num_log" />
+                <marker date="1498645446685" expanded="true" signature="22076:22152" ph="select name,... ssfw_court" />
+                <marker date="1498645446685" expanded="true" signature="25543:25605" ph="select name,... ssfw_court" />
+                <marker date="1498645446685" expanded="true" signature="28019:28081" ph="select name,... ssfw_court" />
+                <marker date="1498645446685" expanded="true" signature="31008:31050" ph="select court... ssfw_court" />
+                <marker date="1498645446685" expanded="true" signature="31501:31545" ph="select name ssfw_court" />
+                <marker date="1498645446685" expanded="true" signature="37005:37067" ph="select name,... ssfw_court" />
+                <marker date="1498645446685" expanded="true" signature="43316:43378" ph="select type ssfw_case_action" />
+                <marker date="1498645446685" expanded="true" signature="48416:48527" ph="select * fro... ssfw_material" />
+                <marker date="1498645446685" expanded="true" signature="50294:50452" ph="select id,nu... ssfw_num_log" />
               </folding>
             </state>
           </provider>
@@ -122,9 +115,9 @@
         <option value="$PROJECT_DIR$/sfytj/src/html/common/index.html" />
         <option value="$PROJECT_DIR$/to_court_yg/trunk/yg/yg_list.php" />
         <option value="$PROJECT_DIR$/to_court_yg/trunk/yg/yg_login_admin.php" />
-        <option value="$PROJECT_DIR$/to_court_yg/trunk/common/global.php" />
-        <option value="$PROJECT_DIR$/to_court_yg/trunk/yg/yg_admin_list.php" />
         <option value="$PROJECT_DIR$/to_court_yg/trunk/common/config.php" />
+        <option value="$PROJECT_DIR$/to_court_yg/trunk/yg/yg_admin_list.php" />
+        <option value="$PROJECT_DIR$/to_court_yg/trunk/common/global.php" />
       </list>
     </option>
   </component>
@@ -358,15 +351,15 @@
       <workItem from="1498548590453" duration="6636000" />
       <workItem from="1498611590417" duration="12466000" />
       <workItem from="1498629379186" duration="2124000" />
-      <workItem from="1498631551575" duration="10187000" />
+      <workItem from="1498631551575" duration="10638000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31413000" />
+    <option name="totallyTimeSpent" value="31864000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18869936" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -756,43 +749,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/to_court_yg/trunk/common/global.php">
+    <entry file="file://$PROJECT_DIR$/to_court_yg/trunk/common/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="2042" column="9" selection-start-line="2042" selection-start-column="9" selection-end-line="2042" selection-end-column="9" />
-          <folding>
-            <marker date="1498644728121" expanded="true" signature="22076:22152" ph="select name,... ssfw_court" />
-            <marker date="1498644728121" expanded="true" signature="25543:25605" ph="select name,... ssfw_court" />
-            <marker date="1498644728121" expanded="true" signature="28019:28081" ph="select name,... ssfw_court" />
-            <marker date="1498644728121" expanded="true" signature="31008:31050" ph="select court... ssfw_court" />
-            <marker date="1498644728121" expanded="true" signature="31501:31545" ph="select name ssfw_court" />
-            <marker date="1498644728121" expanded="true" signature="37005:37067" ph="select name,... ssfw_court" />
-            <marker date="1498644728121" expanded="true" signature="43316:43378" ph="select type ssfw_case_action" />
-            <marker date="1498644728121" expanded="true" signature="48416:48527" ph="select * fro... ssfw_material" />
-            <marker date="1498644728121" expanded="true" signature="50294:50452" ph="select id,nu... ssfw_num_log" />
-          </folding>
+        <state relative-caret-position="322">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/to_court_yg/trunk/yg/yg_admin_list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="562">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding>
             <element signature="e#6#89#0#PHP" expanded="true" />
-            <marker date="1498644801829" expanded="true" signature="244:554" ph="select * fro... yg_box" />
-            <marker date="1498644801829" expanded="true" signature="257:308" ph="select yb.nu... yg_admin" />
-            <marker date="1498644801829" expanded="true" signature="257:367" ph="select yb.nu... yg_admin" />
-            <marker date="1498644801829" expanded="true" signature="411:553" ph="select j.id yg_admin" />
+            <marker date="1498645335747" expanded="true" signature="244:554" ph="select * fro... yg_box" />
+            <marker date="1498645335747" expanded="true" signature="257:308" ph="select yb.nu... yg_admin" />
+            <marker date="1498645335747" expanded="true" signature="257:367" ph="select yb.nu... yg_admin" />
+            <marker date="1498645335747" expanded="true" signature="411:553" ph="select j.id yg_admin" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/to_court_yg/trunk/common/config.php">
+    <entry file="file://$PROJECT_DIR$/to_court_yg/trunk/common/global.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
-          <folding />
+        <state relative-caret-position="576">
+          <caret line="2077" column="29" selection-start-line="2077" selection-start-column="29" selection-end-line="2077" selection-end-column="29" />
+          <folding>
+            <marker date="1498645446685" expanded="true" signature="22076:22152" ph="select name,... ssfw_court" />
+            <marker date="1498645446685" expanded="true" signature="25543:25605" ph="select name,... ssfw_court" />
+            <marker date="1498645446685" expanded="true" signature="28019:28081" ph="select name,... ssfw_court" />
+            <marker date="1498645446685" expanded="true" signature="31008:31050" ph="select court... ssfw_court" />
+            <marker date="1498645446685" expanded="true" signature="31501:31545" ph="select name ssfw_court" />
+            <marker date="1498645446685" expanded="true" signature="37005:37067" ph="select name,... ssfw_court" />
+            <marker date="1498645446685" expanded="true" signature="43316:43378" ph="select type ssfw_case_action" />
+            <marker date="1498645446685" expanded="true" signature="48416:48527" ph="select * fro... ssfw_material" />
+            <marker date="1498645446685" expanded="true" signature="50294:50452" ph="select id,nu... ssfw_num_log" />
+          </folding>
         </state>
       </provider>
     </entry>
