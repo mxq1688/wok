@@ -2035,59 +2035,8 @@ function think_decrypt($data, $key = 'ssfw') {
   return $state;
 
 }
-
-
-    /*功能：  返回json数据
-     *
-     *
-     * */
-    function j_encode($state = 1, $info = '') {
-        $r = array(
-            'state' => $state,
-            'info' => $info
-        );
-        exit ( str_replace("\\/", "/",  json_encode ( $r ) ));
-    }
-    /*功能： 接收参数，
-     *
-     * */
-    function check_exist_param($params) {
-        $arr = explode ( ',', $params );
-        $rtn = array ();
-        foreach ( $arr as $key => $value ) {
-            $val = trim($_REQUEST ["$value"]);
-            if (empty ( $val )) {
-                continue;
-            } else {
-                $rtn [$value] = $val;
-            }
-        }
-        return $rtn;
-    }
-
-    /*功能： 接收参数
-     *
-     * */
-    function check_get_param($params) {
-        $arr = explode ( ',', $params );
-        $rtn = array ();
-        foreach ( $arr as $key => $value ) {
-            if(is_array($_REQUEST ["$value"])){
-                $val = $_REQUEST ["$value"];
-            }else{
-                $val = trim($_REQUEST ["$value"]);
-            }
-            if (empty ( $val )) {
-                j_encode ( 0, '缺少参数' . $value );
-            } else {
-                $rtn [$value] = $val;
-            }
-        }
-        return $rtn;
-    }
-
-
-
+ 
+ 
 
 
 

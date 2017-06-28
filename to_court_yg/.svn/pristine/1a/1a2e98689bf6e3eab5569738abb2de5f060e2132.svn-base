@@ -1,6 +1,6 @@
 <?php
 
-    $db_config["hostname"] = "localhost"; //服务器地址
+    $db_config["hostname"] = "127.0.0.1"; //服务器地址
     $db_config["username"] = "root"; //数据库用户名
     $db_config["password"] = "root"; //数据库密码
     $db_config["database"] = "ssfw_yg"; //数据库名称

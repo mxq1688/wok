@@ -1,0 +1,37 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: mxq
+ * Date: 2017/6/28 0028
+ * Time: 13:26
+ */
+
+    include('../common/global.php');
+    $result = array();
+    $params = check_get_param('user_id');
+    $user_id = $params['user_id'];
+
+
+    $sql =   'select * from yg_box yb 
+              left join yg_record yr on yr.box_num=yb.number
+              where yb.state = 1 and yr.sjr_id in 
+              
+              (select j.id from yg_admin ya 
+              left join dept d on ya.dept_id = d.id
+              left join judge j on j.dept_code = d.dept_code)';
+    $result = $mysql->get_all($sql);
+var_dump($result);die;
+    if($result){
+        $result['state'] = 1;
+    }else{
+        $result['state'] = 0;
+        $result['info'] = '查询错误';
+    }
+    exit ( str_replace("\\/", "/",  json_encode ( $result ) ));
+
+
+
+
+
+
+
